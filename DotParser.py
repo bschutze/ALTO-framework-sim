@@ -24,7 +24,9 @@ graph Test {
 import sys
 import pydot
 import pyparsing
+import json
 from libraries.dijkstra import *
+
 
 
 #function takes a dictionary and creats a sub_dictionary within based on supplied values
@@ -62,6 +64,13 @@ edgeList = graph.get_edge_list()
 betterDict = {}	#Holds the nodes with its neighbors and associated edge weights
 networkmap = [] #List of all ID's used (PIDS)
 costmap = {}	#Map with hasehd PID's as key and cost as value
+attributes = []	#List of all attributes
+
+latencyMap 	= {} #
+bandwidthMap 	= {} #
+throughputMap 	= {} 
+delayMap   	= {}
+
 
 """
 #hashing the values //NOT USED
@@ -88,6 +97,16 @@ for e in edgeList:
 	networkmap.append(src)	#add nodes to networkmap
 	networkmap.append(dest)	#add nodes to networkmap
 	costmap[(src*100000) + dest] = label
+	
+	attributes.append(e.get_attributes())
+
+
+#for a in attributes:
+#	print a
+#	temp=json.loads(a)
+#	print temp
+	
+	
 
 #print betterDict
 	
@@ -111,10 +130,7 @@ print("Cost Map:")
 print costmap
 print("\n")
 
-
-
-	
-#print pids
+#print attributes_
 
 
 

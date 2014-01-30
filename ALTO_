@@ -1,0 +1,19 @@
+NETWORK MAP: (update cycle: slow)
+
+The definition of Network Map is based on the observation that in reality, many endpoints are close by to one another in terms of
+network connectivity. By treating a group of close-by endpoints together as a single entity, an ALTO Server indicates aggregation of
+these endpoints due to their proximity. This aggregation can also lead to greater scalability without losing critical information when
+conveying other network information (e.g., when defining Cost Map). 
+
+A key use case of PIDs is to specify network preferences (costs) between PIDs instead of individual endpoints. This allows cost
+information to be more compactly represented and updated at a faster time scale than the network aggregations themselves.
+
+
+COST MAP: (update cyle: fast)
+
+An ALTO Server indicates preferences amongst network locations in the form of Path Costs. Path Costs are generic costs and can be
+internally computed by a network provider according to its own policy.(ex: throughput, latency, hopcount, etc...)
+
+For a given Network Map, an ALTO Cost Map defines Path Costs pairwise amongst sets of source and destination Network Locations defined by
+PIDs defined in the Network Map. Each Path Cost is the end-to-end cost when a unit of traffic goes from the source to the destination.
+
