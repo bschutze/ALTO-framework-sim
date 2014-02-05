@@ -5,17 +5,13 @@
 #Author: Bruno-Johannes Schuetze
 #uses the djikstra algorithm implemented by David Eppstein
 #execution: python DotParser.py [graphname] [startNode] [endNode]
-"""DOT FILE
+"""DOT FILE FORMAT
 graph Test {
 	node [shape=box]
 	edge [len=2]
 	overlap=false
-	1 -- 2[label=3];
-	1 -- 3[label=4];
-	1 -- 5[label=2];
-	2 -- 3[label=2];
-	2 -- 4[label=5];
-	3 -- 4[label=1];
+	1 -- 2[label=3, bandwidth=20, delay = 2, latency=2, throughput=17];
+...
 }
 """
 
@@ -49,6 +45,16 @@ def removeDublicates(seq):
 		keys[s] = 1
 	return keys.keys()
 
+#itterates a list and 
+def getTotalPathCosts(providedMap, pathList):
+
+	total=0
+	for x in range(len(pathList)-1):
+		key = ((pathList[x])*100000+(pathList[x+1]))
+		total = total + providedMap[key]
+
+	return total
+
 
 #prog start
 #shortest path starting & ending points
@@ -61,67 +67,55 @@ graph = pydot.graph_from_dot_file(path)
 #grabbing the list of edges
 edgeList = graph.get_edge_list()
 
-betterDict = {}	#Holds the nodes with its neighbors and associated edge weights
+dijkstraFormatDict = {}	#Holds the nodes with its neighbors and associated edge weights
 networkmap = [] #List of all ID's used (PIDS)
 costmap = {}	#Map with hasehd PID's as key and cost as value
-attributes = []	#List of all attributes
+#attributes = []	#List of all attributes
 
 latencyMap 	= {} #
 bandwidthMap 	= {} #
 throughputMap 	= {} 
 delayMap   	= {}
 
-
-"""
-#hashing the values //NOT USED
-for e in edgeList:
-	srcEdge = e.get_source()
-	destEdge = e.get_destination()
-	label=e.get_label()
-	intSrcEdge = int(srcEdge)
-	intDestEdge= int(destEdge)
-	intLabel = int(label)
-	
-	dictionary[(intSrcEdge*100000) + intDestEdge]=intLabel
-"""
 #BUILDING NETWORK AND COST MAP!!!!-----------------------------------------
 
-#storing in dictionary
+#parsing and splitting up into all the different maps
 for e in edgeList:
 	#tempDict.clear()	
 	src   = int(e.get_source())
 	dest  = int(e.get_destination())
 	label = int(e.get_label())
-	insertEdge(betterDict, src, dest, label)
-	insertEdge(betterDict, dest, src, label)
+	
+	tempAttr = json.dumps(e.get_attributes())
+	edgeAttr = json.loads(tempAttr)
+
+	insertEdge(dijkstraFormatDict, src, dest, label)
+	insertEdge(dijkstraFormatDict, dest, src, label)
+	
 	networkmap.append(src)	#add nodes to networkmap
 	networkmap.append(dest)	#add nodes to networkmap
 	costmap[(src*100000) + dest] = label
+	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
+	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
+	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
+	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
 	
-	attributes.append(e.get_attributes())
-
-
-#for a in attributes:
-#	print a
-#	temp=json.loads(a)
-#	print temp
-	
-	
-
-#print betterDict
-	
+		
 #shortest path algorithm based on Dijkstra
 
-dijk,Predecessors = Dijkstra(betterDict, start, end)
-result = shortestPath(betterDict, start, end)
+dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
+shortPathList = shortestPath(dijkstraFormatDict, start, end)
 networkmap = removeDublicates(networkmap)
+
+
+#OUTPUT
 
 print("\n")
 print("Dijkstra,  from %s to %s, has total Cost:" %(start, end))
 print dijk[end]	#D[end] is total cost
 print("\n")
 print("Shortest path from %s to %s" %(start, end))
-print result
+print shortPathList
 print("\n")
 print("Network Map:")
 print networkmap
@@ -129,9 +123,24 @@ print("\n")
 print("Cost Map:")
 print costmap
 print("\n")
+print("Delay Map:")
+print delayMap
+print("\nThroughput Map")
+print throughputMap
+print("\nLatency Map:")
+print latencyMap
+print("\nBandwidth Map:")
+print bandwidthMap
 
-#print attributes_
 
+#DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
+#iterate result list from shortest path algorithms to get pairs for the hashed key values
+total=0
 
+result = getTotalPathCosts(costmap, shortPathList)
+print result
+
+result = getTotalPathCosts(delayMap, shortPathList)
+print result
 
