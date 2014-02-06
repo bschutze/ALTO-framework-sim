@@ -25,7 +25,7 @@ from libraries.dijkstra import *
 
 
 
-#function takes a dictionary and creats a sub_dictionary within based on supplied values
+#function takes a dictionary and creats a sub_dictionary within, based on supplied values
 def insertEdge(outerDict, key1, key2, value):
 	innerDict = {}
 
@@ -45,7 +45,7 @@ def removeDublicates(seq):
 		keys[s] = 1
 	return keys.keys()
 
-#itterates a list and 
+#iterates a list to get the keys to sum up values stored in a dict (Alto Map) 
 def getTotalPathCosts(providedMap, pathList):
 
 	total=0
@@ -54,6 +54,19 @@ def getTotalPathCosts(providedMap, pathList):
 		total = total + providedMap[key]
 
 	return total
+
+#find the smalles value on a path (basically used to find min bandwidth & throughput)
+def getMinValue(providedMap, pathList):
+	minValue=999999
+	for x in range(len(pathList)-1):
+		key = ((pathList[x])*100000+(pathList[x+1]))
+		tempMin= providedMap[key]
+		if tempMin<minValue:
+			minValue=tempMin
+	return minValue
+
+
+
 
 
 #prog start
@@ -68,7 +81,7 @@ graph = pydot.graph_from_dot_file(path)
 edgeList = graph.get_edge_list()
 
 dijkstraFormatDict = {}	#Holds the nodes with its neighbors and associated edge weights
-networkmap = [] #List of all ID's used (PIDS)
+networkMap = [] #List of all ID's used (PIDS)
 costmap = {}	#Map with hasehd PID's as key and cost as value
 #attributes = []	#List of all attributes
 
@@ -92,8 +105,8 @@ for e in edgeList:
 	insertEdge(dijkstraFormatDict, src, dest, label)
 	insertEdge(dijkstraFormatDict, dest, src, label)
 	
-	networkmap.append(src)	#add nodes to networkmap
-	networkmap.append(dest)	#add nodes to networkmap
+	networkMap.append(src)	#add nodes to networkmap
+	networkMap.append(dest)	#add nodes to networkmap
 	costmap[(src*100000) + dest] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
@@ -105,7 +118,7 @@ for e in edgeList:
 
 dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
 shortPathList = shortestPath(dijkstraFormatDict, start, end)
-networkmap = removeDublicates(networkmap)
+networkMap = removeDublicates(networkMap)
 
 
 #OUTPUT
@@ -118,7 +131,7 @@ print("Shortest path from %s to %s" %(start, end))
 print shortPathList
 print("\n")
 print("Network Map:")
-print networkmap
+print networkMap
 print("\n")
 print("Cost Map:")
 print costmap
@@ -135,12 +148,29 @@ print bandwidthMap
 
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
-#iterate result list from shortest path algorithms to get pairs for the hashed key values
-total=0
+pathCost = getTotalPathCosts(costmap, shortPathList)
+print "\nPath total cost: \t",pathCost
 
-result = getTotalPathCosts(costmap, shortPathList)
-print result
+pathDelay = getTotalPathCosts(delayMap, shortPathList)
+print "\nPath total delay: \t",pathDelay
 
-result = getTotalPathCosts(delayMap, shortPathList)
-print result
+pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
+print "\nPath min bandwidth: \t",pathMinBandwidth
+
+pathLatency = getTotalPathCosts(latencyMap, shortPathList)
+print "\nPath total latency: \t",pathLatency
+
+
+#building a "real" Alto cost map. From all PIDs to all PID
+
+print dijkstraFormatDict
+
+
+for x in range(1,len(networkMap)+1):
+	#print "Outter: ", x
+	for y in range(1,len(networkMap)+1):
+		shortPathList = shortestPath(dijkstraFormatDict, x, y)
+		print shortPathList
+		#print "Inner: ", y
+
 
