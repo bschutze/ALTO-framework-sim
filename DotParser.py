@@ -82,7 +82,7 @@ edgeList = graph.get_edge_list()
 
 dijkstraFormatDict = {}	#Holds the nodes with its neighbors and associated edge weights
 networkMap = [] #List of all ID's used (PIDS)
-costmap = {}	#Map with hasehd PID's as key and cost as value
+costMap = {}	#Map with hasehd PID's as key and cost as value
 #attributes = []	#List of all attributes
 
 latencyMap 	= {} #
@@ -107,7 +107,7 @@ for e in edgeList:
 	
 	networkMap.append(src)	#add nodes to networkmap
 	networkMap.append(dest)	#add nodes to networkmap
-	costmap[(src*100000) + dest] = label
+	costMap[(src*100000) + dest] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
@@ -134,7 +134,7 @@ print("Network Map:")
 print networkMap
 print("\n")
 print("Cost Map:")
-print costmap
+print costMap
 print("\n")
 print("Delay Map:")
 print delayMap
@@ -148,7 +148,7 @@ print bandwidthMap
 
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
-pathCost = getTotalPathCosts(costmap, shortPathList)
+pathCost = getTotalPathCosts(costMap, shortPathList)
 print "\nPath total cost: \t",pathCost
 
 pathDelay = getTotalPathCosts(delayMap, shortPathList)
@@ -165,12 +165,25 @@ print "\nPath total latency: \t",pathLatency
 
 print dijkstraFormatDict
 
-
+testList = []
+resultDict = {}
+tempDict = {}
 for x in range(1,len(networkMap)+1):
 	#print "Outter: ", x
 	for y in range(1,len(networkMap)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
+		testList.append(shortPathList)
+
+		if x == y:
+			tempDict[y]=0
+		else:
+			tempDict[y]=costMap[(x*100000)+y]
+
 		print shortPathList
 		#print "Inner: ", y
+	resultDict.append[x] = tempDict
+print("\nTest Output: ", testList)
+
+
 
 
