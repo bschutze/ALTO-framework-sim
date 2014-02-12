@@ -65,6 +65,35 @@ def getMinValue(providedMap, pathList):
 			minValue=tempMin
 	return minValue
 
+#generates the sub dictionary to build the "real" cost Map. It takes a len(networkmap) 
+#length List with shortest paths from one particular PID to all PID's
+"""
+def genSubCostDict(shortList,someCostMap):
+	subDict = {}
+	edgeCost = 0
+	src = 0
+	dst = 0
+	
+	for x in range(len(shortList)):
+			tempList=shortList[x]
+			if len(tempList)==1:
+				edgeCost = 0
+				subDict[tempList.pop()] = edgeCost
+			else:
+				src = tempList.pop()
+
+				while tempList:
+					#if len(tempList) >=1: 
+					dst = tempList.pop()
+					try:
+					edgeCost = edgeCost + someCostMap[src*100000+dst]
+					src = dst
+			subDict[dst]=edgeCost
+	return subDict
+"""
+#looks at the neighbors of...
+#def checkNeighbor()
+
 
 
 
@@ -174,15 +203,21 @@ for x in range(1,len(networkMap)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		testList.append(shortPathList)
 
-		if x == y:
-			tempDict[y]=0
-		else:
-			tempDict[y]=costMap[(x*100000)+y]
-
+		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "(x,y)
 		print shortPathList
+		print "testList: ", testList
 		#print "Inner: ", y
-	resultDict.append[x] = tempDict
-print("\nTest Output: ", testList)
+	
+	#resultDict[x]=genSubCostDict(testList, costMap)
+	#resultDict.append[x] = tempDict
+#	print "\nTest Output: ", testList
+#print "\nONE ELEMENT: ", testList.pop(0)
+#print "\nONE ELEMENT: ", testList.pop(0)
+#print "\nONE ELEMENT: ", testList
+#test = testList[0]
+#print "\nTEST: ", test
+print resultDict
+
 
 
 
