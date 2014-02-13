@@ -21,6 +21,7 @@ import sys
 import pydot
 import pyparsing
 import json
+import pickle
 from libraries.dijkstra import *
 
 
@@ -67,30 +68,44 @@ def getMinValue(providedMap, pathList):
 
 #generates the sub dictionary to build the "real" cost Map. It takes a len(networkmap) 
 #length List with shortest paths from one particular PID to all PID's
-"""
-def genSubCostDict(shortList,someCostMap):
+
+def genSubCostDict(constList,someCostMap):
+	
 	subDict = {}
 	edgeCost = 0
 	src = 0
 	dst = 0
+	shortList = constList
+	
 	
 	for x in range(len(shortList)):
 			tempList=shortList[x]
+			#print "genSub tempList content: ", tempList
+			#print "tempList length: ", len(tempList)
 			if len(tempList)==1:
+				#print "We in here!"
 				edgeCost = 0
-				subDict[tempList.pop()] = edgeCost
+				dst = tempList.pop(0)
+				#subDict[res] = edgeCost
 			else:
-				src = tempList.pop()
+				src = tempList.pop(0)
 
 				while tempList:
 					#if len(tempList) >=1: 
-					dst = tempList.pop()
-					try:
-					edgeCost = edgeCost + someCostMap[src*100000+dst]
+					dst = tempList.pop(0)
+					#try:
+					#print "SRC: ", src
+					#print "DST: ", dst
+					edgeCost = edgeCost + int(someCostMap[src*100000+dst])
 					src = dst
+				#print subDict
+			#print "About to insert: ", dst
+			#print "With value: ", edgeCost
 			subDict[dst]=edgeCost
+			edgeCost=0
+			
 	return subDict
-"""
+
 #looks at the neighbors of...
 #def checkNeighbor()
 
@@ -124,7 +139,7 @@ delayMap   	= {}
 #parsing and splitting up into all the different maps
 for e in edgeList:
 	#tempDict.clear()	
-	src   = int(e.get_source())
+	src   = int(e.get_source()) 
 	dest  = int(e.get_destination())
 	label = int(e.get_label())
 	
@@ -137,6 +152,8 @@ for e in edgeList:
 	networkMap.append(src)	#add nodes to networkmap
 	networkMap.append(dest)	#add nodes to networkmap
 	costMap[(src*100000) + dest] = label
+	costMap[(dest*100000) + src] = label
+
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
@@ -202,13 +219,14 @@ for x in range(1,len(networkMap)+1):
 	for y in range(1,len(networkMap)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		testList.append(shortPathList)
-
 		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "(x,y)
-		print shortPathList
-		print "testList: ", testList
+		#print shortPathList
+		#print "testList: ", testList
 		#print "Inner: ", y
-	
-	#resultDict[x]=genSubCostDict(testList, costMap)
+	#print "TestList: "
+	print testList
+	resultDict[x]=genSubCostDict(testList, costMap)
+	testList = []
 	#resultDict.append[x] = tempDict
 #	print "\nTest Output: ", testList
 #print "\nONE ELEMENT: ", testList.pop(0)
@@ -216,8 +234,16 @@ for x in range(1,len(networkMap)+1):
 #print "\nONE ELEMENT: ", testList
 #test = testList[0]
 #print "\nTEST: ", test
+print "CostMap: "
 print resultDict
 
+costMapFile = open("ALTO_COST_MAP.txt", "w")
+costMapFile.write(str(resultDict))
+costMapFile.close()
+
+costMapPickle = open("ALTO_COST_MAP.dat","w")
+pickle.dump(resultDict, costMapPickle)
+costMapPickle.close()
 
 
 
