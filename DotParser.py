@@ -15,8 +15,6 @@ graph Test {
 }
 """
 
-
-
 import sys
 import pydot
 import pyparsing
@@ -24,8 +22,9 @@ import json
 import pickle
 from libraries.dijkstra import *
 
-
-
+#
+#Function definitions
+#
 #function takes a dictionary and creats a sub_dictionary within, based on supplied values
 def insertEdge(outerDict, key1, key2, value):
 	innerDict = {}
@@ -107,13 +106,21 @@ def genSubCostDict(constList,someCostMap):
 	return subDict
 
 #looks at the neighbors of...
-#def checkNeighbor()
+def genNetworkMap(nodeList):
+	resultNetworkMap = []
+	for n in nodeList:
+		name = n.get_name()
+		#if (n is not "node") and (n is not "edge"):
+		if not (name == "node" or name == "edge"):
+		#if not name == "node" and not name == "edge":
+			resultNetworkMap.append(name)
+			print name
+	resultNetworkMap.sort()
+	return resultNetworkMap
+#
+#Program start
+#
 
-
-
-
-
-#prog start
 #shortest path starting & ending points
 path  = str(sys.argv[1])
 start = int(sys.argv[2])
@@ -123,9 +130,16 @@ end   = int(sys.argv[3])
 graph = pydot.graph_from_dot_file(path)
 #grabbing the list of edges
 edgeList = graph.get_edge_list()
+#storing the list of nodes
+nodeList = graph.get_node_list()
 
-dijkstraFormatDict = {}	#Holds the nodes with its neighbors and associated edge weights
-networkMap = [] #List of all ID's used (PIDS)
+
+#Holds the nodes with its neighbors and associated edge weights
+dijkstraFormatDict = {}	
+
+#List of all ID's used (PIDS)
+#networkMap = genNetworkMap(nodeList)
+networkMap = []
 costMap = {}	#Map with hasehd PID's as key and cost as value
 #attributes = []	#List of all attributes
 
@@ -152,8 +166,7 @@ for e in edgeList:
 	networkMap.append(src)	#add nodes to networkmap
 	networkMap.append(dest)	#add nodes to networkmap
 	costMap[(src*100000) + dest] = label
-	costMap[(dest*100000) + src] = label
-
+	#costMap[(dest*100000) + src] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
@@ -209,7 +222,7 @@ print "\nPath total latency: \t",pathLatency
 
 #building a "real" Alto cost map. From all PIDs to all PID
 
-print dijkstraFormatDict
+#print dijkstraFormatDict
 
 testList = []
 resultDict = {}
@@ -224,7 +237,7 @@ for x in range(1,len(networkMap)+1):
 		#print "testList: ", testList
 		#print "Inner: ", y
 	#print "TestList: "
-	print testList
+	#print testList
 	resultDict[x]=genSubCostDict(testList, costMap)
 	testList = []
 	#resultDict.append[x] = tempDict
@@ -234,8 +247,8 @@ for x in range(1,len(networkMap)+1):
 #print "\nONE ELEMENT: ", testList
 #test = testList[0]
 #print "\nTEST: ", test
-print "CostMap: "
-print resultDict
+#print "CostMap: "
+#print resultDict
 
 costMapFile = open("ALTO_COST_MAP.txt", "w")
 costMapFile.write(str(resultDict))
