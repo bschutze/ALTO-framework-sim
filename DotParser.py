@@ -117,9 +117,19 @@ def genNetworkMap(nodeList):
 			print name
 	resultNetworkMap.sort()
 	return resultNetworkMap
-#
+
+def aggregatePIDs(threshold, networkMap, someCostMap):
+	changes = 1
+	
+	while(not changes):
+		changes = 0
+		for node in networkMap:
+
+
+
+#************************************************************
 #Program start
-#
+#************************************************************
 
 #shortest path starting & ending points
 path  = str(sys.argv[1])
