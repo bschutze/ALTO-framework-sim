@@ -4,7 +4,8 @@
 #Date: 14.01.2014
 #Author: Bruno-Johannes Schuetze
 #uses the djikstra algorithm implemented by David Eppstein
-#execution: python DotParser.py [graphname] [startNode] [endNode]
+#execution: 
+#python DotParser.py [graphname] [startNode] [endNode] [PID_groupting_threshold]
 """DOT FILE FORMAT
 graph Test {
 	node [shape=box]
@@ -14,6 +15,13 @@ graph Test {
 ...
 }
 """
+
+
+
+
+
+
+
 
 import sys
 import pydot
@@ -106,7 +114,7 @@ def genSubCostDict(constList,someCostMap):
 	return subDict
 
 #looks at the neighbors of...
-def genNetworkMap(nodeList):
+def genNetworkList(nodeList):
 	resultNetworkMap = []
 	for n in nodeList:
 		name = n.get_name()
@@ -114,18 +122,34 @@ def genNetworkMap(nodeList):
 		if not (name == "node" or name == "edge"):
 		#if not name == "node" and not name == "edge":
 			resultNetworkMap.append(name)
-			print name
+			#print name
 	resultNetworkMap.sort()
 	return resultNetworkMap
 
-def aggregatePIDs(threshold, networkMap, someCostMap):
-	changes = 1
-	
-	while(not changes):
-		changes = 0
-		for node in networkMap:
+def genBaseNetworkMap(rawNetworkMap): #Method generates the base networkmap i.e. 1 pid = 1 node
+	rawNetworkMap.sort()
+	tempDict = {}
+	for x in range(1, len(rawNetworkMap)+1):
+		tmp = "PID"+str(x)
+		tempDict[tmp]=rawNetworkMap.pop(0) #take the first item in the list
+	print tempDict
+	return tempDict
+		
 
 
+def aggregateToPIDs(costMap, threshold):
+	resultPidAgg={}
+	for x in costMap:
+		tempDict = costMap[x]
+		#print "HERE COMES X: "
+		#print x
+		for y in range(1,len(tempDict)+1):
+			#print "HERE COMES y: "
+			#print y
+			tempCost = tempDict[y]
+			if tempCost < threshold:
+				temp = costMap[y]
+				tempCost
 
 #************************************************************
 #Program start
@@ -135,6 +159,7 @@ def aggregatePIDs(threshold, networkMap, someCostMap):
 path  = str(sys.argv[1])
 start = int(sys.argv[2])
 end   = int(sys.argv[3])
+PIDThreshold = int(sys.argv[4])
 
 #import dot file
 graph = pydot.graph_from_dot_file(path)
@@ -148,8 +173,9 @@ nodeList = graph.get_node_list()
 dijkstraFormatDict = {}	
 
 #List of all ID's used (PIDS)
-#networkMap = genNetworkMap(nodeList)
-networkMap = []
+rawNetworkMap = genNetworkList(nodeList)
+#print rawNetworkMap
+fakenodesList = []
 costMap = {}	#Map with hasehd PID's as key and cost as value
 #attributes = []	#List of all attributes
 
@@ -173,8 +199,8 @@ for e in edgeList:
 	insertEdge(dijkstraFormatDict, src, dest, label)
 	insertEdge(dijkstraFormatDict, dest, src, label)
 	
-	networkMap.append(src)	#add nodes to networkmap
-	networkMap.append(dest)	#add nodes to networkmap
+	fakenodesList.append(src)	#add nodes to networkmap
+	fakenodesList.append(dest)	#add nodes to networkmap
 	costMap[(src*100000) + dest] = label
 	#costMap[(dest*100000) + src] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
@@ -187,32 +213,20 @@ for e in edgeList:
 
 dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
 shortPathList = shortestPath(dijkstraFormatDict, start, end)
-networkMap = removeDublicates(networkMap)
+fakenodesList = removeDublicates(fakenodesList)
 
 
 #OUTPUT
 
 print("\n")
-print("Dijkstra,  from %s to %s, has total Cost:" %(start, end))
-print dijk[end]	#D[end] is total cost
-print("\n")
-print("Shortest path from %s to %s" %(start, end))
-print shortPathList
-print("\n")
-print("Network Map:")
-print networkMap
-print("\n")
-print("Cost Map:")
-print costMap
-print("\n")
-print("Delay Map:")
-print delayMap
-print("\nThroughput Map")
-print throughputMap
-print("\nLatency Map:")
-print latencyMap
-print("\nBandwidth Map:")
-print bandwidthMap
+print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
+print "\nShortest path from %s to %s :" %(start, end), shortPathList
+print "\nList of Nodes: ", fakenodesList
+#print "\nHashed Costs: ", costMap
+#print "\nDelay Map: ", delayMap
+#print "\nThroughput Map: ", throughputMap
+#print "\nLatency Map: ", latencyMap
+#print "\nBandwidth Map: ", bandwidthMap
 
 
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
@@ -234,23 +248,24 @@ print "\nPath total latency: \t",pathLatency
 
 #print dijkstraFormatDict
 
-testList = []
-resultDict = {}
+tempList = []
+rawCostMap = {}
 tempDict = {}
-for x in range(1,len(networkMap)+1):
+for x in range(1,len(fakenodesList)+1):
 	#print "Outter: ", x
-	for y in range(1,len(networkMap)+1):
+	for y in range(1,len(fakenodesList)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
-		testList.append(shortPathList)
+		tempList.append(shortPathList)
 		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "(x,y)
 		#print shortPathList
 		#print "testList: ", testList
 		#print "Inner: ", y
 	#print "TestList: "
 	#print testList
-	resultDict[x]=genSubCostDict(testList, costMap)
-	testList = []
-	#resultDict.append[x] = tempDict
+	rawCostMap[x]=genSubCostDict(tempList, costMap)
+	tempList = [] #clearing tempList
+
+	#rawCostMap.append[x] = tempDict
 #	print "\nTest Output: ", testList
 #print "\nONE ELEMENT: ", testList.pop(0)
 #print "\nONE ELEMENT: ", testList.pop(0)
@@ -258,15 +273,18 @@ for x in range(1,len(networkMap)+1):
 #test = testList[0]
 #print "\nTEST: ", test
 #print "CostMap: "
-#print resultDict
+#print rawCostMap
 
 costMapFile = open("ALTO_COST_MAP.txt", "w")
-costMapFile.write(str(resultDict))
+costMapFile.write(str(rawCostMap))
 costMapFile.close()
 
 costMapPickle = open("ALTO_COST_MAP.dat","w")
-pickle.dump(resultDict, costMapPickle)
+pickle.dump(rawCostMap, costMapPickle)
 costMapPickle.close()
+
+baseNetworkMap = genBaseNetworkMap(rawNetworkMap)
+aggregateToPIDs(rawCostMap, PIDThreshold)
 
 
 
