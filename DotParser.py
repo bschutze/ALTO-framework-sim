@@ -113,8 +113,9 @@ def genSubCostDict(constList,someCostMap):
 			
 	return subDict
 
-#looks at the neighbors of...
-def genNetworkList(nodeList):
+
+#currently not used, because we are converting all .dot node names to int.
+"""def genNetworkList(nodeList):
 	resultNetworkMap = []
 	for n in nodeList:
 		name = n.get_name()
@@ -125,20 +126,21 @@ def genNetworkList(nodeList):
 			#print name
 	resultNetworkMap.sort()
 	return resultNetworkMap
-
+"""
 def genBaseNetworkMap(rawNetworkMap): #Method generates the base networkmap i.e. 1 pid = 1 node
-	rawNetworkMap.sort()
+	sorted(rawNetworkMap, key = int)
+	#print "Sorted: ", rawNetworkMap
 	tempDict = {}
 	for x in range(1, len(rawNetworkMap)+1):
 		tmp = "PID"+str(x)
 		tempDict[tmp]=rawNetworkMap.pop(0) #take the first item in the list
-	print tempDict
+	#print tempDict
 	return tempDict
 		
 
 
 def aggregateToPIDs(costMap, threshold):
-	resultPidAgg={}
+	aggNetworkMap={}
 	for x in costMap:
 		tempDict = costMap[x]
 		#print "HERE COMES X: "
@@ -146,13 +148,11 @@ def aggregateToPIDs(costMap, threshold):
 		for y in range(1,len(tempDict)+1):
 			#print "HERE COMES y: "
 			#print y
-			tempCost = tempDict[y]
-			if tempCost < threshold:
-				temp = costMap[y]
-				tempCost
+			minCost = tempDict[y]
+				
 
 #************************************************************
-#Program start
+####################### PROGRAM START #######################
 #************************************************************
 
 #shortest path starting & ending points
@@ -173,10 +173,10 @@ nodeList = graph.get_node_list()
 dijkstraFormatDict = {}	
 
 #List of all ID's used (PIDS)
-rawNetworkMap = genNetworkList(nodeList)
+#rawNetworkMap = genNetworkList(nodeList)
 #print rawNetworkMap
 fakenodesList = []
-costMap = {}	#Map with hasehd PID's as key and cost as value
+pathCostMap = {}	#Map with hasehd PID's as key and cost as value
 #attributes = []	#List of all attributes
 
 latencyMap 	= {} #
@@ -201,8 +201,8 @@ for e in edgeList:
 	
 	fakenodesList.append(src)	#add nodes to networkmap
 	fakenodesList.append(dest)	#add nodes to networkmap
-	costMap[(src*100000) + dest] = label
-	#costMap[(dest*100000) + src] = label
+	pathCostMap[(src*100000) + dest] = label
+	#pathCostMap[(dest*100000) + src] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
@@ -222,7 +222,7 @@ print("\n")
 print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
 print "\nShortest path from %s to %s :" %(start, end), shortPathList
 print "\nList of Nodes: ", fakenodesList
-#print "\nHashed Costs: ", costMap
+#print "\nHashed Costs: ", pathCostMap
 #print "\nDelay Map: ", delayMap
 #print "\nThroughput Map: ", throughputMap
 #print "\nLatency Map: ", latencyMap
@@ -231,7 +231,7 @@ print "\nList of Nodes: ", fakenodesList
 
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
-pathCost = getTotalPathCosts(costMap, shortPathList)
+pathCost = getTotalPathCosts(pathCostMap, shortPathList)
 print "\nPath total cost: \t",pathCost
 
 pathDelay = getTotalPathCosts(delayMap, shortPathList)
@@ -262,7 +262,7 @@ for x in range(1,len(fakenodesList)+1):
 		#print "Inner: ", y
 	#print "TestList: "
 	#print testList
-	rawCostMap[x]=genSubCostDict(tempList, costMap)
+	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
 
 	#rawCostMap.append[x] = tempDict
@@ -283,8 +283,13 @@ costMapPickle = open("ALTO_COST_MAP.dat","w")
 pickle.dump(rawCostMap, costMapPickle)
 costMapPickle.close()
 
-baseNetworkMap = genBaseNetworkMap(rawNetworkMap)
-aggregateToPIDs(rawCostMap, PIDThreshold)
+baseNetworkMap = genBaseNetworkMap(fakenodesList)
+print "BASE NETWORK MAP: "
+print baseNetworkMap
+print "RAW COSTMAP"
+print rawCostMap
+
+AggNetMap = aggregateToPIDs(rawCostMap, PIDThreshold)
 
 
 
