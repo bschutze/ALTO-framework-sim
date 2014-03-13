@@ -5,7 +5,7 @@
 #Author: Bruno-Johannes Schuetze
 #uses the djikstra algorithm implemented by David Eppstein
 #execution: 
-#python DotParser.py [graphname] [startNode] [endNode] [PID_groupting_threshold]
+#python DotParser.py [graphname] [startNode] [endNode] [PID_grouping_threshold]
 """DOT FILE FORMAT
 graph Test {
 	node [shape=box]
@@ -178,31 +178,34 @@ def isNeighbor(rawCostMap, node, neighbor):
 		return 0
 """	
 
-def aggregatePids(edgeMap, threshold):
+def aggregatePids(edgeMap, threshold, hoodDict, rawCostMap):
 	noMore = 1
-	#currentMin = 9999999
-	#tempMin = 999999
-	pidCount = 0
-	aggregatedDict = {}
-	#nodeList = []
-	pidName = ""
+	pidCount = 100000
+	pidsContent = {}
+	tmpNodeList = []
 	while (noMore):
 		nodeList = []
-		key = getMin(edgeMap)
-		if edgeMap[key]<threshold:
-			dest = key % 100000
-			src = key / 100000
-			pidCount =pidCount+1
-			pidName = "PID"+str(pidCount)
-			nodeList.append(src)
-			nodeList.append(dest)
-			print nodeList
-			del edgeMap [key]
-			aggregatedDict[pidName]=nodeList
+		key = getMin(edgeMap)#get the key for lowes value in dictionary
+		dest = key % 100000
+		src = key / 100000
+		reverseKey = dest*100000+src
+		if (edgeMap[key] < threshold and edgeMap[reverseKey] < threshold ):
+			
+			tmpNodeList.append(src)
+			tmpNodeList.append(dest)
+			print tmpNodeList
+			del edgeMap[key]
+			del edgeMap[reverseKey]
+			print "entering neighborhood watch src: %d dest: %d" % (src, dest)
+			if(isNeighbor(src, dest, hoodDict)):
+				
 		else:
 			noMore=0
-	return aggregatedDict
+	
 
+
+
+#This method takes a dictionary containing all edges (key format "src*100000+dest") as argument and returns the lowes value 
 def getMin(edgeMap):
 	tempMin = 999999
 	minimum = 999999
@@ -214,9 +217,25 @@ def getMin(edgeMap):
 			pos = key
 	return pos
 
-#def joinPids(aggregatedDict, neighborHoodMap):
-	#if two pids are connected via link < threshold combine
-	#and keep lower PID#
+
+
+#def updateRawCostMap(pidName, ):
+#
+
+
+def isNeighbor(node1, node2, hood):
+#looks in hood to see if node2 is a neighbor of node1, bool result
+	temp = hood[node1]
+	print temp
+	for entry in temp:
+		print "we are looking at: %d" % entry
+		if(entry==node2):
+			print "   %d is neighbor of %d" % (node2, node1)
+			return 1
+	print "   %d is not neighbor of %d" % (node2, node1)
+	return 0
+
+
 
 #************************************************************
 ####################### PROGRAM START #######################
@@ -360,7 +379,7 @@ print "Neighbor HOOD"
 print dijkstraFormatDict
 
 #AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
-print aggregatePids(pathCostMap, PIDThreshold)
+print aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict, rawCostMap)
 
 
 
