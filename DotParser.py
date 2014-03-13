@@ -137,19 +137,86 @@ def genBaseNetworkMap(rawNetworkMap): #Method generates the base networkmap i.e.
 	#print tempDict
 	return tempDict
 		
-
-
-def aggregateToPIDs(costMap, threshold):
+"""
+#function aggregates router ID's into PID's based on threshold
+#takes 
+def aggregateToPIDs(nodeHoodDict, rawCostMap, threshold):
 	aggNetworkMap={}
-	for x in costMap:
-		tempDict = costMap[x]
+	tempMinCost = 9999999
+	tempMinNodeFirst = 9999999
+	tempMinNodeSecond = 9999999
+	for x in rawCostMap:
+		tempDict = rawCostMap[x]
 		#print "HERE COMES X: "
 		#print x
 		for y in range(1,len(tempDict)+1):
 			#print "HERE COMES y: "
 			#print y
-			minCost = tempDict[y]
+			
+			tmpMinCost = tempDict[y]
+			if tmpMinCost < minCost:
+				minCost = tmpCost
+				tempMinNode = y
+				for z in range(1, len(tempDict)+1):
+					tempDict
+			
 				
+#takes a dictionary only containing key : value pairs and returns the first key who's
+#value is below the threshold
+def checkForThreshold(someDict, threshold, currentPos):
+	
+	for x in range(currentPos,len(someDict)-currentPos):
+		if(someDict[x] < threshold):
+			return x
+		else:
+			return 0
+#checks if the supplied int is in the subdict with key "node"
+def isNeighbor(rawCostMap, node, neighbor):
+	if neighbor in rawCostMap[node]:
+		return 1
+	else:
+		return 0
+"""	
+
+def aggregatePids(edgeMap, threshold):
+	noMore = 1
+	#currentMin = 9999999
+	#tempMin = 999999
+	pidCount = 0
+	aggregatedDict = {}
+	#nodeList = []
+	pidName = ""
+	while (noMore):
+		nodeList = []
+		key = getMin(edgeMap)
+		if edgeMap[key]<threshold:
+			dest = key % 100000
+			src = key / 100000
+			pidCount =pidCount+1
+			pidName = "PID"+str(pidCount)
+			nodeList.append(src)
+			nodeList.append(dest)
+			print nodeList
+			del edgeMap [key]
+			aggregatedDict[pidName]=nodeList
+		else:
+			noMore=0
+	return aggregatedDict
+
+def getMin(edgeMap):
+	tempMin = 999999
+	minimum = 999999
+	pos = 0
+	for key in edgeMap: #x is all the keys in the dictionary
+		tempMin = edgeMap[key]
+		if tempMin<minimum:
+			minimum = tempMin
+			pos = key
+	return pos
+
+#def joinPids(aggregatedDict, neighborHoodMap):
+	#if two pids are connected via link < threshold combine
+	#and keep lower PID#
 
 #************************************************************
 ####################### PROGRAM START #######################
@@ -170,13 +237,13 @@ nodeList = graph.get_node_list()
 
 
 #Holds the nodes with its neighbors and associated edge weights
-dijkstraFormatDict = {}	
+dijkstraFormatDict = {} # used for dijkstra and aggregation 
 
 #List of all ID's used (PIDS)
 #rawNetworkMap = genNetworkList(nodeList)
 #print rawNetworkMap
 fakenodesList = []
-pathCostMap = {}	#Map with hasehd PID's as key and cost as value
+pathCostMap = {}	#Map with hasehd node names as key and cost as value
 #attributes = []	#List of all attributes
 
 latencyMap 	= {} #
@@ -217,12 +284,12 @@ fakenodesList = removeDublicates(fakenodesList)
 
 
 #OUTPUT
-
+sorted(pathCostMap, key = int)
 print("\n")
 print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
 print "\nShortest path from %s to %s :" %(start, end), shortPathList
 print "\nList of Nodes: ", fakenodesList
-#print "\nHashed Costs: ", pathCostMap
+print "\nHashed Costs: ", pathCostMap
 #print "\nDelay Map: ", delayMap
 #print "\nThroughput Map: ", throughputMap
 #print "\nLatency Map: ", latencyMap
@@ -249,7 +316,7 @@ print "\nPath total latency: \t",pathLatency
 #print dijkstraFormatDict
 
 tempList = []
-rawCostMap = {}
+rawCostMap = {}	#lists costs from all to nodes, to all nodes
 tempDict = {}
 for x in range(1,len(fakenodesList)+1):
 	#print "Outter: ", x
@@ -289,7 +356,12 @@ print baseNetworkMap
 print "RAW COSTMAP"
 print rawCostMap
 
-AggNetMap = aggregateToPIDs(rawCostMap, PIDThreshold)
+print "Neighbor HOOD"
+print dijkstraFormatDict
+
+#AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
+print aggregatePids(pathCostMap, PIDThreshold)
+
 
 
 
