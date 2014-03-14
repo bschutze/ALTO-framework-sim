@@ -197,16 +197,17 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 			del edgeMap[key]
 			del edgeMap[reverseKey]
 			networkMap[pidName] = nodeList
-			neighborHoodDict=updateHood(neighborHoodDict, src, dest)
-			
+			updateHood(neighborHoodDict, src, dest)
+			print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
+			print neighborHoodDict
 		else:
 			noMore=0
 
-def updateHood(neighborHood, node1, node2):
-	tempDict = neighborHood[node1]
-	tempDict2 = neighborHood[node2]
-	del neighborHood[node1]
-	del neighborHood[node2]
+def updateHood(neighborHoodDict, node1, node2):
+	tempDict = neighborHoodDict[node1]
+	tempDict2 = neighborHoodDict[node2]
+	del neighborHoodDict[node1]
+	del neighborHoodDict[node2]
 	del tempDict[node2]
 	del tempDict2[node1]
 #	print "TempDict: ", tempDict
@@ -217,7 +218,7 @@ def updateHood(neighborHood, node1, node2):
 #	print "AFTER"
 #	print "TempDict: ", tempDict
 #	print "TempDict2: ", tempDict2
-	for key in tempDict:
+	for key in tempDict:#TODO DEBUG
 		if key in tempDict2:
 			if tempDict[key] < tempDict2[key]:
 				del tempDict2[key]
@@ -226,17 +227,20 @@ def updateHood(neighborHood, node1, node2):
 	tempDict.update(tempDict2)
 	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
 	for key in tempDict:
-		temp = neighborHood[key]
+		print "I AM HERE WITH VALUE: ", key
+		temp = neighborHoodDict[key]
 		for key2 in temp:
-			if key == key2:
+			print "I am here with value: ", key2
+			if node2 == key2:
+				print "I WAS HERE"
 				val = temp[key2]
 				del temp[key2]
 				temp[node1] = val
 	print "result from update: "
 	print tempDict
 	
-	neighborHood[node1]=tempDict
-	return neighborHood
+	neighborHoodDict[node1]=tempDict
+	#return neighborHood
 
 	
 
