@@ -4,6 +4,7 @@
 #Date: 14.01.2014
 #Author: Bruno-Johannes Schuetze
 #uses the djikstra algorithm implemented by David Eppstein
+#uses python 2.7.6
 #execution: 
 #python DotParser.py [graphname] [startNode] [endNode] [PID_grouping_threshold]
 """DOT FILE FORMAT
@@ -15,13 +16,6 @@ graph Test {
 ...
 }
 """
-
-
-
-
-
-
-
 
 import sys
 import pydot
@@ -178,31 +172,73 @@ def isNeighbor(rawCostMap, node, neighbor):
 		return 0
 """	
 
-def aggregatePids(edgeMap, threshold, hoodDict, rawCostMap):
+def aggregatePids(edgeMap, threshold, neighborHoodDict):
 	noMore = 1
-	pidCount = 100000
+	pidCount = 0
 	pidsContent = {}
+	networkMap = {}
 	tmpNodeList = []
+	Round = 0
+	pidName = ""
 	while (noMore):
+		Round+= 1
+		print "ROUND: %d PID: %s" % (Round, pidName)
 		nodeList = []
 		key = getMin(edgeMap)#get the key for lowes value in dictionary
 		dest = key % 100000
 		src = key / 100000
-		reverseKey = dest*100000+src
+		reverseKey = (dest*100000)+src
 		if (edgeMap[key] < threshold and edgeMap[reverseKey] < threshold ):
-			
+			pidCount += 1
 			tmpNodeList.append(src)
 			tmpNodeList.append(dest)
+			pidName = "PID"+str(pidCount)
 			print tmpNodeList
 			del edgeMap[key]
 			del edgeMap[reverseKey]
-			print "entering neighborhood watch src: %d dest: %d" % (src, dest)
-			if(isNeighbor(src, dest, hoodDict)):
-				
+			networkMap[pidName] = nodeList
+			neighborHoodDict=updateHood(neighborHoodDict, src, dest)
+			
 		else:
 			noMore=0
-	
 
+def updateHood(neighborHood, node1, node2):
+	tempDict = neighborHood[node1]
+	tempDict2 = neighborHood[node2]
+	del neighborHood[node1]
+	del neighborHood[node2]
+	del tempDict[node2]
+	del tempDict2[node1]
+#	print "TempDict: ", tempDict
+#	print "TempDict2: ", tempDict2
+	#delete entry of node joining with
+	#join other entries
+	#if both have the same neighbor take lower edge
+#	print "AFTER"
+#	print "TempDict: ", tempDict
+#	print "TempDict2: ", tempDict2
+	for key in tempDict:
+		if key in tempDict2:
+			if tempDict[key] < tempDict2[key]:
+				del tempDict2[key]
+			else:
+				del tempDict[key]
+	tempDict.update(tempDict2)
+	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
+	for key in tempDict:
+		temp = neighborHood[key]
+		for key2 in temp:
+			if key == key2:
+				val = temp[key2]
+				del temp[key2]
+				temp[node1] = val
+	print "result from update: "
+	print tempDict
+	
+	neighborHood[node1]=tempDict
+	return neighborHood
+
+	
 
 
 #This method takes a dictionary containing all edges (key format "src*100000+dest") as argument and returns the lowes value 
@@ -379,7 +415,7 @@ print "Neighbor HOOD"
 print dijkstraFormatDict
 
 #AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
-print aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict, rawCostMap)
+print aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
 
 
