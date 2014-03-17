@@ -198,10 +198,14 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 			del edgeMap[reverseKey]
 			networkMap[pidName] = nodeList
 			updateHood(neighborHoodDict, src, dest)
-			print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
-			print neighborHoodDict
+			#print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
+			#print neighborHoodDict
+			#print "WE HAVE A NETWORKMAP: "
+			#print networkMap
 		else:
 			noMore=0
+	print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
+	print neighborHoodDict
 
 def updateHood(neighborHoodDict, node1, node2):
 	tempDict = neighborHoodDict[node1]
@@ -218,7 +222,8 @@ def updateHood(neighborHoodDict, node1, node2):
 #	print "AFTER"
 #	print "TempDict: ", tempDict
 #	print "TempDict2: ", tempDict2
-	for key in tempDict:#TODO DEBUG
+	loopTempDict = tempDict.copy()
+	for key in loopTempDict:#TODO DEBUG
 		if key in tempDict2:
 			if tempDict[key] < tempDict2[key]:
 				del tempDict2[key]
@@ -226,18 +231,20 @@ def updateHood(neighborHoodDict, node1, node2):
 				del tempDict[key]
 	tempDict.update(tempDict2)
 	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
+#for key, value in tempDict.items(): wenn ich in loop auf key und value zugreifen muss, dann so
 	for key in tempDict:
-		print "I AM HERE WITH VALUE: ", key
+		#print "I AM HERE WITH VALUE: ", key
 		temp = neighborHoodDict[key]
-		for key2 in temp:
-			print "I am here with value: ", key2
+		loopTemp = temp.copy()
+		for key2, value2 in loopTemp.items():
+			#print "I am here with value: ", key2
 			if node2 == key2:
-				print "I WAS HERE"
-				val = temp[key2]
+				#print "I WAS HERE"
+				#val = temp[key2]
 				del temp[key2]
-				temp[node1] = val
-	print "result from update: "
-	print tempDict
+				temp[node1] = value2
+	#print "result from update: "
+	#print tempDict
 	
 	neighborHoodDict[node1]=tempDict
 	#return neighborHood
@@ -419,7 +426,9 @@ print "Neighbor HOOD"
 print dijkstraFormatDict
 
 #AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
-print aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+
+
 
 
 
