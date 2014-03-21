@@ -188,7 +188,10 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 		dest = key % 100000
 		src = key / 100000
 		reverseKey = (dest*100000)+src
+		print "REMOVING: %d and: %d" % (key, reverseKey)
 		if (edgeMap[key] < threshold and edgeMap[reverseKey] < threshold ):
+			print "THE EDGEMAP Leftovers: "
+			print edgeMap
 			pidCount += 1
 			tmpNodeList.append(src)
 			tmpNodeList.append(dest)
@@ -196,10 +199,11 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 			print tmpNodeList
 			del edgeMap[key]
 			del edgeMap[reverseKey]
-			networkMap[pidName] = nodeList
+			#networkMap[pidName] = tmpNodeList
 			updateHood(neighborHoodDict, src, dest)
-			#print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
-			#print neighborHoodDict
+			updateEdgeList(edgeMap, src, dest)
+			print "\nTHE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
+			print neighborHoodDict
 			#print "WE HAVE A NETWORKMAP: "
 			#print networkMap
 		else:
@@ -207,6 +211,8 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 	print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
 	print neighborHoodDict
 
+#updates the neighborhoodDict: removes entries of aggregated devices (node2), names the aggregated nodes the value of node1, 
+#and if multiple edges connect the same neighbor it keeps the cheaper
 def updateHood(neighborHoodDict, node1, node2):
 	tempDict = neighborHoodDict[node1]
 	tempDict2 = neighborHoodDict[node2]
@@ -266,23 +272,21 @@ def getMin(edgeMap):
 
 
 
-#def updateRawCostMap(pidName, ):
-#
-
-
-def isNeighbor(node1, node2, hood):
-#looks in hood to see if node2 is a neighbor of node1, bool result
-	temp = hood[node1]
-	print temp
-	for entry in temp:
-		print "we are looking at: %d" % entry
-		if(entry==node2):
-			print "   %d is neighbor of %d" % (node2, node1)
-			return 1
-	print "   %d is not neighbor of %d" % (node2, node1)
-	return 0
-
-
+#corrects the entries in the costMap.
+#removes entries containing aggregated nodes (node2) and replaces it with the value of node1
+def updateEdgeList(edgeList, node1, node2):
+	loopList=edgeList
+	for key, value in loopList.items():
+		eNode1 = key / 100000
+		eNode2 = key % 100000
+		if eNode1 == node2:
+			del edgeList[key]
+			tmpEdge =  node1 * 100000 + eNode2
+			edgeList[tmpEdge] = value
+		if eNode2 == node2:
+			del edgeList[key]
+			tmpEdge =  eNode1 * 100000 + node1
+			edgeList[tmpEdge] = value
 
 #************************************************************
 ####################### PROGRAM START #######################
@@ -351,11 +355,11 @@ fakenodesList = removeDublicates(fakenodesList)
 
 #OUTPUT
 sorted(pathCostMap, key = int)
-print("\n")
-print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
-print "\nShortest path from %s to %s :" %(start, end), shortPathList
-print "\nList of Nodes: ", fakenodesList
-print "\nHashed Costs: ", pathCostMap
+#print("\n")
+#print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
+#print "\nShortest path from %s to %s :" %(start, end), shortPathList
+#print "\nList of Nodes: ", fakenodesList
+#print "\nHashed Costs: ", pathCostMap
 #print "\nDelay Map: ", delayMap
 #print "\nThroughput Map: ", throughputMap
 #print "\nLatency Map: ", latencyMap
@@ -365,16 +369,16 @@ print "\nHashed Costs: ", pathCostMap
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
 pathCost = getTotalPathCosts(pathCostMap, shortPathList)
-print "\nPath total cost: \t",pathCost
+#print "\nPath total cost: \t",pathCost
 
 pathDelay = getTotalPathCosts(delayMap, shortPathList)
-print "\nPath total delay: \t",pathDelay
+#print "\nPath total delay: \t",pathDelay
 
 pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
-print "\nPath min bandwidth: \t",pathMinBandwidth
+#print "\nPath min bandwidth: \t",pathMinBandwidth
 
 pathLatency = getTotalPathCosts(latencyMap, shortPathList)
-print "\nPath total latency: \t",pathLatency
+#print "\nPath total latency: \t",pathLatency
 
 
 #building a "real" Alto cost map. From all PIDs to all PID
@@ -417,10 +421,10 @@ pickle.dump(rawCostMap, costMapPickle)
 costMapPickle.close()
 
 baseNetworkMap = genBaseNetworkMap(fakenodesList)
-print "BASE NETWORK MAP: "
-print baseNetworkMap
-print "RAW COSTMAP"
-print rawCostMap
+#print "BASE NETWORK MAP: "
+#print baseNetworkMap
+#print "RAW COSTMAP"
+#print rawCostMap
 
 print "Neighbor HOOD"
 print dijkstraFormatDict
