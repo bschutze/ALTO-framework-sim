@@ -214,6 +214,9 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 #updates the neighborhoodDict: removes entries of aggregated devices (node2), names the aggregated nodes the value of node1, 
 #and if multiple edges connect the same neighbor it keeps the cheaper
 def updateHood(neighborHoodDict, node1, node2):
+	print "UPDATING HOOD:"
+	for x in neighborHoodDict:
+		print neighborHoodDict[x]
 	tempDict = neighborHoodDict[node1]
 	tempDict2 = neighborHoodDict[node2]
 	del neighborHoodDict[node1]
@@ -232,8 +235,10 @@ def updateHood(neighborHoodDict, node1, node2):
 	for key in loopTempDict:#TODO DEBUG
 		if key in tempDict2:
 			if tempDict[key] < tempDict2[key]:
+				print "DELETING: ", tempDict2[key]
 				del tempDict2[key]
 			else:
+				print "DELETING: ", tempDict[key]
 				del tempDict[key]
 	tempDict.update(tempDict2)
 	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict

@@ -7,17 +7,15 @@ digraph Test {
 	1[]; 2[]; 3[]; 4[];
 	overlap = scale;
 	splines = false;
-	label = DIRECTED_9_NODE_NETWORK;
+	label = DIRECTED_4_NODE_NETWORK;
 	//orientation = portrait;
 
 	1 -> 2	[label=1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	1 -> 4	[label=8,throughput=16,latency=4,delay=3,bandwidth = 10];
 	2 -> 1	[label=1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	2 -> 3	[label=1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	2 -> 4	[label=9,throughput=10,latency=2,delay=4,bandwidth = 20];
-	3 -> 2	[label=1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	3 -> 4	[label=7,throughput=9,latency=5,delay=1,bandwidth = 20];
-	4 -> 1	[label=8,throughput=9,latency=5,delay=1,bandwidth = 20];
-	4 -> 2	[label=9,throughput=11,latency=6,delay=2,bandwidth = 20];
-	4 -> 3	[label=7,throughput=11,latency=6,delay=2,bandwidth = 20];
+	2 -> 3	[label=7,throughput=12,latency=3,delay=2,bandwidth = 20];
+	3 -> 2	[label=8,throughput=10,latency=2,delay=4,bandwidth = 20];
+	3 -> 4	[label=1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	4 -> 3	[label=1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	4 -> 1	[label=8,throughput=11,latency=6,delay=2,bandwidth = 20];
 }
