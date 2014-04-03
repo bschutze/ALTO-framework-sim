@@ -188,35 +188,37 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 		dest = key % 100000
 		src = key / 100000
 		reverseKey = (dest*100000)+src
+		if(src == 0 and dest == 0):
+			break
 		print "REMOVING: %d and: %d" % (key, reverseKey)
 		if (edgeMap[key] < threshold and edgeMap[reverseKey] < threshold ):
-			print "THE EDGEMAP Leftovers: "
-			print edgeMap
+			#print "THE EDGEMAP Leftovers: "
+			#print edgeMap
 			pidCount += 1
 			tmpNodeList.append(src)
 			tmpNodeList.append(dest)
 			pidName = "PID"+str(pidCount)
-			print tmpNodeList
+			print "Aggregated nodes: ", tmpNodeList
 			del edgeMap[key]
 			del edgeMap[reverseKey]
 			#networkMap[pidName] = tmpNodeList
 			updateHood(neighborHoodDict, src, dest)
 			updateEdgeList(edgeMap, src, dest)
-			print "\nTHE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
-			print neighborHoodDict
+			updateNetworkMap(src, dest, networkMap)
+			#print "\nTHE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
+			#print neighborHoodDict
 			#print "WE HAVE A NETWORKMAP: "
 			#print networkMap
 		else:
 			noMore=0
-	print "THE RESULTS ARE IN<<<<<<<<<<<<<<<<<<<<<<<<<8>>>>>>"
-	print neighborHoodDict
-
+	print "#### FINISHED Neighborhood#### : ", neighborHoodDict
+	print "**** FINISHED NETWORKMAP  **** : ", networkMap
 #updates the neighborhoodDict: removes entries of aggregated devices (node2), names the aggregated nodes the value of node1, 
 #and if multiple edges connect the same neighbor it keeps the cheaper
 def updateHood(neighborHoodDict, node1, node2):
-	print "UPDATING HOOD:"
+	print "UPDATING HOOD: aggregating node %d and %d "% (node1, node2)
 	for x in neighborHoodDict:
-		print neighborHoodDict[x]
+		print x, neighborHoodDict[x]
 	tempDict = neighborHoodDict[node1]
 	tempDict2 = neighborHoodDict[node2]
 	del neighborHoodDict[node1]
@@ -232,31 +234,41 @@ def updateHood(neighborHoodDict, node1, node2):
 #	print "TempDict: ", tempDict
 #	print "TempDict2: ", tempDict2
 	loopTempDict = tempDict.copy()
+	#Delete the occurence of one another in their own 
 	for key in loopTempDict:#TODO DEBUG
 		if key in tempDict2:
 			if tempDict[key] < tempDict2[key]:
-				print "DELETING: ", tempDict2[key]
+				print "DELETING: ", key, tempDict2[key]
 				del tempDict2[key]
 			else:
-				print "DELETING: ", tempDict[key]
+				print "DELETING: ", key, tempDict[key]
 				del tempDict[key]
 	tempDict.update(tempDict2)
 	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
-#for key, value in tempDict.items(): wenn ich in loop auf key und value zugreifen muss, dann so
 	for key in tempDict:
-		#print "I AM HERE WITH VALUE: ", key
+		print "I AM HERE WITH VALUE: ", key
 		temp = neighborHoodDict[key]
+		del neighborHoodDict[key]
 		loopTemp = temp.copy()
 		for key2, value2 in loopTemp.items():
 			#print "I am here with value: ", key2
 			if node2 == key2:
-				#print "I WAS HERE"
-				#val = temp[key2]
-				del temp[key2]
-				temp[node1] = value2
+				print "I WAS HERE deleting:",key2, temp[key2]
+				if node1 in loopTemp.keys():
+					print "Node %d in " % node1, loopTemp.keys()
+					print "IS %d with %d < %d with %d ?"%(node1, temp[node1], node2, temp[node2])
+					if temp[node1] < temp[node2]:
+						print "now deleting: ", node2 
+						del temp[node2]
+					else:
+						del temp[node2]
+						temp[node1] = value2
+				else:
+					del temp[node2]
+					temp[node1] = value2
+		neighborHoodDict[key]=temp
 	#print "result from update: "
 	#print tempDict
-	
 	neighborHoodDict[node1]=tempDict
 	#return neighborHood
 
@@ -292,6 +304,30 @@ def updateEdgeList(edgeList, node1, node2):
 			del edgeList[key]
 			tmpEdge =  eNode1 * 100000 + node1
 			edgeList[tmpEdge] = value
+
+#update the networkmap that keeps track what nodes are aggregated into pids
+#checks wether aggNode is in networkMap. Stores aggNode under node.
+def updateNetworkMap(node, aggNode, networkMap):
+	tempList = []
+	print tempList
+	if node in networkMap.keys():#if node is already present
+		if aggNode in networkMap.keys():#aggNode also already
+			networkMap[node].append(aggNode)
+			networkMap[node] += networkMap[aggNode]
+			del networkMap[aggNode]
+		else:#only node is in it
+			print networkMap[node]
+			tempList = networkMap[node]
+			tempList.append(aggNode)
+			networkMap[node] = tempList
+	elif aggNode in networkMap.keys():#only aggNode is in it
+		networkMap[node] = netwokMap[aggNode]
+		del networkMap[aggNode]
+	else:#none are in it
+		tempList.append(aggNode)
+		tempList.append(node)
+		networkMap[node]=tempList
+		print "UPDATING NETWORKMAP: ", networkMap
 
 #************************************************************
 ####################### PROGRAM START #######################
