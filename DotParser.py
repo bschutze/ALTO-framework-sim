@@ -24,6 +24,8 @@ import json
 import pickle
 from libraries.dijkstra import *
 
+import drawGraph_
+
 #
 #Function definitions
 #
@@ -129,48 +131,7 @@ def genBaseNetworkMap(rawNetworkMap): #Method generates the base networkmap i.e.
 		tmp = "PID"+str(x)
 		tempDict[tmp]=rawNetworkMap.pop(0) #take the first item in the list
 	#print tempDict
-	return tempDict
-		
-"""
-#function aggregates router ID's into PID's based on threshold
-#takes 
-def aggregateToPIDs(nodeHoodDict, rawCostMap, threshold):
-	aggNetworkMap={}
-	tempMinCost = 9999999
-	tempMinNodeFirst = 9999999
-	tempMinNodeSecond = 9999999
-	for x in rawCostMap:
-		tempDict = rawCostMap[x]
-		#print "HERE COMES X: "
-		#print x
-		for y in range(1,len(tempDict)+1):
-			#print "HERE COMES y: "
-			#print y
-			
-			tmpMinCost = tempDict[y]
-			if tmpMinCost < minCost:
-				minCost = tmpCost
-				tempMinNode = y
-				for z in range(1, len(tempDict)+1):
-					tempDict
-			
-				
-#takes a dictionary only containing key : value pairs and returns the first key who's
-#value is below the threshold
-def checkForThreshold(someDict, threshold, currentPos):
-	
-	for x in range(currentPos,len(someDict)-currentPos):
-		if(someDict[x] < threshold):
-			return x
-		else:
-			return 0
-#checks if the supplied int is in the subdict with key "node"
-def isNeighbor(rawCostMap, node, neighbor):
-	if neighbor in rawCostMap[node]:
-		return 1
-	else:
-		return 0
-"""	
+	return tempDict	
 
 def aggregatePids(edgeMap, threshold, neighborHoodDict):
 	noMore = 1
@@ -473,6 +434,7 @@ print dijkstraFormatDict
 #AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
 aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
+drawGraph_.drawGraph(dijkstraFormatDict)
 
 
 
