@@ -143,7 +143,7 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 	pidName = ""
 	while (noMore):
 		Round+= 1
-		print "ROUND: %d PID: %s" % (Round, pidName)
+		#print "ROUND: %d PID: %s" % (Round, pidName)
 		nodeList = []
 		key = getMin(edgeMap)#get the key for lowes value in dictionary
 		dest = key % 100000
@@ -151,7 +151,7 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 		reverseKey = (dest*100000)+src
 		if(src == 0 and dest == 0):
 			break
-		print "REMOVING: %d and: %d" % (key, reverseKey)
+		#print "REMOVING: %d and: %d" % (key, reverseKey)
 		if (edgeMap[key] < threshold and edgeMap[reverseKey] < threshold ):
 			#print "THE EDGEMAP Leftovers: "
 			#print edgeMap
@@ -159,7 +159,7 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 			tmpNodeList.append(src)
 			tmpNodeList.append(dest)
 			pidName = "PID"+str(pidCount)
-			print "Aggregated nodes: ", tmpNodeList
+			#print "Aggregated nodes: ", tmpNodeList
 			del edgeMap[key]
 			del edgeMap[reverseKey]
 			#networkMap[pidName] = tmpNodeList
@@ -172,14 +172,15 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 			#print networkMap
 		else:
 			noMore=0
-	print "#### FINISHED Neighborhood#### : ", neighborHoodDict
-	print "**** FINISHED NETWORKMAP  **** : ", networkMap
+	#print "#### FINISHED Neighborhood#### : ", neighborHoodDict
+	#print "**** FINISHED NETWORKMAP  **** : ", networkMap
+	return networkMap
 #updates the neighborhoodDict: removes entries of aggregated devices (node2), names the aggregated nodes the value of node1, 
 #and if multiple edges connect the same neighbor it keeps the cheaper
 def updateHood(neighborHoodDict, node1, node2):
-	print "UPDATING HOOD: aggregating node %d and %d "% (node1, node2)
-	for x in neighborHoodDict:
-		print x, neighborHoodDict[x]
+	#print "UPDATING HOOD: aggregating node %d and %d "% (node1, node2)
+	#for x in neighborHoodDict:
+		#print x, neighborHoodDict[x]
 	tempDict = neighborHoodDict[node1]
 	tempDict2 = neighborHoodDict[node2]
 	del neighborHoodDict[node1]
@@ -199,27 +200,27 @@ def updateHood(neighborHoodDict, node1, node2):
 	for key in loopTempDict:#TODO DEBUG
 		if key in tempDict2:
 			if tempDict[key] < tempDict2[key]:
-				print "DELETING: ", key, tempDict2[key]
+				#print "DELETING: ", key, tempDict2[key]
 				del tempDict2[key]
 			else:
-				print "DELETING: ", key, tempDict[key]
+				#print "DELETING: ", key, tempDict[key]
 				del tempDict[key]
 	tempDict.update(tempDict2)
-	print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
+	#print "Neighbors: %d : %d contain: " % (node1, node2), tempDict
 	for key in tempDict:
-		print "I AM HERE WITH VALUE: ", key
+		#print "I AM HERE WITH VALUE: ", key
 		temp = neighborHoodDict[key]
 		del neighborHoodDict[key]
 		loopTemp = temp.copy()
 		for key2, value2 in loopTemp.items():
 			#print "I am here with value: ", key2
 			if node2 == key2:
-				print "I WAS HERE deleting:",key2, temp[key2]
+				#print "I WAS HERE deleting:",key2, temp[key2]
 				if node1 in loopTemp.keys():
-					print "Node %d in " % node1, loopTemp.keys()
-					print "IS %d with %d < %d with %d ?"%(node1, temp[node1], node2, temp[node2])
+					#print "Node %d in " % node1, loopTemp.keys()
+					#print "IS %d with %d < %d with %d ?"%(node1, temp[node1], node2, temp[node2])
 					if temp[node1] < temp[node2]:
-						print "now deleting: ", node2 
+						#print "now deleting: ", node2 
 						del temp[node2]
 					else:
 						del temp[node2]
@@ -270,14 +271,14 @@ def updateEdgeList(edgeList, node1, node2):
 #checks wether aggNode is in networkMap. Stores aggNode under node.
 def updateNetworkMap(node, aggNode, networkMap):
 	tempList = []
-	print tempList
+	#print tempList
 	if node in networkMap.keys():#if node is already present
 		if aggNode in networkMap.keys():#aggNode also already
 			networkMap[node].append(aggNode)
 			networkMap[node] += networkMap[aggNode]
 			del networkMap[aggNode]
 		else:#only node is in it
-			print networkMap[node]
+			#print networkMap[node]
 			tempList = networkMap[node]
 			tempList.append(aggNode)
 			networkMap[node] = tempList
@@ -288,8 +289,32 @@ def updateNetworkMap(node, aggNode, networkMap):
 		tempList.append(aggNode)
 		tempList.append(node)
 		networkMap[node]=tempList
-		print "UPDATING NETWORKMAP: ", networkMap
+		#print "UPDATING NETWORKMAP: ", networkMap
 
+#This function takes a nested dictionary and changes the Keynames to PID#
+def labelNetworkMap(neighborHood, networkMap):
+	pidCount=1
+	referenceDict={}
+	loopMap = neighborHood.copy()
+	tempDict={}
+	#first map PID to router ID
+	for key in loopMap.keys():
+		pidName = "PID"+str(pidCount)
+		referenceDict[key]=pidName
+		pidCount+=1
+	#second replace router IDs with PIDs in neighborhood
+	for key, subDict in loopMap.items():
+		del neighborHood[key]
+		for key2,value in subDict.items():
+			tempDict[referenceDict[key2]] = value
+		neighborHood[referenceDict[key]] = tempDict
+		tempDict={}
+	#third update networkMap (groupings what nodes belong to what PID)
+	loopNetworkMap = networkMap.copy()
+	for key, value in loopNetworkMap.items():
+		del networkMap[key]
+		networkMap[referenceDict[key]]=value
+	#print networkMap
 #************************************************************
 ####################### PROGRAM START #######################
 #************************************************************
@@ -414,11 +439,11 @@ for x in range(1,len(fakenodesList)+1):
 #print "CostMap: "
 #print rawCostMap
 
-costMapFile = open("ALTO_COST_MAP.txt", "w")
+costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
 costMapFile.write(str(rawCostMap))
 costMapFile.close()
 
-costMapPickle = open("ALTO_COST_MAP.dat","w")
+costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
 pickle.dump(rawCostMap, costMapPickle)
 costMapPickle.close()
 
@@ -428,16 +453,25 @@ baseNetworkMap = genBaseNetworkMap(fakenodesList)
 #print "RAW COSTMAP"
 #print rawCostMap
 
-print "Neighbor HOOD"
-print dijkstraFormatDict
+print "\n\n NODES AND NEIGHBORING NODES: ", dijkstraFormatDict
 
-#AggNetMap = aggregateToPIDs(dijkstraFormatDict,rawCostMap, PIDThreshold)
-aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+
+labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
 drawGraph_.drawGraph(dijkstraFormatDict)
 
+print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
+print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict
+print "\n NETWORKMAP:", aggNetMap
 
+realNetworkMap = open("ALTO_NETWORK_MAP.txt", "w")
+realNetworkMap.write(str(aggNetMap))
+realNetworkMap.close()
 
+realCostMap = open("ALTO_COST_MAP.txt", "w")
+realCostMap.write(str(dijkstraFormatDict))
+realCostMap.close()
 
 
 
