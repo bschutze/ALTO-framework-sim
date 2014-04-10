@@ -297,6 +297,7 @@ def labelNetworkMap(neighborHood, networkMap):
 	referenceDict={}
 	loopMap = neighborHood.copy()
 	tempDict={}
+	missingNetMapEntries = []
 	#first map PID to router ID
 	for key in loopMap.keys():
 		pidName = "PID"+str(pidCount)
@@ -314,10 +315,17 @@ def labelNetworkMap(neighborHood, networkMap):
 	for key, value in loopNetworkMap.items():
 		del networkMap[key]
 		networkMap[referenceDict[key]]=value
-	#print networkMap
-#************************************************************
-####################### PROGRAM START #######################
-#************************************************************
+	#fourth place the missing entries, the not aggregated Nodes in networkMap
+	for key, value in referenceDict.items():
+		if value not in networkMap.keys():#add to networkmap
+			tempList=[key]
+			networkMap[value] = tempList
+		#else do noting, cause node already aggregated and in networkMap
+	print "REFERENCE DICT"
+	print referenceDict
+#********************************************************************
+########################### PROGRAM START ###########################
+#********************************************************************
 
 #shortest path starting & ending points
 path  = str(sys.argv[1])
@@ -434,7 +442,7 @@ for x in range(1,len(fakenodesList)+1):
 #print "\nONE ELEMENT: ", testList.pop(0)
 #print "\nONE ELEMENT: ", testList.pop(0)
 #print "\nONE ELEMENT: ", testList
-#test = testList[0]
+#test = testList[0]mack wilds heney
 #print "\nTEST: ", test
 #print "CostMap: "
 #print rawCostMap
