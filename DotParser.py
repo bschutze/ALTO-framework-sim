@@ -6,7 +6,7 @@
 #uses the djikstra algorithm implemented by David Eppstein
 #uses python 2.7.6
 #execution: 
-#python DotParser.py [graphname] [startNode] [endNode] [PID_grouping_threshold]
+#python DotParser.py [graphname] [startNode] [endNode] [PID_grouping_threshold] [name_of_output_graph]
 """DOT FILE FORMAT
 graph Test {
 	node [shape=box]
@@ -283,7 +283,7 @@ def updateNetworkMap(node, aggNode, networkMap):
 			tempList.append(aggNode)
 			networkMap[node] = tempList
 	elif aggNode in networkMap.keys():#only aggNode is in it
-		networkMap[node] = netwokMap[aggNode]
+		networkMap[node] = networkMap[aggNode]
 		del networkMap[aggNode]
 	else:#none are in it
 		tempList.append(aggNode)
@@ -321,8 +321,8 @@ def labelNetworkMap(neighborHood, networkMap):
 			tempList=[key]
 			networkMap[value] = tempList
 		#else do noting, cause node already aggregated and in networkMap
-	print "REFERENCE DICT"
-	print referenceDict
+	#print "REFERENCE DICT"
+	#print referenceDict
 #********************************************************************
 ########################### PROGRAM START ###########################
 #********************************************************************
@@ -332,6 +332,7 @@ path  = str(sys.argv[1])
 start = int(sys.argv[2])
 end   = int(sys.argv[3])
 PIDThreshold = int(sys.argv[4])
+graphName = str(sys.argv[5])
 
 #import dot file
 graph = pydot.graph_from_dot_file(path)
@@ -467,7 +468,7 @@ aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
-drawGraph_.drawGraph(dijkstraFormatDict)
+drawGraph_.drawGraph(dijkstraFormatDict, graphName)
 
 print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
 print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict
