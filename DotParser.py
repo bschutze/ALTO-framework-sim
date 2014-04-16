@@ -25,6 +25,7 @@ import pickle
 from libraries.dijkstra import *
 
 import drawGraph_
+from Views import *
 
 #
 #Function definitions
@@ -49,7 +50,7 @@ def removeDublicates(seq):
 		keys[s] = 1
 	return keys.keys()
 
-#iterates a list to get the keys to sum up values stored in a dict (Alto Map) 
+#iterates a list to get the keys to sum up values stored in a dict (Alto Map) *********PING*********?????????????????????????????
 def getTotalPathCosts(providedMap, pathList):
 
 	total=0
@@ -463,6 +464,8 @@ baseNetworkMap = genBaseNetworkMap(fakenodesList)
 #print rawCostMap
 
 print "\n\n NODES AND NEIGHBORING NODES: ", dijkstraFormatDict
+
+#ping_.getPathTotal(start, end, delayMap, dijkstraFormatDict)
 
 aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 

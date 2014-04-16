@@ -1,0 +1,77 @@
+digraph Test {
+
+	/*compound=true*/
+	node [shape=box];
+	edge [len=2];
+	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
+	1[]; 2[]; 3[]; 4[]; 5[]; 6[]; 7[]; 8[];	9[]; 10[]; 11[]; 12[]; 13[]; 14[];
+	15[]; 16[]; 17[]; 18[]; 19[]; 20[];
+	overlap = scale;
+	splines = false;
+	label = DIRECTED_TEST_NETWORK;
+	//orientation = portrait;
+
+	1 -> 2	[label=20,throughput=16,latency=4,delay=3,bandwidth = 10];
+	2 -> 1	[label=50,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1 -> 5	[label=40,throughput=12,latency=3,delay=2,bandwidth = 20];
+	5 -> 1	[label=50,throughput=12,latency=3,delay=2,bandwidth = 20];
+	2 -> 3	[label=70,throughput=10,latency=2,delay=4,bandwidth = 20];
+	3 -> 2	[label=70,throughput=10,latency=2,delay=4,bandwidth = 20];
+	2 -> 6	[label=70,throughput=9,latency=5,delay=1,bandwidth = 20];
+	6 -> 2	[label=50,throughput=9,latency=5,delay=1,bandwidth = 20];
+	3 -> 4	[label=70,throughput=11,latency=6,delay=2,bandwidth = 20];
+	4 -> 3	[label=70,throughput=11,latency=6,delay=2,bandwidth = 20];
+	3 -> 7	[label=20,throughput=14,latency=8,delay=3,bandwidth = 20];
+	7 -> 3	[label=20,throughput=14,latency=8,delay=3,bandwidth = 20];
+	4 -> 8	[label=30,throughput=16,latency=9,delay=2,bandwidth = 20];
+	8 -> 4	[label=30,throughput=16,latency=9,delay=2,bandwidth = 20];
+	5 -> 6	[label=20,throughput=17,latency=3,delay=1,bandwidth = 20];
+	6 -> 5	[label=80,throughput=17,latency=3,delay=1,bandwidth = 20];
+	5 -> 9	[label=50,throughput=20,latency=10,delay=5,bandwidth = 10];
+	9 -> 5	[label=50,throughput=20,latency=10,delay=5,bandwidth = 10];
+	6 -> 7	[label=2,throughput=30,latency=3,delay=4,bandwidth = 20];
+	7 -> 6	[label=2,throughput=30,latency=3,delay=4,bandwidth = 20];
+	6 -> 10	[label=6,throughput=15,latency=1,delay=2,bandwidth = 20];
+	10 -> 6	[label=6,throughput=15,latency=1,delay=2,bandwidth = 20];
+	7 -> 8	[label=30,throughput=15,latency=2,delay=3,bandwidth = 20];
+	8 -> 7	[label=30,throughput=15,latency=2,delay=3,bandwidth = 20];
+	7 -> 11	[label=8,throughput=18,latency=4,delay=1,bandwidth = 20];
+	11 -> 7	[label=8,throughput=18,latency=4,delay=1,bandwidth = 20];
+	8 -> 12	[label=20,throughput=19,latency=5,delay=4,bandwidth = 10];
+	12 -> 8	[label=20,throughput=19,latency=5,delay=4,bandwidth = 10];
+	9 -> 10	[label=50,throughput=17,latency=8,delay=1,bandwidth = 20];
+	10 -> 9	[label=50,throughput=17,latency=8,delay=1,bandwidth = 20];
+	9 -> 13	[label=40,throughput=22,latency=8,delay=2,bandwidth = 10];
+	13 -> 9	[label=40,throughput=22,latency=8,delay=2,bandwidth = 10];
+	10 -> 11[label=30,throughput=23,latency=9,delay=2,bandwidth = 20];
+	11 -> 10[label=40,throughput=23,latency=9,delay=2,bandwidth = 20];
+	10 -> 14[label=3,throughput=31,latency=3,delay=3,bandwidth = 20];
+	14 -> 10[label=3,throughput=31,latency=3,delay=3,bandwidth = 20];
+	11 -> 12[label=30,throughput=36,latency=2,delay=5,bandwidth = 20];
+	12 -> 11[label=30,throughput=36,latency=2,delay=5,bandwidth = 20];
+	11 -> 15[label=2,throughput=22,latency=5,delay=1,bandwidth = 10];
+	15 -> 11[label=2,throughput=22,latency=5,delay=1,bandwidth = 10];
+	12 -> 16[label=60,throughput=12,latency=9,delay=4,bandwidth = 20];
+	16 -> 12[label=60,throughput=12,latency=9,delay=4,bandwidth = 20];
+	13 -> 14[label=20,throughput=27,latency=10,delay=2,bandwidth = 20];
+	14 -> 13[label=20,throughput=27,latency=10,delay=2,bandwidth = 20];
+	14 -> 15[label=5,throughput=26,latency=1,delay=1,bandwidth = 20];
+	15 -> 14[label=5,throughput=26,latency=1,delay=1,bandwidth = 20];
+	15 -> 16[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	16 -> 15[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	17 -> 13[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	13 -> 17[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	17 -> 18[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	18 -> 17[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	18 -> 14[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	14 -> 18[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	18 -> 19[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	19 -> 18[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	19 -> 15[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	15 -> 19[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	19 -> 20[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	20 -> 19[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	20 -> 16[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+	16 -> 20[label=70,throughput=14,latency=1,delay=3,bandwidth = 20];
+
+}

@@ -23,5 +23,5 @@ def drawGraph(hoodDict, grName):
 		for entry, value in hoodDict[node].items():
 			edge = pydot.Edge(str(node), str(entry), label = str(value), )
 			graph.add_edge(edge)
-	graph.write_jpeg('ALTO_AGG_NET.jpeg', prog='neato')
-	Image.open('ALTO_AGG_NET.jpeg').show()
+	graph.write_jpeg('Output/ALTO_AGG_NET.jpeg', prog='neato')
+	Image.open('Output/ALTO_AGG_NET.jpeg').show()
