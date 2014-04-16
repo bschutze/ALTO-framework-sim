@@ -1,9 +1,13 @@
 #!/local/bin/python
+
+#Master-Thesis dot parsing framework (PING MODULE)
+#Date: 14.01.2014
+#Author: Bruno-Johannes Schuetze
+#uses python 2.7.6
+
 #this module takes a neighborhoodDict and generates a graph out of it
 
 import pydot
-#function transforms
-#def transformGraphReady():
 
 def drawGraph(hoodDict):
 	graph = pydot.Dot(graph_type='digraph')
