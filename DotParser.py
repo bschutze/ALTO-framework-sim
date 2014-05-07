@@ -25,7 +25,7 @@ import pickle
 from libraries.dijkstra import *
 
 import drawGraph_
-from Views import *
+from Views import traceroute_
 
 #
 #Function definitions
@@ -336,7 +336,7 @@ PIDThreshold = int(sys.argv[4])
 graphName = str(sys.argv[5])
 
 #import dot file
-graph = pydot.graph_from_dot_file(path)
+graph = pydot.graph_from_dot_file(path)#passed 
 #grabbing the list of edges
 edgeList = graph.get_edge_list()
 #storing the list of nodes
@@ -486,4 +486,4 @@ realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
 
-
+tracerouteDict = traceroute_.trace(edgeList, nodeList, 50, 1)
