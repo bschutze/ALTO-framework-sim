@@ -16,6 +16,7 @@
 #	
 
 from libraries.dijkstra import *
+import random
 import sys
 #import pydot
 import json	#for parsing edge attributes
@@ -31,12 +32,13 @@ def trace(edgeList, nodeList, hPercentage, xSeed):
 	print a
 	numHidden = (float(numNodes)/100*hPercentage)
 	print "Number of nodes: %d num hidden: %d" % (numNodes, numHidden)
-	for x in range (1, numHidden):
+	for x in range (1, int(numHidden+1)):
 		random.seed(xSeed)
-		hNodes = random.randint(1,numNodes)
+		hNodes.append(random.randint(1,numNodes))
 		print hNodes
-		del numNodes[random.randint(1,numNodes)]
+		#del numNodes[random.randint(1,numNodes)]
 		xSeed += 3
+	print "TYPE: ", type(hNodes)
 	return hNodes
 		
 
