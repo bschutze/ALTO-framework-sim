@@ -39,8 +39,20 @@ def trace(edgeList, nodeList, hPercentage, xSeed):
 		#del numNodes[random.randint(1,numNodes)]
 		xSeed += 3
 	print "TYPE: ", type(hNodes)
+	countEdgesPerNode(edgeList, nodeList)
 	return hNodes
-		
+
+def countEdgesPerNode(edgeList, nodeList):
+	edgeCount=[]
+	
+	for edge in edgeList:
+		edgeCount.append(edge.get_source())
+		edgeCount.append(edge.get_destination())
+	print "NODES EDGES COUNT"
+	for node in nodeList:
+		count = edgeCount.count(node)
+		print "Node: ", node
+		print "Count: ", count
 
 #********************************************************************
 ########################### PROGRAM START ###########################
