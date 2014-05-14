@@ -44,14 +44,14 @@ def trace(edgeList, nodeList, hPercentage, xSeed):
 
 def countEdgesPerNode(edgeList, nodeList):
 	edgeCount=[]
-	
 	for edge in edgeList:
-		edgeCount.append(edge.get_source())
-		edgeCount.append(edge.get_destination())
+		edgeCount.append(int(edge.get_source()))
+		edgeCount.append(int(edge.get_destination()))
 	print "NODES EDGES COUNT"
+	print edgeCount
 	for node in nodeList:
 		count = edgeCount.count(node)
-		print "Node: ", node
+		print "Node: ", int(node)
 		print "Count: ", count
 
 #********************************************************************

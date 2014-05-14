@@ -457,7 +457,9 @@ costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
 pickle.dump(rawCostMap, costMapPickle)
 costMapPickle.close()
 
-baseNetworkMap = genBaseNetworkMap(fakenodesList)
+tempFakeNodesList = list(fakenodesList)
+
+baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
 #print "BASE NETWORK MAP: "
 #print baseNetworkMap
 #print "RAW COSTMAP"
@@ -485,5 +487,5 @@ realCostMap = open("ALTO_COST_MAP.txt", "w")
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
-
-tracerouteDict = traceroute_.trace(edgeList, nodeList, 50, 1)
+#list of extracted edges, list of names of nodes (int), % hidden, seed for random gen
+tracerouteDict = traceroute_.trace(edgeList, fakenodesList, 50, 1)
