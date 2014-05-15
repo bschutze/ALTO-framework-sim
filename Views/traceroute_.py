@@ -23,13 +23,12 @@ import json	#for parsing edge attributes
 #import pyparsing
 #import pickle
 
-def trace(edgeList, nodeList, hPercentage, xSeed):
+def trace(edgeList, nodeList, hPercentage, xSeed):#TODO rename function!!!
 	print "\nSTARTING TRACEROUTE: Traceroute_.py\n"
 	print hPercentage
 	hNodes = []
 	numNodes = len(nodeList)
-	a = float(numNodes)/100
-	print a
+	print numNodes
 	numHidden = (float(numNodes)/100*hPercentage)
 	print "Number of nodes: %d num hidden: %d" % (numNodes, numHidden)
 	for x in range (1, int(numHidden+1)):
@@ -38,7 +37,6 @@ def trace(edgeList, nodeList, hPercentage, xSeed):
 		print hNodes
 		#del numNodes[random.randint(1,numNodes)]
 		xSeed += 3
-	print "TYPE: ", type(hNodes)
 	countEdgesPerNode(edgeList, nodeList)
 	return hNodes
 
@@ -53,6 +51,11 @@ def countEdgesPerNode(edgeList, nodeList):
 		count = edgeCount.count(node)
 		print "Node: ", int(node)
 		print "Count: ", count
+	findMax(edgeCount, nodeList)
+
+def findMax(edgeOccurance, nodeList):
+	
+
 
 #********************************************************************
 ########################### PROGRAM START ###########################
