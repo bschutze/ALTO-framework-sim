@@ -24,7 +24,7 @@ import json
 import pickle
 from libraries.dijkstra import *
 
-import drawGraph_
+from utilities import drawGraph_
 from Views import traceroute_
 
 #

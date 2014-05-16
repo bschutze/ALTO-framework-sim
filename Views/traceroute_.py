@@ -53,8 +53,13 @@ def countEdgesPerNode(edgeList, nodeList):
 		print "Count: ", count
 	findMax(edgeCount, nodeList)
 
-def findMax(edgeOccurance, nodeList):
-	
+def findMax(edgeOccurance, nodeList2):
+	maximum=0
+	maxNodeList = []
+	for node in nodeList2:
+		tempMax = edgeOccurance.count(node)
+		if tempMax > maximum:
+			maximum
 
 
 #********************************************************************
