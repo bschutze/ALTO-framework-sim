@@ -324,9 +324,14 @@ def labelNetworkMap(neighborHood, networkMap):
 		#else do noting, cause node already aggregated and in networkMap
 	#print "REFERENCE DICT"
 	#print referenceDict
+	
+	
 #********************************************************************
 ########################### PROGRAM START ###########################
 #********************************************************************
+
+#global variable for hashing
+HASH_MULTIPLIER = 100000
 
 #shortest path starting & ending points
 path  = str(sys.argv[1])
@@ -357,6 +362,7 @@ latencyMap 	= {} #
 bandwidthMap 	= {} #
 throughputMap 	= {} 
 delayMap   	= {}
+interfaceMap	= {}
 
 #BUILDING NETWORK AND COST MAP!!!!-----------------------------------------
 
@@ -366,7 +372,7 @@ for e in edgeList:
 	src   = int(e.get_source()) 
 	dest  = int(e.get_destination())
 	label = int(e.get_label())
-	
+	interfaceMap[(src*100000) + dest] = str(e.get_headlabel())	
 	tempAttr = json.dumps(e.get_attributes())
 	edgeAttr = json.loads(tempAttr)
 
@@ -381,7 +387,7 @@ for e in edgeList:
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
 	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
-	
+
 		
 #shortest path algorithm based on Dijkstra
 
@@ -423,8 +429,11 @@ pathLatency = getTotalPathCosts(latencyMap, shortPathList)
 #print dijkstraFormatDict
 
 tempList = []
+#List that contains all shortest paths from all nodes to all nodes
+totalSPathDict = []
 rawCostMap = {}	#lists costs from all to nodes, to all nodes
 tempDict = {}
+
 for x in range(1,len(fakenodesList)+1):
 	#print "Outter: ", x
 	for y in range(1,len(fakenodesList)+1):
@@ -434,8 +443,12 @@ for x in range(1,len(fakenodesList)+1):
 		#print shortPathList
 		#print "testList: ", testList
 		#print "Inner: ", y
+		#assign the shortestpath from x to y to a dict with key y
+		tempSPathDict[y] = shortPathList
 	#print "TestList: "
 	#print testList
+	# 2 Level Dictionary.Key x (src) contains a dictionary with key y (dest) who's value is the list of nodes on the shortest path between src & dest
+	totalSPathDict[x] = tempSPathDict
 	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
 
@@ -487,5 +500,9 @@ realCostMap = open("ALTO_COST_MAP.txt", "w")
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
-#list of extracted edges, list of names of nodes (int), % hidden, seed for random gen
-tracerouteDict = traceroute_.trace(edgeList, fakenodesList, 50, 1)
+##
+
+
+#get traceroute result
+tracerouteDict = traceroute_.getInterfaces(edgeList, totalSPathDict, interfaceMap)
+
