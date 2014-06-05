@@ -430,7 +430,8 @@ pathLatency = getTotalPathCosts(latencyMap, shortPathList)
 
 tempList = []
 #List that contains all shortest paths from all nodes to all nodes
-totalSPathDict = []
+totalSPathDict = {}
+innerSPathDict = {}
 rawCostMap = {}	#lists costs from all to nodes, to all nodes
 tempDict = {}
 
@@ -439,19 +440,21 @@ for x in range(1,len(fakenodesList)+1):
 	for y in range(1,len(fakenodesList)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		tempList.append(shortPathList)
-		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "(x,y)
-		#print shortPathList
+		print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "%(x,y)
+		print shortPathList
 		#print "testList: ", testList
 		#print "Inner: ", y
 		#assign the shortestpath from x to y to a dict with key y
-		tempSPathDict[y] = shortPathList
+		innerSPathDict[y] = shortPathList
 	#print "TestList: "
 	#print testList
 	# 2 Level Dictionary.Key x (src) contains a dictionary with key y (dest) who's value is the list of nodes on the shortest path between src & dest
-	totalSPathDict[x] = tempSPathDict
+	totalSPathDict[x] = innerSPathDict
 	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
-
+	innerSPathDict = {}
+print "Shortest Path dictionary for traceroute:"
+print totalSPathDict
 	#rawCostMap.append[x] = tempDict
 #	print "\nTest Output: ", testList
 #print "\nONE ELEMENT: ", testList.pop(0)
@@ -502,7 +505,8 @@ realCostMap.close()
 
 ##
 
-
+print "THIS IS THE SHORTEST PATH DICT:"
+print totalSPathDict
 #get traceroute result
-tracerouteDict = traceroute_.getInterfaces(edgeList, totalSPathDict, interfaceMap)
+tracerouteDict = traceroute_.getInterfaces(edgeList, nodeList, totalSPathDict, interfaceMap)
 

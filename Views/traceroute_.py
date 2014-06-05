@@ -17,21 +17,24 @@ import json	#for parsing edge attributes
 #Finds the interfaces (edge headlabels) on the path provided. 
 #@returns interfaceList a list of interfaces found on the path (strings)
 def getInterfaces(edgeList,nodeList, shortestPathsDict, interfaces):
-	global HASH_MULTIPLIER
 	outterDict = {}
 	innerDict = {}
 	vantagePoints = getVantagePoints(nodeList)
 	hiddenNodes = getHiddenNodes(nodeList)	
+	print "GETTING INTERFACES:"
+	print nodeList
 	
-	for outterkey, innerDict in shortestPathDict:
+	for outterkey, innerDict in shortestPathsDict:
 		interfaceList = []
 		for innerKey, shortPath in innerDict:
 			if not shortPath:
 				#outterKey and innerKey are neighbors
 				interfaceList = interfaces[(int(outterKey)*HASH_MULTIPLIER)+int(innerKey)]
 			else:
+				
 				for idx, val in enumerate(shortPath):
-					interfaceList = interfaces[(int(sh
+					print idx, val
+					interfaceList = interfaces[(int(shortPath[idx]))]
 		
 		innerDict[y] = interfaceList
 	outterDict[x] = innerDict
@@ -40,20 +43,24 @@ def getInterfaces(edgeList,nodeList, shortestPathsDict, interfaces):
 
 #takes a list of pydot node objects and parses out the names of nodes that are grouped as 'H' (hidden)
 def getHiddenNodes(nodeList):
-	token = 'H'
+	token = "H"
 	hiddenNodes = []
 	for n in nodeList:
-		name = int(n.get_name())
+		#name = int(n.get_name())
+		print token, n.get_name()
 		if token == n.get_group():
 			hiddenNodes.append(name)
+	print "Hidden nodes:", hiddenNodes
 	
 #takes a list of pydot node objects and parses out the names of nodes that are grouped as 'V' (vantage-point)	
-def getVantagepoints(nodeList):
+def getVantagePoints(nodeList):
 	token = 'V'
 	vantagePoints = []
 	for n in nodeList:
-		name = int(n.get_name())
+		#name = int(n.get_name())
+		print token, n.get_name()
 		if token == n.get_group():
 			vantagePoints.append(name)
+	print "Vanatage Pointss:", vantagePoints
 
 
