@@ -440,8 +440,8 @@ for x in range(1,len(fakenodesList)+1):
 	for y in range(1,len(fakenodesList)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		tempList.append(shortPathList)
-		print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "%(x,y)
-		print shortPathList
+		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "%(x,y)
+		#print shortPathList
 		#print "testList: ", testList
 		#print "Inner: ", y
 		#assign the shortestpath from x to y to a dict with key y
@@ -450,9 +450,11 @@ for x in range(1,len(fakenodesList)+1):
 	#print testList
 	# 2 Level Dictionary.Key x (src) contains a dictionary with key y (dest) who's value is the list of nodes on the shortest path between src & dest
 	totalSPathDict[x] = innerSPathDict
+	print "total shortest path dictionary"
+	print totalSPathDict
 	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
-	innerSPathDict = {}
+	#innerSPathDict = {}
 print "Shortest Path dictionary for traceroute:"
 print totalSPathDict
 	#rawCostMap.append[x] = tempDict
@@ -489,7 +491,8 @@ aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
-drawGraph_.drawGraph(dijkstraFormatDict, graphName)
+#DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK TODO TURNED OFF FOR TROUBLESHOOTING
+#drawGraph_.drawGraph(dijkstraFormatDict, graphName)
 
 print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
 print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict

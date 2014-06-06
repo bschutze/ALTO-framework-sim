@@ -39,7 +39,7 @@ def getInterfaces(edgeList,nodeList, shortestPathsDict, interfaces):
 		innerDict[y] = interfaceList
 	outterDict[x] = innerDict
 	return outterDict
-	
+
 
 #takes a list of pydot node objects and parses out the names of nodes that are grouped as 'H' (hidden)
 def getHiddenNodes(nodeList):
