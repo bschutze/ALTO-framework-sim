@@ -486,7 +486,7 @@ aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK TODO TURNED OFF FOR TROUBLESHOOTING
-#drawGraph_.drawGraph(dijkstraFormatDict, graphName)
+drawGraph_.drawGraph(dijkstraFormatDict, 'ALTO_'+graphName)
 
 print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
 print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict
@@ -511,7 +511,7 @@ print interfaceMap
 #get traceroute result
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
 testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
-drawGraph_.drawGraph(testStuff, graphName)
+drawGraph_.drawGraph(testStuff, 'TR_'+graphName)
 print "TRACEROUTE VIEW take:"
 print tracerouteDict
 print "TRACEROUTE NEIGHBORS:"
