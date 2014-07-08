@@ -23,5 +23,5 @@ def drawGraph(hoodDict, grName):
 		for entry, value in hoodDict[node].items():
 			edge = pydot.Edge(str(node), str(entry), label = str(value), )
 			graph.add_edge(edge)
-	graph.write_jpeg('Output/ALTO_AGG_NET.jpeg', prog='neato')
+	graph.write_jpeg('Output/ALTO_AGG_NET.jpeg', prog='neato')#TODO how to name the file grName.jpeg?
 	Image.open('Output/ALTO_AGG_NET.jpeg').show()

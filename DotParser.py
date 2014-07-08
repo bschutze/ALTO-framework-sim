@@ -6,7 +6,7 @@
 #uses the djikstra algorithm implemented by David Eppstein
 #uses python 2.7.6
 #execution: 
-#python DotParser.py [graphname] [startNode] [endNode] [PID_grouping_threshold] [name_of_output_graph]
+#python DotParser.py [path_to_graph] [name_of_output_graph]
 """DOT FILE FORMAT
 graph Test {
 	node [shape=box]
@@ -22,6 +22,7 @@ import pydot
 import pyparsing
 import json
 import pickle
+import copy
 from libraries.dijkstra import *
 
 from utilities import drawGraph_
@@ -330,15 +331,15 @@ def labelNetworkMap(neighborHood, networkMap):
 ########################### PROGRAM START ###########################
 #********************************************************************
 
-#global variable for hashing
+#variable for hashing
 HASH_MULTIPLIER = 100000
 
 #shortest path starting & ending points
 path  = str(sys.argv[1])
-start = int(sys.argv[2])
-end   = int(sys.argv[3])
-PIDThreshold = int(sys.argv[4])
-graphName = str(sys.argv[5])
+#start = int(sys.argv[2])
+#end   = int(sys.argv[3])
+PIDThreshold = 10#int(sys.argv[4])
+graphName = str(sys.argv[2])
 
 #import dot file
 graph = pydot.graph_from_dot_file(path)#passed 
@@ -363,6 +364,7 @@ bandwidthMap 	= {} #
 throughputMap 	= {} 
 delayMap   	= {}
 interfaceMap	= {}
+aliasResMap	= {}#contains true falls wether edges can resolve to nodes
 
 #BUILDING NETWORK AND COST MAP!!!!-----------------------------------------
 
@@ -371,7 +373,7 @@ for e in edgeList:
 	#tempDict.clear()	
 	src   = int(e.get_source()) 
 	dest  = int(e.get_destination())
-	label = int(e.get_label())
+	label = int(e.get_label())#label = weights of a edge
 	interfaceMap[(src*100000) + dest] = str(e.get_headlabel())	
 	tempAttr = json.dumps(e.get_attributes())
 	edgeAttr = json.loads(tempAttr)
@@ -387,12 +389,12 @@ for e in edgeList:
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
 	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
+	aliasResMap[(src*100000) + dest] = int(edgeAttr['alias'])
 
 		
 #shortest path algorithm based on Dijkstra
-
-dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
-shortPathList = shortestPath(dijkstraFormatDict, start, end)
+#dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
+#shortPathList = shortestPath(dijkstraFormatDict, start, end)
 fakenodesList = removeDublicates(fakenodesList)
 
 
@@ -411,16 +413,16 @@ sorted(pathCostMap, key = int)
 
 #DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
 
-pathCost = getTotalPathCosts(pathCostMap, shortPathList)
+#pathCost = getTotalPathCosts(pathCostMap, shortPathList)
 #print "\nPath total cost: \t",pathCost
 
-pathDelay = getTotalPathCosts(delayMap, shortPathList)
+#pathDelay = getTotalPathCosts(delayMap, shortPathList)
 #print "\nPath total delay: \t",pathDelay
 
-pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
+#pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
 #print "\nPath min bandwidth: \t",pathMinBandwidth
 
-pathLatency = getTotalPathCosts(latencyMap, shortPathList)
+#pathLatency = getTotalPathCosts(latencyMap, shortPathList)
 #print "\nPath total latency: \t",pathLatency
 
 
@@ -449,23 +451,15 @@ for x in range(1,len(fakenodesList)+1):
 	#print "TestList: "
 	#print testList
 	# 2 Level Dictionary.Key x (src) contains a dictionary with key y (dest) who's value is the list of nodes on the shortest path between src & dest
-	totalSPathDict[x] = innerSPathDict
-	print "total shortest path dictionary"
-	print totalSPathDict
+	totalSPathDict[x] = copy.deepcopy(innerSPathDict)#deepcopying objects containing objects
+	#print "total shortest path dictionary"
+	#print totalSPathDict
 	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
 	#innerSPathDict = {}
-print "Shortest Path dictionary for traceroute:"
-print totalSPathDict
-	#rawCostMap.append[x] = tempDict
-#	print "\nTest Output: ", testList
-#print "\nONE ELEMENT: ", testList.pop(0)
-#print "\nONE ELEMENT: ", testList.pop(0)
-#print "\nONE ELEMENT: ", testList
-#test = testList[0]mack wilds heney
-#print "\nTEST: ", test
-#print "CostMap: "
-#print rawCostMap
+#print "Shortest Path dictionary for traceroute:"
+#print totalSPathDict
+
 
 costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
 costMapFile.write(str(rawCostMap))
@@ -510,6 +504,17 @@ realCostMap.close()
 
 print "THIS IS THE SHORTEST PATH DICT:"
 print totalSPathDict
+
+print "INTERFACES:"
+print interfaceMap
+
 #get traceroute result
-tracerouteDict = traceroute_.getInterfaces(edgeList, nodeList, totalSPathDict, interfaceMap)
+tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
+testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
+drawGraph_.drawGraph(testStuff, graphName)
+print "TRACEROUTE VIEW take:"
+print tracerouteDict
+print "TRACEROUTE NEIGHBORS:"
+print testStuff
+
 
