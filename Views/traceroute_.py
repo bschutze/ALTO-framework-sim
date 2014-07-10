@@ -54,7 +54,10 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 					if aliResTest == 1:
 						tmpVal = interfaces[(first*HASH_MULTIPLIER)+second]
 						#slice the string to only get first charackter
-						temp_inter.append(int(tmpVal[1]))
+						t_head, sep, tail = tmpVal.partition('-')
+						#trimming the first charackter in this case: "
+						head = t_head[1:]
+						temp_inter.append(int(head))
 					else:
 						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
 						#print temp_interfaces
@@ -93,6 +96,11 @@ def getHiddenNodes(nodeList):
 	token = "H"
 	hiddenNodes = []
 	for n in nodeList:
+		#most .dot files have settings for drawing nodes and edges and thus have to be handled, ex: node [shape=box]; edge [len=2];
+		if n.get_name() is 'node':
+			continue
+		if n.get_name() is 'edge':
+			continue
 		name = int(n.get_name())
 		#print token, n.get_name()
 		if token == n.get_group():
@@ -105,6 +113,11 @@ def getVantagePoints(nodeList):
 	token = 'V'
 	vantagePoints = []
 	for n in nodeList:
+		#most .dot files have settings for drawing nodes and edges and thus have to be handled, ex: node [shape=box]; edge [len=2];
+		if n.get_name() is 'node':
+			continue
+		if n.get_name() is 'edge':
+			continue
 		name = int(n.get_name())
 		#print token, n.get_name()
 		if token == n.get_group():

@@ -23,6 +23,7 @@ import pyparsing
 import json
 import pickle
 import copy
+import subprocess
 from libraries.dijkstra import *
 
 from utilities import drawGraph_
@@ -331,6 +332,8 @@ def labelNetworkMap(neighborHood, networkMap):
 ########################### PROGRAM START ###########################
 #********************************************************************
 
+
+
 #variable for hashing
 HASH_MULTIPLIER = 100000
 
@@ -342,12 +345,14 @@ PIDThreshold = 10#int(sys.argv[4])
 graphName = str(sys.argv[2])
 
 #import dot file
-graph = pydot.graph_from_dot_file(path)#passed 
+graph = pydot.graph_from_dot_file(path) 
 #grabbing the list of edges
 edgeList = graph.get_edge_list()
 #storing the list of nodes
 nodeList = graph.get_node_list()
 
+#draw the complete network or ground truth
+subprocess.Popen(["neato", "-Tjpeg", path, "-o","Output/"+graphName+"_GTRUTH"])
 
 #Holds the nodes with its neighbors and associated edge weights
 dijkstraFormatDict = {} # used for dijkstra and aggregation 
@@ -374,7 +379,7 @@ for e in edgeList:
 	src   = int(e.get_source()) 
 	dest  = int(e.get_destination())
 	label = int(e.get_label())#label = weights of a edge
-	interfaceMap[(src*100000) + dest] = str(e.get_headlabel())	
+	interfaceMap[(src*100000) + dest] = e.get_headlabel()
 	tempAttr = json.dumps(e.get_attributes())
 	edgeAttr = json.loads(tempAttr)
 
@@ -485,18 +490,18 @@ aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
-#DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK TODO TURNED OFF FOR TROUBLESHOOTING
-drawGraph_.drawGraph(dijkstraFormatDict, 'ALTO_'+graphName)
+#DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK
+drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 
 print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
 print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict
 print "\n NETWORKMAP:", aggNetMap
 
-realNetworkMap = open("ALTO_NETWORK_MAP.txt", "w")
+realNetworkMap = open(graphName+"_ALTO_NETWORK_MAP.txt", "w")
 realNetworkMap.write(str(aggNetMap))
 realNetworkMap.close()
 
-realCostMap = open("ALTO_COST_MAP.txt", "w")
+realCostMap = open(graphName+"_ALTO_COST_MAP.txt", "w")
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
@@ -511,7 +516,7 @@ print interfaceMap
 #get traceroute result
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
 testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
-drawGraph_.drawGraph(testStuff, 'TR_'+graphName)
+drawGraph_.drawGraph(testStuff, graphName+'_TR')
 print "TRACEROUTE VIEW take:"
 print tracerouteDict
 print "TRACEROUTE NEIGHBORS:"
