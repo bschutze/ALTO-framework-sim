@@ -7,13 +7,15 @@
 #uses python 2.7.6
 #execution: 
 #python DotParser.py [path_to_graph] [name_of_output_graph]
-"""DOT FILE FORMAT
+
+#DOT FILE FORMAT
+"""
 graph Test {
 	node [shape=box]
 	edge [len=2]
 	overlap=false
 	1 -- 2[label=3, bandwidth=20, delay = 2, latency=2, throughput=17];
-...
+	...
 }
 """
 
@@ -30,7 +32,7 @@ from utilities import drawGraph_
 from Views import traceroute_
 
 #
-#Function definitions
+#Function definitions:
 #
 #function takes a dictionary and creats a sub_dictionary within, based on supplied values
 def insertEdge(outerDict, key1, key2, value):
@@ -181,23 +183,17 @@ def aggregatePids(edgeMap, threshold, neighborHoodDict):
 #updates the neighborhoodDict: removes entries of aggregated devices (node2), names the aggregated nodes the value of node1, 
 #and if multiple edges connect the same neighbor it keeps the cheaper
 def updateHood(neighborHoodDict, node1, node2):
-	#print "UPDATING HOOD: aggregating node %d and %d "% (node1, node2)
-	#for x in neighborHoodDict:
-		#print x, neighborHoodDict[x]
 	tempDict = neighborHoodDict[node1]
 	tempDict2 = neighborHoodDict[node2]
 	del neighborHoodDict[node1]
 	del neighborHoodDict[node2]
 	del tempDict[node2]
 	del tempDict2[node1]
-#	print "TempDict: ", tempDict
-#	print "TempDict2: ", tempDict2
+
 	#delete entry of node joining with
 	#join other entries
 	#if both have the same neighbor take lower edge
-#	print "AFTER"
-#	print "TempDict: ", tempDict
-#	print "TempDict2: ", tempDict2
+
 	loopTempDict = tempDict.copy()
 	#Delete the occurence of one another in their own 
 	for key in loopTempDict:#TODO DEBUG
@@ -235,9 +231,6 @@ def updateHood(neighborHoodDict, node1, node2):
 	#print "result from update: "
 	#print tempDict
 	neighborHoodDict[node1]=tempDict
-	#return neighborHood
-
-	
 
 
 #This method takes a dictionary containing all edges (key format "src*100000+dest") as argument and returns the lowes value 
@@ -404,11 +397,15 @@ fakenodesList = removeDublicates(fakenodesList)
 
 
 #OUTPUT
+print "Dijkstra!"
+print dijkstraFormatDict
+sorted(fakenodesList)
+print "\n", fakenodesList
 sorted(pathCostMap, key = int)
 #print("\n")
 #print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
 #print "\nShortest path from %s to %s :" %(start, end), shortPathList
-#print "\nList of Nodes: ", fakenodesList
+print "\nList of Nodes: ", fakenodesList
 #print "\nHashed Costs: ", pathCostMap
 #print "\nDelay Map: ", delayMap
 #print "\nThroughput Map: ", throughputMap
@@ -420,20 +417,15 @@ sorted(pathCostMap, key = int)
 
 #pathCost = getTotalPathCosts(pathCostMap, shortPathList)
 #print "\nPath total cost: \t",pathCost
-
 #pathDelay = getTotalPathCosts(delayMap, shortPathList)
 #print "\nPath total delay: \t",pathDelay
-
 #pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
 #print "\nPath min bandwidth: \t",pathMinBandwidth
-
 #pathLatency = getTotalPathCosts(latencyMap, shortPathList)
 #print "\nPath total latency: \t",pathLatency
 
 
 #building a "real" Alto cost map. From all PIDs to all PID
-
-#print dijkstraFormatDict
 
 tempList = []
 #List that contains all shortest paths from all nodes to all nodes
@@ -447,14 +439,8 @@ for x in range(1,len(fakenodesList)+1):
 	for y in range(1,len(fakenodesList)+1):
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		tempList.append(shortPathList)
-		#print "\nSpanning Tree from: %d  \t|to: %d \t|VAL: "%(x,y)
-		#print shortPathList
-		#print "testList: ", testList
-		#print "Inner: ", y
 		#assign the shortestpath from x to y to a dict with key y
 		innerSPathDict[y] = shortPathList
-	#print "TestList: "
-	#print testList
 	# 2 Level Dictionary.Key x (src) contains a dictionary with key y (dest) who's value is the list of nodes on the shortest path between src & dest
 	totalSPathDict[x] = copy.deepcopy(innerSPathDict)#deepcopying objects containing objects
 	#print "total shortest path dictionary"
@@ -477,25 +463,15 @@ costMapPickle.close()
 tempFakeNodesList = list(fakenodesList)
 
 baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
-#print "BASE NETWORK MAP: "
-#print baseNetworkMap
-#print "RAW COSTMAP"
-#print rawCostMap
 
-print "\n\n NODES AND NEIGHBORING NODES: ", dijkstraFormatDict
-
-#ping_.getPathTotal(start, end, delayMap, dijkstraFormatDict)
 
 aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
 
-#DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK
+#DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
 drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 
-print "\n AGGREGATION WITH THRESHOLD: ", PIDThreshold
-print "\n ***ALTO***RESULTS***\n\n COSTMAP: ", dijkstraFormatDict
-print "\n NETWORKMAP:", aggNetMap
 
 realNetworkMap = open(graphName+"_ALTO_NETWORK_MAP.txt", "w")
 realNetworkMap.write(str(aggNetMap))
@@ -505,21 +481,16 @@ realCostMap = open(graphName+"_ALTO_COST_MAP.txt", "w")
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
-##
 
-print "THIS IS THE SHORTEST PATH DICT:"
-print totalSPathDict
-
-print "INTERFACES:"
-print interfaceMap
-
-#get traceroute result
+#GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
 testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
-drawGraph_.drawGraph(testStuff, graphName+'_TR')
-print "TRACEROUTE VIEW take:"
-print tracerouteDict
-print "TRACEROUTE NEIGHBORS:"
-print testStuff
+drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
+drawGraph_.drawNetworkMap(aggNetMap, graphName+'_NETWORKMAP')
 
+
+print "\nDONE, please see the Output folder for the 3 resulting Views:"
+print "\n\t"+graphName+"_GTRUTH (ground truth)"
+print "\t"+graphName+"_ALTO \t(Alto)"
+print "\t"+graphName+"_TR \t(traceroute)\n"
 

@@ -2,10 +2,10 @@ digraph Test {
 
 	/*compound=true*/
 	node [shape=box];
-	edge [len=2];
+	edge [len=3];
 	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
-	1[group=V]; 2[group=V]; 3[group=V]; 4[group=V]; 5[group=V]; 6[group=V]; 7[group=V]; 8[group=V];	
-	9[group=V]; 10[group=V]; 11[group=V]; 12[group=V]; 13[group=V]; 14[group=V]; 15[group=V]; 16[group=V]; 
+	1[group=V]; 2[group=V]; 3[group=V]; 4[group=V]; 5[group=A]; 6[group=A]; 7[group=A]; 8[group=A];	
+	9[group=A]; 10[group=A]; 11[group=A]; 12[group=A]; 13[group=A]; 14[group=A]; 15[group=A]; 16[group=A]; 
 	17[group=V]; 18[group=V]; 19[group=V]; 20[group=V];
 	overlap = scale;
 	splines = false;
@@ -32,26 +32,26 @@ digraph Test {
 	9 -> 5	[label=50,headlabel="5-9",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
 	6 -> 7	[label=2,headlabel="7-6",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
 	7 -> 6	[label=2,headlabel="6-7",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	6 -> 10	[label=6,headlabel="10-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
+	6 -> 10	[label=6,headlabel="10-6",alias = 0,throughput=15,latency=1,delay=2,bandwidth = 20];
 	10 -> 6	[label=6,headlabel="6-10",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
 	7 -> 8	[label=30,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
 	8 -> 7	[label=30,headlabel="7-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 11	[label=8,headlabel="11-7",alias = 1,throughput=18,latency=4,delay=1,bandwidth = 20];
+	7 -> 11	[label=8,headlabel="11-7",alias = 0,throughput=18,latency=4,delay=1,bandwidth = 20];
 	11 -> 7	[label=8,headlabel="7-11",alias = 1,throughput=18,latency=4,delay=1,bandwidth = 20];
 	8 -> 12	[label=20,headlabel="12-8",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
 	12 -> 8	[label=20,headlabel="8-12",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
-	9 -> 10	[label=50,headlabel="10-9",alias = 1,throughput=17,latency=8,delay=1,bandwidth = 20];
+	9 -> 10	[label=50,headlabel="10-9",alias = 0,throughput=17,latency=8,delay=1,bandwidth = 20];
 	10 -> 9	[label=50,headlabel="9-10",alias = 1,throughput=17,latency=8,delay=1,bandwidth = 20];
 	9 -> 13	[label=40,headlabel="13-9",alias = 1,throughput=22,latency=8,delay=2,bandwidth = 10];
 	13 -> 9	[label=40,headlabel="9-13",alias = 1,throughput=22,latency=8,delay=2,bandwidth = 10];
-	10 -> 11[label=30,headlabel="11-10",alias = 1,throughput=23,latency=9,delay=2,bandwidth = 20];
-	11 -> 10[label=40,headlabel="10-11",alias = 1,throughput=23,latency=9,delay=2,bandwidth = 20];
+	10 -> 11[label=30,headlabel="11-10",alias = 0,throughput=23,latency=9,delay=2,bandwidth = 20];
+	11 -> 10[label=40,headlabel="10-11",alias = 0,throughput=23,latency=9,delay=2,bandwidth = 20];
 	10 -> 14[label=3,headlabel="14-10",alias = 1,throughput=31,latency=3,delay=3,bandwidth = 20];
-	14 -> 10[label=3,headlabel="10-14",alias = 1,throughput=31,latency=3,delay=3,bandwidth = 20];
+	14 -> 10[label=3,headlabel="10-14",alias = 0,throughput=31,latency=3,delay=3,bandwidth = 20];
 	11 -> 12[label=30,headlabel="12-11",alias = 1,throughput=36,latency=2,delay=5,bandwidth = 20];
-	12 -> 11[label=30,headlabel="11-12",alias = 1,throughput=36,latency=2,delay=5,bandwidth = 20];
+	12 -> 11[label=30,headlabel="11-12",alias = 0,throughput=36,latency=2,delay=5,bandwidth = 20];
 	11 -> 15[label=2,headlabel="15-11",alias = 1,throughput=22,latency=5,delay=1,bandwidth = 10];
-	15 -> 11[label=2,headlabel="11-15",alias = 1,throughput=22,latency=5,delay=1,bandwidth = 10];
+	15 -> 11[label=2,headlabel="11-15",alias = 0,throughput=22,latency=5,delay=1,bandwidth = 10];
 	12 -> 16[label=60,headlabel="16-12",alias = 1,throughput=12,latency=9,delay=4,bandwidth = 20];
 	16 -> 12[label=60,headlabel="12-16",alias = 1,throughput=12,latency=9,delay=4,bandwidth = 20];
 	13 -> 14[label=20,headlabel="14-13",alias = 1,throughput=27,latency=10,delay=2,bandwidth = 20];

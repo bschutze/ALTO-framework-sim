@@ -5,9 +5,11 @@
 #Author: Bruno-Johannes Schuetze
 #uses python 2.7.6
 
-#import pydot
+import pydot
 import json	#for parsing edge attributes
 import copy
+
+#from utilities import drawTracerouteView
 #import pyparsing
 #import pickle
 
@@ -23,11 +25,14 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 	HASH_MULTIPLIER = 100000
 	outterDict = {}
 	innerDict = {}
+	#variables for drawing traceroute view
+	nodesFound = []
+	edgesFound = []
 	#src and target for the interface trace
 	vantagePoints = getVantagePoints(nodeList) #the list of vantage points from where we collect interfaces(headlabels)
 	targets = vantagePoints
 	hiddenNodes = getHiddenNodes(nodeList) #the list of nodes that will not appear in the trace	
-	print "Subing node names for Interfaces"
+	#print "Subing node names for Interfaces"
 	for src in vantagePoints:
 		for target in targets:
 			temp_inter=[]
@@ -58,6 +63,7 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 						#trimming the first charackter in this case: "
 						head = t_head[1:]
 						temp_inter.append(int(head))
+						edgesFound.append(int(head))
 					else:
 						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
 						#print temp_interfaces
@@ -89,6 +95,9 @@ def genTracerouteNeighborhood(traceView):
 				inner[daList[0]] = 1
 		outter[first]=inner
 	return outter
+
+
+
 	
 
 #takes a list of pydot node objects and parses out the names of nodes that are grouped as 'H' (hidden)
