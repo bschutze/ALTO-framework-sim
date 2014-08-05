@@ -13,7 +13,7 @@ digraph Test {
 	42[group=A]; 43[group=V]; 44[group=A]; 45[group=V]; 
 	111[group=A]; 112[group=A]; 311[group=A]; 411[group=A]; 511[group=A];
 	512[group=A];513[group=A]; 611[group=A]; 711[group=A]; 811[group=A]; 911[group=A]; 1011[group=A];	
-	201[group=H]; 202[group=H]; 203[group=H]; 204[group=H]; 205[group=H]; 206[group=H]; 207[group=H]; 208[group=H]; 209[group=H];
+	201[group=S]; 202[group=S]; 203[group=S]; 204[group=S]; 205[group=S]; 206[group=S]; 207[group=S]; 208[group=S]; 209[group=S];
 	
 	overlap = scale;
 	splines = false;
@@ -22,166 +22,167 @@ digraph Test {
 
 
 	//Backbone
-	201 -> 111	[label=20,headlabel="201-111",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	201 -> 202	[label=1,headlabel="201-202",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	201 -> 203	[label=1,headlabel="201-203",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	201 -> 311	[label=20,headlabel="201-311",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
+	201 -> 111	[label=20,headlabel="111-201",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
+	201 -> 202	[label=1,headlabel="202-201",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
+	201 -> 203	[label=1,headlabel="203-201",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
+	201 -> 311	[label=20,headlabel="311-201",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
 	
-	202 -> 201	[label=1,headlabel="202-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	202 -> 411	[label=20,headlabel="202-411" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	202 -> 203	[label=1,headlabel="202-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	202 -> 205	[label=1,headlabel="202-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	202 -> 206	[label=1,headlabel="202-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	202 -> 207	[label=1,headlabel="202-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 201	[label=1,headlabel="201-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 411	[label=20,headlabel="411-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 203	[label=1,headlabel="203-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 205	[label=1,headlabel="205-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 206	[label=1,headlabel="206-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 207	[label=1,headlabel="207-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	203 -> 201	[label=1,headlabel="203-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	203 -> 202	[label=1,headlabel="203-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	203 -> 204	[label=1,headlabel="203-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	203 -> 208	[label=1,headlabel="203-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 201	[label=1,headlabel="201-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 202	[label=1,headlabel="202-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 204	[label=1,headlabel="204-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 208	[label=1,headlabel="208-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	204 -> 203	[label=1,headlabel="204-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	204 -> 205	[label=1,headlabel="204-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	204 -> 209	[label=1,headlabel="204-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	204 -> 203	[label=1,headlabel="203-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	204 -> 205	[label=1,headlabel="205-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	204 -> 209	[label=1,headlabel="209-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	205 -> 202	[label=1,headlabel="205-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	205 -> 204	[label=1,headlabel="205-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	205 -> 206	[label=1,headlabel="205-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	205 -> 207	[label=1,headlabel="205-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	205 -> 611	[label=20,headlabel="205-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 202	[label=1,headlabel="202-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 204	[label=1,headlabel="204-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 206	[label=1,headlabel="206-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 207	[label=1,headlabel="207-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 611	[label=20,headlabel="611-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	206 -> 205	[label=1,headlabel="206-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	206 -> 202	[label=1,headlabel="206-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	206 -> 208	[label=1,headlabel="206-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	206 -> 205	[label=1,headlabel="205-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	206 -> 202	[label=1,headlabel="202-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	206 -> 208	[label=1,headlabel="208-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	207 -> 205	[label=1,headlabel="207-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	207 -> 202	[label=1,headlabel="207-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	207 -> 911	[label=20,headlabel="207-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	207 -> 205	[label=1,headlabel="205-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	207 -> 202	[label=1,headlabel="202-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	207 -> 911	[label=20,headlabel="911-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	208 -> 203	[label=1,headlabel="208-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	208 -> 206	[label=1,headlabel="208-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	208 -> 711	[label=20,headlabel="208-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	208 -> 811	[label=20,headlabel="208-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 203	[label=1,headlabel="203-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 206	[label=1,headlabel="206-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 711	[label=20,headlabel="711-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 811	[label=20,headlabel="811-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	209 -> 204	[label=1,headlabel="209-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	209 -> 511	[label=20,headlabel="209-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	209 -> 512	[label=20,headlabel="209-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	209 -> 513	[label=20,headlabel="209-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 204	[label=1,headlabel="204-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 511	[label=20,headlabel="511-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 512	[label=20,headlabel="512-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 513	[label=20,headlabel="513-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	//Point of Presence
-	111 -> 112	[label=20,headlabel="111-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	111 -> 2	[label=5,headlabel="111-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	111 -> 3	[label=5,headlabel="111-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	111 -> 4	[label=5,headlabel="111-4",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	111 -> 5	[label=5,headlabel="111-5",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	111 -> 6	[label=5,headlabel="111-6",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	111 -> 201	[label=20,headlabel="111-201",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	1 -> 111	[label=5,headlabel="1-111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	2 -> 111	[label=5,headlabel="2-111",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	3 -> 111	[label=5,headlabel="3-111",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	4 -> 111	[label=5,headlabel="4-111",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	5 -> 111	[label=5,headlabel="5-111",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	6 -> 111	[label=5,headlabel="6-111",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	7 -> 111	[label=5,headlabel="7-111",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	111 -> 112	[label=20,headlabel="112-111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 1	[label=5,headlabel="1-111",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	111 -> 2	[label=5,headlabel="2-111",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	111 -> 3	[label=5,headlabel="3-111",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
+	111 -> 4	[label=5,headlabel="4-111",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
+	111 -> 5	[label=5,headlabel="5-111",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
+	111 -> 6	[label=5,headlabel="6-111",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
+	111 -> 7	[label=5,headlabel="7-111",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	111 -> 201	[label=20,headlabel="201-111",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
+	1 -> 111	[label=5,headlabel="111-1" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	2 -> 111	[label=5,headlabel="111-2",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	3 -> 111	[label=5,headlabel="111-3",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
+	4 -> 111	[label=5,headlabel="111-4",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
+	5 -> 111	[label=5,headlabel="111-5",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
+	6 -> 111	[label=5,headlabel="111-6",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
+	7 -> 111	[label=5,headlabel="111-7",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
 	
-	112 -> 111	[label=20,headlabel="112-111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	112 -> 8	[label=5,headlabel="112-8" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	112 -> 9	[label=5,headlabel="112-9" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	8 -> 112	[label=5,headlabel="8-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	9 -> 112	[label=5,headlabel="9-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 111	[label=20,headlabel="111-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 8	[label=5,headlabel="8-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 9	[label=5,headlabel="9-112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	8 -> 112	[label=5,headlabel="112-8" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	9 -> 112	[label=5,headlabel="112-9" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	311 -> 201	[label=20,headlabel="311-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	311 -> 10	[label=5,headlabel="311-10",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	311 -> 11	[label=5,headlabel="311-11",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	311 -> 12	[label=5,headlabel="311-12",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	311 -> 13	[label=5,headlabel="311-13",alias = 0,throughput=15,latency=1,delay=2,bandwidth = 20];
-	10 -> 311	[label=5,headlabel="10-311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 311	[label=5,headlabel="11-311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 311	[label=5,headlabel="12-311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 311	[label=5,headlabel="13-311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	311 -> 201	[label=20,headlabel="201-311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	311 -> 10	[label=5,headlabel="10-311",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
+	311 -> 11	[label=5,headlabel="11-311",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
+	311 -> 12	[label=5,headlabel="12-311",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
+	311 -> 13	[label=5,headlabel="13-311",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
+	10 -> 311	[label=5,headlabel="311-10" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 311	[label=5,headlabel="311-11" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	12 -> 311	[label=5,headlabel="311-12" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	13 -> 311	[label=5,headlabel="311-13" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	411 -> 202	[label=20,headlabel="411-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	411 -> 14	[label=5,headlabel="411-14",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	411 -> 15	[label=5,headlabel="411-15",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	411 -> 16	[label=5,headlabel="411-16",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	411 -> 17	[label=5,headlabel="411-17",alias = 0,throughput=18,latency=4,delay=1,bandwidth = 20];
-	14 -> 411	[label=5,headlabel="14-411",alias = 1,throughput=18,latency=4,delay=1,bandwidth = 20];
-	15 -> 411	[label=5,headlabel="15-411",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
-	16 -> 411	[label=5,headlabel="16-411",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
-	17 -> 411	[label=5,headlabel="17-411",alias = 0,throughput=17,latency=8,delay=1,bandwidth = 20];
+	411 -> 202	[label=20,headlabel="202-411" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	411 -> 14	[label=5,headlabel="14-411",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
+	411 -> 15	[label=5,headlabel="15-411",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	411 -> 16	[label=5,headlabel="16-411",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	411 -> 17	[label=5,headlabel="17-411",alias = 1,throughput=18,latency=4,delay=1,bandwidth = 20];
+	14 -> 411	[label=5,headlabel="411-14",alias = 1,throughput=18,latency=4,delay=1,bandwidth = 20];
+	15 -> 411	[label=5,headlabel="411-15",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
+	16 -> 411	[label=5,headlabel="411-16",alias = 1,throughput=19,latency=5,delay=4,bandwidth = 10];
+	17 -> 411	[label=5,headlabel="411-17",alias = 1,throughput=17,latency=8,delay=1,bandwidth = 20];
 	
-	511 -> 209	[label=20,headlabel="511-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	511 -> 18	[label=5,headlabel="511-18" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	511 -> 19	[label=5,headlabel="511-19" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	511 -> 20	[label=5,headlabel="511-20" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	511 -> 21	[label=5,headlabel="511-21" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 511	[label=5,headlabel="18-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	19 -> 511	[label=5,headlabel="19-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	20 -> 511	[label=5,headlabel="20-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	21 -> 511	[label=5,headlabel="21-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	511 -> 209	[label=20,headlabel="209-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	511 -> 18	[label=5,headlabel="18-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	511 -> 19	[label=5,headlabel="19-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	511 -> 20	[label=5,headlabel="20-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	511 -> 21	[label=5,headlabel="21-511" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	18 -> 511	[label=5,headlabel="511-18" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	19 -> 511	[label=5,headlabel="511-19" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	20 -> 511	[label=5,headlabel="511-20" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	21 -> 511	[label=5,headlabel="511-21" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	512 -> 209	[label=20,headlabel="512-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	512 -> 22	[label=5,headlabel="512-22" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	512 -> 23	[label=5,headlabel="512-23" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	512 -> 24	[label=5,headlabel="512-24" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	22 -> 512	[label=5,headlabel="22-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	23 -> 512	[label=5,headlabel="23-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	24 -> 512	[label=5,headlabel="24-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	512 -> 209	[label=20,headlabel="209-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	512 -> 22	[label=5,headlabel="22-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	512 -> 23	[label=5,headlabel="23-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	512 -> 24	[label=5,headlabel="24-512" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	22 -> 512	[label=5,headlabel="512-22" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	23 -> 512	[label=5,headlabel="512-23" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	24 -> 512	[label=5,headlabel="512-24" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
+	513 -> 209	[label=20,headlabel="209-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	513 -> 25	[label=5,headlabel="25-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	513 -> 26	[label=5,headlabel="26-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	25 -> 513	[label=5,headlabel="513-25" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	26 -> 513	[label=5,headlabel="513-26" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	513 -> 209	[label=20,headlabel="513-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	513 -> 25	[label=5,headlabel="513-25" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	513 -> 26	[label=5,headlabel="513-26" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	25 -> 513	[label=5,headlabel="25-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	26 -> 513	[label=5,headlabel="26-513" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 205	[label=20,headlabel="205-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 27	[label=5,headlabel="27-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 28	[label=5,headlabel="28-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 29	[label=5,headlabel="29-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 30	[label=5,headlabel="30-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	611 -> 31 	[label=5,headlabel="31-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	27 -> 611	[label=5,headlabel="611-27" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	28 -> 611	[label=5,headlabel="611-28" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	29 -> 611	[label=5,headlabel="611-29" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	30 -> 611	[label=5,headlabel="611-30" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	31 -> 611	[label=5,headlabel="611-31" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	611 -> 205	[label=20,headlabel="611-205" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	611 -> 27	[label=5,headlabel="611-27" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	611 -> 28	[label=5,headlabel="611-28" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	611 -> 29	[label=5,headlabel="611-29" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	611 -> 30	[label=5,headlabel="611-30" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	611 -> 31 	[label=5,headlabel="611-31" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	27 -> 611	[label=5,headlabel="27-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	28 -> 611	[label=5,headlabel="28-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	29 -> 611	[label=5,headlabel="29-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	30 -> 611	[label=5,headlabel="30-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	31 -> 611	[label=5,headlabel="31-611" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	711 -> 208	[label=20,headlabel="208-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	711 -> 32	[label=5,headlabel="32-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	711 -> 33	[label=5,headlabel="33-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	711 -> 34	[label=5,headlabel="34-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	711 -> 35	[label=5,headlabel="35-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	32 -> 711	[label=5,headlabel="711-32" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	33 -> 711	[label=5,headlabel="711-33" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	34 -> 711	[label=5,headlabel="711-34" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	35 -> 711	[label=5,headlabel="711-35" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	711 -> 208	[label=20,headlabel="711-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	711 -> 32	[label=5,headlabel="711-32" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	711 -> 33	[label=5,headlabel="711-33" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	711 -> 34	[label=5,headlabel="711-34" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	711 -> 35	[label=5,headlabel="711-35" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 711	[label=5,headlabel="32-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 711	[label=5,headlabel="33-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 711	[label=5,headlabel="34-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 711	[label=5,headlabel="35-711" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 208	[label=20,headlabel="208-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 36	[label=5,headlabel="36-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 37	[label=5,headlabel="37-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 38	[label=5,headlabel="38-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 39	[label=5,headlabel="39-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	811 -> 40	[label=5,headlabel="40-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	36 -> 811	[label=5,headlabel="811-36" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	37 -> 811	[label=5,headlabel="811-37" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	38 -> 811	[label=5,headlabel="811-38" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	39 -> 811	[label=5,headlabel="811-39" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	40 -> 811	[label=5,headlabel="811-40" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	811 -> 208	[label=20,headlabel="811-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	811 -> 36	[label=5,headlabel="811-36" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	811 -> 37	[label=5,headlabel="811-37" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	811 -> 38	[label=5,headlabel="811-38" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	811 -> 39	[label=5,headlabel="811-39" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	811 -> 40	[label=5,headlabel="811-40" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 811	[label=5,headlabel="36-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 811	[label=5,headlabel="37-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 811	[label=5,headlabel="38-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	39 -> 811	[label=5,headlabel="39-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	40 -> 811	[label=5,headlabel="40-811" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	911 -> 207 	[label=20,headlabel="207-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	911 -> 41	[label=5,headlabel="41-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	911 -> 42	[label=5,headlabel="42-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	911 -> 43	[label=5,headlabel="43-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	911 -> 1011	[label=20,headlabel="1011-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	41 -> 911	[label=5,headlabel="911-41" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	42 -> 911	[label=5,headlabel="911-42" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	43 -> 911	[label=5,headlabel="911-43" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	911 -> 207 	[label=20,headlabel="911-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	911 -> 41	[label=5,headlabel="911-41" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	911 -> 42	[label=5,headlabel="911-42" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	911 -> 43	[label=5,headlabel="911-43" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	911 -> 1011	[label=20,headlabel="911-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	41 -> 911	[label=5,headlabel="41-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	42 -> 911	[label=5,headlabel="42-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	43 -> 911	[label=5,headlabel="43-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	
-	1011 -> 911 	[label=20,headlabel="1011-911" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1011 -> 44	[label=5,headlabel="1011-44" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1011 -> 45	[label=5,headlabel="1011-45" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	44 -> 1011	[label=5,headlabel="44-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	45 -> 1011	[label=5,headlabel="45-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1011 -> 911 	[label=20,headlabel="911-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1011 -> 44	[label=5,headlabel="44-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1011 -> 45	[label=5,headlabel="45-1011" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	44 -> 1011	[label=5,headlabel="1011-44" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	45 -> 1011	[label=5,headlabel="1011-45" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 
 }

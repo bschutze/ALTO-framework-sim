@@ -29,6 +29,7 @@ import subprocess
 from libraries.dijkstra import *
 
 from utilities import drawGraph_
+from utilities import counter_
 from Views import traceroute_
 
 #
@@ -372,6 +373,9 @@ for e in edgeList:
 	src   = int(e.get_source()) 
 	dest  = int(e.get_destination())
 	label = int(e.get_label())#label = weights of a edge
+	
+	#print "TEST: ", src*100000+dest
+	
 	interfaceMap[(src*100000) + dest] = e.get_headlabel()
 	tempAttr = json.dumps(e.get_attributes())
 	edgeAttr = json.loads(tempAttr)
@@ -394,18 +398,16 @@ for e in edgeList:
 #dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
 #shortPathList = shortestPath(dijkstraFormatDict, start, end)
 fakenodesList = removeDublicates(fakenodesList)
-
+fakenodesList = sorted(fakenodesList)
 
 #OUTPUT
-print "Dijkstra!"
-print dijkstraFormatDict
-sorted(fakenodesList)
-print "\n", fakenodesList
-sorted(pathCostMap, key = int)
+#print "Dijkstra!"
+#print dijkstraFormatDict
+#print "\n", fakenodesList
 #print("\n")
 #print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
 #print "\nShortest path from %s to %s :" %(start, end), shortPathList
-print "\nList of Nodes: ", fakenodesList
+#print "\nList of Nodes: ", fakenodesList
 #print "\nHashed Costs: ", pathCostMap
 #print "\nDelay Map: ", delayMap
 #print "\nThroughput Map: ", throughputMap
@@ -434,9 +436,11 @@ innerSPathDict = {}
 rawCostMap = {}	#lists costs from all to nodes, to all nodes
 tempDict = {}
 
-for x in range(1,len(fakenodesList)+1):
+#for x in range(1,len(fakenodesList)+1):
+for x in fakenodesList:
 	#print "Outter: ", x
-	for y in range(1,len(fakenodesList)+1):
+	#for y in range(1,len(fakenodesList)+1):
+	for y in fakenodesList:
 		shortPathList = shortestPath(dijkstraFormatDict, x, y)
 		tempList.append(shortPathList)
 		#assign the shortestpath from x to y to a dict with key y
@@ -452,13 +456,13 @@ for x in range(1,len(fakenodesList)+1):
 #print totalSPathDict
 
 
-costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
-costMapFile.write(str(rawCostMap))
-costMapFile.close()
+#costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
+#costMapFile.write(str(rawCostMap))
+#costMapFile.close()
 
-costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
-pickle.dump(rawCostMap, costMapPickle)
-costMapPickle.close()
+#costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
+#pickle.dump(rawCostMap, costMapPickle)
+#costMapPickle.close()
 
 tempFakeNodesList = list(fakenodesList)
 
@@ -484,13 +488,19 @@ realCostMap.close()
 
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
-testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
+#testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
+print tracerouteDict
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
 drawGraph_.drawNetworkMap(aggNetMap, graphName+'_NETWORKMAP')
+#generate outputfile with statistics of edge and node count
+counter_.genStats()
+
+#print tracerouteDict
 
 
 print "\nDONE, please see the Output folder for the 3 resulting Views:"
 print "\n\t"+graphName+"_GTRUTH (ground truth)"
 print "\t"+graphName+"_ALTO \t(Alto)"
 print "\t"+graphName+"_TR \t(traceroute)\n"
+print "\n\tNode & Edge count: TOTAL_STATS_COUNT.txt\n"
 

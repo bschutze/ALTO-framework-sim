@@ -1,0 +1,4 @@
+
+Assumptions:
+
+when a node is hidden traceroute will not detect it!

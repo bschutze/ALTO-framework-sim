@@ -1,0 +1,135 @@
+digraph Test {
+
+	/*compound=true*/
+	node [shape=box];
+	edge [len=3];
+	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
+	//BACKBONE NODES
+	200[group=A]; 201[group=A]; 203[group=A]; 204[group=A]; 205[group=A]; 206[group=A]; 207[group=A]; 208[group=A]; 209[group=A]; 210[group=A]; 211[group=A];
+	212[group=A]; 213[group=A]; 214[group=A]; 215[group=A]; 216[group=A]; 217[group=A]; 218[group=A]; 219[group=A]; 220[group=A]; 221[group=A]; 222[group=A];
+	223[group=A]; 224[group=A]; 225[group=A]; 226[group=A]; 227[group=A];
+	overlap = scale;
+	splines = false;
+	label = DI_20N;
+	orientation = portrait;
+	
+	//BACKBONE EDGES
+	200 -> 201	[label=1,headlabel="201-200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	200 -> 223	[label=1,headlabel="223-200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	200 -> 203	[label=1,headlabel="203-200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	201 -> 200	[label=1,headlabel="200-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 202	[label=1,headlabel="202-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 203	[label=1,headlabel="203-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 207	[label=1,headlabel="207-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 208	[label=1,headlabel="208-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 219	[label=1,headlabel="219-201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 201	[label=1,headlabel="201-202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	203 -> 200	[label=1,headlabel="200-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 201	[label=1,headlabel="201-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 204	[label=1,headlabel="204-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 205	[label=1,headlabel="205-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 206	[label=1,headlabel="206-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 220	[label=1,headlabel="220-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 223	[label=1,headlabel="223-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 225	[label=1,headlabel="225-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 216	[label=1,headlabel="216-203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	204 -> 203	[label=1,headlabel="203-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	204 -> 206	[label=1,headlabel="206-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	205 -> 203	[label=1,headlabel="203-204" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	206 -> 203	[label=1,headlabel="203-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	206 -> 204	[label=1,headlabel="204-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	206 -> 219	[label=1,headlabel="219-206" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	207 -> 201	[label=1,headlabel="201-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	207 -> 208	[label=1,headlabel="208-207" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	208 -> 201	[label=1,headlabel="201-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 207	[label=1,headlabel="207-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	208 -> 209	[label=1,headlabel="209-208" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	209 -> 208	[label=1,headlabel="208-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 210	[label=1,headlabel="210-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 211	[label=1,headlabel="211-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 216	[label=1,headlabel="216-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	209 -> 220	[label=1,headlabel="220-209" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	210 -> 209	[label=1,headlabel="209-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 211	[label=1,headlabel="211-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	211 -> 209	[label=1,headlabel="209-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 210	[label=1,headlabel="210-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 212	[label=1,headlabel="212-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 213	[label=1,headlabel="213-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	212 -> 211	[label=1,headlabel="211-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	213 -> 211	[label=1,headlabel="211-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 214	[label=1,headlabel="214-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 215	[label=1,headlabel="215-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 216	[label=1,headlabel="216-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 213	[label=1,headlabel="214-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	215 -> 213	[label=1,headlabel="215-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	216 -> 209	[label=1,headlabel="209-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	216 -> 213	[label=1,headlabel="213-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	216 -> 217	[label=1,headlabel="217-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	216 -> 218	[label=1,headlabel="218-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	216 -> 203	[label=1,headlabel="203-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	216 -> 227	[label=1,headlabel="227-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	217 -> 216	[label=1,headlabel="217-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	218 -> 216	[label=1,headlabel="218-216" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	219 -> 206	[label=1,headlabel="206-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	219 -> 201	[label=1,headlabel="201-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	219 -> 220	[label=1,headlabel="220-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	219 -> 221	[label=1,headlabel="221-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	219 -> 223	[label=1,headlabel="223-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	219 -> 227	[label=1,headlabel="227-219" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	220 -> 219	[label=1,headlabel="219-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 203	[label=1,headlabel="203-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 221	[label=1,headlabel="221-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 209	[label=1,headlabel="209-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	221 -> 220	[label=1,headlabel="220-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	221 -> 219	[label=1,headlabel="219-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	221 -> 222	[label=1,headlabel="222-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	222 -> 221	[label=1,headlabel="221-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	222 -> 223	[label=1,headlabel="223-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	223 -> 200	[label=1,headlabel="200-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 222	[label=1,headlabel="222-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 219	[label=1,headlabel="219-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 227	[label=1,headlabel="227-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 226	[label=1,headlabel="226-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 225	[label=1,headlabel="225-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	223 -> 224	[label=1,headlabel="224-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	224 -> 223	[label=1,headlabel="223-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	224 -> 225	[label=1,headlabel="225-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	224 -> 226	[label=1,headlabel="226-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	224 -> 227	[label=1,headlabel="227-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	225 -> 226	[label=1,headlabel="226-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	225 -> 227	[label=1,headlabel="227-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	225 -> 224	[label=1,headlabel="224-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	225 -> 223	[label=1,headlabel="223-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	225 -> 203	[label=1,headlabel="203-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	226 -> 225	[label=1,headlabel="225-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	226 -> 224	[label=1,headlabel="224-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	226 -> 223	[label=1,headlabel="223-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	226 -> 227	[label=1,headlabel="227-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	227 -> 225	[label=1,headlabel="225-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	227 -> 226	[label=1,headlabel="226-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	227 -> 224	[label=1,headlabel="224-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	227 -> 223	[label=1,headlabel="223-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	227 -> 216	[label=1,headlabel="216-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	227 -> 219	[label=1,headlabel="219-227" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	}
