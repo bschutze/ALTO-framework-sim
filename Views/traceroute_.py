@@ -70,7 +70,7 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 						#trimming the first charackter in this case: "
 						head = t_head[1:]
 						temp_inter.append('*'+str(head)+'*')
-						print "Starred: *" +  str(head)+'*'
+						#print "Starred: *" +  str(head)+'*'
 						continue
 					#check if alias resulution is possible on edge
 					aliResTest = aliasResMap[(first*HASH_MULTIPLIER)+second]
@@ -85,10 +85,10 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 						#print "Adding: ", head
 						temp_inter.append(int(head))
 						edgesFound.append(int(head))
-						print "Normal: ", head
+						#print "Normal: ", head
 					else:
 						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
-						print "Encountered ALIAS RESULUTION NO!:", interfaces[(first*HASH_MULTIPLIER)+second]
+						#print "Encountered ALIAS RESULUTION NO!:", interfaces[(first*HASH_MULTIPLIER)+second]
 						#print temp_interfaces
 			#print "Adding interfaces: ", temp_inter
 			innerDict[target] = copy.deepcopy(temp_inter)
@@ -178,22 +178,4 @@ def getStarredNodes(nodeList):
 			starredNodes.append(name)
 	#print "Vanatage Pointss:", vantagePoints
 	return starredNodes
-"""
-#essentially wrong, because edges to node 5 still exist... I have to remove it after collecting the interfaces.
-def removeHiddenNodes(nodesH, listOfNodes):
-	for node in nodesH:
-		if node in listOfNodes:
-			print "ON THE INSIDE"
-			print node
-			print listOfNodes
-			print "afer deletion: "
-			listOfNodes.remove(node)
-			print listOfNodes
-	return listOfNodes
-	
-#method 
-def aliasResolution(aliasResMap, HASH_MULTI, src, dest):
-	tmp = aliasResMap[(src*HASH_MULTI)+dest]
-	#print "ALIAS RESOLUTION: ", tmp
-	return tmp
-"""
+
