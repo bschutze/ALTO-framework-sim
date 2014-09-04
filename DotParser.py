@@ -487,15 +487,14 @@ realCostMap.close()
 
 
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
-tracerouteDict = traceroute_.genTracerouteView(aliasResMap, nodeList, totalSPathDict, interfaceMap)
+tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList, totalSPathDict, interfaceMap, graphName)
 #testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
-print tracerouteDict
+#print tracerouteDict
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
 drawGraph_.drawNetworkMap(aggNetMap, graphName+'_NETWORKMAP')
 #generate outputfile with statistics of edge and node count
 counter_.genStats()
 
-#print tracerouteDict
 
 
 print "\nDONE, please see the Output folder for the 3 resulting Views:"
@@ -506,5 +505,6 @@ print "\n\tNode & Edge count: TOTAL_STATS_COUNT.txt\n"
 print "\tAlto Maps:"
 print "\tALTO/"+graphName+"_ALTO_NETWORK_MAP.txt"
 print "\tALTO/"+graphName+"_ALTO_COST_MAP.txt\n"
+#print 
 
 

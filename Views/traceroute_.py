@@ -8,6 +8,7 @@
 import pydot
 import json	#for parsing edge attributes
 import copy
+from utilities import file_interfaces_
 
 #from utilities import drawTracerouteView
 #import pyparsing
@@ -20,7 +21,7 @@ import copy
 #Method generates the Traceroute View of the graph. We list the headlabels on the shortest path and apply alias resolution
 #TODO we are resolving all interfaces, as long as node is not marked hidden
 #@returns a tree structure representing the traceroute view of the network
-def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
+def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, interfaces, graphName):
 	#print "GEN TRACEROUTE:"
 	#print shortestPathsDict
 	tree = shortestPathsDict
@@ -30,6 +31,12 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 	#variables for drawing traceroute view
 	nodesFound = []
 	edgesFound = []
+	#total latency between src and target
+	total_latency = 0
+	#string containing all latency for write to file
+	text_total_latency = ""
+	#string for latency inbetween nodes
+	text_latency = ""
 	#starCounter = 1 #counts the number of times a unresponsive node is found. Counter is appended to the name.
 	#src and target for the interface trace
 	vantagePoints = getVantagePoints(nodeList) #the list of vantage points from where we collect interfaces(headlabels)
@@ -41,10 +48,11 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 		for target in targets:
 			temp_inter=[]
 			#print "Building new Tree with source: %d  \t|target: %d \t|"%(src,target)
-			#extracting the list of the 
+			#extracting the list of the intermediate nodes
 			tempVPs = ((tree[src])[target])
 			#print tempVPs
-			#testStuff = removeHiddenNodes(hiddenNodes, tempVPs) TODO this is not the right way. rework
+			text_latency = "Path %d  ->  %d\t via: %s\n"%(src, target, tempVPs)
+			
 			if len(tempVPs) == 1:
 				temp_inter = tempVPs
 			else:
@@ -58,9 +66,15 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 					second = tempVPs[key+1]
 					#print "SECOND: ", second
 					#print second
+					#Adding up the total latency between src and target.
+					#text_latency = text_latency + str(latencyMap[(first*HASH_MULTIPLIER)+second])
+					total_latency = total_latency + latencyMap[(first*HASH_MULTIPLIER)+second]
+					
+					
 					#when targeting a hidden node, omit from trace,
 					if second in hiddenNodes:
 						#print "Encountered hidden node: ", second
+						text_latency = text_latency +"From: "+str(first)+" to hidden: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
 						continue
 					if second in starredNodes:
 						tmpVal = interfaces[(first*HASH_MULTIPLIER)+second]
@@ -71,6 +85,8 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 						head = t_head[1:]
 						temp_inter.append('*'+str(head)+'*')
 						#print "Starred: *" +  str(head)+'*'
+						
+						text_latency = text_latency +"From: "+str(first)+" to starred: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
 						continue
 					#check if alias resulution is possible on edge
 					aliResTest = aliasResMap[(first*HASH_MULTIPLIER)+second]
@@ -86,17 +102,27 @@ def genTracerouteView(aliasResMap,nodeList, shortestPathsDict, interfaces):
 						temp_inter.append(int(head))
 						edgesFound.append(int(head))
 						#print "Normal: ", head
+						text_latency = text_latency +"From: "+str(first)+" to: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
 					else:
 						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
+						text_latency = text_latency +"From: "+str(first)+" to alias: "+(interfaces[(first*HASH_MULTIPLIER)+second])
+						text_latency = text_latency +" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
 						#print "Encountered ALIAS RESULUTION NO!:", interfaces[(first*HASH_MULTIPLIER)+second]
 						#print temp_interfaces
+						
 			#print "Adding interfaces: ", temp_inter
 			innerDict[target] = copy.deepcopy(temp_inter)
 			#print "INNER DICT LOADING WITH:"
 			#print innerDict
+			#Adding the latency for the complete path into a String to written to a file
+			text_total_latency += text_latency
+			text_total_latency = text_total_latency+"Path Total: "+str(total_latency)+"\n\n"
+			total_latency = 0
+			
 		outterDict[src] = copy.deepcopy(innerDict)
 	#print "\n\nHERE"
 	#print outterDict
+	file_interfaces_.writeToFile(text_total_latency,graphName)
 	return outterDict
 
 #method that creates a neighborhood view of the traceroute shortest path traces, only the result from genTracerouteView() is needed

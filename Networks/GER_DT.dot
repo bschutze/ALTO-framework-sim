@@ -10,65 +10,65 @@ digraph Test {
 	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
 	
 	//Kiel
-	200[group=A]; 201[group=A]; 202[group=A]; 
+	200[group=V]; 201[group=A]; 202[group=A]; 
 	//Hamburg
-	210[group=A]; 211[group=A]; 212[group=A]; 213[group=A]; 214[group=A]; 215[group=A]; 
+	210[group=V]; 211[group=A]; 212[group=A]; 213[group=A]; 214[group=A]; 215[group=A]; 
 	//Hannover
-	220[group=A]; 221[group=A]; 222[group=A]; 223[group=A]; 224[group=A]; 225[group=A]; 226[group=A]; 227[group=A]; 228[group=A]; 
+	220[group=A]; 221[group=V]; 222[group=A]; 223[group=A]; 224[group=A]; 225[group=A]; 226[group=A]; 227[group=A]; 228[group=A]; 
 	//Berlin
-	230[group=A]; 231[group=A]; 232[group=A]; 233[group=A]; 234[group=A]; 235[group=A]; 
+	230[group=A]; 231[group=V]; 232[group=A]; 233[group=A]; 234[group=A]; 235[group=A]; 
 	//Leipzig
-	240[group=A]; 241[group=A]; 242[group=A]; 243[group=A]; 244[group=A]; 245[group=A]; 246[group=A]; 247[group=A]; 248[group=A]; 249[group=A]; 
+	240[group=A]; 241[group=V]; 242[group=A]; 243[group=A]; 244[group=A]; 245[group=A]; 246[group=A]; 247[group=A]; 248[group=A]; 249[group=A]; 
 	//Dresden
-	250[group=A]; 251[group=A]; 252[group=A]; 
+	250[group=A]; 251[group=V]; 252[group=A]; 
 	//München
-	260[group=A]; 261[group=A]; 262[group=A]; 263[group=A]; 264[group=A]; 265[group=A]; 266[group=A]; 
+	260[group=A]; 261[group=V]; 262[group=A]; 263[group=A]; 264[group=A]; 265[group=A]; 266[group=A]; 
 	//Nürnberg
-	270[group=A]; 271[group=A]; 272[group=A]; 273[group=A]; 274[group=A]; 
+	270[group=A]; 271[group=V]; 272[group=A]; 273[group=A]; 274[group=A]; 
 	//Ulm
-	280[group=A]; 281[group=A]; 282[group=A];
+	280[group=A]; 281[group=V]; 282[group=A];
 	//Stuttgart
-	290[group=A]; 291[group=A]; 292[group=A]; 293[group=A]; 294[group=A]; 
+	290[group=A]; 291[group=V]; 292[group=A]; 293[group=A]; 294[group=A]; 
 	//Frankfurt am Main
-	300[group=A]; 301[group=A]; 302[group=A]; 303[group=A]; 
-	420[group=A]; 421[group=A]; 242[group=A]; 
+	300[group=A]; 301[group=V]; 302[group=A]; 303[group=A]; 
+	420[group=A];// 421[group=A]; 242[group=A]; 
 	//Köln
-	310[group=A]; 311[group=A]; 312[group=A]; 
+	310[group=A]; 311[group=V]; 312[group=A]; 
 	//Essen
-	320[group=A]; 321[group=A]; 322[group=A]; 323[group=A]; 324[group=A]; 325[group=A]; 326[group=A]; 327[group=A]; 
+	320[group=A]; 321[group=V]; 322[group=A]; 323[group=A]; 324[group=A]; 325[group=A]; 326[group=A]; 327[group=A]; 
 	//Bochum
-	330[group=A]; 331[group=A]; 332[group=A]; 333[group=A]; 
+	330[group=A]; 331[group=V]; 332[group=A]; 333[group=A]; 
 	//Dortmund
-	340[group=A]; 341[group=A]; 342[group=A];
+	340[group=A]; 341[group=V]; 342[group=A];
 	//Düsseldorf
-	350[group=A]; 351[group=A]; 352[group=A]; 
+	350[group=A]; 351[group=V]; 352[group=A]; 
 	//Frankfurt/Oder
-	360[group=A]; 361[group=A]; 362[group=A]; 
+	360[group=A]; 361[group=V]; 362[group=A]; 
 	//Wolfsburg
-	370[group=A]; 371[group=A]; 372[group=A]; 
+	370[group=A]; 371[group=V]; 372[group=A]; 
 	//Magdeburg
-	380[group=A]; 381[group=A]; 382[group=A]; 
+	380[group=A]; 381[group=V]; 382[group=A]; 
 	//Landshut
-	390[group=A]; 391[group=A]; 392[group=A]; 
+	390[group=A]; 391[group=V]; 392[group=A]; 
 	//Augsburg
-	400[group=A]; 401[group=A]; 402[group=A]; 
+	400[group=A]; 401[group=V]; 402[group=A]; 
 	//Regensburg
-	410[group=A]; 411[group=A]; 412[group=A]; 
+	410[group=A]; 411[group=V]; 412[group=A]; 
 	//Bonn
-	430[group=A]; 431[group=A]; 432[group=A]; 
+	430[group=A]; 431[group=V]; 432[group=A]; 
 	//Brandenburg
-	440[group=A]; 441[group=A]; 442[group=A]; 
+	440[group=A]; 441[group=V]; 442[group=A]; 
 	//Chemnitz
-	450[group=A]; 451[group=A]; 452[group=A]; 
+	450[group=A]; 451[group=V]; 452[group=A]; 
 	//LIL citys
-	460[group=A]; 461[group=A]; 462[group=A]; 
-	470[group=A]; 471[group=A]; 472[group=A]; 
-	480[group=A]; 481[group=A]; 482[group=A]; 
-	490[group=A]; 491[group=A]; 492[group=A]; 
-	500[group=A]; 500[group=A]; 500[group=A]; 
+	460[group=A]; 461[group=V]; 462[group=A]; 
+	470[group=A]; 471[group=V]; 472[group=A]; 
+	480[group=A]; 481[group=V]; 482[group=A]; 
+	490[group=A]; 491[group=V]; 492[group=A]; 
+	500[group=A]; 500[group=V]; 500[group=A]; 
 
 	
-	
+//$%&	
 	//Kiel
 	200 -> 201	[label=1,headlabel="201-200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	200 -> 202	[label=1,headlabel="202-200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -80,14 +80,15 @@ digraph Test {
 	
 	//Hamburg
 	210 -> 211	[label=1,headlabel="211-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-//	210 -> 212	[label=1,headlabel="212-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 212	[label=1,headlabel="212-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	210 -> 213	[label=1,headlabel="213-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	210 -> 215	[label=1,headlabel="215-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	210 -> 200	[label=1,headlabel="200-210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	211 -> 210	[label=1,headlabel="210-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	211 -> 212	[label=1,headlabel="212-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	211 -> 213	[label=1,headlabel="213-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	211 -> 241 	[label=1,headlabel="241-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 213	[label=1,headlabel="213-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 214	[label=1,headlabel="214-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 241 	[label=1,headlabel="241-211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	212 -> 210	[label=1,headlabel="210-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	212 -> 211	[label=1,headlabel="211-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	212 -> 213	[label=1,headlabel="213-212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -100,6 +101,7 @@ digraph Test {
 	213 -> 215	[label=1,headlabel="215-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	213 -> 220	[label=1,headlabel="220-213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	214 -> 211	[label=1,headlabel="211-214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 212	[label=1,headlabel="212-214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	214 -> 213	[label=1,headlabel="213-214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	214 -> 215	[label=1,headlabel="215-214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	214 -> 300	[label=1,headlabel="300-214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -109,34 +111,30 @@ digraph Test {
 	215 -> 320	[label=1,headlabel="320-215" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	//Hannover
-	220 -> 213	[label=1,headlabel="210-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	220 -> 221	[label=1,headlabel="221-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 213	[label=1,headlabel="213-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 224	[label=1,headlabel="224-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	220 -> 222	[label=1,headlabel="222-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	220 -> 228	[label=1,headlabel="228-220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	221 -> 370	[label=1,headlabel="370-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	221 -> 220	[label=1,headlabel="220-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	221 -> 222	[label=1,headlabel="222-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	221 -> 223	[label=1,headlabel="223-221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	222 -> 220	[label=1,headlabel="220-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	222 -> 221	[label=1,headlabel="221-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	222 -> 223	[label=1,headlabel="223-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	222 -> 224	[label=1,headlabel="224-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	222 -> 380	[label=1,headlabel="380-222" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	223 -> 221	[label=1,headlabel="221-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	223 -> 222	[label=1,headlabel="222-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	223 -> 224	[label=1,headlabel="224-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	223 -> 225	[label=1,headlabel="225-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	223 -> 240	[label=1,headlabel="240-223" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	224 -> 222	[label=1,headlabel="222-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	224 -> 220	[label=1,headlabel="220-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	224 -> 223	[label=1,headlabel="223-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	224 -> 225	[label=1,headlabel="225-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	224 -> 226	[label=1,headlabel="226-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	224 -> 231	[label=1,headlabel="231-224" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	225 -> 223	[label=1,headlabel="223-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	225 -> 224	[label=1,headlabel="224-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	225 -> 226	[label=1,headlabel="226-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	225 -> 301	[label=1,headlabel="301-225" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	226 -> 224	[label=1,headlabel="224-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	226 -> 225	[label=1,headlabel="225-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	226 -> 311	[label=1,headlabel="311-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	226 -> 227	[label=1,headlabel="227-226" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -152,8 +150,6 @@ digraph Test {
 	//BERLIN
 	230 -> 212	[label=1,headlabel="212-230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	230 -> 231	[label=1,headlabel="231-230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	230 -> 232	[label=1,headlabel="232-230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	230 -> 233	[label=1,headlabel="233-230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	230 -> 235	[label=1,headlabel="235-230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	231 -> 224	[label=1,headlabel="224-231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	231 -> 230	[label=1,headlabel="230-231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -161,14 +157,10 @@ digraph Test {
 	231 -> 233	[label=1,headlabel="233-231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	231 -> 234	[label=1,headlabel="234-231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	232 -> 360	[label=1,headlabel="360-232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	232 -> 230	[label=1,headlabel="230-232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	232 -> 231	[label=1,headlabel="231-232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	232 -> 233	[label=1,headlabel="233-232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	232 -> 234	[label=1,headlabel="234-232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	233 -> 242	[label=1,headlabel="242-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	233 -> 230	[label=1,headlabel="230-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	233 -> 231	[label=1,headlabel="231-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	233 -> 232	[label=1,headlabel="232-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	233 -> 234	[label=1,headlabel="234-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	233 -> 235	[label=1,headlabel="235-233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	234 -> 302	[label=1,headlabel="302-234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -178,7 +170,6 @@ digraph Test {
 	234 -> 235	[label=1,headlabel="235-234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	235 -> 440	[label=1,headlabel="440-235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	235 -> 230	[label=1,headlabel="230-235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-//	235 -> 232	[label=1,headlabel="232-235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	235 -> 233	[label=1,headlabel="233-235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	235 -> 234	[label=1,headlabel="234-235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
@@ -207,7 +198,7 @@ digraph Test {
 	245 -> 244	[label=1,headlabel="244-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	245 -> 246	[label=1,headlabel="246-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	245 -> 247	[label=1,headlabel="247-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	245 -> 248	[label=1,headlabel="248-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	245 -> 249	[label=1,headlabel="249-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	245 -> 270	[label=1,headlabel="270-245" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	246 -> 291	[label=1,headlabel="291-246" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	246 -> 245	[label=1,headlabel="245-246" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -219,16 +210,13 @@ digraph Test {
 	247 -> 245	[label=1,headlabel="245-247" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	247 -> 246	[label=1,headlabel="246-247" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	247 -> 248	[label=1,headlabel="248-247" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-//	247 -> 249	[label=1,headlabel="249-247" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	248 -> 250	[label=1,headlabel="250-248" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	248 -> 245	[label=1,headlabel="245-248" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	248 -> 246	[label=1,headlabel="246-248" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	248 -> 247	[label=1,headlabel="247-248" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	248 -> 249	[label=1,headlabel="249-248" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	249 -> 450	[label=1,headlabel="450-249" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	249 -> 245	[label=1,headlabel="245-249" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	249 -> 246	[label=1,headlabel="246-249" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-//	249 -> 247	[label=1,headlabel="247-249" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	249 -> 248	[label=1,headlabel="248-249" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	//Dresden
@@ -263,7 +251,7 @@ digraph Test {
 	264 -> 263	[label=1,headlabel="263-264" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	264 -> 265	[label=1,headlabel="265-264" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	264 -> 266	[label=1,headlabel="266-264" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	265 -> 390	[label=1,headlabel="266-265" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	265 -> 390	[label=1,headlabel="390-265" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	265 -> 264	[label=1,headlabel="264-265" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	265 -> 266	[label=1,headlabel="266-265" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	266 -> 400	[label=1,headlabel="400-266" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -281,12 +269,11 @@ digraph Test {
 	271 -> 272	[label=1,headlabel="272-271" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	272 -> 261	[label=1,headlabel="261-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	272 -> 270	[label=1,headlabel="270-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	272 -> 271	[label=1,headlabel="270-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	272 -> 271	[label=1,headlabel="271-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	272 -> 273	[label=1,headlabel="273-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	272 -> 274	[label=1,headlabel="274-272" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	273 -> 280	[label=1,headlabel="280-273" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	273 -> 270	[label=1,headlabel="270-273" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-//	273 -> 271	[label=1,headlabel="271-273" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	273 -> 272	[label=1,headlabel="272-273" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	273 -> 274	[label=1,headlabel="274-273" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	274 -> 304	[label=1,headlabel="304-274" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -304,12 +291,10 @@ digraph Test {
 	282 -> 306	[label=1,headlabel="306-282" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	//Stuttgart
-	290 -> 291	[label=1,headlabel="291-290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	290 -> 292	[label=1,headlabel="292-290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	290 -> 293	[label=1,headlabel="293-290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	290 -> 294	[label=1,headlabel="294-290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	290 -> 264	[label=1,headlabel="264-290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	291 -> 290	[label=1,headlabel="290-291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	291 -> 292	[label=1,headlabel="292-291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	291 -> 293	[label=1,headlabel="293-291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	291 -> 294	[label=1,headlabel="294-291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -321,7 +306,7 @@ digraph Test {
 	292 -> 307	[label=1,headlabel="307-292" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	293 -> 290	[label=1,headlabel="290-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	293 -> 291	[label=1,headlabel="291-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	293 -> 292	[label=1,headlabel="293-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	293 -> 292	[label=1,headlabel="292-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	293 -> 294	[label=1,headlabel="294-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	293 -> 460	[label=1,headlabel="460-293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	294 -> 290	[label=1,headlabel="290-294" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -356,20 +341,22 @@ digraph Test {
 	305 -> 263	[label=1,headlabel="263-305" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	305 -> 304	[label=1,headlabel="304-305" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	305 -> 306	[label=1,headlabel="306-305" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	305 -> 307	[label=1,headlabel="307-305" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	306 -> 282	[label=1,headlabel="282-306" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	306 -> 304	[label=1,headlabel="304-306" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	306 -> 305	[label=1,headlabel="305-306" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	306 -> 307	[label=1,headlabel="307-306" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	306 -> 309	[label=1,headlabel="309-306" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	307 -> 292	[label=1,headlabel="292-307" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	307 -> 304	[label=1,headlabel="304-307" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	307 -> 305	[label=1,headlabel="305-307" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	307 -> 306	[label=1,headlabel="306-307" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	307 -> 308 	[label=1,headlabel="308-307" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
+	308 -> 307	[label=1,headlabel="307-308" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	308 -> 310	[label=1,headlabel="310-308" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	308 -> 309	[label=1,headlabel="309-308" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	308 -> 420	[label=1,headlabel="420-308" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	309 -> 324	[label=1,headlabel="324-309" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	309 -> 306	[label=1,headlabel="306-309" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	309 -> 308	[label=1,headlabel="308-309" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	309 -> 420	[label=1,headlabel="420-309" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	420 -> 332	[label=1,headlabel="332-420" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -390,7 +377,6 @@ digraph Test {
 	312 -> 310	[label=1,headlabel="310-312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	312 -> 311	[label=1,headlabel="311-312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	312 -> 313	[label=1,headlabel="313-312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	312 -> 314	[label=1,headlabel="314-312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	313 -> 430	[label=1,headlabel="430-313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	313 -> 310	[label=1,headlabel="310-313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	313 -> 311	[label=1,headlabel="311-313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -398,7 +384,6 @@ digraph Test {
 	313 -> 314	[label=1,headlabel="314-313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	314 -> 350	[label=1,headlabel="350-314" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	314 -> 313	[label=1,headlabel="313-314" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	314 -> 312	[label=1,headlabel="312-314" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	314 -> 311	[label=1,headlabel="311-314" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	//Essen
@@ -476,7 +461,7 @@ digraph Test {
 	352 -> 351	[label=1,headlabel="351-352" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 		
 	//Frankfurt/Oder
-	360 -> 232	[label=1,headlabel="" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	360 -> 232	[label=1,headlabel="232-360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	360 -> 361	[label=1,headlabel="361-360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	360 -> 362	[label=1,headlabel="362-360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	361 -> 360	[label=1,headlabel="360-361" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -580,8 +565,8 @@ digraph Test {
 	482 -> 481	[label=1,headlabel="481-482" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	490 -> 327	[label=1,headlabel="327-490" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	490 -> 491	[label=1,headlabel="491-490" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	490 -> 492	[label=1,headlabel="492-491" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	491 -> 490	[label=1,headlabel="491-490" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	490 -> 492	[label=1,headlabel="492-490" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	491 -> 490	[label=1,headlabel="490-491" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	491 -> 492	[label=1,headlabel="492-491" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	492 -> 490	[label=1,headlabel="490-492" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	492 -> 491	[label=1,headlabel="491-492" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
