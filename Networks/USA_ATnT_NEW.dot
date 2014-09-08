@@ -1,0 +1,865 @@
+digraph Test {
+
+	/*compound=true*/
+	node [shape=box];
+	edge [len=3];
+	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
+	//BACKBONE NODES
+	100[group=H]; 101[group=H]; 102[group=H]; //SEATTLE
+	103[group=H]; 104[group=H]; 105[group=H]; 106[group=H]; 107[group=H]; //SF
+	108[group=H]; 109[group=H]; 110[group=H]; 112[group=H]; 113[group=H]; 114[group=H]; 115[group=H]; 116[group=H]; //LA
+	117[group=H]; 118[group=H]; //SD
+	119[group=H]; 120[group=H]; //SL
+	121[group=A]; 122[group=A]; 123[group=A]; //Phx
+	124[group=A]; 125[group=A]; 126[group=A]; //DENVER
+	127[group=A]; 128[group=A]; 129[group=A]; 130[group=A]; 131[group=A]; //Dallas
+	132[group=A]; 133[group=A]; //San Antonio
+	134[group=A]; 135[group=A]; 136[group=A]; 137[group=A]; //Houston
+	138[group=A]; //NO
+	139[group=A]; 140[group=A]; 141[group=A]; 142[group=A]; //MIA
+	143[group=A]; 144[group=A]; 145[group=A]; 146[group=A]; //ATL
+	147[group=A]; 148[group=A]; 149[group=A]; //KC
+	150[group=A]; 151[group=A]; 152[group=A]; //Omaha
+	153[group=A]; 154[group=A]; //Minapolis
+	155[group=A]; 156[group=A]; 157[group=A]; 158[group=A]; //St.Louis
+	159[group=A]; 160[group=A]; 161[group=A]; 162[group=A]; 163[group=A]; //CHICAGO
+	164[group=A]; //Nashville
+	165[group=A]; 166[group=A]; 167[group=A]; 168[group=A]; //DETROIT
+	169[group=A]; //Charlotte
+	170[group=A]; //TAMPA BAY
+	171[group=A]; //Ft. Lauderdale
+	172[group=A]; 173[group=A]; 174[group=A]; 175[group=A]; //Washington D.C.
+	176[group=A]; 177[group=A]; 178[group=A]; //Philly
+	179[group=A]; 180[group=A]; 181[group=A]; 182[group=A]; //NY
+	183[group=A]; //Honolulu
+	184[group=A]; //Las Vegas
+	
+	
+	
+	
+	//Aggregation Network
+	200[group=V]; 201[group=A]; 202[group=A]; 203[group=A];//Seattle
+	210[group=V]; 211[group=A]; 212[group=A]; 213[group=A]; 214[group=A]; 215[group=A];//San Fransico
+	220[group=V]; 221[group=A]; //Honolulu
+	230[group=V]; 231[group=A]; 232[group=A]; 233[group=A]; 234[group=A]; 235[group=A]; 236[group=A]; 237[group=A]; 238[group=A]; 239[group=A];//Los Angeles
+	240[group=V]; 241[group=A]; //San Diego
+	250[group=v]; 251[group=A]; //Las Vegas
+	260[group=V]; 261[group=A]; 262[group=A]; 263[group=A];//Phoenix
+	270[group=V]; 271[group=A]; //Salt Lake City
+	280[group=V]; 281[group=A]; 282[group=A]; 283[group=A];//Denver
+	290[group=V]; 291[group=A]; 292[group=A]; 293[group=A]; 294[group=A]; 295[group=A];//Dallas
+	300[group=V]; 301[group=A]; //San Antonio
+	310[group=V]; 311[group=A]; 312[group=A]; 313[group=A];//Houston
+	320[group=V]; 321[group=A]; //New Orealns
+	330[group=V]; 331[group=A]; 332[group=A]; 333[group=A]; //Miami
+	340[group=V]; 341[group=A]; //Tampa Bay
+	350[group=v]; 351[group=A]; //Ft. Lauderdale
+	360[group=v]; 361[group=A]; 362[group=A]; 363[group=A]; 364[group=A]; 365[group=A]; //Atlanta
+	370[group=v]; 371[group=A]; //Charlotte
+	380[group=v]; 381[group=A]; //Nashville
+	390[group=v]; 391[group=A]; 392[group=A]; 393[group=A]; //St. Louis
+	400[group=v]; 401[group=A]; 402[group=A]; 403[group=A]; //Kansas City
+	410[group=v]; 411[group=A]; 412[group=A]; 413[group=A]; //Omaha
+	420[group=v]; 421[group=A]; //Mineapolis
+	430[group=v]; 431[group=A]; 432[group=A]; 433[group=A]; 434[group=A]; 435[group=A]; //Chicago
+	440[group=v]; 441[group=A]; 442[group=A]; 443[group=A]; //Detroit
+	450[group=v]; 451[group=A]; 452[group=A]; 453[group=A]; //New York
+	460[group=v]; 461[group=A]; 462[group=A]; 463[group=A]; //Philadelphia
+	470[group=v]; 471[group=A]; 472[group=A]; 473[group=A]; //Washington DC.
+	
+	overlap = scale;
+	splines = false;
+	label = "ATnT USA Network";
+	orientation = portrait;
+	
+	//CORE EDGES
+	100 -> 161	[label=1,headlabel="161 - 100" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	101 -> 109	[label=1,headlabel="109 - 101" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	102 -> 103	[label=1,headlabel="103 - 102" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	103 -> 102	[label=1,headlabel="102 - 103" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 119	[label=1,headlabel="119 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 125	[label=1,headlabel="125 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 108	[label=1,headlabel="108 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	107 -> 183	[label=1,headlabel="183 - 107" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 106	[label=1,headlabel="106 - 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 101	[label=1,headlabel="101 - 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 184	[label=1,headlabel="184 - 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 160	[label=1,headlabel="160 - 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 180	[label=1,headlabel="180 - 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 172	[label=1,headlabel="172 - 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 144	[label=1,headlabel="144 - 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 122	[label=1,headlabel="122 - 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 117	[label=1,headlabel="117 - 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	117 -> 116	[label=1,headlabel="116 - 117" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	118 -> 121	[label=1,headlabel="121 - 118" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	119 -> 104	[label=1,headlabel="104 - 119" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	120 -> 124	[label=1,headlabel="124 - 120" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	121 -> 118	[label=1,headlabel="118 - 121" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	122 -> 115	[label=1,headlabel="115 - 122" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	123 -> 155	[label=1,headlabel="155 - 123" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	124 -> 120	[label=1,headlabel="120 - 124" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	125 -> 105	[label=1,headlabel="105 - 125" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	126 -> 127	[label=1,headlabel="127 - 126" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	127 -> 126	[label=1,headlabel="126 - 127" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 147	[label=1,headlabel="147 - 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 143	[label=1,headlabel="143 - 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 135	[label=1,headlabel="135 - 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	131 -> 132	[label=1,headlabel="132 - 131" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	132 -> 131	[label=1,headlabel="131 - 132" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	133 -> 134	[label=1,headlabel="134 - 133" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	134 -> 133	[label=1,headlabel="133 - 134" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	135 -> 130	[label=1,headlabel="130 - 135" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	136 -> 138	[label=1,headlabel="138 - 136" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	137 -> 139	[label=1,headlabel="139 - 137" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	138 -> 136	[label=1,headlabel="136 - 138" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	139 -> 137	[label=1,headlabel="137 - 139" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	140 -> 170	[label=1,headlabel="170 - 140" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	141 -> 185	[label=1,headlabel="185 - 141" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	142 -> 171	[label=1,headlabel="171 - 142" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	143 -> 129	[label=1,headlabel="129 - 143" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 114	[label=1,headlabel="114 - 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 164	[label=1,headlabel="164 - 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 169	[label=1,headlabel="169 - 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	147 -> 128	[label=1,headlabel="128 - 147" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	185 -> 141	[label=1,headlabel="141 - 185" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	148 -> 150	[label=1,headlabel="150 - 148" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	149 -> 156	[label=1,headlabel="156 - 149" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	150 -> 148	[label=1,headlabel="148 - 150" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	151 -> 153	[label=1,headlabel="153 - 151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	152 -> 157	[label=1,headlabel="157 - 152" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	153 -> 151	[label=1,headlabel="151 - 153" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	154 -> 162	[label=1,headlabel="162 - 154" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	155 -> 123	[label=1,headlabel="123 - 155" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	156 -> 149	[label=1,headlabel="149 - 156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	157 -> 152	[label=1,headlabel="152 - 157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	158 -> 159	[label=1,headlabel="159 - 158" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	159 -> 158	[label=1,headlabel="158 - 159" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 111	[label=1,headlabel="111 - 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 100	[label=1,headlabel="100 - 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 154	[label=1,headlabel="154 - 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	163 -> 165	[label=1,headlabel="165 - 163" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	164 -> 145	[label=1,headlabel="145 - 164" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	165 -> 163	[label=1,headlabel="163 - 165" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	166 -> 179	[label=1,headlabel="179 - 166" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	167 -> 177	[label=1,headlabel="177 - 167" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	168 -> 173	[label=1,headlabel="173 - 168" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	169 -> 146	[label=1,headlabel="146 - 169" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	170 -> 140	[label=1,headlabel="140 - 170" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	171 -> 142	[label=1,headlabel="142 - 171" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	172 -> 113	[label=1,headlabel="113 - 172" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	173 -> 168	[label=1,headlabel="168 - 173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	174 -> 181	[label=1,headlabel="181 - 174" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	175 -> 176	[label=1,headlabel="176 - 175" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	176 -> 175	[label=1,headlabel="175 - 176" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	177 -> 167	[label=1,headlabel="167 - 177" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	178 -> 182	[label=1,headlabel="182 - 178" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	179 -> 166	[label=1,headlabel="166 - 179" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	180 -> 112	[label=1,headlabel="112 - 180" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	181 -> 174	[label=1,headlabel="174 - 181" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	182 -> 178	[label=1,headlabel="178 - 182" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	183 -> 107	[label=1,headlabel="107 - 183" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	184 -> 110	[label=1,headlabel="110 - 184" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+		
+	
+	//POPS
+	//Seatle
+	100 -> 101	[label=1,headlabel="101 - 100" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	100 -> 200	[label=1,headlabel="200 - 100" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	100 -> 202	[label=1,headlabel="202 - 100" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	200 -> 100	[label=1,headlabel="100 - 200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	200 -> 201	[label=1,headlabel="201 - 200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	200 -> 102	[label=1,headlabel="102 - 200" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	101 -> 100	[label=1,headlabel="100 - 101" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	101 -> 201	[label=1,headlabel="201 - 101" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	101 -> 203	[label=1,headlabel="203 - 101" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	101 -> 102	[label=1,headlabel="102 - 101" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 200	[label=1,headlabel="200 - 201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	201 -> 101	[label=1,headlabel="101 - 201" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	102 -> 101	[label=1,headlabel="101 - 102" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	102 -> 200	[label=1,headlabel="200 - 102" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	102 -> 202	[label=1,headlabel="202 - 102" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 100	[label=1,headlabel="100 - 202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 102	[label=1,headlabel="102 - 202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	202 -> 203	[label=1,headlabel="203 - 202" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 101	[label=1,headlabel="101 - 203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	203 -> 202	[label=1,headlabel="202 - 203" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//San Fransico
+	103 -> 104	[label=1,headlabel="104 - 103" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	103 -> 210	[label=1,headlabel="210 - 103" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	103 -> 212	[label=1,headlabel="212 - 103" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	103 -> 214	[label=1,headlabel="214 - 103" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 103	[label=1,headlabel="103 - 210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 211	[label=1,headlabel="211 - 210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 105	[label=1,headlabel="105 - 210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	210 -> 107	[label=1,headlabel="107 - 210" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 103	[label=1,headlabel="103 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 105	[label=1,headlabel="105 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 211	[label=1,headlabel="211 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 213	[label=1,headlabel="213 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	104 -> 215	[label=1,headlabel="215 - 104" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 210	[label=1,headlabel="210 - 211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 104	[label=1,headlabel="104 - 211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	211 -> 106	[label=1,headlabel="106 - 211" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 104	[label=1,headlabel="104 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 106	[label=1,headlabel="106 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 210	[label=1,headlabel="210 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 212	[label=1,headlabel="212 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	105 -> 214	[label=1,headlabel="214 - 105" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	212 -> 103	[label=1,headlabel="103 - 212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	212 -> 105	[label=1,headlabel="105 - 212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	212 -> 213	[label=1,headlabel="213 - 212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	212 -> 107	[label=1,headlabel="107 - 212" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 105	[label=1,headlabel="105 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 107	[label=1,headlabel="107 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 211	[label=1,headlabel="211 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 213	[label=1,headlabel="213 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	106 -> 215	[label=1,headlabel="215 - 106" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 212	[label=1,headlabel="212 - 213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 104	[label=1,headlabel="104 - 213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	213 -> 106	[label=1,headlabel="106 - 213" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	107 -> 106	[label=1,headlabel="106 - 107" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	107 -> 210	[label=1,headlabel="210 - 107" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	107 -> 212	[label=1,headlabel="212 - 107" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	107 -> 214	[label=1,headlabel="214 - 107" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 103	[label=1,headlabel="103 - 214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 105	[label=1,headlabel="105 - 214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 107	[label=1,headlabel="107 - 214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	214 -> 215	[label=1,headlabel="215 - 214" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	215 -> 214	[label=1,headlabel="214 - 215" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	215 -> 104	[label=1,headlabel="104 - 215" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	215 -> 106	[label=1,headlabel="106 - 215" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Honolulu
+	183 -> 220	[label=1,headlabel="220 -> 183" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	183 -> 221	[label=1,headlabel="221 -> 183" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 183	[label=1,headlabel="183 -> 220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	220 -> 221	[label=1,headlabel="221 -> 220" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	221 -> 183	[label=1,headlabel="183 -> 221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	221 -> 220	[label=1,headlabel="220 -> 221" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	
+	//Los Angeles
+	108 -> 109	[label=1,headlabel="109 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 230	[label=1,headlabel="230 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 232	[label=1,headlabel="232 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 234	[label=1,headlabel="234 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 236	[label=1,headlabel="236 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	108 -> 238	[label=1,headlabel="238 -> 108" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 108	[label=1,headlabel="108 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 231	[label=1,headlabel="231 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 110	[label=1,headlabel="110 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 112	[label=1,headlabel="112 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 114	[label=1,headlabel="114 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	230 -> 116	[label=1,headlabel="116 -> 230" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 108	[label=1,headlabel="108 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 110	[label=1,headlabel="110 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 231	[label=1,headlabel="231 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 233	[label=1,headlabel="233 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 235	[label=1,headlabel="235 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 237	[label=1,headlabel="237 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	109 -> 239	[label=1,headlabel="239 -> 109" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	231 -> 230	[label=1,headlabel="230 -> 231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	231 -> 109	[label=1,headlabel="109 -> 231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	231 -> 111	[label=1,headlabel="111 -> 231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	231 -> 113	[label=1,headlabel="113 -> 231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	231 -> 115	[label=1,headlabel="115 -> 231" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 109	[label=1,headlabel="109 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 111	[label=1,headlabel="111 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 230	[label=1,headlabel="230 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 232	[label=1,headlabel="232 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 234	[label=1,headlabel="234 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 236	[label=1,headlabel="236 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	110 -> 238	[label=1,headlabel="238 -> 110" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 108	[label=1,headlabel="108 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 110	[label=1,headlabel="110 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 233	[label=1,headlabel="233 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 112	[label=1,headlabel="112 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 114	[label=1,headlabel="114 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	232 -> 116	[label=1,headlabel="116 -> 232" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 110	[label=1,headlabel="110 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 112	[label=1,headlabel="112 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 231	[label=1,headlabel="231 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 233	[label=1,headlabel="233 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 235	[label=1,headlabel="235 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 237	[label=1,headlabel="237 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	111 -> 239	[label=1,headlabel="239 -> 111" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	233 -> 232	[label=1,headlabel="232 -> 233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	233 -> 109	[label=1,headlabel="109 -> 233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	233 -> 111	[label=1,headlabel="111 -> 233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	233 -> 113	[label=1,headlabel="113 -> 233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	233 -> 115	[label=1,headlabel="115 -> 233" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 113	[label=1,headlabel="113 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 111	[label=1,headlabel="111 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 234	[label=1,headlabel="234 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 236	[label=1,headlabel="236 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 230	[label=1,headlabel="230 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 232	[label=1,headlabel="232 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	112 -> 238	[label=1,headlabel="238 -> 112" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 112	[label=1,headlabel="112 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 108	[label=1,headlabel="108 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 110	[label=1,headlabel="110 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 116	[label=1,headlabel="116 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 235	[label=1,headlabel="235 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	234 -> 114	[label=1,headlabel="114 -> 234" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 112	[label=1,headlabel="112 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 114	[label=1,headlabel="114 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 231	[label=1,headlabel="231 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 233	[label=1,headlabel="233 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 239	[label=1,headlabel="239 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 235	[label=1,headlabel="235 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	113 -> 237	[label=1,headlabel="237 -> 113" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	235 -> 234	[label=1,headlabel="234 -> 235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	235 -> 113	[label=1,headlabel="113 -> 235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	235 -> 115	[label=1,headlabel="115 -> 235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	235 -> 109	[label=1,headlabel="109 -> 235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	235 -> 111	[label=1,headlabel="111 -> 235" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 113	[label=1,headlabel="113 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 115	[label=1,headlabel="115 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 234	[label=1,headlabel="234 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 236	[label=1,headlabel="236 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 230	[label=1,headlabel="230 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 232	[label=1,headlabel="232 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	114 -> 238	[label=1,headlabel="238 -> 114" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 112	[label=1,headlabel="112 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 114	[label=1,headlabel="114 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 237	[label=1,headlabel="237 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 108	[label=1,headlabel="108 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 110	[label=1,headlabel="110 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	236 -> 116	[label=1,headlabel="116 -> 236" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 114	[label=1,headlabel="114 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 116	[label=1,headlabel="116 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 231	[label=1,headlabel="231 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 233	[label=1,headlabel="233 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 235	[label=1,headlabel="235 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 237	[label=1,headlabel="237 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	115 -> 239	[label=1,headlabel="239 -> 115" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	237 -> 236	[label=1,headlabel="236 -> 237" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	237 -> 109	[label=1,headlabel="109 -> 237" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	237 -> 111	[label=1,headlabel="111 -> 237" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	237 -> 113	[label=1,headlabel="113 -> 237" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	237 -> 115	[label=1,headlabel="115 -> 237" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 115	[label=1,headlabel="115 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 230	[label=1,headlabel="230 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 232	[label=1,headlabel="232 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 234	[label=1,headlabel="234 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 236	[label=1,headlabel="236 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	116 -> 238	[label=1,headlabel="238 -> 116" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 108	[label=1,headlabel="108 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 110	[label=1,headlabel="110 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 112	[label=1,headlabel="112 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 114	[label=1,headlabel="114 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 116	[label=1,headlabel="116 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	238 -> 239	[label=1,headlabel="239 -> 238" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	239 -> 238	[label=1,headlabel="238 -> 239" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	239 -> 109	[label=1,headlabel="109 -> 239" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	239 -> 111	[label=1,headlabel="111 -> 239" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	239 -> 113	[label=1,headlabel="113 -> 239" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	239 -> 115	[label=1,headlabel="115 -> 239" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//San Diego
+	117 -> 118	[label=1,headlabel="118 -> 117" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	117 -> 240	[label=1,headlabel="240 -> 117" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	240 -> 117	[label=1,headlabel="117 -> 240" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	240 -> 241	[label=1,headlabel="241 -> 240" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	118 -> 117	[label=1,headlabel="117 -> 118" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	118 -> 241	[label=1,headlabel="241 -> 118" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	241 -> 240	[label=1,headlabel="240 -> 241" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	241 -> 118	[label=1,headlabel="118 -> 241" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Las Vegas
+	184 -> 250	[label=1,headlabel="250 -> 184" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	184 -> 251	[label=1,headlabel="251 -> 184" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	250 -> 184	[label=1,headlabel="184 -> 250" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	250 -> 251	[label=1,headlabel="251 -> 250" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	251 -> 184	[label=1,headlabel="184 -> 251" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	251 -> 250	[label=1,headlabel="250 -> 251" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Pheonix
+	121 -> 122	[label=1,headlabel="122 -> 121" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	121 -> 260	[label=1,headlabel="260 -> 121" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	121 -> 262	[label=1,headlabel="262 -> 121" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	260 -> 121	[label=1,headlabel="121 -> 260" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	260 -> 261	[label=1,headlabel="261 -> 260" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	260 -> 123	[label=1,headlabel="123 -> 260" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	122 -> 121	[label=1,headlabel="121 -> 122" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	122 -> 261	[label=1,headlabel="261 -> 122" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	122 -> 263	[label=1,headlabel="263 -> 122" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	122 -> 123	[label=1,headlabel="123 -> 122" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	261 -> 260	[label=1,headlabel="260 -> 261" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	261 -> 122	[label=1,headlabel="122 -> 261" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	123 -> 122	[label=1,headlabel="122 -> 123" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	123 -> 260	[label=1,headlabel="260 -> 123" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	123 -> 262	[label=1,headlabel="262 -> 123" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	262 -> 121	[label=1,headlabel="121 -> 262" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	262 -> 123	[label=1,headlabel="123 -> 262" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	262 -> 263	[label=1,headlabel="263 -> 262" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	263 -> 122	[label=1,headlabel="122 -> 263" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	263 -> 262	[label=1,headlabel="262 -> 263" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Salt Lake City
+	119 -> 120	[label=1,headlabel="120 -> 119" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	119 -> 270	[label=1,headlabel="270 -> 119" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	270 -> 119	[label=1,headlabel="119 -> 270" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	270 -> 271	[label=1,headlabel="271 -> 270" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	120 -> 119	[label=1,headlabel="119 -> 120" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	120 -> 271	[label=1,headlabel="271 -> 120" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	271 -> 270	[label=1,headlabel="270 -> 271" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	271 -> 120	[label=1,headlabel="120 -> 271" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Denver
+	124 -> 125	[label=1,headlabel="125 -> 124" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	124 -> 280	[label=1,headlabel="280 -> 124" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	124 -> 282	[label=1,headlabel="282 -> 124" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	280 -> 124	[label=1,headlabel="124 -> 280" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	280 -> 281	[label=1,headlabel="281 -> 280" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	280 -> 126	[label=1,headlabel="126 -> 280" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	125 -> 124	[label=1,headlabel="124 -> 125" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	125 -> 281	[label=1,headlabel="281 -> 125" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	125 -> 283	[label=1,headlabel="283 -> 125" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	125 -> 126	[label=1,headlabel="126 -> 125" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	281 -> 280	[label=1,headlabel="280 -> 281" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	281 -> 125	[label=1,headlabel="125 -> 281" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	126 -> 125	[label=1,headlabel="125 -> 126" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	126 -> 280	[label=1,headlabel="280 -> 126" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	126 -> 282	[label=1,headlabel="282 -> 126" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	282 -> 124	[label=1,headlabel="124 -> 282" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	282 -> 126	[label=1,headlabel="126 -> 282" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	282 -> 283	[label=1,headlabel="283 -> 282" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	283 -> 125	[label=1,headlabel="125 -> 283" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	283 -> 282	[label=1,headlabel="282 -> 283" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Dallas
+	127 -> 128	[label=1,headlabel="128 -> 127" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	127 -> 290	[label=1,headlabel="290 -> 127" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	127 -> 292	[label=1,headlabel="292 -> 127" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	127 -> 294	[label=1,headlabel="294 -> 127" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	290 -> 127	[label=1,headlabel="127 -> 290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	290 -> 291	[label=1,headlabel="291 -> 290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	290 -> 129	[label=1,headlabel="129 -> 290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	290 -> 131	[label=1,headlabel="131 -> 290" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 127	[label=1,headlabel="127 -> 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 129	[label=1,headlabel="129 -> 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 291	[label=1,headlabel="291 -> 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 293	[label=1,headlabel="293 -> 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	128 -> 295	[label=1,headlabel="295 -> 128" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	291 -> 290	[label=1,headlabel="290 -> 291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	291 -> 128	[label=1,headlabel="128 -> 291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	291 -> 130	[label=1,headlabel="130 -> 291" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 128	[label=1,headlabel="128 -> 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 130	[label=1,headlabel="130 -> 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 290	[label=1,headlabel="290 -> 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 292	[label=1,headlabel="292 -> 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	129 -> 294	[label=1,headlabel="294 -> 129" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	292 -> 127	[label=1,headlabel="127 -> 292" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	292 -> 129	[label=1,headlabel="129 -> 292" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	292 -> 293	[label=1,headlabel="293 -> 292" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	292 -> 131	[label=1,headlabel="131 -> 292" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 129	[label=1,headlabel="129 -> 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 131	[label=1,headlabel="131 -> 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 291	[label=1,headlabel="291 -> 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 293	[label=1,headlabel="293 -> 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	130 -> 295	[label=1,headlabel="295 -> 130" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	293 -> 292	[label=1,headlabel="292 -> 293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	293 -> 128	[label=1,headlabel="128 -> 293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	293 -> 130	[label=1,headlabel="130 -> 293" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	131 -> 130	[label=1,headlabel="130 -> 131" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	131 -> 290	[label=1,headlabel="290 -> 131" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	131 -> 292	[label=1,headlabel="292 -> 131" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	131 -> 294	[label=1,headlabel="294 -> 131" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	294 -> 127	[label=1,headlabel="127 -> 294" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	294 -> 129	[label=1,headlabel="129 -> 294" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	294 -> 131	[label=1,headlabel="131 -> 294" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	294 -> 295	[label=1,headlabel="295 -> 294" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	295 -> 294	[label=1,headlabel="294 -> 295" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	295 -> 128	[label=1,headlabel="128 -> 295" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	295 -> 130	[label=1,headlabel="130 -> 295" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//San Antonio
+	132 -> 133	[label=1,headlabel="133 -> 132" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	132 -> 300	[label=1,headlabel="300 -> 132" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	300 -> 132	[label=1,headlabel="132 -> 300" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	300 -> 301	[label=1,headlabel="301 -> 300" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	133 -> 132	[label=1,headlabel="132 -> 133" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	133 -> 301	[label=1,headlabel="301 -> 133" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	301 -> 300	[label=1,headlabel="300 -> 301" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	301 -> 133	[label=1,headlabel="133 -> 301" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Houston
+	134 -> 135	[label=1,headlabel="135 -> 134" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	134 -> 310	[label=1,headlabel="310 -> 134" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	134 -> 312	[label=1,headlabel="312 -> 134" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	310 -> 134	[label=1,headlabel="134 -> 310" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	310 -> 311	[label=1,headlabel="311 -> 310" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	310 -> 136	[label=1,headlabel="136 -> 310" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	135 -> 134	[label=1,headlabel="134 -> 135" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	135 -> 136	[label=1,headlabel="136 -> 135" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	135 -> 311	[label=1,headlabel="311 -> 135" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	135 -> 313	[label=1,headlabel="313 -> 135" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	311 -> 310	[label=1,headlabel="310 -> 311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	311 -> 135	[label=1,headlabel="135 -> 311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	311 -> 137	[label=1,headlabel="137 -> 311" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	136 -> 135	[label=1,headlabel="135 -> 136" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	136 -> 137	[label=1,headlabel="137 -> 136" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	136 -> 310	[label=1,headlabel="310 -> 136" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	136 -> 312	[label=1,headlabel="312 -> 136" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	312 -> 134	[label=1,headlabel="134 -> 312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	312 -> 136	[label=1,headlabel="136 -> 312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	312 -> 313	[label=1,headlabel="313 -> 312" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	137 -> 136	[label=1,headlabel="136 -> 137" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	137 -> 311	[label=1,headlabel="311 -> 137" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	137 -> 313	[label=1,headlabel="313 -> 137" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	313 -> 312	[label=1,headlabel="312 -> 313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	313 -> 135	[label=1,headlabel="135 -> 313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	313 -> 137	[label=1,headlabel="137 -> 313" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//New Orleans
+	138 -> 320	[label=1,headlabel="320 -> 138" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	138 -> 321	[label=1,headlabel="321 -> 138" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	320 -> 138	[label=1,headlabel="138 -> 320" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	320 -> 321	[label=1,headlabel="321 -> 320" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	321 -> 138	[label=1,headlabel="138 -> 321" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	321 -> 320	[label=1,headlabel="320 -> 321" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Miami
+	139 -> 140	[label=1,headlabel="140 -> 139" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	139 -> 330	[label=1,headlabel="330 -> 139" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	139 -> 332	[label=1,headlabel="332 -> 139" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	330 -> 139	[label=1,headlabel="139 -> 330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	330 -> 331	[label=1,headlabel="331 -> 330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	330 -> 141	[label=1,headlabel="141 -> 330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	140 -> 139	[label=1,headlabel="139 -> 140" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	140 -> 141	[label=1,headlabel="141 -> 140" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	140 -> 331	[label=1,headlabel="331 -> 140" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	140 -> 333	[label=1,headlabel="333 -> 140" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	331 -> 330	[label=1,headlabel="330 -> 331" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	331 -> 140	[label=1,headlabel="140 -> 331" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	331 -> 142	[label=1,headlabel="142 -> 331" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	141 -> 140	[label=1,headlabel="140 -> 141" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	141 -> 142	[label=1,headlabel="142 -> 141" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	141 -> 330	[label=1,headlabel="330 -> 141" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	141 -> 332	[label=1,headlabel="332 -> 141" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	332 -> 139	[label=1,headlabel="139 -> 332" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	332 -> 141	[label=1,headlabel="141 -> 332" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	332 -> 333	[label=1,headlabel="333 -> 332" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	142 -> 141	[label=1,headlabel="141 -> 142" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	142 -> 331	[label=1,headlabel="331 -> 142" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	142 -> 333	[label=1,headlabel="333 -> 142" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	333 -> 332	[label=1,headlabel="332 -> 333" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	333 -> 140	[label=1,headlabel="140 -> 333" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	333 -> 142	[label=1,headlabel="142 -> 333" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Tampa Bay
+	170 -> 340	[label=1,headlabel="340 -> 170" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	170 -> 341	[label=1,headlabel="341 -> 170" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	340 -> 170	[label=1,headlabel="170 -> 340" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	340 -> 341	[label=1,headlabel="341 -> 340" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	341 -> 170	[label=1,headlabel="170 -> 341" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	341 -> 340	[label=1,headlabel="340 -> 341" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Fort Lauderdale
+	171 -> 350	[label=1,headlabel="350 -> 171" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	171 -> 351	[label=1,headlabel="351 -> 171" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	350 -> 171	[label=1,headlabel="171 -> 350" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	350 -> 351	[label=1,headlabel="351 -> 350" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	351 -> 171	[label=1,headlabel="171 -> 351" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	351 -> 350	[label=1,headlabel="350 -> 351" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Atlanta
+	143 -> 144	[label=1,headlabel="144 -> 143" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	143 -> 360	[label=1,headlabel="360 -> 143" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	143 -> 362	[label=1,headlabel="362 -> 143" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	143 -> 364	[label=1,headlabel="364 -> 143" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	360 -> 143	[label=1,headlabel="143 -> 360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	360 -> 361	[label=1,headlabel="361 -> 360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	360 -> 145	[label=1,headlabel="145 -> 360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	360 -> 185	[label=1,headlabel="185 -> 360" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 143	[label=1,headlabel="143 -> 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 145	[label=1,headlabel="145 -> 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 361	[label=1,headlabel="361 -> 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 363	[label=1,headlabel="363 -> 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	144 -> 365	[label=1,headlabel="365 -> 144" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	361 -> 360	[label=1,headlabel="360 -> 361" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	361 -> 144	[label=1,headlabel="144 -> 361" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	361 -> 146	[label=1,headlabel="146 -> 361" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 144	[label=1,headlabel="144 -> 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 146	[label=1,headlabel="146 -> 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 360	[label=1,headlabel="360 -> 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 362	[label=1,headlabel="362 -> 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	145 -> 364	[label=1,headlabel="364 -> 145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	362 -> 143	[label=1,headlabel="143 -> 362" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	362 -> 145	[label=1,headlabel="145 -> 362" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	362 -> 363	[label=1,headlabel="363 -> 362" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	362 -> 185	[label=1,headlabel="185 -> 362" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 145	[label=1,headlabel="145 -> 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 185	[label=1,headlabel="185 -> 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 361	[label=1,headlabel="361 -> 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 363	[label=1,headlabel="363 -> 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	146 -> 365	[label=1,headlabel="365 -> 146" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	363 -> 362	[label=1,headlabel="362 -> 363" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	363 -> 144	[label=1,headlabel="144 -> 363" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	363 -> 146	[label=1,headlabel="146 -> 363" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	185 -> 146	[label=1,headlabel="146 -> 185" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	185 -> 360	[label=1,headlabel="360 -> 185" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	185 -> 362	[label=1,headlabel="362 -> 185" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	185 -> 364	[label=1,headlabel="364 -> 185" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	364 -> 143	[label=1,headlabel="143 -> 364" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	364 -> 145	[label=1,headlabel="145 -> 364" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	364 -> 185	[label=1,headlabel="185 -> 364" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	364 -> 365	[label=1,headlabel="365 -> 364" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	365 -> 364	[label=1,headlabel="364 -> 365" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	365 -> 144	[label=1,headlabel="144 -> 365" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	365 -> 146	[label=1,headlabel="146 -> 365" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Nashville
+	164 -> 380	[label=1,headlabel="380 -> 164" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	164 -> 381	[label=1,headlabel="381 -> 164" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	380 -> 164	[label=1,headlabel="164 -> 380" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	380 -> 381	[label=1,headlabel="381 -> 380" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	381 -> 164	[label=1,headlabel="164 -> 381" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	381 -> 380	[label=1,headlabel="380 -> 381" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Charlotte
+	169 -> 370	[label=1,headlabel="370 -> 169" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	169 -> 371	[label=1,headlabel="371 -> 169" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	370 -> 169	[label=1,headlabel="169 -> 370" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	370 -> 371	[label=1,headlabel="371 -> 370" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	371 -> 169	[label=1,headlabel="169 -> 371" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	371 -> 370	[label=1,headlabel="370 -> 371" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//St. Louis
+	155 -> 156	[label=1,headlabel="156 -> 155" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	155 -> 390	[label=1,headlabel="390 -> 155" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	155 -> 392	[label=1,headlabel="392 -> 155" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	390 -> 155	[label=1,headlabel="155 -> 390" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	390 -> 391	[label=1,headlabel="391 -> 390" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	390 -> 157	[label=1,headlabel="157 -> 390" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	156 -> 155	[label=1,headlabel="155 -> 156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	156 -> 157	[label=1,headlabel="157 -> 156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	156 -> 391	[label=1,headlabel="391 -> 156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	156 -> 393	[label=1,headlabel="393 -> 156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	391 -> 390	[label=1,headlabel="390 -> 391" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	391 -> 156	[label=1,headlabel="156 -> 391" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	391 -> 158	[label=1,headlabel="158 -> 391" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	157 -> 156	[label=1,headlabel="156 -> 157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	157 -> 158	[label=1,headlabel="158 -> 157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	157 -> 390	[label=1,headlabel="390 -> 157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	157 -> 392	[label=1,headlabel="392 -> 157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	392 -> 155	[label=1,headlabel="155 -> 392" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	392 -> 157	[label=1,headlabel="157 -> 392" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	392 -> 393	[label=1,headlabel="393 -> 392" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	158 -> 157	[label=1,headlabel="157 -> 158" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	158 -> 391	[label=1,headlabel="391 -> 158" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	158 -> 393	[label=1,headlabel="393 -> 158" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	393 -> 392	[label=1,headlabel="392 -> 393" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	393 -> 156	[label=1,headlabel="156 -> 393" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	393 -> 158	[label=1,headlabel="158 -> 393" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Kansas City
+	147 -> 148	[label=1,headlabel="148 -> 147" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	147 -> 400	[label=1,headlabel="400 -> 147" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	147 -> 402	[label=1,headlabel="402 -> 147" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	400 -> 147	[label=1,headlabel="147 -> 400" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	400 -> 401	[label=1,headlabel="401 -> 400" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	400 -> 149	[label=1,headlabel="149 -> 400" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	148 -> 147	[label=1,headlabel="147 -> 148" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	148 -> 401	[label=1,headlabel="401 -> 148" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	148 -> 403	[label=1,headlabel="403 -> 148" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	148 -> 149	[label=1,headlabel="149 -> 148" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	401 -> 400	[label=1,headlabel="400 -> 401" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	401 -> 148	[label=1,headlabel="148 -> 401" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	149 -> 148	[label=1,headlabel="148 -> 149" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	149 -> 400	[label=1,headlabel="400 -> 149" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	149 -> 402	[label=1,headlabel="402 -> 149" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	402 -> 147	[label=1,headlabel="147 -> 402" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	402 -> 149	[label=1,headlabel="149 -> 402" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	402 -> 403	[label=1,headlabel="403 -> 402" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	403 -> 148	[label=1,headlabel="148 -> 403" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	403 -> 402	[label=1,headlabel="402 -> 403" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Omaha
+	150 -> 151	[label=1,headlabel="151 -> 150" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	150 -> 410	[label=1,headlabel="410 -> 150" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	150 -> 412	[label=1,headlabel="412 -> 150" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	410 -> 150	[label=1,headlabel="150 -> 410" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	410 -> 411	[label=1,headlabel="411 -> 410" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	410 -> 152	[label=1,headlabel="152 -> 410" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	151 -> 150	[label=1,headlabel="150 -> 151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	151 -> 411	[label=1,headlabel="411 -> 151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	151 -> 413	[label=1,headlabel="413 -> 151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	151 -> 152	[label=1,headlabel="152 -> 151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	411 -> 410	[label=1,headlabel="410 -> 411" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	411 -> 151	[label=1,headlabel="151 -> 411" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	152 -> 151	[label=1,headlabel="151 -> 152" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	152 -> 410	[label=1,headlabel="410 -> 152" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	152 -> 412	[label=1,headlabel="412 -> 152" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	412 -> 150	[label=1,headlabel="150 -> 412" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	412 -> 152	[label=1,headlabel="152 -> 412" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	412 -> 413	[label=1,headlabel="413 -> 412" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	413 -> 151	[label=1,headlabel="151 -> 413" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	413 -> 412	[label=1,headlabel="412 -> 413" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Minneapolis
+	153 -> 154	[label=1,headlabel="154 -> 153" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	153 -> 420	[label=1,headlabel="420 -> 153" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	420 -> 153	[label=1,headlabel="153 -> 420" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	420 -> 421	[label=1,headlabel="421 -> 420" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	154 -> 153	[label=1,headlabel="153 -> 154" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	154 -> 421	[label=1,headlabel="421 -> 154" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	421 -> 420	[label=1,headlabel="420 -> 421" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	421 -> 154	[label=1,headlabel="154 -> 421" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Chicago
+	159 -> 160	[label=1,headlabel="160 -> 159" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	159 -> 430	[label=1,headlabel="430 -> 159" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	159 -> 432	[label=1,headlabel="432 -> 159" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	159 -> 434	[label=1,headlabel="434 -> 159" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	430 -> 159	[label=1,headlabel="159 -> 430" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	430 -> 431	[label=1,headlabel="431 -> 430" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	430 -> 161	[label=1,headlabel="161 -> 430" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	430 -> 163	[label=1,headlabel="163 -> 430" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 159	[label=1,headlabel="159 -> 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 161	[label=1,headlabel="161 -> 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 431	[label=1,headlabel="431 -> 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 433	[label=1,headlabel="433 -> 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	160 -> 435	[label=1,headlabel="435 -> 160" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	431 -> 430	[label=1,headlabel="430 -> 431" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	431 -> 160	[label=1,headlabel="160 -> 431" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	431 -> 162	[label=1,headlabel="162 -> 431" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 160	[label=1,headlabel="160 -> 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 162	[label=1,headlabel="162 -> 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 430	[label=1,headlabel="430 -> 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 432	[label=1,headlabel="432 -> 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	161 -> 434	[label=1,headlabel="434 -> 161" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	432 -> 159	[label=1,headlabel="159 -> 432" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	432 -> 161	[label=1,headlabel="161 -> 432" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	432 -> 433	[label=1,headlabel="433 -> 432" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	432 -> 163	[label=1,headlabel="163 -> 432" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 161	[label=1,headlabel="161 -> 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 163	[label=1,headlabel="163 -> 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 431	[label=1,headlabel="431 -> 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 433	[label=1,headlabel="433 -> 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	162 -> 435	[label=1,headlabel="435 -> 162" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	433 -> 432	[label=1,headlabel="432 -> 433" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	433 -> 160	[label=1,headlabel="160 -> 433" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	433 -> 162	[label=1,headlabel="162 -> 433" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	163 -> 162	[label=1,headlabel="162 -> 163" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	163 -> 430	[label=1,headlabel="430 -> 163" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	163 -> 432	[label=1,headlabel="432 -> 163" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	163 -> 434	[label=1,headlabel="434 -> 163" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	434 -> 159	[label=1,headlabel="159 -> 434" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	434 -> 161	[label=1,headlabel="161 -> 434" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	434 -> 163	[label=1,headlabel="163 -> 434" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	434 -> 435	[label=1,headlabel="435 -> 434" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	435 -> 434	[label=1,headlabel="434 -> 435" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	435 -> 160	[label=1,headlabel="160 -> 435" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	435 -> 162	[label=1,headlabel="162 -> 435" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//Detroit
+	165 -> 166	[label=1,headlabel="166 -> 165" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	165 -> 440	[label=1,headlabel="440 -> 165" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	165 -> 442	[label=1,headlabel="442 -> 165" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	440 -> 165	[label=1,headlabel="165 -> 440" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	440 -> 441	[label=1,headlabel="441 -> 440" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	440 -> 167	[label=1,headlabel="167 -> 440" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	166 -> 165	[label=1,headlabel="165 -> 166" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	166 -> 167	[label=1,headlabel="167 -> 166" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	166 -> 441	[label=1,headlabel="441 -> 166" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	166 -> 443	[label=1,headlabel="443 -> 166" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	441 -> 440	[label=1,headlabel="440 -> 441" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	441 -> 166	[label=1,headlabel="166 -> 441" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	441 -> 168	[label=1,headlabel="168 -> 441" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	167 -> 166	[label=1,headlabel="166 -> 167" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	167 -> 168	[label=1,headlabel="168 -> 167" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	167 -> 440	[label=1,headlabel="440 -> 167" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	167 -> 442	[label=1,headlabel="442 -> 167" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	442 -> 165	[label=1,headlabel="165 -> 442" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	442 -> 167	[label=1,headlabel="167 -> 442" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	442 -> 443	[label=1,headlabel="443 -> 442" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	168 -> 167	[label=1,headlabel="167 -> 168" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	168 -> 441	[label=1,headlabel="441 -> 168" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	168 -> 443	[label=1,headlabel="443 -> 168" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	443 -> 442	[label=1,headlabel="442 -> 443" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	443 -> 166	[label=1,headlabel="166 -> 443" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	443 -> 168	[label=1,headlabel="168 -> 443" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+	//Washington DC
+	172 -> 173	[label=1,headlabel="173 -> 172" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	172 -> 470	[label=1,headlabel="470 -> 172" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	172 -> 472	[label=1,headlabel="472 -> 172" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	470 -> 172	[label=1,headlabel="172 -> 470" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	470 -> 471	[label=1,headlabel="471 -> 470" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	470 -> 174	[label=1,headlabel="174 -> 470" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	173 -> 172	[label=1,headlabel="172 -> 173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	173 -> 174	[label=1,headlabel="174 -> 173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	173 -> 471	[label=1,headlabel="471 -> 173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	173 -> 473	[label=1,headlabel="473 -> 173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	471 -> 470	[label=1,headlabel="470 -> 471" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	471 -> 173	[label=1,headlabel="173 -> 471" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	471 -> 175	[label=1,headlabel="175 -> 471" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	174 -> 173	[label=1,headlabel="173 -> 174" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	174 -> 175	[label=1,headlabel="175 -> 174" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	174 -> 470	[label=1,headlabel="470 -> 174" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	174 -> 472	[label=1,headlabel="472 -> 174" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	472 -> 172	[label=1,headlabel="172 -> 472" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	472 -> 174	[label=1,headlabel="174 -> 472" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	472 -> 473	[label=1,headlabel="473 -> 472" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	175 -> 174	[label=1,headlabel="174 -> 175" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	175 -> 471	[label=1,headlabel="471 -> 175" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	175 -> 473	[label=1,headlabel="473 -> 175" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	473 -> 472	[label=1,headlabel="472 -> 473" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	473 -> 173	[label=1,headlabel="173 -> 473" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	473 -> 175	[label=1,headlabel="175 -> 473" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10]
+	//Philadelphia
+	176 -> 177	[label=1,headlabel="177 -> 176" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	176 -> 460	[label=1,headlabel="460 -> 176" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	176 -> 462	[label=1,headlabel="462 -> 176" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	460 -> 176	[label=1,headlabel="176 -> 460" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	460 -> 461	[label=1,headlabel="461 -> 460" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	460 -> 178	[label=1,headlabel="178 -> 460" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	177 -> 176	[label=1,headlabel="176 -> 177" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	177 -> 461	[label=1,headlabel="461 -> 177" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	177 -> 463	[label=1,headlabel="463 -> 177" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	177 -> 178	[label=1,headlabel="178 -> 177" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	461 -> 460	[label=1,headlabel="460 -> 461" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	461 -> 177	[label=1,headlabel="177 -> 461" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	178 -> 177	[label=1,headlabel="177 -> 178" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	178 -> 460	[label=1,headlabel="460 -> 178" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	178 -> 462	[label=1,headlabel="462 -> 178" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	462 -> 176	[label=1,headlabel="176 -> 462" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	462 -> 178	[label=1,headlabel="178 -> 462" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	462 -> 463	[label=1,headlabel="463 -> 462" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	463 -> 177	[label=1,headlabel="177 -> 463" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	463 -> 462	[label=1,headlabel="462 -> 463" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	
+	//New York
+	179 -> 180	[label=1,headlabel="180 -> 179" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	179 -> 450	[label=1,headlabel="450 -> 179" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	179 -> 452	[label=1,headlabel="452 -> 179" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	450 -> 179	[label=1,headlabel="179 -> 450" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	450 -> 451	[label=1,headlabel="451 -> 450" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	450 -> 181	[label=1,headlabel="181 -> 450" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	180 -> 179	[label=1,headlabel="179 -> 180" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	180 -> 181	[label=1,headlabel="181 -> 180" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	180 -> 451	[label=1,headlabel="451 -> 180" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	180 -> 453	[label=1,headlabel="453 -> 180" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	451 -> 450	[label=1,headlabel="450 -> 451" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	451 -> 180	[label=1,headlabel="180 -> 451" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	451 -> 182	[label=1,headlabel="182 -> 451" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	181 -> 180	[label=1,headlabel="180 -> 181" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	181 -> 182	[label=1,headlabel="182 -> 181" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	181 -> 450	[label=1,headlabel="450 -> 181" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	181 -> 452	[label=1,headlabel="452 -> 181" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	452 -> 179	[label=1,headlabel="179 -> 452" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	452 -> 181	[label=1,headlabel="181 -> 452" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	452 -> 453	[label=1,headlabel="453 -> 452" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	182 -> 181	[label=1,headlabel="181 -> 182" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	182 -> 451	[label=1,headlabel="451 -> 182" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	182 -> 453	[label=1,headlabel="453 -> 182" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	453 -> 452	[label=1,headlabel="452 -> 453" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	453 -> 180	[label=1,headlabel="180 -> 453" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	453 -> 182	[label=1,headlabel="182 -> 453" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+
+
+
+	}
