@@ -345,6 +345,7 @@ edgeList = graph.get_edge_list()
 #storing the list of nodes
 nodeList = graph.get_node_list()
 
+print "generating ground thruth"
 #draw the complete network or ground truth
 subprocess.Popen(["neato", "-Tjpeg", path, "-o","Output/"+graphName+"_GTRUTH"])
 
@@ -368,6 +369,8 @@ aliasResMap	= {}#contains true falls wether edges can resolve to nodes
 #BUILDING NETWORK AND COST MAP!!!!-----------------------------------------
 
 #parsing and splitting up into all the different maps
+
+print "generating ALTO meta."
 for e in edgeList:
 	#tempDict.clear()	
 	src   = int(e.get_source()) 
@@ -392,7 +395,7 @@ for e in edgeList:
 	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
 	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
 	aliasResMap[(src*100000) + dest] = int(edgeAttr['alias'])
-
+print "done"
 		
 #shortest path algorithm based on Dijkstra
 #dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
@@ -436,6 +439,8 @@ innerSPathDict = {}
 rawCostMap = {}	#lists costs from all to nodes, to all nodes
 tempDict = {}
 
+print "running djikstra."
+
 #for x in range(1,len(fakenodesList)+1):
 for x in fakenodesList:
 	#print "Outter: ", x
@@ -455,6 +460,7 @@ for x in fakenodesList:
 #print "Shortest Path dictionary for traceroute:"
 #print totalSPathDict
 
+print "done"
 
 #costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
 #costMapFile.write(str(rawCostMap))
@@ -463,16 +469,15 @@ for x in fakenodesList:
 #costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
 #pickle.dump(rawCostMap, costMapPickle)
 #costMapPickle.close()
-
+print "generating ALTO maps:"
 tempFakeNodesList = list(fakenodesList)
 
 baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
-
-
+print "\t* Network map"
 aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
-
+print "\t* Cost map"
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
-
+print "generating jpgs\n"
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
 drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 

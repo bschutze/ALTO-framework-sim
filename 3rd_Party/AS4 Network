@@ -1,0 +1,37 @@
+A -> E = 1
+A -> I = 1
+B -> C = 1
+B -> E = 1
+C -> B = 1
+C -> F = 1
+D -> F = 1
+D -> G = 1
+E -> A = 1
+E -> B = 1
+E -> F = 1
+E -> I = 2
+E -> J = 1
+F -> C = 1
+F -> D = 1
+F -> E = 1
+F -> G = 1
+F -> J = 1
+G -> D = 1
+G -> F = 1
+G -> K = 1
+I -> A = 1
+I -> E = 2
+I -> J = 1
+J -> E = 1
+J -> F = 1
+J -> I = 1
+J -> K = 1
+K -> G = 1
+K -> J = 1
+
+E -> F < E -> J
+F -> E < F -> J
+J -> E == J -> F
+
+symmetrical
+
