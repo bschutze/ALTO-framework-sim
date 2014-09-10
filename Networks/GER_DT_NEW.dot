@@ -21,7 +21,7 @@ digraph Test {
 	136[group=H]; 137[group=H]; 138[group=H]; //Ulm
 	139[group=H]; 140[group=H]; 141[group=H]; 142[group=H]; //Stuttgart
 	143[group=H]; 144[group=H]; 145[group=H]; 146[group=H]; 147[group=H]; 148[group=H]; 149[group=H]; 150[group=H]; 151[group=H]; 152[group=H]; 153[group=H]; //Frankfurt
-	154[group=H]; 155[group=H]; 156[group=H]; 157[group=H]; //182[group=H]; //Kölln
+	154[group=H]; 155[group=H]; 156[group=H]; 157[group=H]; //182[group=H]; //Köln
 	158[group=H]; //Bonn
 	159[group=H]; 160[group=H]; 161[group=H]; 162[group=H]; 163[group=H]; 164[group=H];//Essen
 	165[group=H]; 166[group=H]; 167[group=H]; //Bochum
@@ -48,7 +48,7 @@ digraph Test {
 	310[group=A]; 311[group=A]; 312[group=A]; 313[group=A]; //Stuttgart
 	320[group=A]; 321[group=A]; 322[group=A]; 323[group=A]; 324[group=A]; 325[group=A]; 326[group=A]; 327[group=A]; 328[group=A];//Frankfurt
 	329[group=A]; 330[group=A]; 331[group=A]; //Frankfurt cont.
-	340[group=A]; 341[group=A]; 342[group=A]; 343[group=A]; //Kölln
+	340[group=A]; 341[group=A]; 342[group=A]; 343[group=A]; //Köln
 	350[group=A]; 351[group=A]; //Bonn
 	360[group=A]; 361[group=A]; 362[group=A]; 363[group=A]; 364[group=A]; 365[group=A]; //Essen
 	370[group=A]; 371[group=A]; //Bochum
@@ -126,12 +126,11 @@ digraph Test {
 	151 -> 138	[label=1,headlabel="138-151" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	152 -> 139	[label=1,headlabel="139-152" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	153 -> 158	[label=1,headlabel="158-153" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	//KÖlln
+	//Köln
 	154 -> 143	[label=1,headlabel="143-154" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	155 -> 162	[label=1,headlabel="162-155" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	156 -> 110	[label=1,headlabel="110-156" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	157 -> 169	[label=1,headlabel="169-157" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-
 	//BONN
 	158 -> 153	[label=1,headlabel="153-158" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	//ESSEN
@@ -619,7 +618,7 @@ digraph Test {
 	145 -> 330	[label=1,headlabel="330-145" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	322 -> 143	[label=1,headlabel="143-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	322 -> 145	[label=1,headlabel="145-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	322 -> 323	[label=1,hhttps://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t34.0-12/10637659_10204684280492883_1862892759_n.jpg?oh=afc4755638d93b1477145dea8010728d&oe=5410AF4D&__gda__=1410381536_a6ade6b3d9d932aaf60fdb3deb28b553eadlabel="323-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	322 -> 323	[label=1,headlabel="323-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	322 -> 147	[label=1,headlabel="147-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	322 -> 149	[label=1,headlabel="149-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	322 -> 151	[label=1,headlabel="151-322" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -736,7 +735,7 @@ digraph Test {
 	330 -> 145	[label=1,headlabel="145-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	330 -> 147	[label=1,headlabel="147-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	330 -> 149	[label=1,headlabel="149-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	330 -> 151	[label=1,https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t34.0-12/10637659_10204684280492883_1862892759_n.jpg?oh=afc4755638d93b1477145dea8010728d&oe=5410AF4D&__gda__=1410381536_a6ade6b3d9d932aaf60fdb3deb28b553headlabel="151-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	330 -> 151	[label=1,headlabel="151-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	330 -> 153	[label=1,headlabel="153-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	330 -> 331	[label=1,headlabel="331-330" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	331 -> 144	[label=1,headlabel="144-331" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
@@ -890,7 +889,7 @@ digraph Test {
 	421 -> 172	[label=1,headlabel="172-421" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	421 -> 420	[label=1,headlabel="420-421" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
-	//Augsburg
+	//Ausgsburg
 	173 -> 430	[label=1,headlabel="430-173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	173 -> 431	[label=1,headlabel="431-173" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	430 -> 173	[label=1,headlabel="173-430" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];

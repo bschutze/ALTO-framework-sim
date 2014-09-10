@@ -482,11 +482,11 @@ print "generating jpgs\n"
 drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 
 
-realNetworkMap = open("Output/ALTO/"+graphName+"_ALTO_NETWORK_MAP.txt", "w")
+realNetworkMap = open("Output/ALTO/"+graphName+"_ALTO_NETWORK_MAP.txt", 'w+')
 realNetworkMap.write(str(aggNetMap))
 realNetworkMap.close()
 
-realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", "w")
+realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", 'w+')
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
@@ -510,6 +510,8 @@ print "\n\tNode & Edge count: TOTAL_STATS_COUNT.txt\n"
 print "\tAlto Maps:"
 print "\tALTO/"+graphName+"_ALTO_NETWORK_MAP.txt"
 print "\tALTO/"+graphName+"_ALTO_COST_MAP.txt\n"
+print "\tTraceroute path latencies:"
+print "\tTRACEROUTE/"+graphName+"_LATENCY.txt\n"
 #print 
 
 

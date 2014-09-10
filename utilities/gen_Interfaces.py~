@@ -21,7 +21,7 @@ for line in fileHandle:
 		sndEnd = line.find(',')
 		print line[start-4:end]+line[end+7:sndEnd]
 
-#print "symetric" #enable to get symetric weights on the links
+print "symetric" #enable to get symetric weights on the links
 #data = fileHandle.readlines()
 #pos = data.find('$')
 #print pos
