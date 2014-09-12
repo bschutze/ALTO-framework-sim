@@ -32,11 +32,13 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 	nodesFound = []
 	edgesFound = []
 	#total latency between src and target
-	total_latency = 0
+	total_latency = 0.0
 	#string containing all latency for write to file
 	text_total_latency = ""
 	#string for latency inbetween nodes
 	text_latency = ""
+	#processing delay constant, used per transit and recipient node (2ms)
+	processing_delay = 2.0
 	#starCounter = 1 #counts the number of times a unresponsive node is found. Counter is appended to the name.
 	#src and target for the interface trace
 	vantagePoints = getVantagePoints(nodeList) #the list of vantage points from where we collect interfaces(headlabels)
@@ -46,15 +48,16 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 	#print "Subing node names for Interfaces"
 	for src in vantagePoints:
 		for target in targets:
+			#processing_delay = 2.0
 			temp_inter=[]
 			#print "Building new Tree with source: %d  \t|target: %d \t|"%(src,target)
 			#extracting the list of the intermediate nodes
 			tempVPs = ((tree[src])[target])
 			#print tempVPs
 			text_latency = "Path %d  ->  %d\t via: %s\n"%(src, target, tempVPs)
-			
 			if len(tempVPs) == 1:
 				temp_inter = tempVPs
+
 			else:
 				for key in range(len(tempVPs)-1):
 					#print "LENGTH: ", len(tempVPs)-1
@@ -68,13 +71,13 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 					#print second
 					#Adding up the total latency between src and target.
 					#text_latency = text_latency + str(latencyMap[(first*HASH_MULTIPLIER)+second])
-					total_latency = total_latency + latencyMap[(first*HASH_MULTIPLIER)+second]
+					total_latency = total_latency +processing_delay + latencyMap[(first*HASH_MULTIPLIER)+second]
 					
 					
 					#when targeting a hidden node, omit from trace,
 					if second in hiddenNodes:
-						#print "Encountered hidden node: ", second
-						text_latency = text_latency +"From: "+str(first)+" to hidden: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
+						temp = processing_delay + latencyMap[(first*HASH_MULTIPLIER)+second]
+						text_latency = text_latency +"From: "+str(first)+" to hidden: "+str(second)+" = "+str(temp)+"\n"
 						continue
 					if second in starredNodes:
 						tmpVal = interfaces[(first*HASH_MULTIPLIER)+second]
@@ -86,7 +89,7 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 						temp_inter.append('*'+str(head)+'*')
 						#print "Starred: *" +  str(head)+'*'
 						
-						text_latency = text_latency +"From: "+str(first)+" to starred: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
+						text_latency = text_latency +"From: "+str(first)+" to starred: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second]+processing_delay)+"\n"
 						continue
 					#check if alias resulution is possible on edge
 					aliResTest = aliasResMap[(first*HASH_MULTIPLIER)+second]
@@ -102,11 +105,11 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 						temp_inter.append(int(head))
 						edgesFound.append(int(head))
 						#print "Normal: ", head
-						text_latency = text_latency +"From: "+str(first)+" to: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
+						text_latency = text_latency +"From: "+str(first)+" to: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second]+processing_delay)+"\n"
 					else:
 						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
 						text_latency = text_latency +"From: "+str(first)+" to alias: "+(interfaces[(first*HASH_MULTIPLIER)+second])
-						text_latency = text_latency +" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second])+"\n"
+						text_latency = text_latency +" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second]+processing_delay)+"\n"
 						#print "Encountered ALIAS RESULUTION NO!:", interfaces[(first*HASH_MULTIPLIER)+second]
 						#print temp_interfaces
 						
@@ -117,7 +120,7 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 			#Adding the latency for the complete path into a String to written to a file
 			text_total_latency += text_latency
 			text_total_latency = text_total_latency+"Path Total: "+str(total_latency)+"\n\n"
-			total_latency = 0
+			total_latency = 0.0
 			
 		outterDict[src] = copy.deepcopy(innerDict)
 	#print "\n\nHERE"

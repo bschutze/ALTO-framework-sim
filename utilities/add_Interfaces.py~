@@ -18,7 +18,7 @@ output = ""
 data = read_in()
 for line in data:
 	#print "HELLO"
-	output = "\t" + line + "\t[label=1,headlabel=\"%s -> %s\" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];"%(str(line[7:]),str(line[:3]))
+	output = "\t" + line + "\t[label=1,headlabel=\"%s - %s\" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];"%(str(line[7:]),str(line[:3]))
 	print output
 sys.stdout.flush()
 

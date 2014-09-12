@@ -392,7 +392,7 @@ for e in edgeList:
 	#pathCostMap[(dest*100000) + src] = label
 	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
 	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
-	latencyMap[(src*100000) + dest] = int(edgeAttr['latency'])
+	latencyMap[(src*100000) + dest] = float(edgeAttr['latency'])
 	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
 	aliasResMap[(src*100000) + dest] = int(edgeAttr['alias'])
 print "done"

@@ -10,6 +10,6 @@
 
 def writeToFile(toFile, name, ):
 	
-	f = open("Output/TRACEROUTE/"+name+"_Latency.txt", "a")
+	f = open("Output/TRACEROUTE/"+name+"_Latency.txt", "w+")
 	f.write(toFile)
 	f.close()
