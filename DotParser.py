@@ -477,7 +477,7 @@ print "\t* Network map"
 aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 print "\t* Cost map"
 labelNetworkMap(dijkstraFormatDict, aggNetMap)
-print "generating jpgs\n"
+print "generating ALTO jpgs."
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
 drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 
@@ -490,11 +490,12 @@ realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", 'w+')
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 
-
+print "running traceroutes"
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList, totalSPathDict, interfaceMap, graphName)
 #testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
 #print tracerouteDict
+print "generating traceroute jpgs.\n"
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
 drawGraph_.drawNetworkMap(aggNetMap, graphName+'_NETWORKMAP')
 #generate outputfile with statistics of edge and node count
