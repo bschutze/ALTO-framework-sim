@@ -3,8 +3,11 @@ digraph Test {
 	/*compound=true*/
 	node [shape=box];
 	edge [len=2];
-	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
-	1[group=V]; 2[group=A]; 3[group=A]; 4[group=A]; 5[group=V]; 6[group=A]; 7[group=A]; 8[group=A];
+	/*Instantiation of nodes, required to successfully calling .get_node_list() (pydot) */
+	1[group=V]; 2[group=A]; 3[group=A]; 4[group=A]; 5[group=V]; 6[group=A]; 7[group=A]; 8[group=A]; 9[group=A]; 10[group=A]; 12[group=A];
+	13[group=A]; 14[group=A]; 15[group=A]; 16[group=A]; 17[group=A]; 18[group=A]; 19[group=A]; 20[group=A]; 21[group=A]; 22[group=A]; 23[group=A];
+	24[group=A]; 25[group=A]; 26[group=A]; 27[group=A]; 28[group=A]; 29[group=A]; 30[group=A]; 31[group=A]; 32[group=A]; 33[group=A]; 34[group=A];
+	35[group=A]; 36[group=A]; 37[group=A];  38[group=A];
 	overlap = scale;
 	splines = false;
 	label = "5D_HYPERCUBE";
@@ -12,72 +15,72 @@ digraph Test {
 	// alias resolution atribute 1 = yes, 0=no
 
 	//CUBE 1
-	1 -> 2	[label=1,headlabel="2-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1 -> 4	[label=1,headlabel="4-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1 -> 5	[label=1,headlabel="5-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	1 -> 11	[label=1,headlabel="11-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	2 -> 1	[label=1,headlabel="1-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	2 -> 3	[label=1,headlabel="3-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	2 -> 6	[label=1,headlabel="6-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	2 -> 12	[label=1,headlabel="12-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	3 -> 2	[label=1,headlabel="2-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	3 -> 4	[label=1,headlabel="4-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	3 -> 7	[label=1,headlabel="7-3",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
+	1 -> 2	[label=7,headlabel="2-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1 -> 4	[label=5,headlabel="4-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1 -> 5	[label=6,headlabel="5-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
+	1 -> 11	[label=7,headlabel="11-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
+	2 -> 1	[label=7,headlabel="1-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
+	2 -> 3	[label=7,headlabel="3-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
+	2 -> 6	[label=5,headlabel="6-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	2 -> 12	[label=6,headlabel="12-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
+	3 -> 2	[label=7,headlabel="2-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
+	3 -> 4	[label=11,headlabel="4-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
+	3 -> 7	[label=7,headlabel="7-3",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
 	3 -> 13	[label=1,headlabel="13-3",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	4 -> 1	[label=1,headlabel="1-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	4 -> 3	[label=1,headlabel="3-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	4 -> 8	[label=1,headlabel="8-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	4 -> 14	[label=1,headlabel="14-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	5 -> 1	[label=1,headlabel="1-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	5 -> 6	[label=1,headlabel="6-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	5 -> 8	[label=1,headlabel="8-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	5 -> 15	[label=1,headlabel="15-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	6 -> 2	[label=1,headlabel="2-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	6 -> 5	[label=1,headlabel="5-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	6 -> 7	[label=10,headlabel="7-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	6 -> 16	[label=1,headlabel="16-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 3	[label=1,headlabel="3-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 6	[label=1,headlabel="6-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 8	[label=1,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 17	[label=1,headlabel="17-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 4	[label=1,headlabel="4-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 5	[label=1,headlabel="5-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 7	[label=1,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 18	[label=1,headlabel="18-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	4 -> 1	[label=5,headlabel="1-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
+	4 -> 3	[label=11,headlabel="3-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
+	4 -> 8	[label=7,headlabel="8-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
+	4 -> 14	[label=5,headlabel="14-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
+	5 -> 1	[label=6,headlabel="1-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
+	5 -> 6	[label=7,headlabel="6-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
+	5 -> 8	[label=8,headlabel="8-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
+	5 -> 15	[label=8,headlabel="15-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
+	6 -> 2	[label=5,headlabel="2-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
+	6 -> 5	[label=7,headlabel="5-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
+	6 -> 7	[label=7,headlabel="7-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	6 -> 16	[label=7,headlabel="16-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	7 -> 3	[label=7,headlabel="3-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	7 -> 6	[label=7,headlabel="6-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	7 -> 8	[label=9,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	7 -> 17	[label=3,headlabel="17-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	8 -> 4	[label=7,headlabel="4-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	8 -> 5	[label=8,headlabel="5-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	8 -> 7	[label=9,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	8 -> 18	[label=8,headlabel="18-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
 	
 	//CUBE 2
-	11 -> 1		[label=1,headlabel="1-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 12	[label=1,headlabel="12-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 14	[label=1,headlabel="14-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 15	[label=1,headlabel="15-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 2		[label=1,headlabel="2-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 11	[label=1,headlabel="11-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 13	[label=1,headlabel="13-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 16	[label=1,headlabel="16-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 3		[label=1,headlabel="3-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 12	[label=1,headlabel="12-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 14	[label=1,headlabel="14-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 17	[label=1,headlabel="17-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 4		[label=1,headlabel="4-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 11	[label=1,headlabel="11-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 13	[label=1,headlabel="13-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 18	[label=1,headlabel="18-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 5		[label=1,headlabel="5-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 11	[label=1,headlabel="11-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 16	[label=1,headlabel="16-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 18	[label=1,headlabel="18-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 6		[label=1,headlabel="6-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 12	[label=1,headlabel="12-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 15	[label=1,headlabel="15-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 17	[label=1,headlabel="17-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 7		[label=1,headlabel="7-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 13	[label=1,headlabel="13-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 16	[label=1,headlabel="16-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 18	[label=1,headlabel="18-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 8		[label=1,headlabel="8-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 14	[label=1,headlabel="14-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 15	[label=1,headlabel="15-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 17	[label=1,headlabel="17-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 1	[label=7,headlabel="1-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 12	[label=7,headlabel="12-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 14	[label=5,headlabel="14-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 15	[label=6,headlabel="15-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	12 -> 2	[label=6,headlabel="2-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	12 -> 11	[label=7,headlabel="11-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	12 -> 13	[label=5,headlabel="13-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	12 -> 16	[label=5,headlabel="16-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	13 -> 3	[label=3,headlabel="3-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	13 -> 12	[label=5,headlabel="12-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	13 -> 14	[label=8,headlabel="14-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	13 -> 17	[label=6,headlabel="17-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	14 -> 4	[label=5,headlabel="4-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	14 -> 11	[label=5,headlabel="11-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	14 -> 13	[label=8,headlabel="13-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	14 -> 18	[label=7,headlabel="18-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	15 -> 5	[label=8,headlabel="5-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	15 -> 11	[label=6,headlabel="11-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	15 -> 16	[label=9,headlabel="16-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	15 -> 18	[label=7,headlabel="18-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	16 -> 6	[label=7,headlabel="6-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	16 -> 12	[label=5,headlabel="12-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	16 -> 15	[label=9,headlabel="15-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	16 -> 17	[label=5,headlabel="17-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	17 -> 7	[label=3,headlabel="7-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	17 -> 13	[label=6,headlabel="13-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	17 -> 16	[label=5,headlabel="16-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	17 -> 18	[label=6,headlabel="18-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	18 -> 8	[label=8,headlabel="8-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	18 -> 14	[label=7,headlabel="14-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	18 -> 15	[label=7,headlabel="15-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	18 -> 17	[label=6,headlabel="17-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	
 	
 	//CUBE 3 
@@ -186,7 +189,4 @@ digraph Test {
 	36 -> 16	[label=10,headlabel="16-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	37 -> 17	[label=10,headlabel="17-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
 	38 -> 18	[label=10,headlabel="18-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-
-	
-	
 }

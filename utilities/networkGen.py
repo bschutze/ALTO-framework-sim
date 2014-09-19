@@ -1,4 +1,4 @@
-#!/local/bin/python
+#!/usr/bin/python
 
 #Master-Thesis dot parsing framework (PING MODULE)
 #Date: 14.01.2014
@@ -10,72 +10,79 @@
 
 
 import sys
+import ast
+import time
 
-def findSolution(x):
+def findSolution(x, core, agg):
     return {
-    	'1':	{"A":"172","a":"420","b":"421"},
-    	'2':	{"A":"153","B":"154","a":"420","b":"421"},
-        '3':	{"A":"165","B":"166","C":"167","a":"370","b":"371","c":"372","d":"373"},
-        '4':	{"A":"154","B":"155","C":"156","D":"157","a":"340","b":"341","c":"342","d":"343",},
-        '5':	{"A":"154","B":"155","C":"156","D":"157","E":"182","a":"340","b":"341","c":"342","d":"343","e":"344","f":"345",},
-        '6':	{"A":"159","B":"160","C":"161","D":"162","E":"163","F":"164","a":"360","b":"361","c":"362","d":"363","e":"364","f":"365",},
-        '8':	{"A":"118","B":"119","C":"120","D":"121","E":"122","F":"123","G":"124","H":"125","a":"250","b":"251","c":"252","d":"253","e":"254","f":"255","g":"256","h":"257",},
-        '9':	{"A":"108","B":"109","C":"110","D":"111","E":"112","F":"113","G":"114","H":"115","I":"116","a":"230","b":"231","c":"232","d":"233","e":"234","f":"235","g":"236","h":"237","i":"238","j":"239",},
-        '11':	{"A":"143","B":"144","C":"145","D":"146","E":"147","F":"148","G":"149","H":"150","I":"151","J":"152","K":"153","a":"320","b":"321","c":"322","d":"323","e":"324","f":"325","g":"326","h":"327","i":"328","j":"329","k":"330","l":"331"},
+    	1:	{"A": core,"a": agg,"b": agg+1},
+    	2:	{"A": core,"B": core+1,"a": agg,"b": agg+1},
+        3:	{"A": core,"B": core+1,"C": core+2,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3},
+        4:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,},
+        5:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,},
+        6:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"F": core+5,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,},
+        8:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"F": core+5,"G": core+6,"H": core+7,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,"g": agg+6,"h": agg+7,},
+        9:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"F": core+5,"G": core+6,"H": core+7,"I": core+8,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,"g": agg+6,"h": agg+7,"i": agg+8,"j": agg+9,},
+        11:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"F": core+5,"G": core+6,"H": core+7,"I": core+8,"J": core+9,"K": core+10,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,"g": agg+6,"h": agg+7,"i": agg+8,"j": agg+9,"k": agg+10,"l": agg+11},
     }[x]
 
 def findTemplate(x):
     return {
-	'1':	("A -> a\nA -> b\na -> A\na -> b\nb -> A\nb -> a"),
-	'2':	("A -> B\nA -> a\na -> A\na -> b\nB -> A\nB -> b\nb -> a\nb -> B"),
-	'3':	("A -> B\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> b\nB -> d\nB -> C\nb -> a\nb -> B\nC -> B\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nd -> B\nd -> c"),
-	'4':	("A -> B\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> C\nB -> b\nB -> d\nb -> a\nb -> B\nb -> D\nC -> B\nC -> D\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nD -> C\nD -> b\nD -> d\nd -> c\nd -> B\nd -> D"),
-	'5':	("A -> B\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nC -> B\nC -> D\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nE -> D\nE -> a\nE -> c\nE -> e\ne -> A\ne -> C\ne -> E\ne -> f\nf -> e\nf -> B\nf -> D"),
-	'6':	("A -> B\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nb -> F\nC -> B\nC -> D\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nd -> F\nE -> D\nE -> F\nE -> a\nE -> c\nE -> e\ne -> A\ne -> C\ne -> E\ne -> f\nF -> E\nF -> b\nF -> d\nF -> f\nf -> e\nf -> B\nf -> D\nf -> F"),
-        '8':	("A -> B\nA -> a\nA -> c\nA -> e\nA -> g\na -> A\na -> b\na -> C\na -> E\na -> G\nB -> A\nB -> C\nB -> b\nB -> d\nB -> f\nB -> h\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> B\nC -> D\nC -> a\nC -> c\nC -> e\nC -> g\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nD -> h\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> D\nE -> F\nE -> a\nE -> c\nE -> e\nE -> g\ne -> A\ne -> C\ne -> E\ne -> f\ne -> G\nF -> E\nF -> G\nF -> b\nF -> d\nF -> f\nF -> h\nf -> e\nf -> B\nf -> D\nf -> F\nf -> H\nG -> F\nG -> H\nG -> a\nG -> c\nG -> e\nG -> g\ng -> A\ng -> C\ng -> E\ng -> G\ng -> h\nH -> G\nH -> b\nH -> d\nH -> f\nH -> h\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H"),
-	'9':	("A -> B\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\nB -> A\nB -> C\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> B\nC -> D\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> F\nE -> D\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\nF -> E\nF -> G\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nG -> F\nG -> H\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\nH -> G\nH -> I\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> j\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H"),
-	'11':	("A -> B\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\nA -> k\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\na -> K\nB -> A\nB -> C\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nB -> l\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nb -> J\nC -> B\nC -> D\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nC -> k\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nc -> K\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nD -> l\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nd -> J\nE -> F\nE -> D\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\nE -> k\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\ne -> K\nF -> E\nF -> G\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nF -> l\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nf -> J\nG -> F\nG -> H\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\nG -> k\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\ng -> K\nH -> G\nH -> I\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nH -> l\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nh -> J\nI -> H\nI -> J\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\nI -> k\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> K\ni -> j\nJ -> I\nJ -> K\nJ -> b\nJ -> d\nJ -> f\nJ -> h\nJ -> j\nJ -> l\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H\nj -> J\nK -> J\nK -> a\nK -> c\nK -> e\nK -> g\nK -> i\nK -> k\nk -> A\nk -> C\nk -> E\nk -> G\nk -> I\nk -> K\nk -> l\nl -> B\nl -> D\nl -> F\nl -> H\nl -> J\nl -> k"),
+	1:	("A -> a\nA -> b\na -> A\na -> b\nb -> A\nb -> a\n"),
+	2:	("A -> B\nA -> a\na -> A\na -> b\nB -> A\nB -> b\nb -> a\nb -> B\n"),
+	3:	("A -> B\nA -> C\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> C\nB -> b\nB -> d\nb -> a\nb -> B\nC -> B\nC -> A\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nd -> B\nd -> c\n"),
+	4:	("A -> B\nA -> C\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nb -> a\nb -> B\nb -> D\nC -> A\nC -> B\nC -> D\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nD -> C\nD -> B\nD -> b\nD -> d\nd -> c\nd -> B\nd -> D\n"),
+	5:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> B\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nE -> C\nE -> D\nE -> a\nE -> c\nE -> e\nE -> f\ne -> A\ne -> C\ne -> E\ne -> f\nf -> e\nf -> B\nf -> D\nf -> E\n"),
+	6:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nb -> F\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nd -> F\nE -> C\nE -> D\nE -> F\nE -> a\nE -> c\nE -> e\ne -> A\ne -> C\ne -> E\ne -> f\nF -> D\nF -> E\nF -> b\nF -> d\nF -> f\nf -> e\nf -> B\nf -> D\nf -> F\n"),
+        8:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\na -> A\na -> b\na -> C\na -> E\na -> G\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> C\nE -> D\nE -> F\nE -> G\nE -> a\nE -> c\nE -> e\nE -> g\ne -> A\ne -> C\ne -> E\ne -> f\ne -> G\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> f\nF -> h\nf -> e\nf -> B\nf -> D\nf -> F\nf -> H\nG -> E\nG -> F\nG -> H\nG -> a\nG -> c\nG -> e\nG -> g\ng -> A\ng -> C\ng -> E\ng -> G\ng -> h\nH -> F\nH -> G\nH -> b\nH -> d\nH -> f\nH -> h\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\n"),
+	9:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> C\nE -> F\nE -> D\nE -> G\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nG -> E\nG -> F\nG -> H\nG -> I\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\nH -> F\nH -> G\nH -> I\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nI -> G\nI -> H\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> j\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H\n"),
+	11:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\nA -> k\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\na -> K\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nB -> l\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nb -> J\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nC -> k\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nc -> K\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nD -> l\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nd -> J\nE -> C\nE -> F\nE -> D\nE -> G\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\nE -> k\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\ne -> K\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nF -> l\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nf -> J\nG -> E\nG -> F\nG -> H\nG -> I\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\nG -> k\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\ng -> K\nH -> F\nH -> G\nH -> I\nH -> J\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nH -> l\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nh -> J\nI -> G\nI -> H\nI -> J\nI -> K\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\nI -> k\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> K\ni -> j\nJ -> H\nJ -> I\nJ -> K\nJ -> b\nJ -> d\nJ -> f\nJ -> h\nJ -> j\nJ -> l\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H\nj -> J\nK -> I\nK -> J\nK -> a\nK -> c\nK -> e\nK -> g\nK -> i\nK -> k\nk -> A\nk -> C\nk -> E\nk -> G\nk -> I\nk -> K\nk -> l\nl -> B\nl -> D\nl -> F\nl -> H\nl -> J\nl -> k\n"),
     }[x]
-    
-    
-    
-    
-    
-    
-    
     
 def replace_all(text, dic):
     for i, j in dic.iteritems():
-        text = text.replace(i, j)
+        text = text.replace(str(i), str(j))
     return text
 
 
-numberOfNodes = str( sys.argv[1])
+#numberOfNodes = str( sys.argv[1])
 
 """fileName = str(sys.argv[2])
 outputPath = str( sys.argv[3])
+"""
+
+data = "\n"
 
 try:
-	fileHandle = open(outputPath, "w")
-except:(OSError, IOError) as e:
+	file_handle = open('Conf/networkGen_config.txt', 'r')
+except (OSError, IOError) as e:
 	print e
-finally:
 	print "Goodbye"
-"""
-solution = findSolution(numberOfNodes)
-graphTemplate = findTemplate(numberOfNodes)
-generatedGraph = replace_all(graphTemplate, solution)
 
 
+for line in file_handle:
+	numNodes, core, agg, city = ast.literal_eval (line)
+	#print "Generating network, size: %d, core: %d, agg: %d, city: %s"%(numNodes,core,agg, city)
+	print "//" + city
+	solution = findSolution(numNodes, core, agg)
+	#print solution
+	graphTemplate = findTemplate(numNodes)
+	generatedGraph = replace_all(graphTemplate, solution)
+	print generatedGraph
+	data = data + generatedGraph
 
-	
-print generatedGraph
+#time.sleep(2)
 
-"""
-fileHandle.write(generatedGraph)
-fileHandle.close()
+iterList=data.split("\n")
+output = ""
 
-"""
+for line in iterList:
+	if len(line) > 1:
+		output = output +line +"=1\n"
+
+f = open("Conf/findPath_input.txt","w")
+f.write(output)
+f.close()
 
 
 
