@@ -4,53 +4,48 @@
 #Author: Bruno-Johannes Schuetze
 
 import sys
-
-def read_in():
-	lines = sys.stdin.readlines()
-	for i in range(len(lines)):
-		lines[i] = lines[i].replace('\n','')
-	#print lines
-	return lines
-	
-path = str(sys.argv[1])
-file_handle = open (path, "r")
+import ast
 
 
+path = str(sys.argv[1])#the file that contains the results of findpath.pl
+path2 = str(sys.argv[2])#the file on which findpath.pl was applied
+
+needleList = list()
+needleDict = dict()
 output = ""
-igp_weight = ""
-data = read_in()
-for line in data:
-	#print line
-	pos = line.find("//")
-	if pos > 0:
-		print "we have a // at pos ", pos
-	else:		
-		pos = line[1:].find("\t[")
-		output = line[1:pos+1]	
-		print output
-		for line2 in file_handle.readlines():
-			
-			print "The output: ",output
-			print line2
-			tmp = line2.find(output)
-			print tmp
-			#print tmp
-			if tmp >= 0 :
-			 	start = line2.find(" =  ")
-			 	end = line2.find(" #")
-			 	igp_weight = line2[start+4:end]
-			 	print "%s[label=%s]"%(output,igp_weight)
-		#print igp_weight
-		pos = line.find("[")
-		pos2 = line.find("headlabel")
-		tmp = line[pos:]
-		file_handle.seek(0)
-		#output = line[:pos] + 
-		#print output
-		#output = "\t" + line + "\t[label=1,headlabel=\"%s-%s\" ,alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];"%(str(line[7:]),str(line[:3]))
-		#print output
-		
-sys.stdout.flush()
+
+try:
+	findPath_file_handle = open(path, 'r')
+	coreNet_file_handle = open(path2, 'r')
+except (OSError, IOError) as e:
+	print e
+	print "Goodbye"
 
 
-#for line in f.readlines():
+for line in findPath_file_handle:
+	tmp = str (line[:16])
+	#tmp.split()
+	#print tmp
+	tmp = tmp.replace(" = ", "\",")
+	tmp = "\"" + tmp
+	#print tmp
+	
+	needle, igp_weight = ast.literal_eval (tmp)
+	#needleList[needle]= line
+	needleDict[needle] = str(igp_weight)
+	#print needleList
+
+name = ""
+
+for line2 in coreNet_file_handle:
+	tmp = str (line2[0:10])
+	if "//" in tmp:
+		name = line2
+	if tmp in needleDict:
+		weight = needleDict[tmp]		
+		output =output + name+"\t" + line2[:18] + weight + line2[19:]
+		name = ""
+print output
+findPath_file_handle.close()
+coreNet_file_handle.close()
+

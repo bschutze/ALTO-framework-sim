@@ -5,17 +5,21 @@
 #Author: Bruno-Johannes Schuetze
 #uses python 2.7.6
 
-# start: python networkGen.py parm1 | ./add_interfaces.py
-# parameter = parm1 = number of backbone nodes
-
+# start: python networkGen.py | ./add_interfaces.py
+# accesses the file Conf/networkGen_config.txt and builds network on given parameters
 
 import sys
 import ast
 import time
+#import subprocess
+
+
+def findWeights(): #to easily change gen edge weights, just change values below(defines the weight type for all links of type: $1= A -> a, $2= A -> B, $3 = a -> b, $4= A -> C, $5 = A -> c)
+	return{ "$1":100,"$2":20, "$3":10,"$4":30, "$5":100,}
 
 def findSolution(x, core, agg):
     return {
-    	1:	{"A": core,"a": agg,"b": agg+1},
+    	1:	{"A": core,"a": agg,"b": agg+1,},
     	2:	{"A": core,"B": core+1,"a": agg,"b": agg+1},
         3:	{"A": core,"B": core+1,"C": core+2,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3},
         4:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,},
@@ -26,17 +30,17 @@ def findSolution(x, core, agg):
         11:	{"A": core,"B": core+1,"C": core+2,"D": core+3,"E": core+4,"F": core+5,"G": core+6,"H": core+7,"I": core+8,"J": core+9,"K": core+10,"a": agg,"b": agg+1,"c": agg+2,"d": agg+3,"e": agg+4,"f": agg+5,"g": agg+6,"h": agg+7,"i": agg+8,"j": agg+9,"k": agg+10,"l": agg+11},
     }[x]
 
-def findTemplate(x):
+def findTemplate(x): #
     return {
-	1:	("A -> a\nA -> b\na -> A\na -> b\nb -> A\nb -> a\n"),
-	2:	("A -> B\nA -> a\na -> A\na -> b\nB -> A\nB -> b\nb -> a\nb -> B\n"),
-	3:	("A -> B\nA -> C\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> C\nB -> b\nB -> d\nb -> a\nb -> B\nC -> B\nC -> A\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nd -> B\nd -> c\n"),
-	4:	("A -> B\nA -> C\nA -> a\nA -> c\na -> A\na -> b\na -> C\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nb -> a\nb -> B\nb -> D\nC -> A\nC -> B\nC -> D\nC -> a\nC -> c\nc -> A\nc -> C\nc -> d\nD -> C\nD -> B\nD -> b\nD -> d\nd -> c\nd -> B\nd -> D\n"),
-	5:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> B\nD -> C\nD -> E\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nE -> C\nE -> D\nE -> a\nE -> c\nE -> e\nE -> f\ne -> A\ne -> C\ne -> E\ne -> f\nf -> e\nf -> B\nf -> D\nf -> E\n"),
-	6:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\na -> A\na -> b\na -> C\na -> E\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nb -> a\nb -> B\nb -> D\nb -> F\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nc -> A\nc -> C\nc -> d\nc -> E\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nd -> c\nd -> B\nd -> D\nd -> F\nE -> C\nE -> D\nE -> F\nE -> a\nE -> c\nE -> e\ne -> A\ne -> C\ne -> E\ne -> f\nF -> D\nF -> E\nF -> b\nF -> d\nF -> f\nf -> e\nf -> B\nf -> D\nf -> F\n"),
-        8:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\na -> A\na -> b\na -> C\na -> E\na -> G\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> C\nE -> D\nE -> F\nE -> G\nE -> a\nE -> c\nE -> e\nE -> g\ne -> A\ne -> C\ne -> E\ne -> f\ne -> G\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> f\nF -> h\nf -> e\nf -> B\nf -> D\nf -> F\nf -> H\nG -> E\nG -> F\nG -> H\nG -> a\nG -> c\nG -> e\nG -> g\ng -> A\ng -> C\ng -> E\ng -> G\ng -> h\nH -> F\nH -> G\nH -> b\nH -> d\nH -> f\nH -> h\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\n"),
-	9:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nE -> C\nE -> F\nE -> D\nE -> G\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nG -> E\nG -> F\nG -> H\nG -> I\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\nH -> F\nH -> G\nH -> I\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nI -> G\nI -> H\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> j\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H\n"),
-	11:	("A -> B\nA -> C\nA -> a\nA -> c\nA -> e\nA -> g\nA -> i\nA -> k\na -> A\na -> b\na -> C\na -> E\na -> G\na -> I\na -> K\nB -> A\nB -> C\nB -> D\nB -> b\nB -> d\nB -> f\nB -> h\nB -> j\nB -> l\nb -> a\nb -> B\nb -> D\nb -> F\nb -> H\nb -> J\nC -> A\nC -> B\nC -> D\nC -> E\nC -> a\nC -> c\nC -> e\nC -> g\nC -> i\nC -> k\nc -> A\nc -> C\nc -> d\nc -> E\nc -> G\nc -> I\nc -> K\nD -> B\nD -> C\nD -> E\nD -> F\nD -> b\nD -> d\nD -> f\nD -> h\nD -> j\nD -> l\nd -> c\nd -> B\nd -> D\nd -> F\nd -> H\nd -> J\nE -> C\nE -> F\nE -> D\nE -> G\nE -> e\nE -> g\nE -> a\nE -> c\nE -> i\nE -> k\ne -> E\ne -> A\ne -> C\ne -> I\ne -> f\ne -> G\ne -> K\nF -> D\nF -> E\nF -> G\nF -> H\nF -> b\nF -> d\nF -> j\nF -> f\nF -> h\nF -> l\nf -> e\nf -> F\nf -> H\nf -> B\nf -> D\nf -> J\nG -> E\nG -> F\nG -> H\nG -> I\nG -> e\nG -> g\nG -> a\nG -> c\nG -> i\nG -> k\ng -> E\ng -> G\ng -> h\ng -> A\ng -> C\ng -> I\ng -> K\nH -> F\nH -> G\nH -> I\nH -> J\nH -> b\nH -> d\nH -> f\nH -> h\nH -> j\nH -> l\nh -> g\nh -> B\nh -> D\nh -> F\nh -> H\nh -> J\nI -> G\nI -> H\nI -> J\nI -> K\nI -> a\nI -> c\nI -> e\nI -> g\nI -> i\nI -> k\ni -> A\ni -> C\ni -> E\ni -> G\ni -> I\ni -> K\ni -> j\nJ -> H\nJ -> I\nJ -> K\nJ -> b\nJ -> d\nJ -> f\nJ -> h\nJ -> j\nJ -> l\nj -> i\nj -> B\nj -> D\nj -> F\nj -> H\nj -> J\nK -> I\nK -> J\nK -> a\nK -> c\nK -> e\nK -> g\nK -> i\nK -> k\nk -> A\nk -> C\nk -> E\nk -> G\nk -> I\nk -> K\nk -> l\nl -> B\nl -> D\nl -> F\nl -> H\nl -> J\nl -> k\n"),
+	1:	("A -> a=$1\nA -> b=$5\na -> A=$1\na -> b=$3\nb -> A=$5\nb -> a=$3\n"),
+	2:	("A -> B=$2\nA -> a=$1\na -> A=$1\na -> b=$3\nB -> A=$2\nB -> b=$1\nb -> a=$3\nb -> B=$1\n"),
+	3:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\na -> A=$1\na -> b=$3\na -> C=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nb -> a=$3\nb -> B=$1\nC -> B=$2\nC -> A=$4\nC -> a=$5\nC -> c=$1\nC -> d=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nd -> B=$5\nd -> c=$3\nd -> C=$5\n"),
+	4:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\na -> A=$1\na -> b=$3\na -> C=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> a=$5\nC -> c=$1\nc -> A=$5\nc -> C=$1\nc -> d=$3\nD -> C=$2\nD -> b=$5\nD -> d=$1\nd -> c=$3\nd -> B=$5\nd -> D=$1\n"),
+	5:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\nA -> e=$5\na -> A=$1\na -> b=$3\na -> C=$5\na -> E=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nB -> f=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> E=$4\nC -> a=$5\nC -> c=$1\nC -> e=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nc -> E=$5\nD -> C=$2\nD -> E=$2\nD -> b=$5\nD -> d=$1\nD -> f=$5\nd -> c=$3\nd -> B=$5\nd -> D=$1\nE -> C=$4\nE -> D=$2\nE -> a=$5\nE -> c=$5\nE -> e=$1\nE -> f=$5\ne -> A=$5\ne -> C=$5\ne -> E=$1\ne -> f=$3\nf -> e=$3\nf -> B=$5\nf -> D=$5\nf -> E=$5\n"),
+	6:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\nA -> e=$5\na -> A=$1\na -> b=$3\na -> C=$5\na -> E=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nB -> f=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nb -> F=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> E=$4\nC -> a=$5\nC -> c=$1\nC -> e=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nc -> E=$5\nD -> C=$2\nD -> E=$2\nD -> b=$5\nD -> d=$1\nD -> f=$5\nd -> c=$3\nd -> B=$5\nd -> D=$1\nd -> F=$5\nE -> C=$4\nE -> D=$2\nE -> F=$2\nE -> a=$5\nE -> c=$5\nE -> e=$1\ne -> A=$5\ne -> C=$5\ne -> E=$1\ne -> f=$3\nF -> E=$2\nF -> b=$5\nF -> d=$5\nF -> f=$1\nf -> e=$3\nf -> B=$5\nf -> D=$5\nf -> F=$1\n"),
+        8:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\nA -> e=$5\nA -> g=$5\na -> A=$1\na -> b=$3\na -> C=$5\na -> E=$5\na -> G=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nB -> f=$5\nB -> h=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nb -> F=$5\nb -> H=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> E=$4\nC -> a=$5\nC -> c=$1\nC -> e=$5\nC -> g=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nc -> E=$5\nc -> G=$5\nD -> C=$2\nD -> E=$2\nD -> b=$5\nD -> d=$1\nD -> f=$5\nD -> h=$5\nd -> c=$3\nd -> B=$5\nd -> D=$1\nd -> F=$5\nd -> H=$5\nE -> C=$4\nE -> D=$2\nE -> F=$2\nE -> G=$4\nE -> a=$5\nE -> c=$5\nE -> e=$1\nE -> g=$5\ne -> A=$5\ne -> C=$5\ne -> E=$1\ne -> f=$3\ne -> G=$5\nF -> E=$2\nF -> G=$2\nF -> b=$5\nF -> d=$5\nF -> f=$1\nF -> h=$5\nf -> e=$3\nf -> B=$5\nf -> D=$5\nf -> F=$1\nf -> H=$5\nG -> E=$4\nG -> F=$2\nG -> H=$2\nG -> a=$5\nG -> c=$5\nG -> e=$5\nG -> g=$1\ng -> A=$5\ng -> C=$5\ng -> E=$5\ng -> G=$1\ng -> h=$3\nH -> G=$2\nH -> b=$5\nH -> d=$5\nH -> f=$5\nH -> h=$1\nh -> g=$3\nh -> B=$5\nh -> D=$5\nh -> F=$5\nh -> H=$1\n"),
+	9:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\nA -> e=$5\nA -> g=$5\nA -> i=$5\na -> A=$1\na -> b=$3\na -> C=$5\na -> E=$5\na -> G=$5\na -> I=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nB -> f=$5\nB -> h=$5\nB -> j=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nb -> F=$5\nb -> H=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> E=$4\nC -> a=$5\nC -> c=$1\nC -> e=$5\nC -> g=$5\nC -> i=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nc -> E=$5\nc -> G=$5\nc -> I=$5\nD -> C=$2\nD -> E=$2\nD -> b=$5\nD -> d=$1\nD -> f=$5\nD -> h=$5\nD -> j=$5\nd -> c=$3\nd -> B=$5\nd -> D=$1\nd -> F=$5\nd -> H=$5\nE -> C=$4\nE -> F=$2\nE -> D=$2\nE -> G=$4\nE -> e=$1\nE -> g=$5\nE -> a=$5\nE -> c=$5\nE -> i=$5\ne -> E=$1\ne -> A=$5\ne -> C=$5\ne -> I=$5\ne -> f=$3\ne -> G=$5\nF -> E=$2\nF -> G=$2\nF -> b=$5\nF -> d=$5\nF -> j=$5\nF -> f=$1\nF -> h=$5\nf -> e=$3\nf -> F=$1\nf -> H=$5\nf -> B=$5\nf -> D=$5\nG -> E=$4\nG -> F=$2\nG -> H=$2\nG -> I=$4\nG -> e=$5\nG -> g=$1\nG -> a=$5\nG -> c=$5\nG -> i=$5\ng -> E=$5\ng -> G=$1\ng -> h=$3\ng -> A=$5\ng -> C=$5\ng -> I=$5\nH -> G=$2\nH -> I=$2\nH -> b=$5\nH -> d=$5\nH -> f=$5\nH -> h=$1\nH -> j=$5\nh -> g=$3\nh -> B=$5\nh -> D=$5\nh -> F=$5\nh -> H=$1\nI -> G=$4\nI -> H=$2\nI -> a=$5\nI -> c=$5\nI -> e=$5\nI -> g=$5\nI -> i=$1\nI -> j=$5\ni -> A=$5\ni -> C=$5\ni -> E=$5\ni -> G=$5\ni -> I=$1\ni -> j=$3\nj -> i=$3\nj -> B=$5\nj -> D=$5\nj -> F=$5\nj -> H=$5\nj -> I=$5\n"),
+	11:	("A -> B=$2\nA -> C=$4\nA -> a=$1\nA -> c=$5\nA -> e=$5\nA -> g=$5\nA -> i=$5\nA -> k=$5\na -> A=$1\na -> b=$3\na -> C=$5\na -> E=$5\na -> G=$5\na -> I=$5\na -> K=$5\nB -> A=$2\nB -> C=$2\nB -> b=$1\nB -> d=$5\nB -> f=$5\nB -> h=$5\nB -> j=$5\nB -> l=$5\nb -> a=$3\nb -> B=$1\nb -> D=$5\nb -> F=$5\nb -> H=$5\nb -> J=$5\nC -> A=$4\nC -> B=$2\nC -> D=$2\nC -> E=$4\nC -> a=$5\nC -> c=$1\nC -> e=$5\nC -> g=$5\nC -> i=$5\nC -> k=$5\nc -> A=$5\nc -> C=$1\nc -> d=$3\nc -> E=$5\nc -> G=$5\nc -> I=$5\nc -> K=$5\nD -> C=$2\nD -> E=$2\nD -> b=$5\nD -> d=$1\nD -> f=$5\nD -> h=$5\nD -> j=$5\nD -> l=$5\nd -> c=$3\nd -> B=$5\nd -> D=$1\nd -> F=$5\nd -> H=$5\nd -> J=$5\nE -> C=$4\nE -> F=$2\nE -> D=$2\nE -> G=$4\nE -> e=$1\nE -> g=$5\nE -> a=$5\nE -> c=$5\nE -> i=$5\nE -> k=$5\ne -> E=$1\ne -> A=$5\ne -> C=$5\ne -> I=$5\ne -> f=$3\ne -> G=$5\ne -> K=$5\nF -> E=$2\nF -> G=$2\nF -> b=$5\nF -> d=$5\nF -> j=$5\nF -> f=$1\nF -> h=$5\nF -> l=$5\nf -> e=$3\nf -> F=$1\nf -> H=$5\nf -> B=$5\nf -> D=$5\nf -> J=$5\nG -> E=$4\nG -> F=$2\nG -> H=$2\nG -> I=$4\nG -> e=$5\nG -> g=$1\nG -> a=$5\nG -> c=$5\nG -> i=$5\nG -> k=$5\ng -> E=$5\ng -> G=$1\ng -> h=$3\ng -> A=$5\ng -> C=$5\ng -> I=$5\ng -> K=$5\nH -> G=$2\nH -> I=$2\nH -> b=$5\nH -> d=$5\nH -> f=$5\nH -> h=$1\nH -> j=$5\nH -> l=$5\nh -> g=$3\nh -> B=$5\nh -> D=$5\nh -> F=$5\nh -> H=$1\nh -> J=$5\nI -> G=$4\nI -> H=$2\nI -> J=$2\nI -> K=$4\nI -> a=$5\nI -> c=$5\nI -> e=$5\nI -> g=$5\nI -> i=$1\nI -> k=$5\ni -> A=$5\ni -> C=$5\ni -> E=$5\ni -> G=$5\ni -> I=$1\ni -> K=$5\ni -> j=$3\nJ -> I=$2\nJ -> K=$2\nJ -> b=$5\nJ -> d=$5\nJ -> f=$5\nJ -> h=$5\nJ -> j=$1\nJ -> l=$5\nj -> i=$3\nj -> B=$5\nj -> D=$5\nj -> F=$5\nj -> H=$5\nj -> J=$1\nK -> I=$4\nK -> J=$2\nK -> a=$5\nK -> c=$5\nK -> e=$5\nK -> g=$5\nK -> i=$5\nK -> k=$1\nK -> l=$5\nk -> A=$5\nk -> C=$5\nk -> E=$5\nk -> G=$5\nk -> I=$5\nk -> K=$1\nk -> l=$3\nl -> B=$5\nl -> D=$5\nl -> F=$5\nl -> H=$5\nl -> J=$5\nl -> K=$5\nl -> k=$3\n"),
     }[x]
     
 def replace_all(text, dic):
@@ -65,25 +69,35 @@ for line in file_handle:
 	#print "Generating network, size: %d, core: %d, agg: %d, city: %s"%(numNodes,core,agg, city)
 	print "//" + city
 	solution = findSolution(numNodes, core, agg)
+	weights = findWeights()
 	#print solution
 	graphTemplate = findTemplate(numNodes)
 	generatedGraph = replace_all(graphTemplate, solution)
+	generatedGraph = replace_all(generatedGraph, weights)
 	print generatedGraph
 	data = data + generatedGraph
 
-#time.sleep(2)
+#weights = findWeights()
 
+#finished = replace_all(data, weights)
+
+#print "NOW ITS AWESOME"
+#print finished
+
+
+#time.sleep(2)
+#wrong!!!
 iterList=data.split("\n")
 output = ""
 
-for line in iterList:
-	if len(line) > 1:
-		output = output +line +"=1\n"
+#for line in iterList:
+#	if len(line) > 1:
+#		output = output +line +"=1\n"
 
 f = open("Conf/findPath_input.txt","w")
 f.write(output)
 f.close()
 
-
-
+#subprocess.Popen(["cat", "Conf/findPath_input"])
+#sys.exit(0)
 

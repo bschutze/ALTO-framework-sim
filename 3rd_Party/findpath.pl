@@ -6,6 +6,7 @@ use List::Util qw/shuffle/;
 use Term::ANSIColor;
 use Getopt::Long;
 
+my $factor = $ARGV[0];
 
 my $verbose;
 my $debug;
@@ -102,7 +103,7 @@ while (($retries > $loop) && ($result != 0)) {
   #reset the weights to the initial config + a randomized component
   for my $s(keys %links) {
     for my $d (keys%{$links{$s}}) {
-      $links{$s}{$d}{w} = $links{$s}{$d}{c} + int(rand($loop));
+      $links{$s}{$d}{w} = $links{$s}{$d}{c} + int(rand($loop * $factor));
       delete $links{$s}{$d}{f};
     }
   }
@@ -232,7 +233,6 @@ sub makeUnique {
   }
   #print "we are done with finding a solution - now try to reduce the weights\n";
   # and now try to reduce the link weights as much as possible
-
   my $changes = 0;
   while ($changes > 0) {
     $changes = 0;

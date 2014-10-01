@@ -360,11 +360,12 @@ pathCostMap = {}	#Map with hasehd node names as key and cost as value
 #attributes = []	#List of all attributes
 
 latencyMap 	= {} #
-bandwidthMap 	= {} #
-throughputMap 	= {} 
-delayMap   	= {}
+#bandwidthMap 	= {} #
+#throughputMap 	= {} 
+#delayMap   	= {}
 interfaceMap	= {}
 aliasResMap	= {}#contains true falls wether edges can resolve to nodes
+altoPID_Map	= dict() #contains the 
 
 #BUILDING NETWORK AND COST MAP!!!!-----------------------------------------
 
@@ -390,11 +391,12 @@ for e in edgeList:
 	fakenodesList.append(dest)	#add nodes to networkmap
 	pathCostMap[(src*100000) + dest] = label
 	#pathCostMap[(dest*100000) + src] = label
-	delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
-	throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
+	#delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
+	#throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = float(edgeAttr['latency'])
-	bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
+	#bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
 	aliasResMap[(src*100000) + dest] = int(edgeAttr['alias'])
+	altoPID_Map[(src*100000) + dest] = str(edgeAttr['alto'])
 print "done"
 		
 #shortest path algorithm based on Dijkstra
