@@ -6,67 +6,69 @@ digraph Test {
 	edge [len=3];
 	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
 	//BACKBONE NODES (82)
-	100[group=S]; 101[group=S]; 102[group=S]; //SEATTLE
-	103[group=S]; 104[group=S]; 105[group=S]; 106[group=S]; 107[group=S]; //SF
-	108[group=S]; 109[group=S]; 110[group=S]; 111[group=S]; 112[group=S]; 113[group=S]; 114[group=S]; 115[group=S]; 116[group=S]; //LA
-	117[group=S]; 118[group=S]; //SD
-	119[group=S]; 120[group=S]; //Salt Lake City
-	121[group=S]; 122[group=S]; 123[group=S]; //Phx
-	124[group=S]; 125[group=S]; 126[group=S]; //DENVER
-	127[group=S]; 128[group=S]; 129[group=S]; 130[group=S]; 131[group=S]; //Dallas
-	132[group=S]; 133[group=S]; //San Antonio
-	134[group=S]; 135[group=S]; 136[group=S]; 137[group=S]; //Houston
-	138[group=S]; //NO
-	139[group=S]; 140[group=S]; 141[group=S]; 142[group=S]; //MIA
-	143[group=S]; 144[group=S]; 145[group=S]; 146[group=S]; 185[group=S] //ATL
-	147[group=S]; 148[group=S]; 149[group=S]; //KC
-	150[group=S]; 151[group=S]; 152[group=S]; //Omaha
-	153[group=S]; 154[group=S]; //Minapolis
-	155[group=S]; 156[group=S]; 157[group=S]; 158[group=S]; //St.Louis
-	159[group=S]; 160[group=S]; 161[group=S]; 162[group=S]; 163[group=A]; //CHICAGO
-	164[group=S]; //Nashville
-	165[group=S]; 166[group=S]; 167[group=S]; 168[group=S]; //DETROIT
-	169[group=S]; //Charlotte
-	170[group=S]; //TAMPA BAY
-	171[group=S]; //Ft. Lauderdale
-	172[group=S]; 173[group=S]; 174[group=S]; 175[group=S]; //Washington D.C.
-	176[group=S]; 177[group=S]; 178[group=S]; //Philly
-	179[group=S]; 180[group=S]; 181[group=S]; 182[group=S]; //NY
-	183[group=S]; //Honolulu
-	184[group=S]; //Las Vegas
+	100[group=S, comment=PID1]; 101[group=S, comment=PID1]; 102[group=S, comment=PID1]; //SEATTLE
+	103[group=S, comment=PID2]; 104[group=S, comment=PID2]; 105[group=S, comment=PID2]; 106[group=S, comment=PID2]; 107[group=S, comment=PID2]; //SF
+	108[group=S, comment=PID3]; 109[group=S, comment=PID3]; 110[group=S, comment=PID3]; 111[group=S, comment=PID3]; 112[group=S, comment=PID3]; //LA
+	113[group=S, comment=PID3]; 114[group=S, comment=PID3]; 115[group=S, comment=PID3]; 116[group=S, comment=PID3]; //LA
+	117[group=S, comment=PID4]; 118[group=S, comment=PID4]; //SD
+	119[group=S, comment=PID5]; 120[group=S, comment=PID5]; //Salt Lake City
+	121[group=S, comment=PID6]; 122[group=S, comment=PID6]; 123[group=S, comment=PID6]; //Phx
+	124[group=S, comment=PID7]; 125[group=S, comment=PID7]; 126[group=S, comment=PID7]; //DENVER
+	127[group=S, comment=PID8]; 128[group=S, comment=PID8]; 129[group=S, comment=PID8]; 130[group=S, comment=PID8]; 131[group=S, comment=PID8]; //Dallas
+	132[group=S, comment=PID9]; 133[group=S, comment=PID9]; //San Antonio
+	134[group=S, comment=PID10]; 135[group=S, comment=PID10]; 136[group=S, comment=PID10]; 137[group=S, comment=PID10]; //Houston
+	138[group=S, comment=PID11]; //NO
+	139[group=S, comment=PID12]; 140[group=S, comment=PID12]; 141[group=S, comment=PID12]; 142[group=S, comment=PID12]; //MIA
+	143[group=S, comment=PID13]; 144[group=S, comment=PID13]; 145[group=S, comment=PID13]; 146[group=S, comment=PID13]; 185[group=S, comment=PID13] //ATL
+	147[group=S, comment=PID14]; 148[group=S, comment=PID14]; 149[group=S, comment=PID14]; //KC
+	150[group=S, comment=PID15]; 151[group=S, comment=PID15]; 152[group=S, comment=PID15]; //Omaha
+	153[group=S, comment=PID16]; 154[group=S, comment=PID16]; //Minapolis
+	155[group=S, comment=PID17]; 156[group=S, comment=PID17]; 157[group=S, comment=PID17]; 158[group=S, comment=PID17]; //St.Louis
+	159[group=S, comment=PID18]; 160[group=S, comment=PID18]; 161[group=S, comment=PID18]; 162[group=S, comment=PID18]; 163[group=A, comment=PID18]; //CHICAGO
+	164[group=S, comment=PID19]; //Nashville
+	165[group=S, comment=PID20]; 166[group=S, comment=PID20]; 167[group=S, comment=PID20]; 168[group=S, comment=PID20]; //DETROIT
+	169[group=S, comment=PID21]; //Charlotte
+	170[group=S, comment=PID22]; //TAMPA BAY
+	171[group=S, comment=PID23]; //Ft. Lauderdale
+	172[group=S, comment=PID24]; 173[group=S, comment=PID24]; 174[group=S, comment=PID24]; 175[group=S, comment=PID24]; //Washington D.C.
+	176[group=S, comment=PID25]; 177[group=S, comment=PID25]; 178[group=S, comment=PID25]; //Philly
+	179[group=S, comment=PID26]; 180[group=S, comment=PID26]; 181[group=S, comment=PID26]; 182[group=S, comment=PID26]; //NY
+	183[group=S, comment=PID27]; //Honolulu
+	184[group=S, comment=PID28]; //Las Vegas
 	
 
 	
 	//Aggregation Network (94)
-	200[group=V]; 201[group=A]; 202[group=A]; 203[group=A];//Seattle
-	210[group=V]; 211[group=A]; 212[group=A]; 213[group=A]; 214[group=A]; 215[group=A];//San Fransico
-	220[group=V]; 221[group=A]; //Honolulu
-	230[group=V]; 231[group=A]; 232[group=A]; 233[group=A]; 234[group=A]; 235[group=A]; 236[group=A]; 237[group=A]; 238[group=A]; 239[group=A];//Los Angeles
-	240[group=V]; 241[group=A]; //San Diego
-	250[group=V]; 251[group=A]; //Las Vegas
-	260[group=V]; 261[group=A]; 262[group=A]; 263[group=A];//Phoenix
-	270[group=V]; 271[group=A]; //Salt Lake City
-	280[group=V]; 281[group=A]; 282[group=A]; 283[group=A];//Denver
-	290[group=V]; 291[group=A]; 292[group=A]; 293[group=A]; 294[group=A]; 295[group=A];//Dallas
-	300[group=V]; 301[group=A]; //San Antonio
-	310[group=V]; 311[group=A]; 312[group=A]; 313[group=A];//Houston
-	320[group=V]; 321[group=A]; //New Orealns
-	330[group=V]; 331[group=A]; 332[group=A]; 333[group=A]; //Miami
-	340[group=V]; 341[group=A]; //Tampa Bay
-	350[group=V]; 351[group=A]; //Ft. Lauderdale
-	360[group=V]; 361[group=A]; 362[group=A]; 363[group=A]; 364[group=A]; 365[group=A]; //Atlanta
-	370[group=V]; 371[group=A]; //Charlotte
-	380[group=V]; 381[group=A]; //Nashville
-	390[group=V]; 391[group=A]; 392[group=A]; 393[group=A]; //St. Louis
-	400[group=V]; 401[group=A]; 402[group=A]; 403[group=A]; //Kansas City
-	410[group=V]; 411[group=A]; 412[group=A]; 413[group=A]; //Omaha
-	420[group=V]; 421[group=A]; //Mineapolis
-	430[group=V]; 431[group=A]; 432[group=A]; 433[group=A]; 434[group=A]; 435[group=A]; //Chicago
-	440[group=V]; 441[group=A]; 442[group=A]; 443[group=A]; //Detroit
-	450[group=V]; 451[group=A]; 452[group=A]; 453[group=A]; //New York
-	460[group=V]; 461[group=A]; 462[group=A]; 463[group=A]; //Philadelphia
-	470[group=V]; 471[group=A]; 472[group=A]; 473[group=A]; //Washington DC.
-	
+	200[group=V, comment=PID1]; 201[group=A, comment=PID1]; 202[group=A, comment=PID1]; 203[group=A, comment=PID1];//Seattle
+	210[group=V, comment=PID2]; 211[group=A, comment=PID2]; 212[group=A, comment=PID2]; 213[group=A, comment=PID2]; 214[group=A, comment=PID2]; 215[group=A, comment=PID2];//San Fransico
+	230[group=V, comment=PID3]; 231[group=A, comment=PID3]; 232[group=A, comment=PID3]; 233[group=A, comment=PID3]; 234[group=A, comment=PID3]; 235[group=A, comment=PID3];//Los Angeles
+	236[group=A, comment=PID3]; 237[group=A, comment=PID3]; 238[group=A, comment=PID3]; 239[group=A, comment=PID3];//Los Angeles
+	240[group=V, comment=PID4]; 241[group=A, comment=PID4]; //San Diego
+	270[group=V, comment=PID5]; 271[group=A, comment=PID5]; //Salt Lake City
+	260[group=V, comment=PID6]; 261[group=A, comment=PID6]; 262[group=A, comment=PID6]; 263[group=A, comment=PID6];//Phoenix
+	280[group=V, comment=PID7]; 281[group=A, comment=PID7]; 282[group=A, comment=PID7]; 283[group=A, comment=PID7];//Denver
+	290[group=V, comment=PID8]; 291[group=A, comment=PID8]; 292[group=A, comment=PID8]; 293[group=A, comment=PID8]; 294[group=A, comment=PID8]; 295[group=A, comment=PID8];//Dallas
+	300[group=V, comment=PID9]; 301[group=A, comment=PID9]; //San Antonio
+	310[group=V, comment=PID10]; 311[group=A, comment=PID10]; 312[group=A, comment=PID10]; 313[group=A, comment=PID10];//Houston
+	320[group=V, comment=PID11]; 321[group=A, comment=PID11]; //New Orealns
+	330[group=V, comment=PID12]; 331[group=A, comment=PID12]; 332[group=A, comment=PID12]; 333[group=A, comment=PID12]; //Miami
+	360[group=V, comment=PID13]; 361[group=A, comment=PID13]; 362[group=A, comment=PID13]; 363[group=A, comment=PID13]; 364[group=A, comment=PID13]; 365[group=A, comment=PID13]; //Atlanta
+	400[group=V, comment=PID14]; 401[group=A, comment=PID14]; 402[group=A, comment=PID14]; 403[group=A, comment=PID14]; //Kansas City
+	410[group=V, comment=PID15]; 411[group=A, comment=PID15]; 412[group=A, comment=PID15]; 413[group=A, comment=PID15]; //Omaha
+	420[group=V, comment=PID16]; 421[group=A, comment=PID16]; //Mineapolis
+	390[group=V, comment=PID17]; 391[group=A, comment=PID17]; 392[group=A, comment=PID17]; 393[group=A, comment=PID17]; //St. Louis	
+	430[group=V, comment=PID18]; 431[group=A, comment=PID18]; 432[group=A, comment=PID18]; 433[group=A, comment=PID18]; 434[group=A, comment=PID18]; 435[group=A, comment=PID18]; //Chicago
+	380[group=V, comment=PID19]; 381[group=A, comment=PID19]; //Nashville
+	440[group=V, comment=PID20]; 441[group=A, comment=PID20]; 442[group=A, comment=PID20]; 443[group=A, comment=PID20]; //Detroit
+	370[group=V, comment=PID21]; 371[group=A, comment=PID21]; //Charlotte	
+	340[group=V, comment=PID22]; 341[group=A, comment=PID22]; //Tampa Bay
+	350[group=V, comment=PID23]; 351[group=A, comment=PID23]; //Ft. Lauderdale
+	470[group=V, comment=PID24]; 471[group=A, comment=PID24]; 472[group=A, comment=PID24]; 473[group=A, comment=PID24]; //Washington DC.
+	460[group=V, comment=PID25]; 461[group=A, comment=PID25]; 462[group=A, comment=PID25]; 463[group=A, comment=PID25]; //Philadelphia
+	450[group=V, comment=PID26]; 451[group=A, comment=PID26]; 452[group=A, comment=PID26]; 453[group=A, comment=PID26]; //New York
+	220[group=V, comment=PID27]; 221[group=A, comment=PID27]; //Honolulu
+	250[group=V, comment=PID28]; 251[group=A, comment=PID28]; //Las Vegas
+		
 	overlap = scale;
 	splines = false;
 	label = "ATnT USA Network";
@@ -74,119 +76,119 @@ digraph Test {
 	
 	//CORE EDGES
 	//Seattle
-	100 -> 161	[label=1733,headlabel="161-100" ,alias = 1,latency=9.299,alto = PID0];
-	101 -> 109	[label=1546,headlabel="109-101" ,alias = 1,latency=5.156,alto = PID0];
-	102 -> 103	[label=1102,headlabel="103-102" ,alias = 1,latency=3.675,alto = PID0];
+	100 -> 161	[label=1733,headlabel="161-100" ,alias = 1,latency=9.299,alto=PID0];
+	101 -> 109	[label=1546,headlabel="109-101" ,alias = 1,latency=5.156,alto=PID0];
+	102 -> 103	[label=1102,headlabel="103-102" ,alias = 1,latency=3.675,alto=PID0];
 	//San Fransisco
-	103 -> 102	[label=1102,headlabel="102-103" ,alias = 1,latency=3.675,alto = PID0];
-	104 -> 119	[label=967,headlabel="119-104" ,alias = 1,latency=3.225,alto = PID0];
-	105 -> 125	[label=1524,headlabel="125-105" ,alias = 1,latency=5.083,alto = PID0];
-	106 -> 108	[label=550,headlabel="108-106" ,alias = 1,latency=1.834,alto = PID0];
-	107 -> 183	[label=3854,headlabel="183-107" ,alias = 1,latency=12.855,alto = PID0];
+	103 -> 102	[label=1102,headlabel="102-103" ,alias = 1,latency=3.675,alto=PID0];
+	104 -> 119	[label=967,headlabel="119-104" ,alias = 1,latency=3.225,alto=PID0];
+	105 -> 125	[label=1524,headlabel="125-105" ,alias = 1,latency=5.083,alto=PID0];
+	106 -> 108	[label=550,headlabel="108-106" ,alias = 1,latency=1.834,alto=PID0];
+	107 -> 183	[label=3854,headlabel="183-107" ,alias = 1,latency=12.855,alto=PID0];
 	//Los Angeles
-	108 -> 106	[label=550,headlabel="106-108" ,alias = 1,latency=1.834,alto = PID0];
-	109 -> 101	[label=1546,headlabel="101-109" ,alias = 1,latency=5.156,alto = PID0];
-	110 -> 184	[label=367,headlabel="184-110" ,alias = 1,latency=1.224,alto = PID0];
-	111 -> 160	[label=2806,headlabel="160-111" ,alias = 1,latency=9.359,alto = PID0];
-	112 -> 180	[label=3944,headlabel="180-112" ,alias = 1,latency=13.155,alto = PID0];
-	113 -> 172	[label=3699,headlabel="172-113" ,alias = 1,latency=12.338,alto = PID0];
-	114 -> 144	[label=3118,headlabel="144-114" ,alias = 1,latency=10.400,alto = PID0];
-	115 -> 122	[label=577,headlabel="122-115" ,alias = 1,latency=1.924,alto = PID0];
-	116 -> 117	[label=178,headlabel="117-116" ,alias = 1,latency=0.593,alto = PID0];
+	108 -> 106	[label=550,headlabel="106-108" ,alias = 1,latency=1.834,alto=PID0];
+	109 -> 101	[label=1546,headlabel="101-109" ,alias = 1,latency=5.156,alto=PID0];
+	110 -> 184	[label=367,headlabel="184-110" ,alias = 1,latency=1.224,alto=PID0];
+	111 -> 160	[label=2806,headlabel="160-111" ,alias = 1,latency=9.359,alto=PID0];
+	112 -> 180	[label=3944,headlabel="180-112" ,alias = 1,latency=13.155,alto=PID0];
+	113 -> 172	[label=3699,headlabel="172-113" ,alias = 1,latency=12.338,alto=PID0];
+	114 -> 144	[label=3118,headlabel="144-114" ,alias = 1,latency=10.400,alto=PID0];
+	115 -> 122	[label=577,headlabel="122-115" ,alias = 1,latency=1.924,alto=PID0];
+	116 -> 117	[label=178,headlabel="117-116" ,alias = 1,latency=0.593,alto=PID0];
 	//San Diego
-	117 -> 116	[label=178,headlabel="116-117" ,alias = 1,latency=0.593,alto = PID0];
-	118 -> 121	[label=479,headlabel="121-118" ,alias = 1,latency=1.597,alto = PID0];
+	117 -> 116	[label=178,headlabel="116-117" ,alias = 1,latency=0.593,alto=PID0];
+	118 -> 121	[label=479,headlabel="121-118" ,alias = 1,latency=1.597,alto=PID0];
 	//Salt Lake City
-	119 -> 104	[label=967,headlabel="104-119" ,alias = 1,latency=9.333,alto = PID0];
-	120 -> 124	[label=592,headlabel="124-120" ,alias = 1,latency=4.252,alto = PID0];
+	119 -> 104	[label=967,headlabel="104-119" ,alias = 1,latency=9.333,alto=PID0];
+	120 -> 124	[label=592,headlabel="124-120" ,alias = 1,latency=4.252,alto=PID0];
 	//Phoenix
-	121 -> 118	[label=479,headlabel="118-121" ,alias = 1,latency=1.597,alto = PID0];
-	122 -> 115	[label=577,headlabel="115-122" ,alias = 1,latency=1.924,alto = PID0];
-	123 -> 155	[label=2037,headlabel="155-123" ,alias = 1,latency=6.794,alto = PID0];
+	121 -> 118	[label=479,headlabel="118-121" ,alias = 1,latency=1.597,alto=PID0];
+	122 -> 115	[label=577,headlabel="115-122" ,alias = 1,latency=1.924,alto=PID0];
+	123 -> 155	[label=2037,headlabel="155-123" ,alias = 1,latency=6.794,alto=PID0];
 	//Denver
-	124 -> 120	[label=592,headlabel="120-124" ,alias = 1,latency=4.252,alto = PID0];
-	125 -> 105	[label=1524,headlabel="105-125" ,alias = 1,latency=5.083,alto = PID0];
-	126 -> 127	[label=1069,headlabel="127-126" ,alias = 1,latency=3.565,alto = PID0];
+	124 -> 120	[label=592,headlabel="120-124" ,alias = 1,latency=4.252,alto=PID0];
+	125 -> 105	[label=1524,headlabel="105-125" ,alias = 1,latency=5.083,alto=PID0];
+	126 -> 127	[label=1069,headlabel="127-126" ,alias = 1,latency=3.565,alto=PID0];
 	//Dallas
-	127 -> 126	[label=1069,headlabel="126-127" ,alias = 1,latency=3.565,alto = PID0];
-	128 -> 147	[label=728,headlabel="147-128" ,alias = 1,latency=2.428,alto = PID0];
-	129 -> 143	[label=1162,headlabel="143-129" ,alias = 1,latency=3.876,alto = PID0];
-	130 -> 135	[label=362,headlabel="135-130" ,alias = 1,latency=1.207,alto = PID0];
-	131 -> 132	[label=391,headlabel="132-131" ,alias = 1,latency=1.304,alto = PID0];
+	127 -> 126	[label=1069,headlabel="126-127" ,alias = 1,latency=3.565,alto=PID0];
+	128 -> 147	[label=728,headlabel="147-128" ,alias = 1,latency=2.428,alto=PID0];
+	129 -> 143	[label=1162,headlabel="143-129" ,alias = 1,latency=3.876,alto=PID0];
+	130 -> 135	[label=362,headlabel="135-130" ,alias = 1,latency=1.207,alto=PID0];
+	131 -> 132	[label=391,headlabel="132-131" ,alias = 1,latency=1.304,alto=PID0];
 	//San Antonio
-	132 -> 131	[label=391,headlabel="131-132" ,alias = 1,latency=1.304,alto = PID0];
-	133 -> 134	[label=292,headlabel="134-133" ,alias = 1,latency=0.974,alto = PID0];
+	132 -> 131	[label=391,headlabel="131-132" ,alias = 1,latency=1.304,alto=PID0];
+	133 -> 134	[label=292,headlabel="134-133" ,alias = 1,latency=0.974,alto=PID0];
 	//Houston
-	134 -> 133	[label=292,headlabel="133-134" ,alias = 1,latency=0.974,alto = PID0];
-	135 -> 130	[label=362,headlabel="130-135" ,alias = 1,latency=1.207,alto = PID0];
-	136 -> 138	[label=510,headlabel="138-136" ,alias = 1,latency=1.701,alto = PID0];
-	137 -> 139	[label=1552,headlabel="139-137" ,alias = 1,latency=5.176,alto = PID0];
+	134 -> 133	[label=292,headlabel="133-134" ,alias = 1,latency=0.974,alto=PID0];
+	135 -> 130	[label=362,headlabel="130-135" ,alias = 1,latency=1.207,alto=PID0];
+	136 -> 138	[label=510,headlabel="138-136" ,alias = 1,latency=1.701,alto=PID0];
+	137 -> 139	[label=1552,headlabel="139-137" ,alias = 1,latency=5.176,alto=PID0];
 	//New Orleans
-	138 -> 136	[label=510,headlabel="136-138" ,alias = 1,latency=1.701,alto = PID0];
+	138 -> 136	[label=510,headlabel="136-138" ,alias = 1,latency=1.701,alto=PID0];
 	//Miami
-	139 -> 137	[label=1552,headlabel="137-139" ,alias = 1,latency=5.176,alto = PID0];
-	140 -> 170	[label=328,headlabel="170-140" ,alias = 1,latency=1.094,alto = PID0];
-	141 -> 185	[label=977,headlabel="185-141" ,alias = 1,latency=3.258,alto = PID0];
-	142 -> 171	[label=40,headlabel="171-142" ,alias = 1,latency=0.133,alto = PID0];
+	139 -> 137	[label=1552,headlabel="137-139" ,alias = 1,latency=5.176,alto=PID0];
+	140 -> 170	[label=328,headlabel="170-140" ,alias = 1,latency=1.094,alto=PID0];
+	141 -> 185	[label=977,headlabel="185-141" ,alias = 1,latency=3.258,alto=PID0];
+	142 -> 171	[label=40,headlabel="171-142" ,alias = 1,latency=0.133,alto=PID0];
 	//Atlanta
-	143 -> 129	[label=1162,headlabel="129-143" ,alias = 1,latency=3.876,alto = PID0];
-	144 -> 114	[label=3118,headlabel="114-144" ,alias = 1,latency=10.400,alto = PID0];
-	145 -> 164	[label=342,headlabel="164-145" ,alias = 1,latency=1.140,alto = PID0];
-	146 -> 169	[label=358,headlabel="169-146" ,alias = 1,latency=1.194,alto = PID0];
-	185 -> 141	[label=977,headlabel="141-185" ,alias = 1,latency=3.258,alto = PID0];
+	143 -> 129	[label=1162,headlabel="129-143" ,alias = 1,latency=3.876,alto=PID0];
+	144 -> 114	[label=3118,headlabel="114-144" ,alias = 1,latency=10.400,alto=PID0];
+	145 -> 164	[label=342,headlabel="164-145" ,alias = 1,latency=1.140,alto=PID0];
+	146 -> 169	[label=358,headlabel="169-146" ,alias = 1,latency=1.194,alto=PID0];
+	185 -> 141	[label=977,headlabel="141-185" ,alias = 1,latency=3.258,alto=PID0];
 	//Kansas City
-	147 -> 128	[label=728,headlabel="128-147" ,alias = 1,latency=2.428,alto = PID0];
-	148 -> 150	[label=262,headlabel="150-148" ,alias = 1,latency=0.873,alto = PID0];
-	149 -> 156	[label=384,headlabel="156-149" ,alias = 1,latency=1.901,alto = PID0];
+	147 -> 128	[label=728,headlabel="128-147" ,alias = 1,latency=2.428,alto=PID0];
+	148 -> 150	[label=262,headlabel="150-148" ,alias = 1,latency=0.873,alto=PID0];
+	149 -> 156	[label=384,headlabel="156-149" ,alias = 1,latency=1.901,alto=PID0];
 	//Omaha
-	150 -> 148	[label=262,headlabel="148-150" ,alias = 1,latency=0.873,alto = PID0];
-	151 -> 153	[label=466,headlabel="153-151" ,alias = 1,latency=1.554,alto = PID0];
-	152 -> 157	[label=570,headlabel="157-152" ,alias = 1,latency=1.901,alto = PID0];
+	150 -> 148	[label=262,headlabel="148-150" ,alias = 1,latency=0.873,alto=PID0];
+	151 -> 153	[label=466,headlabel="153-151" ,alias = 1,latency=1.554,alto=PID0];
+	152 -> 157	[label=570,headlabel="157-152" ,alias = 1,latency=1.901,alto=PID0];
 	//Mineapolis
-	153 -> 151	[label=466,headlabel="151-153" ,alias = 1,latency=1.554,alto = PID0];
-	154 -> 162	[label=583,headlabel="162-154" ,alias = 1,latency=1.944,alto = PID0];
+	153 -> 151	[label=466,headlabel="151-153" ,alias = 1,latency=1.554,alto=PID0];
+	154 -> 162	[label=583,headlabel="162-154" ,alias = 1,latency=1.944,alto=PID0];
 	//St. Louis
-	155 -> 123	[label=2037,headlabel="123-155" ,alias = 1,latency=6.794,alto = PID0];
-	156 -> 149	[label=384,headlabel="149-156" ,alias = 1,latency=1.901,alto = PID0];
-	157 -> 152	[label=570,headlabel="152-157" ,alias = 1,latency=1.901,alto = PID0];
-	158 -> 159	[label=422,headlabel="159-158" ,alias = 1,latency=1.407,alto = PID0];
+	155 -> 123	[label=2037,headlabel="123-155" ,alias = 1,latency=6.794,alto=PID0];
+	156 -> 149	[label=384,headlabel="149-156" ,alias = 1,latency=1.901,alto=PID0];
+	157 -> 152	[label=570,headlabel="152-157" ,alias = 1,latency=1.901,alto=PID0];
+	158 -> 159	[label=422,headlabel="159-158" ,alias = 1,latency=1.407,alto=PID0];
 	//Chicago
-	159 -> 158	[label=422,headlabel="158-159" ,alias = 1,latency=1.407,alto = PID0];
-	160 -> 111	[label=2806,headlabel="111-160" ,alias = 1,latency=9.359,alto = PID0];
-	161 -> 100	[label=1733,headlabel="100-161" ,alias = 1,latency=9.299,alto = PID0];
-	162 -> 154	[label=583,headlabel="154-162" ,alias = 1,latency=1.944,alto = PID0];
-	163 -> 165	[label=381,headlabel="165-163" ,alias = 1,latency=1.270,alto = PID0];
+	159 -> 158	[label=422,headlabel="158-159" ,alias = 1,latency=1.407,alto=PID0];
+	160 -> 111	[label=2806,headlabel="111-160" ,alias = 1,latency=9.359,alto=PID0];
+	161 -> 100	[label=1733,headlabel="100-161" ,alias = 1,latency=9.299,alto=PID0];
+	162 -> 154	[label=583,headlabel="154-162" ,alias = 1,latency=1.944,alto=PID0];
+	163 -> 165	[label=381,headlabel="165-163" ,alias = 1,latency=1.270,alto=PID0];
 	//Nashville
-	164 -> 145	[label=342,headlabel="145-164" ,alias = 1,latency=1.140,alto = PID0];
+	164 -> 145	[label=342,headlabel="145-164" ,alias = 1,latency=1.140,alto=PID0];
 	//Detroit
-	165 -> 163	[label=381,headlabel="163-165" ,alias = 1,latency=1.270,alto = PID0];
-	166 -> 179	[label=779,headlabel="179-166" ,alias = 1,latency=2.598,alto = PID0];
-	167 -> 177	[label=713,headlabel="177-167" ,alias = 1,latency=2.378,alto = PID0];
-	168 -> 173	[label=640,headlabel="173-168" ,alias = 1,latency=2.134,alto = PID0];
+	165 -> 163	[label=381,headlabel="163-165" ,alias = 1,latency=1.270,alto=PID0];
+	166 -> 179	[label=779,headlabel="179-166" ,alias = 1,latency=2.598,alto=PID0];
+	167 -> 177	[label=713,headlabel="177-167" ,alias = 1,latency=2.378,alto=PID0];
+	168 -> 173	[label=640,headlabel="173-168" ,alias = 1,latency=2.134,alto=PID0];
 	//Charlotte
-	169 -> 146	[label=358,headlabel="146-169" ,alias = 1,latency=1.194,alto = PID0];
+	169 -> 146	[label=358,headlabel="146-169" ,alias = 1,latency=1.194,alto=PID0];
 	//Tampa Bay
-	170 -> 140	[label=328,headlabel="140-170" ,alias = 1,latency=1.094,alto = PID0];
+	170 -> 140	[label=328,headlabel="140-170" ,alias = 1,latency=1.094,alto=PID0];
 	//Fort Lauderdale
-	171 -> 142	[label=40,headlabel="142-171" ,alias = 1,latency=0.133,alto = PID0];
+	171 -> 142	[label=40,headlabel="142-171" ,alias = 1,latency=0.133,alto=PID0];
 	//Washington D.C.
-	172 -> 113	[label=3699,headlabel="113-172" ,alias = 1,latency=12.338,alto = PID0];
-	173 -> 168	[label=640,headlabel="168-173" ,alias = 1,latency=2.134,alto = PID0];
-	174 -> 181	[label=331,headlabel="181-174" ,alias = 1,latency=1.104,alto = PID0];
-	175 -> 176	[label=193,headlabel="176-175" ,alias = 1,latency=0.643,alto = PID0];
+	172 -> 113	[label=3699,headlabel="113-172" ,alias = 1,latency=12.338,alto=PID0];
+	173 -> 168	[label=640,headlabel="168-173" ,alias = 1,latency=2.134,alto=PID0];
+	174 -> 181	[label=331,headlabel="181-174" ,alias = 1,latency=1.104,alto=PID0];
+	175 -> 176	[label=193,headlabel="176-175" ,alias = 1,latency=0.643,alto=PID0];
 	//Philadelphia
-	176 -> 175	[label=193,headlabel="175-176" ,alias = 1,latency=0.643,alto = PID0];
-	177 -> 167	[label=713,headlabel="167-177" ,alias = 1,latency=2.378,alto = PID0];
-	178 -> 182	[label=138,headlabel="182-178" ,alias = 1,latency=0.460,alto = PID0];
+	176 -> 175	[label=193,headlabel="175-176" ,alias = 1,latency=0.643,alto=PID0];
+	177 -> 167	[label=713,headlabel="167-177" ,alias = 1,latency=2.378,alto=PID0];
+	178 -> 182	[label=138,headlabel="182-178" ,alias = 1,latency=0.460,alto=PID0];
 	//New York
-	179 -> 166	[label=779,headlabel="166-179" ,alias = 1,latency=2.598,alto = PID0];
-	180 -> 112	[label=3944,headlabel="112-180" ,alias = 1,latency=13.155,alto = PID0];
-	181 -> 174	[label=331,headlabel="174-181" ,alias = 1,latency=1.104,alto = PID0];
-	182 -> 178	[label=138,headlabel="178-182" ,alias = 1,latency=0.460,alto = PID0];
+	179 -> 166	[label=779,headlabel="166-179" ,alias = 1,latency=2.598,alto=PID0];
+	180 -> 112	[label=3944,headlabel="112-180" ,alias = 1,latency=13.155,alto=PID0];
+	181 -> 174	[label=331,headlabel="174-181" ,alias = 1,latency=1.104,alto=PID0];
+	182 -> 178	[label=138,headlabel="178-182" ,alias = 1,latency=0.460,alto=PID0];
 	//Honolulu
-	183 -> 107	[label=3854,headlabel="107-183" ,alias = 1,latency=12.855,alto = PID0];
+	183 -> 107	[label=3854,headlabel="107-183" ,alias = 1,latency=12.855,alto=PID0];
 	//Las Vegas
-	184 -> 110	[label=367,headlabel="110-184" ,alias = 1,latency=1.224,alto = PID0];
+	184 -> 110	[label=367,headlabel="110-184" ,alias = 1,latency=1.224,alto=PID0];
 		
 		
 	//Aggregation Network

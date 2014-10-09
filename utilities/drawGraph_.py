@@ -11,6 +11,7 @@ import pydot
 from PIL import Image
 #function transforms
 #def transformGraphReady():
+	
 
 def drawGraph(hoodDict, grName):
 	graph = pydot.Dot(label = grName, graph_type='digraph')
@@ -33,7 +34,8 @@ def drawNetworkMap(netmapList, grName):
 		name = ""+key+" |{ " 
 		#print key
 		#print val[0]
-		iterVal = val
+		#converting the set val to a list to apply list functions to it
+		iterVal = list(val)
 		for n in range(len(val)):
 			if len (iterVal) == 1:
 				name = name + str(iterVal.pop(0)) +" }"

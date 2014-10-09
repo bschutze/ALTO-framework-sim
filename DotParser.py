@@ -31,6 +31,7 @@ from libraries.dijkstra import *
 from utilities import drawGraph_
 from utilities import counter_
 from Views import traceroute_
+from Views import alto_
 
 #
 #Function definitions:
@@ -137,8 +138,14 @@ def genBaseNetworkMap(rawNetworkMap): #Method generates the base networkmap i.e.
 		tmp = "PID"+str(x)
 		tempDict[tmp]=rawNetworkMap.pop(0) #take the first item in the list
 	#print tempDict
-	return tempDict	
+	return tempDict
+	
 
+
+
+
+
+#function that aggegates nodes based on their link costs. TODO this is the old way of aggregating see makeNetworkMap()
 def aggregatePids(edgeMap, threshold, neighborHoodDict):
 	noMore = 1
 	pidCount = 0
@@ -343,9 +350,10 @@ graph = pydot.graph_from_dot_file(path)
 #grabbing the list of edges
 edgeList = graph.get_edge_list()
 #storing the list of nodes
-nodeList = graph.get_node_list()
 
-print "generating ground thruth"
+nodeList =  graph.get_node_list()
+
+print "generating ground truth"
 #draw the complete network or ground truth
 subprocess.Popen(["neato", "-Tjpeg", path, "-o","Output/"+graphName+"_GTRUTH"])
 
@@ -379,57 +387,50 @@ for e in edgeList:
 	label = int(e.get_label())#label = weights of a edge
 	
 	#print "TEST: ", src*100000+dest
-	
+	#if (label != 0):
 	interfaceMap[(src*100000) + dest] = e.get_headlabel()
 	tempAttr = json.dumps(e.get_attributes())
 	edgeAttr = json.loads(tempAttr)
-
+		
 	insertEdge(dijkstraFormatDict, src, dest, label)
 	insertEdge(dijkstraFormatDict, dest, src, label)
 	
 	fakenodesList.append(src)	#add nodes to networkmap
 	fakenodesList.append(dest)	#add nodes to networkmap
 	pathCostMap[(src*100000) + dest] = label
-	#pathCostMap[(dest*100000) + src] = label
-	#delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
-	#throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
+		#pathCostMap[(dest*100000) + src] = label
+		#delayMap[(src*100000) + dest] = int(edgeAttr['delay'])
+		#throughputMap[(src*100000) + dest] = int(edgeAttr['throughput'])
 	latencyMap[(src*100000) + dest] = float(edgeAttr['latency'])
-	#bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
+		#bandwidthMap[(src*100000) + dest] = int(edgeAttr['bandwidth'])
 	aliasResMap[(src*100000) + dest] = int(edgeAttr['alias'])
-	altoPID_Map[(src*100000) + dest] = str(edgeAttr['alto'])
+
+#generating a mapping: "node name" to PID
+test_stuff = dict()
+
+for n in nodeList:
+	if n.get_name() is 'node':
+			continue
+	if n.get_name() is 'edge':
+			continue
+	name   = int(n.get_name())
+	#print "NODE LIST: ", name
+	#altoPID_Map[name] = str(n.get_label())
+	
+	tempAttr = json.dumps(n.get_attributes())
+	nodeAttr = json.loads(tempAttr)
+	altoPID_Map[name] =  str(nodeAttr['comment'])
+	#if str(nodeAttr['comment'])!= 'PID0':
+	#	nodeList.append(n)
+	#print altoPID_Map
+
 print "done"
-		
+#print altoPID_Map	
 #shortest path algorithm based on Dijkstra
 #dijk,Predecessors = Dijkstra(dijkstraFormatDict, start, end)
 #shortPathList = shortestPath(dijkstraFormatDict, start, end)
 fakenodesList = removeDublicates(fakenodesList)
 fakenodesList = sorted(fakenodesList)
-
-#OUTPUT
-#print "Dijkstra!"
-#print dijkstraFormatDict
-#print "\n", fakenodesList
-#print("\n")
-#print "Dijkstra,  from %s to %s, has total Cost:" %(start, end), dijk[end] #D[end] is total cost
-#print "\nShortest path from %s to %s :" %(start, end), shortPathList
-#print "\nList of Nodes: ", fakenodesList
-#print "\nHashed Costs: ", pathCostMap
-#print "\nDelay Map: ", delayMap
-#print "\nThroughput Map: ", throughputMap
-#print "\nLatency Map: ", latencyMap
-#print "\nBandwidth Map: ", bandwidthMap
-
-
-#DOING CALCULATIONS WITH THE SHORTEST PATH AND THE DIFFERENT MAPS
-
-#pathCost = getTotalPathCosts(pathCostMap, shortPathList)
-#print "\nPath total cost: \t",pathCost
-#pathDelay = getTotalPathCosts(delayMap, shortPathList)
-#print "\nPath total delay: \t",pathDelay
-#pathMinBandwidth = getMinValue(bandwidthMap, shortPathList)
-#print "\nPath min bandwidth: \t",pathMinBandwidth
-#pathLatency = getTotalPathCosts(latencyMap, shortPathList)
-#print "\nPath total latency: \t",pathLatency
 
 
 #building a "real" Alto cost map. From all PIDs to all PID
@@ -459,10 +460,14 @@ for x in fakenodesList:
 	rawCostMap[x]=genSubCostDict(tempList, pathCostMap)
 	tempList = [] #clearing tempList
 	#innerSPathDict = {}
-#print "Shortest Path dictionary for traceroute:"
-#print totalSPathDict
-
 print "done"
+
+#TODO activate
+
+#print "ALTO COSTMAP RESULT:"
+
+#print rawCostMap
+
 
 #costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
 #costMapFile.write(str(rawCostMap))
@@ -472,25 +477,48 @@ print "done"
 #pickle.dump(rawCostMap, costMapPickle)
 #costMapPickle.close()
 print "generating ALTO maps:"
-tempFakeNodesList = list(fakenodesList)
+#tempFakeNodesList = list(fakenodesList)
+#baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
 
-baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
+#print "dijkstra algo:"
+#print dijkstraFormatDict
+
 print "\t* Network map"
-aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+#aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
+altoNetworkMap = alto_.makeNetworkMap(altoPID_Map)
 print "\t* Cost map"
-labelNetworkMap(dijkstraFormatDict, aggNetMap)
+altoCostMap = alto_.genAltoCostMap(altoPID_Map, dijkstraFormatDict)
+
+test_for_glory = alto_.genFullAltoCostMap(totalSPathDict, altoPID_Map, pathCostMap)
+all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
+print"\nITS THE FINAL COUNTDOWN!!!"
+print test_for_glory
+print "makes: "
+print all_2_all_CostMap
+#labelNetworkMap(dijkstraFormatDict, aggNetMap)
 print "generating ALTO jpgs."
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
-drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
+
+#print "EVALUATING OLD:"
+#print dijkstraFormatDict
+#print "also old:"
+#print aggNetMap
+#print "NEW"
+#print temp_test
+
+#drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
+drawGraph_.drawGraph(altoCostMap, graphName+'_ALTO')
 
 
 realNetworkMap = open("Output/ALTO/"+graphName+"_ALTO_NETWORK_MAP.txt", 'w+')
-realNetworkMap.write(str(aggNetMap))
+realNetworkMap.write(str(altoNetworkMap))
 realNetworkMap.close()
-
+"""#TODO generate real cost Map and store here 
 realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", 'w+')
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
+"""
+print dijkstraFormatDict
 
 print "running traceroutes"
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
@@ -499,14 +527,14 @@ tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList
 #print tracerouteDict
 print "generating traceroute jpgs.\n"
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
-drawGraph_.drawNetworkMap(aggNetMap, graphName+'_NETWORKMAP')
+drawGraph_.drawNetworkMap(altoNetworkMap, graphName+'_NETWORKMAP')
 #generate outputfile with statistics of edge and node count
 counter_.genStats()
 
 
 
 print "\nDONE, please see the Output folder for the 3 resulting Views:"
-print "\n\t"+graphName+"_GTRUTH (ground truth)"
+print "\n\t"+graphName+"_GTRUTH\t(ground truth)"
 print "\t"+graphName+"_ALTO \t(Alto)"
 print "\t"+graphName+"_TR \t(traceroute)\n"
 print "\n\tNode & Edge count: TOTAL_STATS_COUNT.txt\n"
@@ -515,6 +543,5 @@ print "\tALTO/"+graphName+"_ALTO_NETWORK_MAP.txt"
 print "\tALTO/"+graphName+"_ALTO_COST_MAP.txt\n"
 print "\tTraceroute path latencies:"
 print "\tTRACEROUTE/"+graphName+"_LATENCY.txt\n"
-#print 
 
 
