@@ -11,52 +11,65 @@ digraph Test {
 	
 	//Backbone nodes
 
-	100[group=S]; 102[group=S]; 101[group=S]; 103[group=S]; 104[group=S]; 105[group=S]; //Hamburg
-	106[group=S]; 107[group=S]; 108[group=S]; 109[group=S]; 110[group=S]; 111[group=S]; 112[group=S]; 113[group=S]; //Hannover
-	114[group=S]; 115[group=S]; 116[group=S]; 117[group=S]; //Berlin
-	118[group=S]; 119[group=S]; 120[group=S]; 121[group=S]; 122[group=S]; 123[group=S]; 124[group=S]; 125[group=S]; //Leipzig
-	126[group=S]; 127[group=S]; 128[group=S]; 129[group=S]; //Nürnberg
-	130[group=S]; 131[group=S]; 132[group=S]; 133[group=S]; 134[group=S]; 135[group=S]; //München
-	136[group=S]; 137[group=S]; 138[group=S]; //Ulm
-	139[group=S]; 140[group=S]; 141[group=S]; 142[group=S]; //Stuttgart
-	143[group=S]; 144[group=S]; 145[group=S]; 146[group=S]; 147[group=S]; 148[group=S]; 149[group=S]; 150[group=S]; 151[group=S]; 152[group=S]; 153[group=S]; //Frankfurt
-	154[group=S]; 155[group=S]; 156[group=S]; 157[group=S]; //182[group=S]; //Köln
-	158[group=S]; //Bonn
-	159[group=S]; 160[group=S]; 161[group=S]; 162[group=S]; 163[group=S]; 164[group=S];//Essen
-	165[group=S]; 166[group=S]; 167[group=S]; //Bochum
-	168[group=S]; //Dortmund
-	169[group=S]; //Düsseldorf
-	170[group=S]; //Dresden
-	171[group=S]; //Freiburg
-	172[group=S]; //Wolfsburg
-	173[group=S]; //Augsburg
-	174[group=S]; //Kiel
-	175[group=S]; //Landshut
+	100[group=S, comment=PID1 ]; 102[group=S, comment=PID1 ]; 101[group=S, comment=PID1 ]; 103[group=S, comment=PID1 ]; //Hamburg
+	104[group=S, comment=PID1 ]; 105[group=S, comment=PID1 ]; //Hamburg
+	106[group=S, comment=PID2 ]; 107[group=S, comment=PID2 ]; 108[group=S, comment=PID2 ]; 109[group=S, comment=PID2 ]; //Hannover
+	110[group=S, comment=PID2 ]; 111[group=S, comment=PID2 ]; 112[group=S, comment=PID2 ]; 113[group=S, comment=PID2 ]; //Hannover
+	114[group=S, comment=PID3 ]; 115[group=S, comment=PID3 ]; 116[group=S, comment=PID3 ]; 117[group=S, comment=PID3 ]; //Berlin
+	118[group=S, comment=PID4 ]; 119[group=S, comment=PID4 ]; 120[group=S, comment=PID4 ]; 121[group=S, comment=PID4 ]; //Leipzig
+	122[group=S, comment=PID4 ]; 123[group=S, comment=PID4 ]; 124[group=S, comment=PID4 ]; 125[group=S, comment=PID4 ]; //Leipzig
+	126[group=S, comment=PID5 ]; 127[group=S, comment=PID5 ]; 128[group=S, comment=PID5 ]; 129[group=S, comment=PID5 ]; //Nürnberg
+	130[group=S, comment=PID6 ]; 131[group=S, comment=PID6 ]; 132[group=S, comment=PID6 ]; 133[group=S, comment=PID6 ]; //München
+	134[group=S, comment=PID6 ]; 135[group=S, comment=PID6 ]; //München
+	136[group=S, comment=PID7 ]; 137[group=S, comment=PID7 ]; 138[group=S, comment=PID7 ]; //Ulm
+	139[group=S, comment=PID8 ]; 140[group=S, comment=PID8 ]; 141[group=S, comment=PID8 ]; 142[group=S, comment=PID8 ]; //Stuttgart
+	143[group=S, comment=PID9 ]; 144[group=S, comment=PID9 ]; 145[group=S, comment=PID9 ]; 146[group=S, comment=PID9 ]; //Frankfurt
+	147[group=S, comment=PID9 ]; 148[group=S, comment=PID9 ]; 149[group=S, comment=PID9 ]; 150[group=S, comment=PID9 ]; //Frankfurt
+	151[group=S, comment=PID9 ]; 152[group=S, comment=PID9 ]; 153[group=S, comment=PID9 ]; //Frankfurt
+	154[group=S, comment=PID10 ]; 155[group=S, comment=PID10 ]; 156[group=S, comment=PID10 ]; 157[group=S, comment=PID10 ]; //182[group=S, comment=PID ]; //Köln
+	158[group=S, comment=PID11 ]; //Bonn
+	159[group=S, comment=PID12 ]; 160[group=S, comment=PID12 ]; 161[group=S, comment=PID12 ]; 162[group=S, comment=PID12 ]; //Essen
+	163[group=S, comment=PID12 ]; 164[group=S, comment=PID12 ];//Essen
+	165[group=S, comment=PID13 ]; 166[group=S, comment=PID13 ]; 167[group=S, comment=PID13 ]; //Bochum
+	168[group=S, comment=PID14 ]; //Dortmund
+	169[group=S, comment=PID15 ]; //Düsseldorf
+	170[group=S, comment=PID16 ]; //Dresden
+	171[group=S, comment=PID17 ]; //Freiburg
+	172[group=S, comment=PID18 ]; //Wolfsburg
+	173[group=S, comment=PID19 ]; //Augsburg
+	174[group=S, comment=PID20 ]; //Kiel
+	175[group=S, comment=PID21 ]; //Landshut
 
 	//Aggregation Network
-	200[group=A]; 201[group=A]; //Kiel
-	210[group=A]; 211[group=A]; 212[group=A]; 213[group=A]; 214[group=A]; 215[group=A]; //Hamburg
-	//220[group=A]; //?
-	230[group=A]; 231[group=A]; 232[group=A]; 233[group=A]; 234[group=A]; 235[group=A]; 236[group=A]; 237[group=A]; //Hannover
-	240[group=A]; 241[group=A]; 242[group=A]; 243[group=A];//Berlin
-	250[group=A]; 251[group=A]; 252[group=A]; 253[group=A]; 254[group=A]; 255[group=A]; 256[group=A]; 257[group=A];//Leipzig
-	280[group=A]; 281[group=A]; 282[group=A]; 283[group=A]; 284[group=A]; 285[group=A]; //München
-	270[group=A]; 271[group=A]; 272[group=A]; 273[group=A]; //Nürnberg
-	290[group=A]; 291[group=A]; //Landshut
-	300[group=A]; 301[group=A]; 302[group=A]; 303[group=A]; //Ulm
-	310[group=A]; 311[group=A]; 312[group=A]; 313[group=A]; //Stuttgart
-	320[group=A]; 321[group=A]; 322[group=A]; 323[group=A]; 324[group=A]; 325[group=A]; 326[group=A]; 327[group=A]; 328[group=A];//Frankfurt
-	329[group=A]; 330[group=A]; 331[group=A]; //Frankfurt cont.
-	340[group=A]; 341[group=A]; 342[group=A]; 343[group=A]; //Köln
-	350[group=A]; 351[group=A]; //Bonn
-	360[group=A]; 361[group=A]; 362[group=A]; 363[group=A]; 364[group=A]; 365[group=A]; //Essen
-	370[group=A]; 371[group=A]; //Bochum
-	380[group=A]; 381[group=A]; //Dortmund
-	390[group=A]; 391[group=A]; //Düsseldorf
-	400[group=A]; 401[group=A]; //Dresden
-	410[group=A]; 411[group=A]; //Freiburg
-	420[group=A]; 421[group=A]; //Wolfsburg
-	430[group=A]; 431[group=A]; //Augsburg
+	200[group=A, comment=PID20 ]; 201[group=A, comment=PID20 ]; //Kiel
+	210[group=A, comment=PID1 ]; 211[group=A, comment=PID1 ]; 212[group=A, comment=PID1 ]; 213[group=A, comment=PID1 ]; //Hamburg
+	214[group=A, comment=PID1 ]; 215[group=A, comment=PID1 ]; //Hamburg
+	//220[group=A, comment=PID ]; //?
+	230[group=A, comment=PID2 ]; 231[group=A, comment=PID2 ]; 232[group=A, comment=PID2 ]; 233[group=A, comment=PID2 ]; //Hannover
+	234[group=A, comment=PID2 ]; 235[group=A, comment=PID2 ]; 236[group=A, comment=PID2 ]; 237[group=A, comment=PID2 ]; //Hannover
+	240[group=A, comment=PID3 ]; 241[group=A, comment=PID3 ]; 242[group=A, comment=PID3 ]; 243[group=A, comment=PID3 ]; //Berlin
+	250[group=A, comment=PID4 ]; 251[group=A, comment=PID4 ]; 252[group=A, comment=PID4 ]; 253[group=A, comment=PID4 ]; //Leipzig
+	254[group=A, comment=PID4 ]; 255[group=A, comment=PID4 ]; 256[group=A, comment=PID4 ]; 257[group=A, comment=PID4 ]; //Leipzig
+	280[group=A, comment=PID6 ]; 281[group=A, comment=PID6 ]; 282[group=A, comment=PID6 ]; 283[group=A, comment=PID6 ]; //München
+	284[group=A, comment=PID6 ]; 285[group=A, comment=PID6 ]; //München
+	270[group=A, comment=PID5 ]; 271[group=A, comment=PID5 ]; 272[group=A, comment=PID5 ]; 273[group=A, comment=PID5 ]; //Nürnberg
+	290[group=A, comment=PID21 ]; 291[group=A, comment=PID21 ]; //Landshut
+	300[group=A, comment=PID7 ]; 301[group=A, comment=PID7 ]; 302[group=A, comment=PID7 ]; 303[group=A, comment=PID7 ]; //Ulm
+	310[group=A, comment=PID8 ]; 311[group=A, comment=PID8 ]; 312[group=A, comment=PID8 ]; 313[group=A, comment=PID8 ]; //Stuttgart
+	320[group=A, comment=PID9 ]; 321[group=A, comment=PID9 ]; 322[group=A, comment=PID9 ]; 323[group=A, comment=PID9 ]; //Frankfurt
+	324[group=A, comment=PID9 ]; 325[group=A, comment=PID9 ]; 326[group=A, comment=PID9 ]; 327[group=A, comment=PID9 ]; //Frankfurt
+	328[group=A, comment=PID9 ]; 329[group=A, comment=PID9 ]; 330[group=A, comment=PID9 ]; 331[group=A, comment=PID9 ]; //Frankfurt
+	340[group=A, comment=PID10 ]; 341[group=A, comment=PID10 ]; 342[group=A, comment=PID10 ]; 343[group=A, comment=PID10 ]; //Köln
+	350[group=A, comment=PID11 ]; 351[group=A, comment=PID11 ]; //Bonn
+	360[group=A, comment=PID12 ]; 361[group=A, comment=PID12 ]; 362[group=A, comment=PID12 ]; 363[group=A, comment=PID12 ]; //Essen
+	364[group=A, comment=PID12 ]; 365[group=A, comment=PID12 ]; //Essen
+	370[group=A, comment=PID13 ]; 371[group=A, comment=PID13 ]; 372[group=A, comment=PID13 ]; 373[group=A, comment=PID13 ]; //Bochum
+	380[group=A, comment=PID14 ]; 381[group=A, comment=PID14 ]; //Dortmund
+	390[group=A, comment=PID15 ]; 391[group=A, comment=PID15 ]; //Düsseldorf
+	400[group=A, comment=PID16 ]; 401[group=A, comment=PID16 ]; //Dresden
+	410[group=A, comment=PID17 ]; 411[group=A, comment=PID17 ]; //Freiburg
+	420[group=A, comment=PID18 ]; 421[group=A, comment=PID18 ]; //Wolfsburg
+	430[group=A, comment=PID19 ]; 431[group=A, comment=PID19 ]; //Augsburg
 	
 	//Vantage Points
 	//900[group=V]
@@ -135,7 +148,7 @@ digraph Test {
 	156 -> 110	[label=248,headlabel="110-156" ,alias = 1,latency=0.827,alto=PID0];
 	157 -> 169	[label=34,headlabel="169-157" ,alias = 1,latency=0.113,alto=PID0];
 	//BONN
-	158 -> 153	[label=131headlabel="153-158" ,alias = 1,latency=0.436,alto=PID0];
+	158 -> 153	[label=131,headlabel="153-158" ,alias = 1,latency=0.436,alto=PID0];
 	//ESSEN
 	159 -> 105	[label=308,headlabel="105-159" ,alias = 1,latency=1.027,alto=PID0];
 	160 -> 112	[label=211,headlabel="112-160" ,alias = 1,latency=0.703,alto=PID0];

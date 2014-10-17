@@ -43,7 +43,7 @@ for line in data:
 	#else its a edge and meta needs to be added
 	else:
 		igp_pos = line.find("=")
-		output = "\t" + line[:igp_pos] + "\t[label=%s,headlabel=\"%s-%s\" ,alias=1,latency=4,alto=PID%s];"%(str(line[igp_pos+1:]),str(line[7:igp_pos]),str(line[:3]),str(altoCount))
+		output = "\t" + line[:igp_pos] + "\t[label=%s,headlabel=\"%s-%s\" ,alias=1,latency=4];"%(str(line[igp_pos+1:]),str(line[7:igp_pos]),str(line[:3]))
 		print output
 sys.stdout.flush()
 
