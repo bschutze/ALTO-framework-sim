@@ -1,0 +1,622 @@
+digraph Test {
+
+	/*compound=true*/
+	node [shape=box];
+	edge [len=3];
+	overlap = scale;
+	splines = false;
+	label = BackBone;
+	//orientation = portrait;
+	/*Instantiation of nodes, required to successfully calling .get_node_list() 		(pydot) */
+	
+	//Backbone nodes
+
+	100[group=S, comment=PID1 ]; 102[group=S, comment=PID1 ]; 101[group=S, comment=PID1 ]; 103[group=S, comment=PID1 ]; //Hamburg
+	104[group=S, comment=PID1 ]; 105[group=S, comment=PID1 ]; //Hamburg
+	106[group=S, comment=PID2 ]; 107[group=S, comment=PID2 ]; 108[group=S, comment=PID2 ]; 109[group=S, comment=PID2 ]; //Hannover
+	110[group=S, comment=PID2 ]; 111[group=S, comment=PID2 ]; 112[group=S, comment=PID2 ]; 113[group=S, comment=PID2 ]; //Hannover
+	114[group=S, comment=PID3 ]; 115[group=S, comment=PID3 ]; 116[group=S, comment=PID3 ]; 117[group=S, comment=PID3 ]; //Berlin
+	118[group=S, comment=PID4 ]; 119[group=S, comment=PID4 ]; 120[group=S, comment=PID4 ]; 121[group=S, comment=PID4 ]; //Leipzig
+	122[group=S, comment=PID4 ]; 123[group=S, comment=PID4 ]; 124[group=S, comment=PID4 ]; 125[group=S, comment=PID4 ]; //Leipzig
+	126[group=S, comment=PID5 ]; 127[group=S, comment=PID5 ]; 128[group=S, comment=PID5 ]; 129[group=S, comment=PID5 ]; //Nürnberg
+	130[group=S, comment=PID6 ]; 131[group=S, comment=PID6 ]; 132[group=S, comment=PID6 ]; 133[group=S, comment=PID6 ]; //München
+	134[group=S, comment=PID6 ]; 135[group=S, comment=PID6 ]; //München
+	136[group=S, comment=PID7 ]; 137[group=S, comment=PID7 ]; 138[group=S, comment=PID7 ]; //Ulm
+	139[group=S, comment=PID8 ]; 140[group=S, comment=PID8 ]; 141[group=S, comment=PID8 ]; 142[group=S, comment=PID8 ]; //Stuttgart
+	143[group=S, comment=PID9 ]; 144[group=S, comment=PID9 ]; 145[group=S, comment=PID9 ]; 146[group=S, comment=PID9 ]; //Frankfurt
+	147[group=S, comment=PID9 ]; 148[group=S, comment=PID9 ]; 149[group=S, comment=PID9 ]; 150[group=S, comment=PID9 ]; //Frankfurt
+	151[group=S, comment=PID9 ]; 152[group=S, comment=PID9 ]; 153[group=S, comment=PID9 ]; //Frankfurt
+	154[group=S, comment=PID10 ]; 155[group=S, comment=PID10 ]; 156[group=S, comment=PID10 ]; 157[group=S, comment=PID10 ]; //182[group=S, comment=PID ]; //Köln
+	158[group=S, comment=PID11 ]; //Bonn
+	159[group=S, comment=PID12 ]; 160[group=S, comment=PID12 ]; 161[group=S, comment=PID12 ]; 162[group=S, comment=PID12 ]; //Essen
+	163[group=S, comment=PID12 ]; 164[group=S, comment=PID12 ];//Essen
+	165[group=S, comment=PID13 ]; 166[group=S, comment=PID13 ]; 167[group=S, comment=PID13 ]; //Bochum
+	168[group=S, comment=PID14 ]; //Dortmund
+	169[group=S, comment=PID15 ]; //Düsseldorf
+	170[group=S, comment=PID16 ]; //Dresden
+	171[group=S, comment=PID17 ]; //Freiburg
+	172[group=S, comment=PID18 ]; //Wolfsburg
+	173[group=S, comment=PID19 ]; //Augsburg
+	174[group=S, comment=PID20 ]; //Kiel
+	175[group=S, comment=PID21 ]; //Landshut
+
+	//Aggregation Network
+	200[group=A, comment=PID20 ]; 201[group=A, comment=PID20 ]; //Kiel
+	210[group=A, comment=PID1 ]; 211[group=A, comment=PID1 ]; 212[group=A, comment=PID1 ]; 213[group=A, comment=PID1 ]; //Hamburg
+	214[group=A, comment=PID1 ]; 215[group=A, comment=PID1 ]; //Hamburg
+	230[group=A, comment=PID2 ]; 231[group=A, comment=PID2 ]; 232[group=A, comment=PID2 ]; 233[group=A, comment=PID2 ]; //Hannover
+	234[group=A, comment=PID2 ]; 235[group=A, comment=PID2 ]; 236[group=A, comment=PID2 ]; 237[group=A, comment=PID2 ]; //Hannover
+	240[group=A, comment=PID3 ]; 241[group=A, comment=PID3 ]; 242[group=A, comment=PID3 ]; 243[group=A, comment=PID3 ]; //Berlin
+	250[group=A, comment=PID4 ]; 251[group=A, comment=PID4 ]; 252[group=A, comment=PID4 ]; 253[group=A, comment=PID4 ]; //Leipzig
+	254[group=A, comment=PID4 ]; 255[group=A, comment=PID4 ]; 256[group=A, comment=PID4 ]; 257[group=A, comment=PID4 ]; //Leipzig
+	280[group=A, comment=PID6 ]; 281[group=A, comment=PID6 ]; 282[group=A, comment=PID6 ]; 283[group=A, comment=PID6 ]; //München
+	284[group=A, comment=PID6 ]; 285[group=A, comment=PID6 ]; //München
+	270[group=A, comment=PID5 ]; 271[group=A, comment=PID5 ]; 272[group=A, comment=PID5 ]; 273[group=A, comment=PID5 ]; //Nürnberg
+	290[group=A, comment=PID21 ]; 291[group=A, comment=PID21 ]; //Landshut
+	300[group=A, comment=PID7 ]; 301[group=A, comment=PID7 ]; 302[group=A, comment=PID7 ]; 303[group=A, comment=PID7 ]; //Ulm
+	310[group=A, comment=PID8 ]; 311[group=A, comment=PID8 ]; 312[group=A, comment=PID8 ]; 313[group=A, comment=PID8 ]; //Stuttgart
+	320[group=A, comment=PID9 ]; 321[group=A, comment=PID9 ]; 322[group=A, comment=PID9 ]; 323[group=A, comment=PID9 ]; //Frankfurt
+	324[group=A, comment=PID9 ]; 325[group=A, comment=PID9 ]; 326[group=A, comment=PID9 ]; 327[group=A, comment=PID9 ]; //Frankfurt
+	328[group=A, comment=PID9 ]; 329[group=A, comment=PID9 ]; 330[group=A, comment=PID9 ]; 331[group=A, comment=PID9 ]; //Frankfurt
+	340[group=A, comment=PID10 ]; 341[group=A, comment=PID10 ]; 342[group=A, comment=PID10 ]; 343[group=A, comment=PID10 ]; //Köln
+	350[group=A, comment=PID11 ]; 351[group=A, comment=PID11 ]; //Bonn
+	360[group=A, comment=PID12 ]; 361[group=A, comment=PID12 ]; 362[group=A, comment=PID12 ]; 363[group=A, comment=PID12 ]; //Essen
+	364[group=A, comment=PID12 ]; 365[group=A, comment=PID12 ]; //Essen
+	370[group=A, comment=PID13 ]; 371[group=A, comment=PID13 ]; 372[group=A, comment=PID13 ]; 373[group=A, comment=PID13 ]; //Bochum
+	380[group=A, comment=PID14 ]; 381[group=A, comment=PID14 ]; //Dortmund
+	390[group=A, comment=PID15 ]; 391[group=A, comment=PID15 ]; //Düsseldorf
+	400[group=A, comment=PID16 ]; 401[group=A, comment=PID16 ]; //Dresden
+	410[group=A, comment=PID17 ]; 411[group=A, comment=PID17 ]; //Freiburg
+	420[group=A, comment=PID18 ]; 421[group=A, comment=PID18 ]; //Wolfsburg
+	430[group=A, comment=PID19 ]; 431[group=A, comment=PID19 ]; //Augsburg
+	
+	//Vantage Points
+	//900[group=V]
+	
+
+	//Core edges
+
+	//hamburg
+	100 -> 174	[label=87,headlabel="174-100" ,alias = 1,latency=0.290,alto=PID0];
+	101 -> 114	[label=254,headlabel="114-101" ,alias = 1,latency=0.847,alto=PID0];
+	102 -> 119	[label=296,headlabel="119-102" ,alias = 1,latency=0.987,alto=PID0];
+	103 -> 106	[label=133,headlabel="106-103" ,alias = 1,latency=0.443,alto=PID0];
+	104 -> 145	[label=392,headlabel="145-104" ,alias = 1,latency=1.307,alto=PID0];
+	105 -> 159	[label=308,headlabel="159-105" ,alias = 1,latency=1.027,alto=PID0];
+	//Hannover
+	106 -> 103	[label=133,headlabel="103-106" ,alias = 1,latency=0.443,alto=PID0];
+	107 -> 115	[label=250,headlabel="115-107" ,alias = 1,latency=0.833,alto=PID0];
+	108 -> 118	[label=215,headlabel="118-108" ,alias = 1,latency=0.717,alto=PID0];
+	109 -> 146	[label=260,headlabel="146-109" ,alias = 1,latency=0.867,alto=PID0];
+	110 -> 156	[label=248,headlabel="156-110" ,alias = 1,latency=0.827,alto=PID0];
+	111 -> 166	[label=197,headlabel="166-111" ,alias = 1,latency=0.657,alto=PID0];
+	112 -> 160	[label=211,headlabel="160-112" ,alias = 1,latency=0.703,alto=PID0];
+	113 -> 172	[label=72,headlabel="172-113" ,alias = 1,latency=0.240,alto=PID0];
+	//Berlin
+	114 -> 101	[label=254,headlabel="101-114" ,alias = 1,latency=0.847,alto=PID0];
+	115 -> 107	[label=250,headlabel="107-115" ,alias = 1,latency=0.833,alto=PID0];
+	116 -> 147	[label=422,headlabel="147-116" ,alias = 1,latency=1.407,alto=PID0];
+	117 -> 120	[label=153,headlabel="120-117" ,alias = 1,latency=0.510,alto=PID0];
+	//Leipzig
+	118 -> 108	[label=215,headlabel="108-118" ,alias = 1,latency=0.717,alto=PID0];
+	119 -> 102	[label=296,headlabel="102-119" ,alias = 1,latency=0.987,alto=PID0];
+	120 -> 117	[label=153,headlabel="117-120" ,alias = 1,latency=0.510,alto=PID0];
+	121 -> 170	[label=102,headlabel="170-121" ,alias = 1,latency=0.340,alto=PID0];
+	122 -> 134	[label=354,headlabel="134-122" ,alias = 1,latency=1.180,alto=PID0];
+	123 -> 126	[label=224,headlabel="126-123" ,alias = 1,latency=0.747,alto=PID0];
+	124 -> 141	[label=360,headlabel="141-124" ,alias = 1,latency=1.200,alto=PID0];
+	125 -> 148	[label=288,headlabel="148-125" ,alias = 1,latency=0.960,alto=PID0];
+	//Nürnberg
+	126 -> 123	[label=224,headlabel="123-126" ,alias = 1,latency=0.747,alto=PID0];
+	127 -> 133	[label=149,headlabel="133-127" ,alias = 1,latency=0.497,alto=PID0];
+	128 -> 136	[label=236,headlabel="136-128" ,alias = 1,latency=0.787,alto=PID0];
+	129 -> 149	[label=187,headlabel="149-129" ,alias = 1,latency=0.623,alto=PID0];
+	//Müchen
+	130 -> 140	[label=189,headlabel="140-130" ,alias = 1,latency=0.630,alto=PID0];
+	131 -> 150	[label=304,headlabel="150-131" ,alias = 1,latency=1.014,alto=PID0];
+	132 -> 163	[label=492,headlabel="163-132" ,alias = 1,latency=1.641,alto=PID0];
+	133 -> 127	[label=149,headlabel="127-133" ,alias = 1,latency=0.497,alto=PID0];
+	134 -> 122	[label=354,headlabel="122-134" ,alias = 1,latency=1.180,alto=PID0];
+	135 -> 175	[label=59,headlabel="175-135" ,alias = 1,latency=0.196,alto=PID0];
+	//Landshut
+	175 -> 135	[label=59,headlabel="135-175" ,alias = 1,latency=0.196,alto=PID0];
+	//ULM
+	136 -> 128	[label=236,headlabel="128-136" ,alias = 1,latency=0.787,alto=PID0];
+	137 -> 173	[label=215,headlabel="173-137" ,alias = 1,latency=0.717,alto=PID0];
+	138 -> 151	[label=161,headlabel="151-138" ,alias = 1,latency=0.537,alto=PID0];
+	//Stuttgart
+	139 -> 152	[label=151,headlabel="152-139" ,alias = 1,latency=0.503,alto=PID0];
+	140 -> 130	[label=189,headlabel="130-140" ,alias = 1,latency=0.630,alto=PID0];
+	141 -> 124	[label=360,headlabel="124-141" ,alias = 1,latency=1.200,alto=PID0];
+	142 -> 171	[label=130,headlabel="171-142" ,alias = 1,latency=0.433,alto=PID0];
+	//FRANKFURT
+	143 -> 154	[label=152,headlabel="154-143" ,alias = 1,latency=0.507,alto=PID0];
+	144 -> 164	[label=189,headlabel="164-144" ,alias = 1,latency=0.630,alto=PID0];
+	145 -> 104	[label=392,headlabel="104-145" ,alias = 1,latency=1.307,alto=PID0];
+	146 -> 109	[label=260,headlabel="109-146" ,alias = 1,latency=0.867,alto=PID0];
+	147 -> 116	[label=422,headlabel="116-147" ,alias = 1,latency=1.407,alto=PID0];
+	148 -> 125	[label=288,headlabel="125-148" ,alias = 1,latency=0.960,alto=PID0];
+	149 -> 129	[label=187,headlabel="129-149" ,alias = 1,latency=0.623,alto=PID0];
+	150 -> 131	[label=304,headlabel="131-150" ,alias = 1,latency=1.014,alto=PID0];
+	151 -> 138	[label=161,headlabel="138-151" ,alias = 1,latency=0.537,alto=PID0];
+	152 -> 139	[label=151,headlabel="139-152" ,alias = 1,latency=0.503,alto=PID0];
+	153 -> 158	[label=131,headlabel="158-153" ,alias = 1,latency=0.436,alto=PID0];
+	//Köln
+	154 -> 143	[label=152,headlabel="143-154" ,alias = 1,latency=0.507,alto=PID0];
+	155 -> 162	[label=57,headlabel="162-155" ,alias = 1,latency=0.190,alto=PID0];
+	156 -> 110	[label=248,headlabel="110-156" ,alias = 1,latency=0.827,alto=PID0];
+	157 -> 169	[label=34,headlabel="169-157" ,alias = 1,latency=0.113,alto=PID0];
+	//BONN
+	158 -> 153	[label=131,headlabel="153-158" ,alias = 1,latency=0.436,alto=PID0];
+	//ESSEN
+	159 -> 105	[label=308,headlabel="105-159" ,alias = 1,latency=1.027,alto=PID0];
+	160 -> 112	[label=211,headlabel="112-160" ,alias = 1,latency=0.703,alto=PID0];
+	161 -> 165	[label=14,headlabel="165-161" ,alias = 1,latency=0.046,alto=PID0];
+	162 -> 155	[label=57,headlabel="155-162" ,alias = 1,latency=0.190,alto=PID0];
+	163 -> 132	[label=492,headlabel="132-163" ,alias = 1,latency=1.641,alto=PID0];
+	164 -> 144	[label=189,headlabel="144-164" ,alias = 1,latency=0.630,alto=PID0];
+	//BOCHUM
+	165 -> 161	[label=14,headlabel="161-165" ,alias = 1,latency=0.046,alto=PID0];
+	166 -> 111	[label=197,headlabel="111-166" ,alias = 1,latency=0.657,alto=PID0];
+	167 -> 168	[label=16,headlabel="168-167" ,alias = 1,latency=0.053,alto=PID0];
+	//Dortmund
+	168 -> 167	[label=16,headlabel="167-168" ,alias = 1,latency=0.053,alto=PID0];
+	//Düsseldorf
+	169 -> 157	[label=34,headlabel="157-169" ,alias = 1,latency=0.113,alto=PID0];
+	//DRESDEN
+	170 -> 121	[label=102,headlabel="121-170" ,alias = 1,latency=0.340,alto=PID0];
+	//FREIBURG
+	171 -> 142	[label=130,headlabel="142-171" ,alias = 1,latency=0.433,alto=PID0];
+	//Wolfsburg
+	172 -> 113	[label=72,headlabel="113-172" ,alias = 1,latency=0.240,alto=PID0];
+	//Augsburg
+	173 -> 137	[label=215,headlabel="137-173" ,alias = 1,latency=0.717,alto=PID0];
+	//Kiel
+	174 -> 100	[label=87,headlabel="100-174" ,alias = 1,latency=0.290,alto=PID0];
+	
+
+
+
+	//Hamburg
+	100 -> 101	[label=20,headlabel="101-100" ,alias=1,latency=4];
+	100 -> 102	[label=30,headlabel="102-100" ,alias=1,latency=4];
+	100 -> 210	[label=100,headlabel="210-100" ,alias=1,latency=4];
+	210 -> 100	[label=100,headlabel="100-210" ,alias=1,latency=4];
+	210 -> 211	[label=10,headlabel="211-210" ,alias=1,latency=4];
+	101 -> 100	[label=20,headlabel="100-101" ,alias=1,latency=4];
+	101 -> 102	[label=20,headlabel="102-101" ,alias=1,latency=4];
+	101 -> 211	[label=100,headlabel="211-101" ,alias=1,latency=4];
+	211 -> 210	[label=10,headlabel="210-211" ,alias=1,latency=4];
+	211 -> 101	[label=100,headlabel="101-211" ,alias=1,latency=4];
+	102 -> 100	[label=30,headlabel="100-102" ,alias=1,latency=4];
+	102 -> 101	[label=20,headlabel="101-102" ,alias=1,latency=4];
+	102 -> 103	[label=20,headlabel="103-102" ,alias=1,latency=4];
+	102 -> 104	[label=30,headlabel="104-102" ,alias=1,latency=4];
+	102 -> 212	[label=100,headlabel="212-102" ,alias=1,latency=4];
+	212 -> 102	[label=100,headlabel="102-212" ,alias=1,latency=4];
+	212 -> 213	[label=10,headlabel="213-212" ,alias=1,latency=4];
+	103 -> 102	[label=20,headlabel="102-103" ,alias=1,latency=4];
+	103 -> 104	[label=20,headlabel="104-103" ,alias=1,latency=4];
+	103 -> 213	[label=100,headlabel="213-103" ,alias=1,latency=4];
+	213 -> 212	[label=10,headlabel="212-213" ,alias=1,latency=4];
+	213 -> 103	[label=100,headlabel="103-213" ,alias=1,latency=4];
+	104 -> 102	[label=30,headlabel="102-104" ,alias=1,latency=4];
+	104 -> 103	[label=20,headlabel="103-104" ,alias=1,latency=4];
+	104 -> 105	[label=20,headlabel="105-104" ,alias=1,latency=4];
+	104 -> 214	[label=100,headlabel="214-104" ,alias=1,latency=4];
+	214 -> 104	[label=100,headlabel="104-214" ,alias=1,latency=4];
+	214 -> 215	[label=10,headlabel="215-214" ,alias=1,latency=4];
+	105 -> 104	[label=20,headlabel="104-105" ,alias=1,latency=4];
+	105 -> 215	[label=100,headlabel="215-105" ,alias=1,latency=4];
+	215 -> 214	[label=10,headlabel="214-215" ,alias=1,latency=4];
+	215 -> 105	[label=100,headlabel="105-215" ,alias=1,latency=4];
+	//Hannover
+	106 -> 107	[label=20,headlabel="107-106" ,alias=1,latency=4];
+	106 -> 108	[label=30,headlabel="108-106" ,alias=1,latency=4];
+	106 -> 230	[label=100,headlabel="230-106" ,alias=1,latency=4];
+	230 -> 106	[label=100,headlabel="106-230" ,alias=1,latency=4];
+	230 -> 231	[label=10,headlabel="231-230" ,alias=1,latency=4];
+	107 -> 106	[label=20,headlabel="106-107" ,alias=1,latency=4];
+	107 -> 108	[label=20,headlabel="108-107" ,alias=1,latency=4];
+	107 -> 231	[label=100,headlabel="231-107" ,alias=1,latency=4];
+	231 -> 230	[label=10,headlabel="230-231" ,alias=1,latency=4];
+	231 -> 107	[label=100,headlabel="107-231" ,alias=1,latency=4];
+	108 -> 106	[label=30,headlabel="106-108" ,alias=1,latency=4];
+	108 -> 107	[label=20,headlabel="107-108" ,alias=1,latency=4];
+	108 -> 109	[label=20,headlabel="109-108" ,alias=1,latency=4];
+	108 -> 110	[label=30,headlabel="110-108" ,alias=1,latency=4];
+	108 -> 232	[label=100,headlabel="232-108" ,alias=1,latency=4];
+	232 -> 108	[label=100,headlabel="108-232" ,alias=1,latency=4];
+	232 -> 233	[label=10,headlabel="233-232" ,alias=1,latency=4];
+	109 -> 108	[label=20,headlabel="108-109" ,alias=1,latency=4];
+	109 -> 110	[label=20,headlabel="110-109" ,alias=1,latency=4];
+	109 -> 233	[label=100,headlabel="233-109" ,alias=1,latency=4];
+	233 -> 232	[label=10,headlabel="232-233" ,alias=1,latency=4];
+	233 -> 109	[label=100,headlabel="109-233" ,alias=1,latency=4];
+	110 -> 108	[label=30,headlabel="108-110" ,alias=1,latency=4];
+	110 -> 109	[label=20,headlabel="109-110" ,alias=1,latency=4];
+	110 -> 111	[label=20,headlabel="111-110" ,alias=1,latency=4];
+	110 -> 112	[label=30,headlabel="112-110" ,alias=1,latency=4];
+	110 -> 234	[label=100,headlabel="234-110" ,alias=1,latency=4];
+	234 -> 110	[label=100,headlabel="110-234" ,alias=1,latency=4];
+	234 -> 235	[label=10,headlabel="235-234" ,alias=1,latency=4];
+	111 -> 110	[label=20,headlabel="110-111" ,alias=1,latency=4];
+	111 -> 112	[label=20,headlabel="112-111" ,alias=1,latency=4];
+	111 -> 235	[label=100,headlabel="235-111" ,alias=1,latency=4];
+	235 -> 234	[label=10,headlabel="234-235" ,alias=1,latency=4];
+	235 -> 111	[label=100,headlabel="111-235" ,alias=1,latency=4];
+	112 -> 110	[label=30,headlabel="110-112" ,alias=1,latency=4];
+	112 -> 111	[label=20,headlabel="111-112" ,alias=1,latency=4];
+	112 -> 113	[label=20,headlabel="113-112" ,alias=1,latency=4];
+	112 -> 236	[label=100,headlabel="236-112" ,alias=1,latency=4];
+	236 -> 112	[label=100,headlabel="112-236" ,alias=1,latency=4];
+	236 -> 237	[label=10,headlabel="237-236" ,alias=1,latency=4];
+	113 -> 112	[label=20,headlabel="112-113" ,alias=1,latency=4];
+	113 -> 237	[label=100,headlabel="237-113" ,alias=1,latency=4];
+	237 -> 236	[label=10,headlabel="236-237" ,alias=1,latency=4];
+	237 -> 113	[label=100,headlabel="113-237" ,alias=1,latency=4];
+	//Berlin
+	114 -> 115	[label=20,headlabel="115-114" ,alias=1,latency=4];
+	114 -> 116	[label=30,headlabel="116-114" ,alias=1,latency=4];
+	114 -> 240	[label=100,headlabel="240-114" ,alias=1,latency=4];
+	240 -> 114	[label=100,headlabel="114-240" ,alias=1,latency=4];
+	240 -> 241	[label=10,headlabel="241-240" ,alias=1,latency=4];
+	115 -> 114	[label=20,headlabel="114-115" ,alias=1,latency=4];
+	115 -> 116	[label=20,headlabel="116-115" ,alias=1,latency=4];
+	115 -> 241	[label=100,headlabel="241-115" ,alias=1,latency=4];
+	241 -> 240	[label=10,headlabel="240-241" ,alias=1,latency=4];
+	241 -> 115	[label=100,headlabel="115-241" ,alias=1,latency=4];
+	116 -> 114	[label=30,headlabel="114-116" ,alias=1,latency=4];
+	116 -> 115	[label=20,headlabel="115-116" ,alias=1,latency=4];
+	116 -> 117	[label=20,headlabel="117-116" ,alias=1,latency=4];
+	116 -> 242	[label=100,headlabel="242-116" ,alias=1,latency=4];
+	242 -> 116	[label=100,headlabel="116-242" ,alias=1,latency=4];
+	242 -> 243	[label=10,headlabel="243-242" ,alias=1,latency=4];
+	117 -> 116	[label=20,headlabel="116-117" ,alias=1,latency=4];
+	117 -> 243	[label=100,headlabel="243-117" ,alias=1,latency=4];
+	243 -> 242	[label=10,headlabel="242-243" ,alias=1,latency=4];
+	243 -> 117	[label=100,headlabel="117-243" ,alias=1,latency=4];
+	//Leipzig
+	118 -> 119	[label=20,headlabel="119-118" ,alias=1,latency=4];
+	118 -> 120	[label=30,headlabel="120-118" ,alias=1,latency=4];
+	118 -> 250	[label=100,headlabel="250-118" ,alias=1,latency=4];
+	250 -> 118	[label=100,headlabel="118-250" ,alias=1,latency=4];
+	250 -> 251	[label=10,headlabel="251-250" ,alias=1,latency=4];
+	119 -> 118	[label=20,headlabel="118-119" ,alias=1,latency=4];
+	119 -> 120	[label=20,headlabel="120-119" ,alias=1,latency=4];
+	119 -> 251	[label=100,headlabel="251-119" ,alias=1,latency=4];
+	251 -> 250	[label=10,headlabel="250-251" ,alias=1,latency=4];
+	251 -> 119	[label=100,headlabel="119-251" ,alias=1,latency=4];
+	120 -> 118	[label=30,headlabel="118-120" ,alias=1,latency=4];
+	120 -> 119	[label=20,headlabel="119-120" ,alias=1,latency=4];
+	120 -> 121	[label=20,headlabel="121-120" ,alias=1,latency=4];
+	120 -> 122	[label=30,headlabel="122-120" ,alias=1,latency=4];
+	120 -> 252	[label=100,headlabel="252-120" ,alias=1,latency=4];
+	252 -> 120	[label=100,headlabel="120-252" ,alias=1,latency=4];
+	252 -> 253	[label=10,headlabel="253-252" ,alias=1,latency=4];
+	121 -> 120	[label=20,headlabel="120-121" ,alias=1,latency=4];
+	121 -> 122	[label=20,headlabel="122-121" ,alias=1,latency=4];
+	121 -> 253	[label=100,headlabel="253-121" ,alias=1,latency=4];
+	253 -> 252	[label=10,headlabel="252-253" ,alias=1,latency=4];
+	253 -> 121	[label=100,headlabel="121-253" ,alias=1,latency=4];
+	122 -> 120	[label=30,headlabel="120-122" ,alias=1,latency=4];
+	122 -> 121	[label=20,headlabel="121-122" ,alias=1,latency=4];
+	122 -> 123	[label=20,headlabel="123-122" ,alias=1,latency=4];
+	122 -> 124	[label=30,headlabel="124-122" ,alias=1,latency=4];
+	122 -> 254	[label=100,headlabel="254-122" ,alias=1,latency=4];
+	254 -> 122	[label=100,headlabel="122-254" ,alias=1,latency=4];
+	254 -> 255	[label=10,headlabel="255-254" ,alias=1,latency=4];
+	123 -> 122	[label=20,headlabel="122-123" ,alias=1,latency=4];
+	123 -> 124	[label=20,headlabel="124-123" ,alias=1,latency=4];
+	123 -> 255	[label=100,headlabel="255-123" ,alias=1,latency=4];
+	255 -> 254	[label=10,headlabel="254-255" ,alias=1,latency=4];
+	255 -> 123	[label=100,headlabel="123-255" ,alias=1,latency=4];
+	124 -> 122	[label=30,headlabel="122-124" ,alias=1,latency=4];
+	124 -> 123	[label=20,headlabel="123-124" ,alias=1,latency=4];
+	124 -> 125	[label=20,headlabel="125-124" ,alias=1,latency=4];
+	124 -> 256	[label=100,headlabel="256-124" ,alias=1,latency=4];
+	256 -> 124	[label=100,headlabel="124-256" ,alias=1,latency=4];
+	256 -> 257	[label=10,headlabel="257-256" ,alias=1,latency=4];
+	125 -> 124	[label=20,headlabel="124-125" ,alias=1,latency=4];
+	125 -> 257	[label=100,headlabel="257-125" ,alias=1,latency=4];
+	257 -> 256	[label=10,headlabel="256-257" ,alias=1,latency=4];
+	257 -> 125	[label=100,headlabel="125-257" ,alias=1,latency=4];
+	//Nürnberg
+	126 -> 127	[label=20,headlabel="127-126" ,alias=1,latency=4];
+	126 -> 128	[label=30,headlabel="128-126" ,alias=1,latency=4];
+	126 -> 270	[label=100,headlabel="270-126" ,alias=1,latency=4];
+	270 -> 126	[label=100,headlabel="126-270" ,alias=1,latency=4];
+	270 -> 271	[label=10,headlabel="271-270" ,alias=1,latency=4];
+	127 -> 126	[label=20,headlabel="126-127" ,alias=1,latency=4];
+	127 -> 128	[label=20,headlabel="128-127" ,alias=1,latency=4];
+	127 -> 271	[label=100,headlabel="271-127" ,alias=1,latency=4];
+	271 -> 270	[label=10,headlabel="270-271" ,alias=1,latency=4];
+	271 -> 127	[label=100,headlabel="127-271" ,alias=1,latency=4];
+	128 -> 126	[label=30,headlabel="126-128" ,alias=1,latency=4];
+	128 -> 127	[label=20,headlabel="127-128" ,alias=1,latency=4];
+	128 -> 129	[label=20,headlabel="129-128" ,alias=1,latency=4];
+	128 -> 272	[label=100,headlabel="272-128" ,alias=1,latency=4];
+	272 -> 128	[label=100,headlabel="128-272" ,alias=1,latency=4];
+	272 -> 273	[label=10,headlabel="273-272" ,alias=1,latency=4];
+	129 -> 128	[label=20,headlabel="128-129" ,alias=1,latency=4];
+	129 -> 273	[label=100,headlabel="273-129" ,alias=1,latency=4];
+	273 -> 272	[label=10,headlabel="272-273" ,alias=1,latency=4];
+	273 -> 129	[label=100,headlabel="129-273" ,alias=1,latency=4];
+	//München
+	130 -> 131	[label=20,headlabel="131-130" ,alias=1,latency=4];
+	130 -> 132	[label=30,headlabel="132-130" ,alias=1,latency=4];
+	130 -> 280	[label=100,headlabel="280-130" ,alias=1,latency=4];
+	280 -> 130	[label=100,headlabel="130-280" ,alias=1,latency=4];
+	280 -> 281	[label=10,headlabel="281-280" ,alias=1,latency=4];
+	131 -> 130	[label=20,headlabel="130-131" ,alias=1,latency=4];
+	131 -> 132	[label=20,headlabel="132-131" ,alias=1,latency=4];
+	131 -> 281	[label=100,headlabel="281-131" ,alias=1,latency=4];
+	281 -> 280	[label=10,headlabel="280-281" ,alias=1,latency=4];
+	281 -> 131	[label=100,headlabel="131-281" ,alias=1,latency=4];
+	132 -> 130	[label=30,headlabel="130-132" ,alias=1,latency=4];
+	132 -> 131	[label=20,headlabel="131-132" ,alias=1,latency=4];
+	132 -> 133	[label=20,headlabel="133-132" ,alias=1,latency=4];
+	132 -> 134	[label=30,headlabel="134-132" ,alias=1,latency=4];
+	132 -> 282	[label=100,headlabel="282-132" ,alias=1,latency=4];
+	282 -> 132	[label=100,headlabel="132-282" ,alias=1,latency=4];
+	282 -> 283	[label=10,headlabel="283-282" ,alias=1,latency=4];
+	133 -> 132	[label=20,headlabel="132-133" ,alias=1,latency=4];
+	133 -> 134	[label=20,headlabel="134-133" ,alias=1,latency=4];
+	133 -> 283	[label=100,headlabel="283-133" ,alias=1,latency=4];
+	283 -> 282	[label=10,headlabel="282-283" ,alias=1,latency=4];
+	283 -> 133	[label=100,headlabel="133-283" ,alias=1,latency=4];
+	134 -> 132	[label=30,headlabel="132-134" ,alias=1,latency=4];
+	134 -> 133	[label=20,headlabel="133-134" ,alias=1,latency=4];
+	134 -> 135	[label=20,headlabel="135-134" ,alias=1,latency=4];
+	134 -> 284	[label=100,headlabel="284-134" ,alias=1,latency=4];
+	284 -> 134	[label=100,headlabel="134-284" ,alias=1,latency=4];
+	284 -> 285	[label=10,headlabel="285-284" ,alias=1,latency=4];
+	135 -> 134	[label=20,headlabel="134-135" ,alias=1,latency=4];
+	135 -> 285	[label=100,headlabel="285-135" ,alias=1,latency=4];
+	285 -> 284	[label=10,headlabel="284-285" ,alias=1,latency=4];
+	285 -> 135	[label=100,headlabel="135-285" ,alias=1,latency=4];
+	//Landshut
+	175 -> 290	[label=100,headlabel="290-175" ,alias=1,latency=4];
+	175 -> 291	[label=100,headlabel="291-175" ,alias=1,latency=4];
+	290 -> 175	[label=100,headlabel="175-290" ,alias=1,latency=4];
+	290 -> 291	[label=10,headlabel="291-290" ,alias=1,latency=4];
+	291 -> 175	[label=100,headlabel="175-291" ,alias=1,latency=4];
+	291 -> 290	[label=10,headlabel="290-291" ,alias=1,latency=4];
+	//Ulm
+	136 -> 137	[label=20,headlabel="137-136" ,alias=1,latency=4];
+	136 -> 138	[label=30,headlabel="138-136" ,alias=1,latency=4];
+	136 -> 300	[label=100,headlabel="300-136" ,alias=1,latency=4];
+	300 -> 136	[label=100,headlabel="136-300" ,alias=1,latency=4];
+	300 -> 301	[label=10,headlabel="301-300" ,alias=1,latency=4];
+	137 -> 136	[label=20,headlabel="136-137" ,alias=1,latency=4];
+	137 -> 138	[label=20,headlabel="138-137" ,alias=1,latency=4];
+	137 -> 301	[label=100,headlabel="301-137" ,alias=1,latency=4];
+	301 -> 300	[label=10,headlabel="300-301" ,alias=1,latency=4];
+	301 -> 137	[label=100,headlabel="137-301" ,alias=1,latency=4];
+	138 -> 137	[label=20,headlabel="137-138" ,alias=1,latency=4];
+	138 -> 136	[label=30,headlabel="136-138" ,alias=1,latency=4];
+	138 -> 302	[label=100,headlabel="302-138" ,alias=1,latency=4];
+	138 -> 303	[label=100,headlabel="303-138" ,alias=1,latency=4];
+	302 -> 138	[label=100,headlabel="138-302" ,alias=1,latency=4];
+	302 -> 303	[label=10,headlabel="303-302" ,alias=1,latency=4];
+	303 -> 302	[label=10,headlabel="302-303" ,alias=1,latency=4];
+	303 -> 138	[label=100,headlabel="138-303" ,alias=1,latency=4];
+	//Stuttgart
+	139 -> 140	[label=20,headlabel="140-139" ,alias=1,latency=4];
+	139 -> 141	[label=30,headlabel="141-139" ,alias=1,latency=4];
+	139 -> 310	[label=100,headlabel="310-139" ,alias=1,latency=4];
+	310 -> 139	[label=100,headlabel="139-310" ,alias=1,latency=4];
+	310 -> 311	[label=10,headlabel="311-310" ,alias=1,latency=4];
+	140 -> 139	[label=20,headlabel="139-140" ,alias=1,latency=4];
+	140 -> 141	[label=20,headlabel="141-140" ,alias=1,latency=4];
+	140 -> 311	[label=100,headlabel="311-140" ,alias=1,latency=4];
+	311 -> 310	[label=10,headlabel="310-311" ,alias=1,latency=4];
+	311 -> 140	[label=100,headlabel="140-311" ,alias=1,latency=4];
+	141 -> 139	[label=30,headlabel="139-141" ,alias=1,latency=4];
+	141 -> 140	[label=20,headlabel="140-141" ,alias=1,latency=4];
+	141 -> 142	[label=20,headlabel="142-141" ,alias=1,latency=4];
+	141 -> 312	[label=100,headlabel="312-141" ,alias=1,latency=4];
+	312 -> 141	[label=100,headlabel="141-312" ,alias=1,latency=4];
+	312 -> 313	[label=10,headlabel="313-312" ,alias=1,latency=4];
+	142 -> 141	[label=20,headlabel="141-142" ,alias=1,latency=4];
+	142 -> 313	[label=100,headlabel="313-142" ,alias=1,latency=4];
+	313 -> 312	[label=10,headlabel="312-313" ,alias=1,latency=4];
+	313 -> 142	[label=100,headlabel="142-313" ,alias=1,latency=4];
+	//Frankfurt
+	143 -> 144	[label=20,headlabel="144-143" ,alias=1,latency=4];
+	143 -> 145	[label=30,headlabel="145-143" ,alias=1,latency=4];
+	143 -> 320	[label=100,headlabel="320-143" ,alias=1,latency=4];
+	320 -> 143	[label=100,headlabel="143-320" ,alias=1,latency=4];
+	320 -> 321	[label=10,headlabel="321-320" ,alias=1,latency=4];
+	144 -> 143	[label=20,headlabel="143-144" ,alias=1,latency=4];
+	144 -> 145	[label=20,headlabel="145-144" ,alias=1,latency=4];
+	144 -> 321	[label=100,headlabel="321-144" ,alias=1,latency=4];
+	321 -> 320	[label=10,headlabel="320-321" ,alias=1,latency=4];
+	321 -> 144	[label=100,headlabel="144-321" ,alias=1,latency=4];
+	145 -> 143	[label=30,headlabel="143-145" ,alias=1,latency=4];
+	145 -> 144	[label=20,headlabel="144-145" ,alias=1,latency=4];
+	145 -> 146	[label=20,headlabel="146-145" ,alias=1,latency=4];
+	145 -> 147	[label=30,headlabel="147-145" ,alias=1,latency=4];
+	145 -> 322	[label=100,headlabel="322-145" ,alias=1,latency=4];
+	322 -> 145	[label=100,headlabel="145-322" ,alias=1,latency=4];
+	322 -> 323	[label=10,headlabel="323-322" ,alias=1,latency=4];
+	146 -> 145	[label=20,headlabel="145-146" ,alias=1,latency=4];
+	146 -> 147	[label=20,headlabel="147-146" ,alias=1,latency=4];
+	146 -> 323	[label=100,headlabel="323-146" ,alias=1,latency=4];
+	323 -> 322	[label=10,headlabel="322-323" ,alias=1,latency=4];
+	323 -> 146	[label=100,headlabel="146-323" ,alias=1,latency=4];
+	147 -> 145	[label=30,headlabel="145-147" ,alias=1,latency=4];
+	147 -> 148	[label=20,headlabel="148-147" ,alias=1,latency=4];
+	147 -> 146	[label=20,headlabel="146-147" ,alias=1,latency=4];
+	147 -> 149	[label=30,headlabel="149-147" ,alias=1,latency=4];
+	147 -> 324	[label=100,headlabel="324-147" ,alias=1,latency=4];
+	324 -> 147	[label=100,headlabel="147-324" ,alias=1,latency=4];
+	324 -> 325	[label=10,headlabel="325-324" ,alias=1,latency=4];
+	148 -> 147	[label=20,headlabel="147-148" ,alias=1,latency=4];
+	148 -> 149	[label=20,headlabel="149-148" ,alias=1,latency=4];
+	148 -> 325	[label=100,headlabel="325-148" ,alias=1,latency=4];
+	325 -> 324	[label=10,headlabel="324-325" ,alias=1,latency=4];
+	325 -> 148	[label=100,headlabel="148-325" ,alias=1,latency=4];
+	149 -> 147	[label=30,headlabel="147-149" ,alias=1,latency=4];
+	149 -> 148	[label=20,headlabel="148-149" ,alias=1,latency=4];
+	149 -> 150	[label=20,headlabel="150-149" ,alias=1,latency=4];
+	149 -> 151	[label=30,headlabel="151-149" ,alias=1,latency=4];
+	149 -> 326	[label=100,headlabel="326-149" ,alias=1,latency=4];
+	326 -> 149	[label=100,headlabel="149-326" ,alias=1,latency=4];
+	326 -> 327	[label=10,headlabel="327-326" ,alias=1,latency=4];
+	150 -> 149	[label=20,headlabel="149-150" ,alias=1,latency=4];
+	150 -> 151	[label=20,headlabel="151-150" ,alias=1,latency=4];
+	150 -> 327	[label=100,headlabel="327-150" ,alias=1,latency=4];
+	327 -> 326	[label=10,headlabel="326-327" ,alias=1,latency=4];
+	327 -> 150	[label=100,headlabel="150-327" ,alias=1,latency=4];
+	151 -> 149	[label=30,headlabel="149-151" ,alias=1,latency=4];
+	151 -> 150	[label=20,headlabel="150-151" ,alias=1,latency=4];
+	151 -> 152	[label=20,headlabel="152-151" ,alias=1,latency=4];
+	151 -> 153	[label=30,headlabel="153-151" ,alias=1,latency=4];
+	151 -> 328	[label=100,headlabel="328-151" ,alias=1,latency=4];
+	328 -> 151	[label=100,headlabel="151-328" ,alias=1,latency=4];
+	328 -> 329	[label=10,headlabel="329-328" ,alias=1,latency=4];
+	152 -> 151	[label=20,headlabel="151-152" ,alias=1,latency=4];
+	152 -> 153	[label=20,headlabel="153-152" ,alias=1,latency=4];
+	152 -> 329	[label=100,headlabel="329-152" ,alias=1,latency=4];
+	329 -> 328	[label=10,headlabel="328-329" ,alias=1,latency=4];
+	329 -> 152	[label=100,headlabel="152-329" ,alias=1,latency=4];
+	153 -> 151	[label=30,headlabel="151-153" ,alias=1,latency=4];
+	153 -> 152	[label=20,headlabel="152-153" ,alias=1,latency=4];
+	153 -> 330	[label=100,headlabel="330-153" ,alias=1,latency=4];
+	153 -> 331	[label=100,headlabel="331-153" ,alias=1,latency=4];
+	330 -> 153	[label=100,headlabel="153-330" ,alias=1,latency=4];
+	330 -> 331	[label=10,headlabel="331-330" ,alias=1,latency=4];
+	331 -> 153	[label=100,headlabel="153-331" ,alias=1,latency=4];
+	331 -> 330	[label=10,headlabel="330-331" ,alias=1,latency=4];
+	//Köln
+	154 -> 155	[label=20,headlabel="155-154" ,alias=1,latency=4];
+	154 -> 156	[label=30,headlabel="156-154" ,alias=1,latency=4];
+	154 -> 340	[label=100,headlabel="340-154" ,alias=1,latency=4];
+	340 -> 154	[label=100,headlabel="154-340" ,alias=1,latency=4];
+	340 -> 341	[label=10,headlabel="341-340" ,alias=1,latency=4];
+	155 -> 154	[label=20,headlabel="154-155" ,alias=1,latency=4];
+	155 -> 156	[label=20,headlabel="156-155" ,alias=1,latency=4];
+	155 -> 341	[label=100,headlabel="341-155" ,alias=1,latency=4];
+	341 -> 340	[label=10,headlabel="340-341" ,alias=1,latency=4];
+	341 -> 155	[label=100,headlabel="155-341" ,alias=1,latency=4];
+	156 -> 154	[label=30,headlabel="154-156" ,alias=1,latency=4];
+	156 -> 155	[label=20,headlabel="155-156" ,alias=1,latency=4];
+	156 -> 157	[label=20,headlabel="157-156" ,alias=1,latency=4];
+	156 -> 342	[label=100,headlabel="342-156" ,alias=1,latency=4];
+	342 -> 156	[label=100,headlabel="156-342" ,alias=1,latency=4];
+	342 -> 343	[label=10,headlabel="343-342" ,alias=1,latency=4];
+	157 -> 156	[label=20,headlabel="156-157" ,alias=1,latency=4];
+	157 -> 343	[label=100,headlabel="343-157" ,alias=1,latency=4];
+	343 -> 342	[label=10,headlabel="342-343" ,alias=1,latency=4];
+	343 -> 157	[label=100,headlabel="157-343" ,alias=1,latency=4];
+	//Bonn
+	158 -> 350	[label=100,headlabel="350-158" ,alias=1,latency=4];
+	158 -> 351	[label=100,headlabel="351-158" ,alias=1,latency=4];
+	350 -> 158	[label=100,headlabel="158-350" ,alias=1,latency=4];
+	350 -> 351	[label=10,headlabel="351-350" ,alias=1,latency=4];
+	351 -> 158	[label=100,headlabel="158-351" ,alias=1,latency=4];
+	351 -> 350	[label=10,headlabel="350-351" ,alias=1,latency=4];
+	//Essen
+	159 -> 160	[label=20,headlabel="160-159" ,alias=1,latency=4];
+	159 -> 161	[label=30,headlabel="161-159" ,alias=1,latency=4];
+	159 -> 360	[label=100,headlabel="360-159" ,alias=1,latency=4];
+	360 -> 159	[label=100,headlabel="159-360" ,alias=1,latency=4];
+	360 -> 361	[label=10,headlabel="361-360" ,alias=1,latency=4];
+	160 -> 159	[label=20,headlabel="159-160" ,alias=1,latency=4];
+	160 -> 161	[label=20,headlabel="161-160" ,alias=1,latency=4];
+	160 -> 361	[label=100,headlabel="361-160" ,alias=1,latency=4];
+	361 -> 360	[label=10,headlabel="360-361" ,alias=1,latency=4];
+	361 -> 160	[label=100,headlabel="160-361" ,alias=1,latency=4];
+	161 -> 159	[label=30,headlabel="159-161" ,alias=1,latency=4];
+	161 -> 160	[label=20,headlabel="160-161" ,alias=1,latency=4];
+	161 -> 162	[label=20,headlabel="162-161" ,alias=1,latency=4];
+	161 -> 163	[label=30,headlabel="163-161" ,alias=1,latency=4];
+	161 -> 362	[label=100,headlabel="362-161" ,alias=1,latency=4];
+	362 -> 161	[label=100,headlabel="161-362" ,alias=1,latency=4];
+	362 -> 363	[label=10,headlabel="363-362" ,alias=1,latency=4];
+	162 -> 161	[label=20,headlabel="161-162" ,alias=1,latency=4];
+	162 -> 163	[label=20,headlabel="163-162" ,alias=1,latency=4];
+	162 -> 363	[label=100,headlabel="363-162" ,alias=1,latency=4];
+	363 -> 362	[label=10,headlabel="362-363" ,alias=1,latency=4];
+	363 -> 162	[label=100,headlabel="162-363" ,alias=1,latency=4];
+	163 -> 161	[label=30,headlabel="161-163" ,alias=1,latency=4];
+	163 -> 162	[label=20,headlabel="162-163" ,alias=1,latency=4];
+	163 -> 164	[label=20,headlabel="164-163" ,alias=1,latency=4];
+	163 -> 364	[label=100,headlabel="364-163" ,alias=1,latency=4];
+	364 -> 163	[label=100,headlabel="163-364" ,alias=1,latency=4];
+	364 -> 365	[label=10,headlabel="365-364" ,alias=1,latency=4];
+	164 -> 163	[label=20,headlabel="163-164" ,alias=1,latency=4];
+	164 -> 365	[label=100,headlabel="365-164" ,alias=1,latency=4];
+	365 -> 364	[label=10,headlabel="364-365" ,alias=1,latency=4];
+	365 -> 164	[label=100,headlabel="164-365" ,alias=1,latency=4];
+	//Bochum
+	165 -> 166	[label=20,headlabel="166-165" ,alias=1,latency=4];
+	165 -> 167	[label=30,headlabel="167-165" ,alias=1,latency=4];
+	165 -> 370	[label=100,headlabel="370-165" ,alias=1,latency=4];
+	370 -> 165	[label=100,headlabel="165-370" ,alias=1,latency=4];
+	370 -> 371	[label=10,headlabel="371-370" ,alias=1,latency=4];
+	166 -> 165	[label=20,headlabel="165-166" ,alias=1,latency=4];
+	166 -> 167	[label=20,headlabel="167-166" ,alias=1,latency=4];
+	166 -> 371	[label=100,headlabel="371-166" ,alias=1,latency=4];
+	371 -> 370	[label=10,headlabel="370-371" ,alias=1,latency=4];
+	371 -> 166	[label=100,headlabel="166-371" ,alias=1,latency=4];
+	167 -> 166	[label=20,headlabel="166-167" ,alias=1,latency=4];
+	167 -> 165	[label=30,headlabel="165-167" ,alias=1,latency=4];
+	167 -> 372	[label=100,headlabel="372-167" ,alias=1,latency=4];
+	167 -> 373	[label=100,headlabel="373-167" ,alias=1,latency=4];
+	372 -> 167	[label=100,headlabel="167-372" ,alias=1,latency=4];
+	372 -> 373	[label=10,headlabel="373-372" ,alias=1,latency=4];
+	373 -> 372	[label=10,headlabel="372-373" ,alias=1,latency=4];
+	373 -> 167	[label=100,headlabel="167-373" ,alias=1,latency=4];
+	//Dortmund
+	168 -> 380	[label=100,headlabel="380-168" ,alias=1,latency=4];
+	168 -> 381	[label=100,headlabel="381-168" ,alias=1,latency=4];
+	380 -> 168	[label=100,headlabel="168-380" ,alias=1,latency=4];
+	380 -> 381	[label=10,headlabel="381-380" ,alias=1,latency=4];
+	381 -> 168	[label=100,headlabel="168-381" ,alias=1,latency=4];
+	381 -> 380	[label=10,headlabel="380-381" ,alias=1,latency=4];
+	//Düsseldorf
+	169 -> 390	[label=100,headlabel="390-169" ,alias=1,latency=4];
+	169 -> 391	[label=100,headlabel="391-169" ,alias=1,latency=4];
+	390 -> 169	[label=100,headlabel="169-390" ,alias=1,latency=4];
+	390 -> 391	[label=10,headlabel="391-390" ,alias=1,latency=4];
+	391 -> 169	[label=100,headlabel="169-391" ,alias=1,latency=4];
+	391 -> 390	[label=10,headlabel="390-391" ,alias=1,latency=4];
+	//Dresden
+	170 -> 400	[label=100,headlabel="400-170" ,alias=1,latency=4];
+	170 -> 401	[label=100,headlabel="401-170" ,alias=1,latency=4];
+	400 -> 170	[label=100,headlabel="170-400" ,alias=1,latency=4];
+	400 -> 401	[label=10,headlabel="401-400" ,alias=1,latency=4];
+	401 -> 170	[label=100,headlabel="170-401" ,alias=1,latency=4];
+	401 -> 400	[label=10,headlabel="400-401" ,alias=1,latency=4];
+	//Freiburg
+	171 -> 410	[label=100,headlabel="410-171" ,alias=1,latency=4];
+	171 -> 411	[label=100,headlabel="411-171" ,alias=1,latency=4];
+	410 -> 171	[label=100,headlabel="171-410" ,alias=1,latency=4];
+	410 -> 411	[label=10,headlabel="411-410" ,alias=1,latency=4];
+	411 -> 171	[label=100,headlabel="171-411" ,alias=1,latency=4];
+	411 -> 410	[label=10,headlabel="410-411" ,alias=1,latency=4];
+	//Wolfsburg
+	172 -> 420	[label=100,headlabel="420-172" ,alias=1,latency=4];
+	172 -> 421	[label=100,headlabel="421-172" ,alias=1,latency=4];
+	420 -> 172	[label=100,headlabel="172-420" ,alias=1,latency=4];
+	420 -> 421	[label=10,headlabel="421-420" ,alias=1,latency=4];
+	421 -> 172	[label=100,headlabel="172-421" ,alias=1,latency=4];
+	421 -> 420	[label=10,headlabel="420-421" ,alias=1,latency=4];
+	//Augsburg
+	173 -> 430	[label=100,headlabel="430-173" ,alias=1,latency=4];
+	173 -> 431	[label=100,headlabel="431-173" ,alias=1,latency=4];
+	430 -> 173	[label=100,headlabel="173-430" ,alias=1,latency=4];
+	430 -> 431	[label=10,headlabel="431-430" ,alias=1,latency=4];
+	431 -> 173	[label=100,headlabel="173-431" ,alias=1,latency=4];
+	431 -> 430	[label=10,headlabel="430-431" ,alias=1,latency=4];
+	//Kiel
+	174 -> 200	[label=100,headlabel="200-174" ,alias=1,latency=4];
+	174 -> 201	[label=100,headlabel="201-174" ,alias=1,latency=4];
+	200 -> 174	[label=100,headlabel="174-200" ,alias=1,latency=4];
+	200 -> 201	[label=10,headlabel="201-200" ,alias=1,latency=4];
+	201 -> 174	[label=100,headlabel="174-201" ,alias=1,latency=4];
+	201 -> 200	[label=10,headlabel="200-201" ,alias=1,latency=4];
+}
+

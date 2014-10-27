@@ -30,6 +30,7 @@ from libraries.dijkstra import *
 
 from utilities import drawGraph_
 from utilities import counter_
+from utilities import detVPnumb_
 from Views import traceroute_
 from Views import alto_
 
@@ -342,7 +343,7 @@ HASH_MULTIPLIER = 100000
 path  = str(sys.argv[1])
 #start = int(sys.argv[2])
 #end   = int(sys.argv[3])
-PIDThreshold = 10#int(sys.argv[4])
+#PIDThreshold = 10#int(sys.argv[4])
 graphName = str(sys.argv[2])
 
 #import dot file
@@ -462,6 +463,9 @@ for x in fakenodesList:
 	#innerSPathDict = {}
 print "done"
 
+
+un_used = detVPnumb_.genVpStatistics(nodeList, totalSPathDict, graphName)
+
 #TODO activate
 
 #print "ALTO COSTMAP RESULT:"
@@ -491,10 +495,10 @@ altoCostMap = alto_.genAltoCostMap(altoPID_Map, dijkstraFormatDict)
 
 test_for_glory = alto_.genFullAltoCostMap(totalSPathDict, altoPID_Map, pathCostMap)
 all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
-print"\nITS THE FINAL COUNTDOWN!!!"
-print test_for_glory
-print "makes: "
-print all_2_all_CostMap
+#print"\nITS THE FINAL COUNTDOWN!!!"
+#print test_for_glory
+#print "makes: "
+#print all_2_all_CostMap
 #labelNetworkMap(dijkstraFormatDict, aggNetMap)
 print "generating ALTO jpgs."
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
@@ -518,8 +522,6 @@ realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", 'w+')
 realCostMap.write(str(dijkstraFormatDict))
 realCostMap.close()
 """
-print dijkstraFormatDict
-
 print "running traceroutes"
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList, totalSPathDict, interfaceMap, graphName)

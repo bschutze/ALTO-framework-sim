@@ -1,0 +1,34 @@
+digraph Test {
+
+	/*compound=true*/
+	node [shape=box];
+	edge [len=2];
+	/*Instantiation of nodes, required to successfully calling .get_node_list() (pydot) */
+	//NODES
+	1[group=A, comment=PID1]; 2[group=A, comment=PID2]; 3[group=H, comment=PID3]; 4[group=A, comment=PID4]; 
+	
+	
+	
+	//VANTAGE POINT NODES
+	900[group=V, comment=PID0]; 901[group=V, comment=PID0];
+
+	
+	overlap = scale;
+	splines = false;
+	label = "Example 1";
+	//orientation = portrait;
+	// alias resolution atribute 1 = yes, 0=no
+
+	//Vantage Point edges
+	1 -> 2		[label=2,headlabel="2-1",alias=0,latency=2,];
+	2 -> 3		[label=2,headlabel="3-2",alias=1,latency=2,];
+	3 -> 4		[label=2,headlabel="4-3",alias=1,latency=2,];
+	4 -> 3		[label=2,headlabel="3-4",alias=1,latency=2,];
+	3 -> 2		[label=2,headlabel="2-3",alias=0,latency=2,];
+	2 -> 1		[label=2,headlabel="1-2",alias=1,latency=2,];
+	900 -> 1	[label=0,headlabel="1-900",alias=1,latency=1,];
+	1 -> 900	[label=0,headlabel="900-1",alias=1,latency=1,];
+	901 -> 4	[label=0,headlabel="4-901",alias=1,latency=1,];
+	4 -> 901	[label=0,headlabel="901-4",alias=1,latency=1,];
+
+}

@@ -10,7 +10,7 @@ def genStats():
 	output_str =""
 	for fname in sorted(os.listdir(directory)):
 		if fname.endswith(".dot") and not "NETWORKMAP" in fname:
-			with open(directory + fname, "w+") as f:
+			with open(directory + fname, "r") as f:
 				for line in f:
 					if search_str in line:
 						counter = counter +1

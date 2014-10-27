@@ -15,10 +15,10 @@ import copy
 # @parm path_cost_map a dictionary containing all edges and associated weights/costs
 # @returns a complete ALTO cost map with all costs from all to all
 def genFullAltoCostMap(all_shortestPaths, pid_refMap, path_cost_map):
-	print "GEN_FULL_ALTO_MAP"
+	#print "GEN_FULL_ALTO_MAP"
 	#print all_shortestPaths
-	print pid_refMap
-	print path_cost_map
+	#print pid_refMap
+	#print path_cost_map
 	full_cost_map = dict()
 
 	for o_src, subDict in all_shortestPaths.iteritems():
@@ -77,7 +77,7 @@ def makeNetworkMap(altoDict):
 			if not value in networkMap:
 				networkMap[value] = set()
 			networkMap[value].add(key)
-	print "THE NETWORKMAP: ", networkMap
+	#print "THE NETWORKMAP: ", networkMap
 	return networkMap
 
 def genAltoCostMap(pid_ref, neighborHood):

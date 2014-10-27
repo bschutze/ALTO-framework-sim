@@ -108,7 +108,7 @@ def drawTracerouteView(traceView, grName):
 	graph.set_edge_defaults(len='2')
 	
 	for n in nodes:
-		node_a = pydot.Node(str(n), shape="box")
+		node_a = pydot.Node(str(n), shape="box", style="filled", color="red", fillcolor="yellow")
 		graph.add_node(node_a)
 	for src, dest in total_Edges:
 		edge = pydot.Edge(str(src), str(dest), label = str(1), )

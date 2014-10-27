@@ -1,0 +1,9 @@
+
+
+graph = read.table("/home/johannes/Master_Thesis/ALTO-framework-sim/Output/VANTAGE_POINTS/A_USA_ATnT_TEST_vpStats.txt", header=T, sep="\t")
+max_y <- max(graph)
+png(filename="/home/johannes/Master_Thesis/ALTO-framework-sim/Output/graph.png", height=295, width=300, bg="white")
+dev.off()
+plot(graph, type="o", col="blue")
+title(main="Vantage Points vs Edges found", font.main=12)
+

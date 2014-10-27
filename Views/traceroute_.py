@@ -19,7 +19,7 @@ from utilities import file_interfaces_
 #**/
 
 #Method generates the Traceroute View of the graph. We list the headlabels on the shortest path and apply alias resolution
-#TODO we are resolving all interfaces, as long as node is not marked hidden
+#TODO we are resolving all interfaces, as long as node is not marked hidden or starred
 #TODO nodes with attribute comment=PID0 have to be omitted!!!!!!!!!!!!!!!!!!!!!!!!!
 #@returns a tree structure representing the traceroute view of the network
 def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, interfaces, graphName):
@@ -149,8 +149,8 @@ def genTracerouteNeighborhood(traceView):
 				#print "length: ", length
 				inner[daList[0]] = 1
 		outter[first]= copy.deepcopy(inner)
-	print "\n\n*******************************"
-	print outter
+	#print "\n\n*******************************"
+	#print outter
 	return outter
 
 

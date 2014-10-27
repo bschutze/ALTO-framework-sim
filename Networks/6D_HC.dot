@@ -4,189 +4,242 @@ digraph Test {
 	node [shape=box];
 	edge [len=2];
 	/*Instantiation of nodes, required to successfully calling .get_node_list() (pydot) */
-	1[group=V]; 2[group=A]; 3[group=A]; 4[group=A]; 5[group=V]; 6[group=A]; 7[group=A]; 8[group=A]; 9[group=A]; 10[group=A]; 12[group=A];
-	13[group=A]; 14[group=A]; 15[group=A]; 16[group=A]; 17[group=A]; 18[group=A]; 19[group=A]; 20[group=A]; 21[group=A]; 22[group=A]; 23[group=A];
-	24[group=A]; 25[group=A]; 26[group=A]; 27[group=A]; 28[group=A]; 29[group=A]; 30[group=A]; 31[group=A]; 32[group=A]; 33[group=A]; 34[group=A];
-	35[group=A]; 36[group=A]; 37[group=A];  38[group=A];
+	//NODES
+	1[group=A, comment=PID1]; 2[group=A, comment=PID1]; 3[group=A, comment=PID1]; 4[group=A, comment=PID1]; //CUBE1
+	5[group=A, comment=PID1]; 6[group=A, comment=PID1]; 7[group=A, comment=PID1]; 8[group=A, comment=PID1]; //CUBE1
+	
+	11[group=A, comment=PID2]; 12[group=A, comment=PID2]; 13[group=A, comment=PID2]; 14[group=A, comment=PID2]; //CUBE2
+	15[group=A, comment=PID2]; 16[group=A, comment=PID2]; 17[group=A, comment=PID2]; 18[group=A, comment=PID2]; //CUBE2
+	
+	21[group=A, comment=PID3]; 22[group=A, comment=PID3]; 23[group=A, comment=PID3]; 24[group=A, comment=PID3]; //CUBE3
+	25[group=A, comment=PID3]; 26[group=A, comment=PID3]; 27[group=A, comment=PID3]; 28[group=A, comment=PID3]; //CUBE3
+	
+	31[group=A, comment=PID4]; 32[group=A, comment=PID4]; 33[group=A, comment=PID4]; 34[group=A, comment=PID4]; //CUBE4
+	35[group=A, comment=PID4]; 36[group=A, comment=PID4]; 37[group=A, comment=PID4]; 38[group=A, comment=PID4]; //CUBE4
+	
+	
+	//VANTAGE POINT NODES
+	901[group=V, comment=PID0]; 903[group=V, comment=PID0]; 906[group=V, comment=PID0]; 908[group=V, comment=PID0];
+	911[group=V, comment=PID0]; 913[group=V, comment=PID0]; 916[group=V, comment=PID0]; 918[group=V, comment=PID0]; 
+	921[group=V, comment=PID0]; 923[group=V, comment=PID0]; 926[group=V, comment=PID0]; 928[group=V, comment=PID0]; 
+	931[group=V, comment=PID0]; 933[group=V, comment=PID0]; 936[group=V, comment=PID0]; 938[group=V, comment=PID0];
+	
 	overlap = scale;
 	splines = false;
 	label = "5D_HYPERCUBE";
 	//orientation = portrait;
 	// alias resolution atribute 1 = yes, 0=no
 
+	//Vantage Point edges
+	901 -> 1	[label=0,headlabel="1-901",alias=1,latency=0,];
+	1 -> 901	[label=0,headlabel="901-1",alias=1,latency=0,];
+	903 -> 3	[label=0,headlabel="3-903",alias=1,latency=0,];
+	3 -> 903	[label=0,headlabel="903-3",alias=1,latency=0,];
+	906 -> 6	[label=0,headlabel="6-906",alias=1,latency=0,];
+	6 -> 906	[label=0,headlabel="906-6",alias=1,latency=0,];
+	908 -> 8	[label=0,headlabel="8-908",alias=1,latency=0,];
+	8 -> 908	[label=0,headlabel="908-8",alias=1,latency=0,];
+
+	911 -> 11	[label=0,headlabel="11-911",alias=1,latency=0,];
+	11 -> 911	[label=0,headlabel="911-11",alias=1,latency=0,];
+	913 -> 13	[label=0,headlabel="13-913",alias=1,latency=0,];
+	13 -> 913	[label=0,headlabel="913-13",alias=1,latency=0,];
+	916 -> 16	[label=0,headlabel="16-916",alias=1,latency=0,];
+	16 -> 916	[label=0,headlabel="916-16",alias=1,latency=0,];
+	918 -> 18	[label=0,headlabel="18-918",alias=1,latency=0,];
+	18 -> 918	[label=0,headlabel="918-18",alias=1,latency=0,];
+	
+	921 -> 21	[label=0,headlabel="21-921",alias=1,latency=0,];
+	21 -> 921	[label=0,headlabel="921-21",alias=1,latency=0,];
+	923 -> 23	[label=0,headlabel="23-923",alias=1,latency=0,];
+	23 -> 923	[label=0,headlabel="923-23",alias=1,latency=0,];
+	926 -> 26	[label=0,headlabel="26-926",alias=1,latency=0,];
+	26 -> 926	[label=0,headlabel="926-26",alias=1,latency=0,];
+	928 -> 28	[label=0,headlabel="28-928",alias=1,latency=0,];
+	28 -> 928	[label=0,headlabel="928-28",alias=1,latency=0,];
+
+	931 -> 31	[label=0,headlabel="31-931",alias=1,latency=0,];
+	31 -> 931	[label=0,headlabel="931-31",alias=1,latency=0,];
+	933 -> 33	[label=0,headlabel="33-933",alias=1,latency=0,];
+	33 -> 933	[label=0,headlabel="933-33",alias=1,latency=0,];
+	936 -> 36	[label=0,headlabel="36-936",alias=1,latency=0,];
+	36 -> 936	[label=0,headlabel="936-36",alias=1,latency=0,];
+	938 -> 38	[label=0,headlabel="38-938",alias=1,latency=0,];
+	38 -> 938	[label=0,headlabel="938-38",alias=1,latency=0,];
+
 	//CUBE 1
-	1 -> 2	[label=7,headlabel="2-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1 -> 4	[label=5,headlabel="4-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	1 -> 5	[label=6,headlabel="5-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	1 -> 11	[label=7,headlabel="11-1",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	2 -> 1	[label=7,headlabel="1-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	2 -> 3	[label=7,headlabel="3-2",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	2 -> 6	[label=5,headlabel="6-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	2 -> 12	[label=6,headlabel="12-2",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	3 -> 2	[label=7,headlabel="2-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	3 -> 4	[label=11,headlabel="4-3",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	3 -> 7	[label=7,headlabel="7-3",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	3 -> 13	[label=1,headlabel="13-3",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	4 -> 1	[label=5,headlabel="1-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	4 -> 3	[label=11,headlabel="3-4",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	4 -> 8	[label=7,headlabel="8-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	4 -> 14	[label=5,headlabel="14-4",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	5 -> 1	[label=6,headlabel="1-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	5 -> 6	[label=7,headlabel="6-5",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	5 -> 8	[label=8,headlabel="8-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	5 -> 15	[label=8,headlabel="15-5",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	6 -> 2	[label=5,headlabel="2-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	6 -> 5	[label=7,headlabel="5-6",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	6 -> 7	[label=7,headlabel="7-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	6 -> 16	[label=7,headlabel="16-6",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 3	[label=7,headlabel="3-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 6	[label=7,headlabel="6-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 8	[label=9,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	7 -> 17	[label=3,headlabel="17-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 4	[label=7,headlabel="4-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 5	[label=8,headlabel="5-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 7	[label=9,headlabel="8-7",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	8 -> 18	[label=8,headlabel="18-8",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	1 -> 2	[label=1,headlabel="2-1",alias=1,latency=4,];
+	1 -> 4	[label=4,headlabel="4-1",alias=1,latency=4,];
+	1 -> 5	[label=11,headlabel="5-1",alias=1,latency=3,];
+	1 -> 11	[label=100,headlabel="11-1",alias=1,latency=3,];
+	2 -> 1	[label=1,headlabel="1-2",alias=1,latency=2,];
+	2 -> 3	[label=3,headlabel="3-2",alias=1,latency=2,];
+	2 -> 6	[label=10,headlabel="6-2",alias=1,latency=5,];
+	2 -> 12	[label=100,headlabel="12-2",alias=1,latency=5,];
+	3 -> 2	[label=3,headlabel="2-3",alias=1,latency=6,];
+	3 -> 4	[label=1,headlabel="4-3",alias=1,latency=6,];
+	3 -> 7	[label=10,headlabel="7-3",alias=1,latency=8,];
+	3 -> 13	[label=100,headlabel="13-3",alias=1,latency=8,];
+	4 -> 1	[label=4,headlabel="1-4",alias=1,latency=9,];
+	4 -> 3	[label=1,headlabel="3-4",alias=1,latency=9,];
+	4 -> 8	[label=10,headlabel="8-4",alias=1,latency=3,];
+	4 -> 14	[label=100,headlabel="14-4",alias=1,latency=3,];
+	5 -> 1	[label=11,headlabel="1-5",alias=1,latency=10,];
+	5 -> 6	[label=1,headlabel="6-5",alias=1,latency=10,];
+	5 -> 8	[label=4,headlabel="8-5",alias=1,latency=3,];
+	5 -> 15	[label=100,headlabel="15-5",alias=1,latency=3,];
+	6 -> 2	[label=10,headlabel="2-6",alias=1,latency=1,];
+	6 -> 5	[label=1,headlabel="5-6",alias=1,latency=1,];
+	6 -> 7	[label=4,headlabel="7-6",alias=1,latency=2,];
+	6 -> 16	[label=100,headlabel="16-6",alias=1,latency=2,];
+	7 -> 3	[label=10,headlabel="3-7",alias=1,latency=2,];
+	7 -> 6	[label=4,headlabel="6-7",alias=1,latency=2,];
+	7 -> 8	[label=2,headlabel="8-7",alias=1,latency=2,];
+	7 -> 17	[label=100,headlabel="17-7",alias=1,latency=2,];
+	8 -> 4	[label=10,headlabel="4-8",alias=1,latency=2,];
+	8 -> 5	[label=4,headlabel="5-8",alias=1,latency=2,];
+	8 -> 7	[label=2,headlabel="8-7",alias=1,latency=2,];
+	8 -> 18	[label=100,headlabel="18-8",alias=1,latency=2,];
 	
 	//CUBE 2
-	11 -> 1	[label=7,headlabel="1-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 12	[label=7,headlabel="12-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 14	[label=5,headlabel="14-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	11 -> 15	[label=6,headlabel="15-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 2	[label=6,headlabel="2-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 11	[label=7,headlabel="11-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 13	[label=5,headlabel="13-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 16	[label=5,headlabel="16-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 3	[label=3,headlabel="3-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 12	[label=5,headlabel="12-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 14	[label=8,headlabel="14-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 17	[label=6,headlabel="17-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 4	[label=5,headlabel="4-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 11	[label=5,headlabel="11-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 13	[label=8,headlabel="13-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 18	[label=7,headlabel="18-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 5	[label=8,headlabel="5-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 11	[label=6,headlabel="11-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 16	[label=9,headlabel="16-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 18	[label=7,headlabel="18-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 6	[label=7,headlabel="6-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 12	[label=5,headlabel="12-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 15	[label=9,headlabel="15-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 17	[label=5,headlabel="17-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 7	[label=3,headlabel="7-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 13	[label=6,headlabel="13-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 16	[label=5,headlabel="16-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 18	[label=6,headlabel="18-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 8	[label=8,headlabel="8-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 14	[label=7,headlabel="14-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 15	[label=7,headlabel="15-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 17	[label=6,headlabel="17-18",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 1	[label=100,headlabel="1-11",alias=1,latency=4,];
+	11 -> 12	[label=1,headlabel="12-11",alias=1,latency=4,];
+	11 -> 14	[label=4,headlabel="14-11",alias=1,latency=4,];
+	11 -> 15	[label=11,headlabel="15-11",alias=1,latency=4,];
+	12 -> 2	[label=100,headlabel="2-12",alias=1,latency=4,];
+	12 -> 11	[label=1,headlabel="11-12",alias=1,latency=4,];
+	12 -> 13	[label=3,headlabel="13-12",alias=1,latency=4,];
+	12 -> 16	[label=10,headlabel="16-12",alias=1,latency=4,];
+	13 -> 3	[label=100,headlabel="3-13",alias=1,latency=4,];
+	13 -> 12	[label=3,headlabel="12-13",alias=1,latency=4,];
+	13 -> 14	[label=1,headlabel="14-13",alias=1,latency=4,];
+	13 -> 17	[label=10,headlabel="17-13",alias=1,latency=4,];
+	14 -> 4	[label=100,headlabel="4-14",alias=1,latency=4,];
+	14 -> 11	[label=4,headlabel="11-14",alias=1,latency=4,];
+	14 -> 13	[label=1,headlabel="13-14",alias=1,latency=4,];
+	14 -> 18	[label=10,headlabel="18-14",alias=1,latency=4,];
+	15 -> 5	[label=100,headlabel="5-15",alias=1,latency=4,];
+	15 -> 11	[label=11,headlabel="11-15",alias=1,latency=4,];
+	15 -> 16	[label=1,headlabel="16-15",alias=1,latency=4,];
+	15 -> 18	[label=4,headlabel="18-15",alias=1,latency=4,];
+	16 -> 6	[label=100,headlabel="6-16",alias=1,latency=4,];
+	16 -> 12	[label=10,headlabel="12-16",alias=1,latency=4,];
+	16 -> 15	[label=1,headlabel="15-16",alias=1,latency=4,];
+	16 -> 17	[label=4,headlabel="17-16",alias=1,latency=4,];
+	17 -> 7	[label=100,headlabel="7-17",alias=1,latency=4,];
+	17 -> 13	[label=10,headlabel="13-17",alias=1,latency=4,];
+	17 -> 16	[label=4,headlabel="16-17",alias=1,latency=4,];
+	17 -> 18	[label=2,headlabel="18-17",alias=1,latency=4,];
+	18 -> 8	[label=100,headlabel="8-18",alias=1,latency=4,];
+	18 -> 14	[label=10,headlabel="14-18",alias=1,latency=4,];
+	18 -> 15	[label=4,headlabel="15-18",alias=1,latency=4,];
+	18 -> 17	[label=2,headlabel="17-18",alias=1,latency=4,];
 	
 	
 	//CUBE 3 
-	21 -> 22	[label=1,headlabel="22-21",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	21 -> 24	[label=1,headlabel="24-21",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	21 -> 25	[label=1,headlabel="25-21",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	21 -> 31	[label=1,headlabel="31-21",alias = 1,throughput=12,latency=3,delay=2,bandwidth = 20];
-	22 -> 21	[label=1,headlabel="21-22",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	22 -> 23	[label=1,headlabel="23-22",alias = 1,throughput=10,latency=2,delay=4,bandwidth = 20];
-	22 -> 26	[label=1,headlabel="26-22",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	22 -> 32	[label=1,headlabel="32-22",alias = 1,throughput=9,latency=5,delay=1,bandwidth = 20];
-	23 -> 22	[label=1,headlabel="22-23",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	23 -> 24	[label=1,headlabel="24-23",alias = 1,throughput=11,latency=6,delay=2,bandwidth = 20];
-	23 -> 27	[label=1,headlabel="27-23",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	23 -> 33	[label=1,headlabel="33-23",alias = 1,throughput=14,latency=8,delay=3,bandwidth = 20];
-	24 -> 21	[label=1,headlabel="21-24",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	24 -> 23	[label=1,headlabel="23-24",alias = 1,throughput=16,latency=9,delay=2,bandwidth = 20];
-	24 -> 28	[label=1,headlabel="28-24",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	24 -> 34	[label=1,headlabel="34-24",alias = 1,throughput=17,latency=3,delay=1,bandwidth = 20];
-	25 -> 21	[label=1,headlabel="21-25",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	25 -> 26	[label=1,headlabel="26-25",alias = 1,throughput=20,latency=10,delay=5,bandwidth = 10];
-	25 -> 28	[label=1,headlabel="28-25",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	25 -> 35	[label=1,headlabel="35-25",alias = 1,throughput=30,latency=3,delay=4,bandwidth = 20];
-	26 -> 22	[label=1,headlabel="22-26",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	26 -> 25	[label=1,headlabel="25-26",alias = 1,throughput=15,latency=1,delay=2,bandwidth = 20];
-	26 -> 27	[label=10,headlabel="27-26",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	26 -> 36	[label=1,headlabel="36-26",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	27 -> 23	[label=1,headlabel="23-27",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	27 -> 26	[label=1,headlabel="26-27",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	27 -> 28	[label=1,headlabel="28-27",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	27 -> 37	[label=1,headlabel="37-27",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	28 -> 24	[label=1,headlabel="24-28",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	28 -> 25	[label=1,headlabel="25-28",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	28 -> 27	[label=1,headlabel="28-27",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
-	28 -> 38	[label=1,headlabel="38-28",alias = 1,throughput=15,latency=2,delay=3,bandwidth = 20];
+	21 -> 22	[label=1,headlabel="22-21",alias=1,latency=4,];
+	21 -> 24	[label=4,headlabel="24-21",alias=1,latency=4,];
+	21 -> 25	[label=11,headlabel="25-21",alias=1,latency=3,];
+	21 -> 31	[label=100,headlabel="31-21",alias=1,latency=3,];
+	22 -> 21	[label=1,headlabel="21-22",alias=1,latency=2,];
+	22 -> 23	[label=3,headlabel="23-22",alias=1,latency=2,];
+	22 -> 26	[label=10,headlabel="26-22",alias=1,latency=5,];
+	22 -> 32	[label=100,headlabel="32-22",alias=1,latency=5,];
+	23 -> 22	[label=3,headlabel="22-23",alias=1,latency=6,];
+	23 -> 24	[label=1,headlabel="24-23",alias=1,latency=6,];
+	23 -> 27	[label=10,headlabel="27-23",alias=1,latency=8,];
+	23 -> 33	[label=100,headlabel="33-23",alias=1,latency=8,];
+	24 -> 21	[label=4,headlabel="21-24",alias=1,latency=9,];
+	24 -> 23	[label=1,headlabel="23-24",alias=1,latency=9,];
+	24 -> 28	[label=10,headlabel="28-24",alias=1,latency=3,];
+	24 -> 34	[label=100,headlabel="34-24",alias=1,latency=3,];
+	25 -> 21	[label=11,headlabel="21-25",alias=1,latency=10,];
+	25 -> 26	[label=1,headlabel="26-25",alias=1,latency=10,];
+	25 -> 28	[label=4,headlabel="28-25",alias=1,latency=3,];
+	25 -> 35	[label=100,headlabel="35-25",alias=1,latency=3,];
+	26 -> 22	[label=10,headlabel="22-26",alias=1,latency=1,];
+	26 -> 25	[label=1,headlabel="25-26",alias=1,latency=1,];
+	26 -> 27	[label=4,headlabel="27-26",alias=1,latency=2,];
+	26 -> 36	[label=100,headlabel="36-26",alias=1,latency=2,];
+	27 -> 23	[label=10,headlabel="23-27",alias=1,latency=2,];
+	27 -> 26	[label=4,headlabel="26-27",alias=1,latency=2,];
+	27 -> 28	[label=2,headlabel="28-27",alias=1,latency=2,];
+	27 -> 37	[label=100,headlabel="37-27",alias=1,latency=2,];
+	28 -> 24	[label=10,headlabel="24-28",alias=1,latency=2,];
+	28 -> 25	[label=4,headlabel="25-28",alias=1,latency=2,];
+	28 -> 27	[label=2,headlabel="28-27",alias=1,latency=2,];
+	28 -> 38	[label=100,headlabel="38-28",alias=1,latency=2,];
 	
 	//CUBE 4
-	31 -> 21	[label=1,headlabel="21-31",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	31 -> 32	[label=1,headlabel="32-31",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	31 -> 34	[label=1,headlabel="34-31",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	31 -> 35	[label=1,headlabel="35-31",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 22	[label=1,headlabel="22-32",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 31	[label=1,headlabel="31-32",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 33	[label=1,headlabel="33-32",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 36	[label=1,headlabel="36-32",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 23	[label=1,headlabel="23-33",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 32	[label=1,headlabel="32-33",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 34	[label=1,headlabel="34-33",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 37	[label=1,headlabel="37-33",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 24	[label=1,headlabel="24-34",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 31	[label=1,headlabel="31-34",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 33	[label=1,headlabel="33-34",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 38	[label=1,headlabel="38-34",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 25	[label=1,headlabel="25-35",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 31	[label=1,headlabel="31-35",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 36	[label=1,headlabel="36-35",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 38	[label=1,headlabel="38-35",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 26	[label=1,headlabel="26-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 32	[label=1,headlabel="32-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 35	[label=1,headlabel="35-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 37	[label=1,headlabel="37-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 27	[label=1,headlabel="27-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 33	[label=1,headlabel="33-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 36	[label=1,headlabel="36-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 38	[label=1,headlabel="38-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 28	[label=1,headlabel="28-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 34	[label=1,headlabel="34-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 35	[label=1,headlabel="35-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 37	[label=1,headlabel="37-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	31 -> 21	[label=100,headlabel="21-31",alias=1,latency=4,];
+	31 -> 32	[label=1,headlabel="32-31",alias=1,latency=4,];
+	31 -> 34	[label=4,headlabel="34-31",alias=1,latency=4,];
+	31 -> 35	[label=11,headlabel="35-31",alias=1,latency=4,];
+	32 -> 22	[label=100,headlabel="22-32",alias=1,latency=4,];
+	32 -> 31	[label=1,headlabel="31-32",alias=1,latency=4,];
+	32 -> 33	[label=3,headlabel="33-32",alias=1,latency=4,];
+	32 -> 36	[label=10,headlabel="36-32",alias=1,latency=4,];
+	33 -> 23	[label=100,headlabel="23-33",alias=1,latency=4,];
+	33 -> 32	[label=3,headlabel="32-33",alias=1,latency=4,];
+	33 -> 34	[label=1,headlabel="34-33",alias=1,latency=4,];
+	33 -> 37	[label=10,headlabel="37-33",alias=1,latency=4,];
+	34 -> 24	[label=100,headlabel="24-34",alias=1,latency=4,];
+	34 -> 31	[label=4,headlabel="31-34",alias=1,latency=4,];
+	34 -> 33	[label=1,headlabel="33-34",alias=1,latency=4,];
+	34 -> 38	[label=10,headlabel="38-34",alias=1,latency=4,];
+	35 -> 25	[label=100,headlabel="25-35",alias=1,latency=4,];
+	35 -> 31	[label=11,headlabel="31-35",alias=1,latency=4,];
+	35 -> 36	[label=1,headlabel="36-35",alias=1,latency=4,];
+	35 -> 38	[label=4,headlabel="38-35",alias=1,latency=4,];
+	36 -> 26	[label=100,headlabel="26-36",alias=1,latency=4,];
+	36 -> 32	[label=10,headlabel="32-36",alias=1,latency=4,];
+	36 -> 35	[label=1,headlabel="35-36",alias=1,latency=4,];
+	36 -> 37	[label=4,headlabel="37-36",alias=1,latency=4,];
+	37 -> 27	[label=100,headlabel="27-37",alias=1,latency=4,];
+	37 -> 33	[label=10,headlabel="33-37",alias=1,latency=4,];
+	37 -> 36	[label=4,headlabel="36-37",alias=1,latency=4,];
+	37 -> 38	[label=2,headlabel="38-37",alias=1,latency=4,];
+	38 -> 28	[label=100,headlabel="28-38",alias=1,latency=4,];
+	38 -> 34	[label=10,headlabel="34-38",alias=1,latency=4,];
+	38 -> 35	[label=4,headlabel="35-38",alias=1,latency=4,];
+	38 -> 37	[label=2,headlabel="37-38",alias=1,latency=4,];
 	
 	
 	//CUBE CONNECTORS 1&2 - 3&4
 	
-	1 -> 21	[label=10,headlabel="21-1",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	2 -> 22	[label=10,headlabel="22-2",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	3 -> 23	[label=10,headlabel="23-3",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	4 -> 24	[label=10,headlabel="24-4",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	5 -> 25	[label=10,headlabel="25-5",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	6 -> 26	[label=10,headlabel="26-6",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	7 -> 27	[label=10,headlabel="27-7",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	8 -> 28	[label=10,headlabel="28-8",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	1 -> 21	[label=1000,headlabel="21-1",alias=1,latency=4,];
+	2 -> 22	[label=1000,headlabel="22-2",alias=1,latency=4,];
+	3 -> 23	[label=1000,headlabel="23-3",alias=1,latency=4,];
+	4 -> 24	[label=1000,headlabel="24-4",alias=1,latency=4,];
+	5 -> 25	[label=1000,headlabel="25-5",alias=1,latency=4,];
+	6 -> 26	[label=1000,headlabel="26-6",alias=1,latency=4,];
+	7 -> 27	[label=1000,headlabel="27-7",alias=1,latency=4,];
+	8 -> 28	[label=1000,headlabel="28-8",alias=1,latency=4,];
 	
-	21 -> 1	[label=10,headlabel="1-21",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	22 -> 2	[label=10,headlabel="2-22",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	23 -> 3	[label=10,headlabel="3-23",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	24 -> 4	[label=10,headlabel="4-24",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	25 -> 5	[label=10,headlabel="5-25",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	26 -> 6	[label=10,headlabel="6-26",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	27 -> 7	[label=10,headlabel="7-27",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	28 -> 8	[label=10,headlabel="8-28",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	21 -> 1	[label=1000,headlabel="1-21",alias=1,latency=4,];
+	22 -> 2	[label=1000,headlabel="2-22",alias=1,latency=4,];
+	23 -> 3	[label=1000,headlabel="3-23",alias=1,latency=4,];
+	24 -> 4	[label=1000,headlabel="4-24",alias=1,latency=4,];
+	25 -> 5	[label=1000,headlabel="5-25",alias=1,latency=4,];
+	26 -> 6	[label=1000,headlabel="6-26",alias=1,latency=4,];
+	27 -> 7	[label=1000,headlabel="7-27",alias=1,latency=4,];
+	28 -> 8	[label=1000,headlabel="8-28",alias=1,latency=4,];
 	
-	11 -> 31	[label=10,headlabel="31-11",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	12 -> 32	[label=10,headlabel="32-12",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	13 -> 33	[label=10,headlabel="33-13",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	14 -> 34	[label=10,headlabel="34-14",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	15 -> 35	[label=10,headlabel="35-15",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	16 -> 36	[label=10,headlabel="36-16",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	17 -> 37	[label=10,headlabel="37-17",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	18 -> 38	[label=10,headlabel="18-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	11 -> 31	[label=1000,headlabel="31-11",alias=1,latency=4,];
+	12 -> 32	[label=1000,headlabel="32-12",alias=1,latency=4,];
+	13 -> 33	[label=1000,headlabel="33-13",alias=1,latency=4,];
+	14 -> 34	[label=1000,headlabel="34-14",alias=1,latency=4,];
+	15 -> 35	[label=1000,headlabel="35-15",alias=1,latency=4,];
+	16 -> 36	[label=1000,headlabel="36-16",alias=1,latency=4,];
+	17 -> 37	[label=1000,headlabel="37-17",alias=1,latency=4,];
+	18 -> 38	[label=1000,headlabel="38-18",alias=1,latency=4,];
 	
-	31 -> 11	[label=10,headlabel="11-31",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	32 -> 12	[label=10,headlabel="12-32",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	33 -> 13	[label=10,headlabel="13-33",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	34 -> 14	[label=10,headlabel="14-34",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	35 -> 15	[label=10,headlabel="15-35",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	36 -> 16	[label=10,headlabel="16-36",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	37 -> 17	[label=10,headlabel="17-37",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
-	38 -> 18	[label=10,headlabel="18-38",alias = 1,throughput=16,latency=4,delay=3,bandwidth = 10];
+	31 -> 11	[label=1000,headlabel="11-31",alias=1,latency=4,];
+	32 -> 12	[label=1000,headlabel="12-32",alias=1,latency=4,];
+	33 -> 13	[label=1000,headlabel="13-33",alias=1,latency=4,];
+	34 -> 14	[label=1000,headlabel="14-34",alias=1,latency=4,];
+	35 -> 15	[label=1000,headlabel="15-35",alias=1,latency=4,];
+	36 -> 16	[label=1000,headlabel="16-36",alias=1,latency=4,];
+	37 -> 17	[label=1000,headlabel="17-37",alias=1,latency=4,];
+	38 -> 18	[label=1000,headlabel="18-38",alias=1,latency=4,];
 }
