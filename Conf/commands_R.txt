@@ -5,5 +5,5 @@ max_y <- max(graph)
 png(filename="/home/johannes/Master_Thesis/ALTO-framework-sim/Output/graph.png", height=295, width=300, bg="white")
 dev.off()
 plot(graph, type="o", col="blue")
-title(main="Vantage Points vs Edges found", font.main=12)
+
 

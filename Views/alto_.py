@@ -93,13 +93,17 @@ def genAltoCostMap(pid_ref, neighborHood):
 	for key, subDict in neighborHood.iteritems():
 		tmp_cost_vals = dict()
 	#	print "Outter KEY: %s , outter VAL: %s"%(key, subDict)
-		#get the PID for first node
+		#check if key is in the list, vantage points are invalid keys!
+		if key not in pid_ref:
+			continue
+		#get the PID 
 		outter_pid_number = pid_ref[key]
-		
 		#check if the pid number already exsists. If it doesn exist just do normal add, i.e start a new dictionary and add neighbors
-		if outter_pid_number not in neighbor_cost_map:
+		if outter_pid_number not in neighbor_cost_map:# and outter_pid_number != 'PID0':
 			#itterate sub dictionary ( add the neighbors(iKey) with costs (iValue)
 			for iKey, iVal in subDict.iteritems():
+				if iKey not in pid_ref:
+					continue
 				#filter out if outter PID is trying to save a path to it self, i.e. PID1 to PID1 =10...s
 				if(pid_ref[iKey] != outter_pid_number):
 	#				print "\tAdding first timer: %s -- %s = %s"%(outter_pid_number,pid_ref[iKey],iVal)
@@ -115,6 +119,10 @@ def genAltoCostMap(pid_ref, neighborHood):
 			for iKey, iVal in subDict.iteritems():
 	#			print "\t%s=%s already exists"% (pid_ref[iKey],iVal)
 	#			print "\t in: ", neighbor_cost_map
+				#check if key is in list (vantage points i.e. PID0 are ignored here
+				if iKey not in pid_ref:
+					continue
+				
 				
 				#if it already exists add only if weight is lower
 				if pid_ref[iKey] in existing_PID_entry:

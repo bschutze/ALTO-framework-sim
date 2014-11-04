@@ -420,7 +420,8 @@ for n in nodeList:
 	
 	tempAttr = json.dumps(n.get_attributes())
 	nodeAttr = json.loads(tempAttr)
-	altoPID_Map[name] =  str(nodeAttr['comment'])
+	if (str(nodeAttr['comment']) != 'PID0'):
+		altoPID_Map[name] =  str(nodeAttr['comment'])
 	#if str(nodeAttr['comment'])!= 'PID0':
 	#	nodeList.append(n)
 	#print altoPID_Map
@@ -463,14 +464,8 @@ for x in fakenodesList:
 	#innerSPathDict = {}
 print "done"
 
-
-un_used = detVPnumb_.genVpStatistics(nodeList, totalSPathDict, graphName)
-
-#TODO activate
-
-#print "ALTO COSTMAP RESULT:"
-
-#print rawCostMap
+#TODO enable to generate statistical data. This function basically looks how many links can be found with the in the network defined vantage points
+#un_used = detVPnumb_.genVpStatistics(nodeList, totalSPathDict, graphName)
 
 
 #costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
@@ -492,9 +487,12 @@ print "\t* Network map"
 altoNetworkMap = alto_.makeNetworkMap(altoPID_Map)
 print "\t* Cost map"
 altoCostMap = alto_.genAltoCostMap(altoPID_Map, dijkstraFormatDict)
+#TODO
+#test_for_glory = alto_.genFullAltoCostMap(totalSPathDict, altoPID_Map, pathCostMap)
+#all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
+#TODO
 
-test_for_glory = alto_.genFullAltoCostMap(totalSPathDict, altoPID_Map, pathCostMap)
-all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
+
 #print"\nITS THE FINAL COUNTDOWN!!!"
 #print test_for_glory
 #print "makes: "
@@ -502,31 +500,45 @@ all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
 #labelNetworkMap(dijkstraFormatDict, aggNetMap)
 print "generating ALTO jpgs."
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
-
-#print "EVALUATING OLD:"
-#print dijkstraFormatDict
-#print "also old:"
-#print aggNetMap
-#print "NEW"
-#print temp_test
-
-#drawGraph_.drawGraph(dijkstraFormatDict, graphName+'_ALTO')
 drawGraph_.drawGraph(altoCostMap, graphName+'_ALTO')
 
-
+#network map
 realNetworkMap = open("Output/ALTO/"+graphName+"_ALTO_NETWORK_MAP.txt", 'w+')
 realNetworkMap.write(str(altoNetworkMap))
 realNetworkMap.close()
-"""#TODO generate real cost Map and store here 
+nwmFh = open("Objects/ALTO_NWM_pickle.obj", "w+")
+pickle.dump(altoNetworkMap, nwmFh)
+nwmFh.close()
+
+
+fd = open("Objects/node_to_pid_pickle.obj", "w+")
+pickle.dump(altoPID_Map, fd)
+fd.close()
+
+#cost map 
 realCostMap = open("Output/ALTO/"+graphName+"_ALTO_COST_MAP.txt", 'w+')
-realCostMap.write(str(dijkstraFormatDict))
+realCostMap.write(str(altoCostMap))
 realCostMap.close()
-"""
+
+fd = open("Objects/ALTO_pickle.obj", "w+")
+pickle.dump(altoCostMap, fd)
+fd.close()
+
 print "running traceroutes"
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList, totalSPathDict, interfaceMap, graphName)
 #testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
-#print tracerouteDict
+
+tracrouteFile = open("Output/TRACEROUTE/"+graphName+"_TRACEROUTE_VIEW.txt", 'w+')
+tracrouteFile.write(str(tracerouteDict))
+tracrouteFile.close()
+
+tf = open("Objects/TR_pickle.obj", "w+")
+pickle.dump(tracerouteDict,tf)
+tf.close()
+
+
+
 print "generating traceroute jpgs.\n"
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
 drawGraph_.drawNetworkMap(altoNetworkMap, graphName+'_NETWORKMAP')

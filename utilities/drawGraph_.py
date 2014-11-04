@@ -14,8 +14,8 @@ from PIL import Image
 	
 
 def drawGraph(hoodDict, grName):
-	graph = pydot.Dot(label = grName, graph_type='digraph')
-	graph.set_edge_defaults(len='2')
+	graph = pydot.Dot(label = grName, graph_type='digraph', overlap ='scale', splines ='false')
+	graph.set_edge_defaults(len='4')
 	#first we generate the nodes
 	for key in hoodDict.keys():
 		node_a = pydot.Node(str(key), shape="box")
@@ -29,7 +29,7 @@ def drawGraph(hoodDict, grName):
 	#Image.open('Output/'+grName+'.jpeg').show()
 
 def drawNetworkMap(netmapList, grName):
-	graph = pydot.Dot(label = grName, graph_type='digraph')
+	graph = pydot.Dot(label = grName, graph_type='digraph', overlap ='scale', splines ='false')
 	for key, val in netmapList.iteritems():
 		name = ""+key+" |{ " 
 		#print key
@@ -104,7 +104,7 @@ def drawTracerouteView(traceView, grName):
 	
 	#DRAWING*************************************************************************
 	
-	graph = pydot.Dot(label = grName, graph_type='digraph')
+	graph = pydot.Dot(label = grName, graph_type='digraph', overlap ='scale', splines ='false')
 	graph.set_edge_defaults(len='2')
 	
 	for n in nodes:
