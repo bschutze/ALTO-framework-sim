@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
 #Master-Thesis dot parsing framework
 #Date: 14.01.2014
@@ -464,40 +464,18 @@ for x in fakenodesList:
 	#innerSPathDict = {}
 print "done"
 
-#TODO enable to generate statistical data. This function basically looks how many links can be found with the in the network defined vantage points
+#This function basically looks how many links can be found with the in the network defined vantage points
+#TODO### enable ###TODO#  to generate statistical data. 
 #un_used = detVPnumb_.genVpStatistics(nodeList, totalSPathDict, graphName)
 
-
-#costMapFile = open("ALTO_COST_MAP_RAW.txt", "w")
-#costMapFile.write(str(rawCostMap))
-#costMapFile.close()
-
-#costMapPickle = open("ALTO_COST_MAP_RAW.dat","w")
-#pickle.dump(rawCostMap, costMapPickle)
-#costMapPickle.close()
 print "generating ALTO maps:"
-#tempFakeNodesList = list(fakenodesList)
-#baseNetworkMap = genBaseNetworkMap(tempFakeNodesList)
-
-#print "dijkstra algo:"
-#print dijkstraFormatDict
 
 print "\t* Network map"
 #aggNetMap = aggregatePids(pathCostMap, PIDThreshold, dijkstraFormatDict)
 altoNetworkMap = alto_.makeNetworkMap(altoPID_Map)
 print "\t* Cost map"
 altoCostMap = alto_.genAltoCostMap(altoPID_Map, dijkstraFormatDict)
-#TODO
-#test_for_glory = alto_.genFullAltoCostMap(totalSPathDict, altoPID_Map, pathCostMap)
-#all_2_all_CostMap = alto_.genAltoCostMap(altoPID_Map, test_for_glory)
-#TODO
 
-
-#print"\nITS THE FINAL COUNTDOWN!!!"
-#print test_for_glory
-#print "makes: "
-#print all_2_all_CostMap
-#labelNetworkMap(dijkstraFormatDict, aggNetMap)
 print "generating ALTO jpgs."
 #DRAW A VISIAL REPRESENTATION OF THE AGGREGATED NETWORK *******ALTO VIEW********
 drawGraph_.drawGraph(altoCostMap, graphName+'_ALTO')
@@ -527,7 +505,6 @@ fd.close()
 print "running traceroutes"
 #GENERATE AND DRAW A VISIAL REPRESENTATION OF THE TRACED NETWORK *******TRACEROUTE VIEW********
 tracerouteDict = traceroute_.genTracerouteView(aliasResMap, latencyMap, nodeList, totalSPathDict, interfaceMap, graphName)
-#testStuff = traceroute_.genTracerouteNeighborhood(tracerouteDict)
 
 tracrouteFile = open("Output/TRACEROUTE/"+graphName+"_TRACEROUTE_VIEW.txt", 'w+')
 tracrouteFile.write(str(tracerouteDict))
@@ -542,9 +519,11 @@ tf.close()
 print "generating traceroute jpgs.\n"
 drawGraph_.drawTracerouteView(tracerouteDict, graphName+'_TR')
 drawGraph_.drawNetworkMap(altoNetworkMap, graphName+'_NETWORKMAP')
-#generate outputfile with statistics of edge and node count
-counter_.genStats()
+#generate outputfile with statistics of edge and node count (outdated and not accurate anymore)
+#counter_.genStats()
 
+print "starting mergeTool.py"
+subprocess.call(["./utilities/mergeTool.py", graphName])
 
 
 print "\nDONE, please see the Output folder for the 3 resulting Views:"
@@ -557,5 +536,8 @@ print "\tALTO/"+graphName+"_ALTO_NETWORK_MAP.txt"
 print "\tALTO/"+graphName+"_ALTO_COST_MAP.txt\n"
 print "\tTraceroute path latencies:"
 print "\tTRACEROUTE/"+graphName+"_LATENCY.txt\n"
+print "\tMergeTool Results:\n\t Output/RESULTS/"+graphName+"_MergeResult.txt\n"
+print "\tIf output of VP stats is enabled:"
+print "\tOutput/VANTAGEPOINTS/"+graphName+"vpStats.txt\n" 
 
 

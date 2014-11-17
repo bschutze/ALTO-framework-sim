@@ -1,9 +1,10 @@
 
 
-graph = read.table("/home/johannes/Master_Thesis/ALTO-framework-sim/Output/VANTAGE_POINTS/A_USA_ATnT_TEST_vpStats.txt", header=T, sep="\t")
+graph = read.table("/home/johannes/Master_Thesis/ALTO-framework-sim/data_for_R_USA_TABLE.txt", header=T, sep="\t")
 max_y <- max(graph)
-png(filename="/home/johannes/Master_Thesis/ALTO-framework-sim/Output/graph.png", height=295, width=300, bg="white")
-dev.off()
+min_y <- min(graph)
+png(filename="/home/johannes/Master_Thesis/ALTO-framework-sim/USA_FIN_RES.png", height=500, width=500, bg="white")
+
 plot(graph, type="o", col="blue")
 
-
+dev.off()

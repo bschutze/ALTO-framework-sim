@@ -115,8 +115,67 @@ def drawTracerouteView(traceView, grName):
 		graph.add_edge(edge)
 	graph.write_jpeg('Output/'+grName+'.jpeg', prog='neato')
 	graph.write_dot('Output/DOT/'+grName+'.dot')
+
+
+#draw the graph that results from the merge process. Note: Every object is one cluster
+def drawMerge(pidDict, grName):
+	#print "IN DRAW Func"
+	graph = pydot.Dot(label = grName, graph_type='digraph', overlap ='scale', splines ='false', compound='true')
+	#graph.set_edge_defaults(len='2')
 	
-	
+	for pid, pidObj in pidDict.iteritems():
+		#print "currently dealing with: ", pid
+		#pidObj.printME()
+		#generate new cluster
+		cluster = pydot.Cluster(graph_name = pid, label = pid, style='filled', color='lightgrey', labelloc = "t")
+		#populate cluster:
+		#nodes first
+		for node in set(pidObj.nodes):
+			#while len(node) > 0:
+			#print "Drawing: ", node
+			this_node = pydot.Node(name = str(node), shape="box")
+			cluster.add_node(this_node)
+		for node in set(pidObj.s_nodes):
+			#print "drawing Starred: ", node
+			this_node = pydot.Node(name = str(node), shape="box", style = 'filled', color = 'yellow')
+			cluster.add_node(this_node)
+		for node in set(pidObj.a_nodes):
+			#print "alias Starred: ", node
+			this_node = pydot.Node(name = str(node), shape="record")
+			cluster.add_node(this_node)
+		for edge, weight in pidObj.in_edges.iteritems():
+			src, dst = edge
+			#print "Edge: ", src, dst, weight
+			this_edge = pydot.Edge(str(src), str(dst), label = str(weight))
+			cluster.add_edge(this_edge)
+		#for edge, weight in pidObj.out_edges.iteritems():
+		#	src, dst = edge
+		#	print "Edge: ", src, dst, weight
+		#	this_edge = pydot.Edge(str(src), str(dst), label = str(weight))
+		#	cluster.add_edge(this_edge)
+		cluster.set_parent_graph(graph)
+		graph.add_subgraph(cluster)
+	#edges connecting PIDs have to be added at the end since they don't belong into a subgraph.
+	for pid, pidObj in pidDict.iteritems():
+		for edge, weight in pidObj.out_edges.iteritems():
+			src, dst = edge
+			#print "Edge: ", src, dst, weight
+			this_edge = pydot.Edge(str(src), str(dst), label = str(weight))
+			graph.add_edge(this_edge)
+		for dstPID, weight in pidObj.foundNeighborPIDs.iteritems():#TODO remove if practice prooves uneccesary!
+			this_edge = pydot.Edge(str(pid), str(dstPID), label = str(weight))
+			graph.add_edge(this_edge)
+	#graph.write_jpg('Output/FIN_'+grName+'.jpg', prog='dot')#TODO neato might not render the graph right!!!
+	graph.write_raw('Output/RESULTS/'+grName+'_Graph.dot')#this is what i really want, a dot file to adjust in yED graphically and to manually apply learned ALTO knowledge to it.
+
+
+def makeNodeStarred(n):
+	return  "*"+str(n)+"*"
+
+def makeNodeAlias(interface, src ):
+	return (str(interface)+"-"+str(src))
+		
+
 	
 #function returns 1 if it found the supplied pair in the supplied list, 0 if its not in yet.				
 def isInListOfTuples(ListOfTuples, src, dest):
