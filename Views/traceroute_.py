@@ -24,19 +24,13 @@ from utilities import file_interfaces_
 #@returns a tree structure representing the traceroute view of the network
 def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, interfaces, graphName):
 
-	#variables that keep track of statistics:
-	total_Edges_Found_STAT = list()
-	total_Nodes_Found_STAT = list()
-	goodNodeFound = True
-	lastNodeFound = True
-
 	tree = shortestPathsDict
 	HASH_MULTIPLIER = 100000
 	outterDict = {}
 	innerDict = {}
 	#variables for drawing traceroute view
 	nodesFound = []
-	edgesFound = []
+	#edgesFound = []
 	#total latency between src and target
 	total_latency = 0.0
 	#string containing all latency for write to file
@@ -79,15 +73,12 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 					#text_latency = text_latency + str(latencyMap[(first*HASH_MULTIPLIER)+second])
 					total_latency = total_latency +processing_delay + latencyMap[(first*HASH_MULTIPLIER)+second]
 					
-					
 					#when targeting a hidden node, omit from trace,
 					if second in hiddenNodes:
-						goodNodeFound = False
 						temp = processing_delay + latencyMap[(first*HASH_MULTIPLIER)+second]
 						text_latency = text_latency +"From: "+str(first)+" to hidden: "+str(second)+" = "+str(temp)+"\n"
 						continue
-					if second in starredNodes:
-						goodNodeFound = False
+					elif second in starredNodes:
 						tmpVal = interfaces[(first*HASH_MULTIPLIER)+second]
 						#print "Interface: ", tmpVal
 						#slice the string to only get first charackter
@@ -111,32 +102,18 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 						head = t_head[1:]
 						#print "Adding: ", head
 						temp_inter.append(int(head))
-						edgesFound.append(int(head))
-						#if node is not hidden or starred and alias can be resolved add normal node
-						if goodNodeFound:
-							if second not in targets:
-								total_Nodes_Found_STAT.append(second)
-							if lastNodeFound:
-								total_Edges_Found_STAT.append((first*HASH_MULTIPLIER)+second)
-							
-						
+						#edgesFound.append(int(head))
 						#print "Normal: ", head
 						text_latency = text_latency +"From: "+str(first)+" to: "+str(second)+" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second]+processing_delay)+"\n"
 					else:
-						temp_inter.append(interfaces[(first*HASH_MULTIPLIER)+second])
+						unres_node = interfaces[(first*HASH_MULTIPLIER)+second]
+						temp_inter.append(unres_node)
 						text_latency = text_latency +"From: "+str(first)+" to alias: "+(interfaces[(first*HASH_MULTIPLIER)+second])
 						text_latency = text_latency +" = "+str(latencyMap[(first*HASH_MULTIPLIER)+second]+processing_delay)+"\n"
 						
-						#collecting stats (node count and edge count)
-						if goodNodeFound:
-							if second not in targets:
-								total_Nodes_Found_STAT.append(second)
-							if lastNodeFound:
-								total_Edges_Found_STAT.append((first*HASH_MULTIPLIER)+second)
 						#print "Encountered ALIAS RESULUTION NO!:", interfaces[(first*HASH_MULTIPLIER)+second]
 						#print temp_interfaces
-					lastNodeFound = goodNodeFound
-					goodNodeFound = True
+						
 			#print "Adding interfaces: ", temp_inter
 			innerDict[target] = copy.deepcopy(temp_inter)
 			#print "INNER DICT LOADING WITH:"
@@ -150,14 +127,6 @@ def genTracerouteView(aliasResMap, latencyMap, nodeList, shortestPathsDict, inte
 	#print "\n\nHERE"
 	#print outterDict
 	file_interfaces_.writeToFile(text_total_latency,graphName)
-	
-	#write Stats to file:
-	totalNodesFoundStr = str(len(set(total_Nodes_Found_STAT)))
-	totalEdgesFoundStr = str(len(set(total_Edges_Found_STAT)))
-	totalThingsFound = str(len(set(total_Nodes_Found_STAT))+len(set(total_Edges_Found_STAT)))
-	statsOutput = "Traceroute stats: "+graphName+"\nNodes found: "+totalNodesFoundStr+"\nEdges found: "+totalEdgesFoundStr+"\nTOTAL: "+totalThingsFound+"\n"
-	file_interfaces_.writeTRStats(statsOutput, graphName)
-	
 	return outterDict
 
 #method that creates a neighborhood view of the traceroute shortest path traces, only the result from genTracerouteView() is needed

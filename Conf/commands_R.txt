@@ -1,10 +1,110 @@
 
+graph <- read.table("data_R_GER_table.txt", sep="\t")
+xaxis <- graph[,1]
+data1 <- graph[,2]
+control <- read.table("baseline_R_GER_table.txt", sep="\t")
+baseline <- control[,2]
+base_X <- control[,1]
+label <- c("ALTO & Traceroute","Traceroute")
+plot_colors <- c("blue","red")
 
-graph = read.table("/home/johannes/Master_Thesis/ALTO-framework-sim/data_for_R_USA_TABLE.txt", header=T, sep="\t")
-max_y <- max(graph)
-min_y <- min(graph)
-png(filename="/home/johannes/Master_Thesis/ALTO-framework-sim/USA_FIN_RES.png", height=500, width=500, bg="white")
+pdf("/home/johannes/Master_Thesis/ALTO-framework-sim/GER_FIN_RES.pdf", width=7, height=6)
 
-plot(graph, type="o", col="blue")
+par(mgp=c(3,1,0))
+par(mar=c(5,7,4,2) + 0.1) 
+
+plot(xaxis, data1, type="o", pch=15, lty=1, col=plot_colors[1], axes=FALSE, ann=FALSE)
+
+axis(1, at=0:6, lab=c("0", "1", "2", "3", "4", "5", "6"), cex.axis=1.5)
+axis(2, at=seq(600, 1200, by=50), cex.axis=1.5, las=1)
+
+lines(base_X, baseline, pch=21, lty=2,  col=plot_colors[2])
+
+title(xlab= "ALTO LEVEL", col="black", cex.lab=1.5)
+title(ylab= "Topology Revealed", col="black", cex.lab=1.5, line=4.5)
+
+legend("topleft", label, cex=1, col=plot_colors, pch=15:21, lty=3, lwd=2);
+
+grid(lwd=2)
+
+box()
 
 dev.off()
+
+
+
+
+
+
+
+
+##############################USA
+
+
+graph <- read.table("data_R_USA_table.txt", sep="\t")
+xaxis <- graph[,1]
+data1 <- graph[,2]
+control <- read.table("baseline_R_USA_table.txt", sep="\t")
+baseline <- control[,2]
+base_X <- control[,1]
+label <- c("ALTO & Traceroute","Traceroute")
+plot_colors <- c("blue","red")
+
+pdf("/home/johannes/Master_Thesis/ALTO-framework-sim/USA_FIN_RES.pdf", width=7, height=6)
+
+par(mgp=c(3,1,0))
+par(mar=c(5,7,4,2) + 0.1) 
+
+plot(xaxis, data1, type="o", pch=15, lty=1, col=plot_colors[1], axes=FALSE, ann=FALSE)
+
+axis(1, at=0:6, lab=c("0", "1", "2", "3", "4", "5", "6"), cex.axis=1.5)
+axis(2, at=seq(700, 1100, by=50), cex.axis=1.5, las=1)
+
+lines(base_X, baseline, pch=21, lty=2,  col=plot_colors[2])
+
+title(xlab= "ALTO LEVEL", col="black", cex.lab=1.5)
+title(ylab= "Topology Revealed", col="black", cex.lab=1.5, line=4.5)
+
+legend("topleft", label, cex=1, col=plot_colors, pch=15:21, lty=3, lwd=2);
+
+grid(lwd=2)
+
+box()
+
+dev.off()
+
+#############################6D_HC
+
+graph <- read.table("data_R_HC_table.txt", sep="\t")
+xaxis <- graph[,1]
+data1 <- graph[,2]
+control <- read.table("baseline_R_HC_table.txt", sep="\t")
+baseline <- control[,2]
+base_X <- control[,1]
+label <- c("ALTO & Traceroute","Traceroute")
+plot_colors <- c("blue","red")
+
+pdf("/home/johannes/Master_Thesis/ALTO-framework-sim/HC_FIN_RES.pdf", width=7, height=6)
+
+par(mgp=c(3,1,0))
+par(mar=c(5,7,4,2) + 0.1) 
+
+plot(xaxis, data1, type="o", pch=15, lty=1, col=plot_colors[1], axes=FALSE, ann=FALSE)
+
+axis(1, at=0:6, lab=c("0", "1", "2", "3", "4", "5", "6"), cex.axis=1.5)
+axis(2, at=seq(700, 1100, by=50), cex.axis=1.5, las=1)
+
+lines(base_X, baseline, pch=21, lty=2,  col=plot_colors[2])
+
+title(xlab= "ALTO LEVEL", col="black", cex.lab=1.5)
+title(ylab= "Topology Revealed", col="black", cex.lab=1.5, line=4.5)
+
+legend("topleft", label, cex=1, col=plot_colors, pch=15:21, lty=3, lwd=2);
+
+grid(lwd=2)
+
+box()
+
+dev.off()
+
+

@@ -30,15 +30,9 @@ class PID(object):
 		self.in_edges	 	= dict()	#edges that connect nodes inside a PID
 		self.out_edges	 	= dict()	#edges from this PID to another PID ( unidirectional, other PID has the counter part edge
 		self.un_edges 		= dict()	#edges that have at least one member (src/dst) that is starred or unresolved
-		self.traceR_edges	= dict()	#edges that are found using traceroute
 		self.foundNeighborPIDs 	= dict()	#connections to other PIDs that where added from the Cost Map since no corresponding edge was found in _edges
 		self.neighbors 		= dict()	#dictionary that stores what other PIDs it is connected to and the edges that connect to that PID
 		self.f_w_count 		= 0		#number of weights found and added to corresponding edge (added ALTO knowledge)
-		self.starrResCount	= 0		#Statistics, keeps track of number of starred nodes that where resolved
-		self.starrResEdgeCount	= 0		#Statistics, keeps track of number of starred edges that where resolved
-		self.aliasResCount	= 0		#Statistics, keeps track of number of ailased nodes that where resolved
-		self.aliasResEdgeCount	= 0		#Statistics, keeps track of number of ailased edges that where resolved
-
 		
 	def addNode(self, node):
 		self.nodes.append(node)
@@ -89,7 +83,7 @@ class PID(object):
 		tmpNodes = deepcopy(set(self.nodes[:]))
 		self.nodes = list()
 		self.nodes = deepcopy(list(tmpNodes)[:])
-		#print self.nodes
+		print self.nodes
 		
 		#check if a edge to a neighboring PID was missed and add if necessary.
 		neighborPidsDict = altoData[self.pid]
@@ -123,24 +117,17 @@ class PID(object):
 		#assumption: we can solve a starred or unresposive node if we only have one occurance of either.
 
 		if len(set(self.s_nodes)) == 1 and len(set(self.a_nodes)) == 0:
-			#print "Resolving Starr"
-			self.starrResCount = self.starrResCount + 1
+			print "Resolving Starr"
 			#replace the starred node and edges
-			tmp = set(self.s_nodes)
-			self.s_nodes = deepcopy(list(tmp))
 			needle = self.s_nodes[0]
 			res_Needle = trimNodes(needle)
-			#used in updating (removing) edges in traceR_edges (stores edges that go through the starred node) to achieve a accurate count in the end.
-			srcList = list()#stores all nodes that come before the resolved Starr
-			dstList = list()#stores all nodes that come after the resolved Starr
+			
 			#find and replace node in all inter PID edges (leaving the PID)
 			out_edges_Iter = deepcopy(self.out_edges)
 			for edge, weight in out_edges_Iter.iteritems():
 				if needle in edge:
 					src, dst = edge
 					if type(src) is str:
-						#dest is a neighbor, store
-						dstList.append(dst)
 						#src is the node that cant get resolved
 						source = res_Needle
 						destination = dst
@@ -150,12 +137,7 @@ class PID(object):
 							self.nodes.remove(src)
 							self.nodes.append(source)
 						self.out_edges[(source,destination)]=weight
-						#doing statistics
-						self.starrResEdgeCount = self.starrResEdgeCount +1
-						
 					else:
-						#src is a neighbor, store
-						srcList.append(src)
 						#dst is the node that cant get resolved
 						source = src
 						destination = res_Needle
@@ -164,8 +146,6 @@ class PID(object):
 							self.nodes.remove(dst)
 							self.nodes.append(destination)
 						self.out_edges[(source, destination)]=weight
-						#doing statistics
-						self.starrResEdgeCount = self.starrResEdgeCount +1
 			
 			#find and replace node in all intra PID edges (inside PID)
 			
@@ -173,51 +153,30 @@ class PID(object):
 				if needle in edge:
 					src, dst = edge
 					if type(src) is str:
-						#dest is a neighbor, store
-						dstList.append(dst)
 						#src is the node that cant get resolved
 						source = res_Needle
 						destination = dst
 						#adding resolved edge
 						del self.in_edges[edge] #remove edge and add trimmed edge
 						self.in_edges[(source,destination)]=weight
-						#doing statistics
-						self.starrResEdgeCount = self.starrResEdgeCount +1
 					else:
-						#src is a neighbor, store
-						srcList.append(src)
 						#dst is the node that cant get resolved
 						source = src
 						destination = res_Needle
 						del self.in_edges[edge] #remove edge and add trimmed edge
 						self.in_edges[(source, destination)]=weight
-						#doing statistics
-						self.starrResEdgeCount = self.starrResEdgeCount +1
-			
-			#find and replace edge that leads "through" the starred node ( added when doing: "Gernate TR edge Stats")
-			for srcNode in srcList:
-				for dstNode in dstList:
-					 if (srcNode,dstNode) in self.traceR_edges.keys():
-					 	#print "I could remove: ",(srcNode,dstNode)
-					 	#removing absolete edge (correct edges where added above (to in or out _edges and will thus be in final list when they get added in genStats())
-					 	#print "Removing resolved Starred edge: ",(srcNode, dstNode)
-					 	del self.traceR_edges[(srcNode, dstNode)] 
-			
 		########################################################
 		#check and sub unresolved interfaces/nodes if possible#
 		########################################################
 		#multiple unresolved interfaces could all be resolved into one NodeID
 
 		elif len(self.a_nodes) > 0 and len(set(self.s_nodes)) == 0:
-			
+		
 			iter_a_nodes = deepcopy(self.a_nodes)
 			#replace un-resolved node and edges
-			#print "Its possible to resolve edge!!!"
-			self.aliasResCount = self.aliasResCount + 1
+			print "Its possible to resolve edge!!!"
 			tempANodes = list()
 			original = ""
-			delNodeList = list()
-			
 			#loop and trimm all nodes to see if its just one node or multiple.
 			for un_node in iter_a_nodes:
 
@@ -240,6 +199,7 @@ class PID(object):
 						if edge in iter_in_edges:
 							#print "\tEdge is a IN Edge\n\tRemoving: ",edge
 							del self.in_edges[edge] #remove edge and add trimmed edge
+							
 							#its possible that scr and dst pairs in the dictionary (in_edges) come out wrong!! set = unordered!
 							if type(src) is str and src.find('-') != -1:
 								#src is the node that cant get resolved
@@ -247,7 +207,6 @@ class PID(object):
 								if src in self.nodes:
 									#print "\t\tremoving from list of Nodes: ",src
 									self.nodes.remove(src)
-								delNodeList.append(src)
 								source = trimNodes(src)
 								destination = dst
 								#adding resolved edge
@@ -256,15 +215,12 @@ class PID(object):
 								self.in_edges[(source,destination)]=weight
 								#adding resolved node back to the list off all nodes
 								self.nodes.append(source)
-								#doing statistics
-								self.aliasResEdgeCount = self.aliasResEdgeCount +1
 							elif type(dst) is str and dst.find('-') != -1:
 								#dst is the node that cant get resolved
 								#removing the un_resolved and wrongly falsly added interface
 								if dst in self.nodes:
 									#print "\t\tremoving from list of Nodes: ",src
 									self.nodes.remove(dst)
-								delNodeList.append(dst)
 								source = src
 								destination = trimNodes(dst)
 								#print "\tAdding: ",(source,destination)
@@ -272,13 +228,12 @@ class PID(object):
 								self.in_edges[(source, destination)]=weight
 								#adding resolved node back to the list off all nodes
 								self.nodes.append(destination)
-								#doing statistics
-								self.aliasResEdgeCount = self.aliasResEdgeCount +1
 						iter_out_edges = self.out_edges
 						#else edge has to be in out_nodes and the same as above has to be done
 						if edge in iter_out_edges:
 							#print "\tEdge is a OUT Edge\n\tRemoving: ",edge
 							del self.out_edges[edge] #remove edge and add trimmed edge
+						
 							#its possible that scr and dst pairs in the dictionary (in_edges) come out wrong!! set = unordered!
 							if type(src) is str and src.find('-') != -1:
 								#src is the node that cant get resolved
@@ -286,7 +241,7 @@ class PID(object):
 								if src in self.nodes:
 									#print "\t\tremoving from list of Nodes: ",src
 									self.nodes.remove(src)
-								delNodeList.append(src)
+
 								source = trimNodes(src)
 								destination = dst
 								#adding resolved edge
@@ -295,9 +250,8 @@ class PID(object):
 								self.out_edges[(source,destination)]=weight
 								#adding resolved node back to the list off all nodes
 								self.nodes.append(source)
+								
 								iterDict = deepcopy(self.neighbors)
-								#doing statistics
-								self.aliasResEdgeCount = self.aliasResEdgeCount +1
 								#check if the edge is connecting another PID (which it mostly should)
 								for neighborPid, edgeList in iterDict.iteritems():
 									tmpEdgeList = edgeList
@@ -316,7 +270,6 @@ class PID(object):
 								if dst in self.nodes:
 									#print "\t\tremoving from list of Nodes: ",src
 									self.nodes.remove(dst)
-								delNodeList.append(dst)
 								source = src
 								destination = trimNodes(dst)
 								#print "\tAdding: ",(source,destination)
@@ -324,9 +277,8 @@ class PID(object):
 								self.out_edges[(source, destination)]=weight
 								#adding resolved node back to the list off all nodes
 								self.nodes.append(destination)
+
 								iterDict = deepcopy(self.neighbors)
-								#doing statistics
-								self.aliasResEdgeCount = self.aliasResEdgeCount +1
 								#check if the edge is connecting another PID (which it mostly should)
 								for neighborPid, edgeList in iterDict.iteritems():
 									tmpEdgeList = edgeList
@@ -339,37 +291,8 @@ class PID(object):
 										edgeList.append(newEdge)
 									#add the list back to object
 									self.neighbors[neighborPid] = edgeList
-						
-						iterTraceR_edges = self.traceR_edges
-						if edge in iterTraceR_edges.keys():
-							del self.traceR_edges[edge]
-							
-					"""
-					iterTraceR_edges = self.traceR_edges
-					for delNode in delNodeList:
-						for edge in iterTraceR_edges.keys():
-							if delNode in edge:
-								print "Removing resolved Edge : ",edge
-								del self.traceR_edges[edge]
-					"""				
-					"""
-					for srcNode,dstNode in delNodeList:
-						if (srcNode,dstNode) in self.traceR_edges.keys():
-							del self.traceR_edges[(srcNode,dstNode)]
-						elif type(srcNode) is str:
-							if srcNode.find('-')!= -1:
-								iter_traceR_edges = self.traceR_edges
-								for badEdge in iter_traceR_edges.keys():
-									if srcNode in badEdge:
-										del self.traceR_edges[badEdge]
-							
-						elif type(dstNode) is str:
-							if dstNode.find('-')!= -1:
-								iter_traceR_edges = self.traceR_edges
-								for badEdge in iter_traceR_edges.keys():
-									if dstNode in badEdge:
-										del self.traceR_edges[badEdge]
-					s"""
+		
+		
 		tmpNodes = set(self.nodes[:])
 		self.nodes = list()
 		self.nodes = list(tmpNodes)[:]
@@ -382,67 +305,22 @@ class PID(object):
 	#		How many nodes found are starred ofind('-') != -1r no alias res
 	#		
 	def genStats(self):
-		#print "NUMBER NODES FOUND IN TR + ALTO: ", len(self.nodes)
+		print "NUMBER NODES FOUND IN TR + ALTO: ", len(self.nodes)
 		tmpNodes = deepcopy(self.nodes)
 		#starred nodes need to be removed (since we actually did not find them)
 		for x in self.s_nodes:
 			if x in tmpNodes:
 				tmpNodes.remove(x)
-		#print "After removing Starrs: ", len(set(tmpNodes))
+		print "After removing Starrs: ", len(set(tmpNodes))
 		numNodesFound	= len(set(tmpNodes))
 		#interior edges + exterior edges + edges we know exist
-		
-		inList  = makeList(self.in_edges)
-		outList = makeList(self.out_edges)
-		tmpUnList  = makeList(self.un_edges)
-		trList  = makeList(self.traceR_edges)
-		unList = purgeUnList(tmpUnList)
-		#adding together the lists to generate the union of interior and exterior edges
-		tmp = inList+outList
-		#subtracting all edges that where not resolved
-		
-		tmp = set(tmp) - set(unList)
-		#adding the Traceroute edges to add back in the "edges around starred nodes"
-		#print "IN LIST", set(inList)
-		#print "OUTLIST", set(outList)
-		#print "UN LiST",set(unList)
-		#print "TR LIST",set(trList)
-		res = trList + list(tmp)
-		result = set(res)
-		#tmpEdgesTot = (self.in_edges.items() + self.out_edges.items())
-		#tmpEdgesTot = tmpEdgesTot - self.un_edges.items()
-		numEdgesFound = len(list(result))
-		#numEdgesFound	= len(self.in_edges) + len(self.out_edges)+ len(self.foundNeighborPIDs)
-		return numNodesFound, numEdgesFound, self.f_w_count, self.starrResCount, self.starrResEdgeCount, self.aliasResCount, self.aliasResEdgeCount
-
-#module removes all allowed edges (unresolved) from the unresolved List. This is important to purge the data set
-def purgeUnList(someUnList):
-	tmpIterList = set(someUnList)
-	for edge in list(tmpIterList):
-		src, dst = edge
-		if type(src) is str and type(dst) is not str:
-			if src.find('-') != -1:		#if src is alias and dst is a regular
-				someUnList.remove(edge)
-		elif type(dst) is str and type(src) is not str:
-			if dst.find('-') != -1:		#if dst is alias and src is a regular
-				someUnList.remove(edge)
-		elif type(dst) is str and type(src) is str:
-			if dst.find('-') != -1 and src.find('-') != -1: # if dst and src are both alias
-				someUnList.remove(edge)
-			#else both are str and starred = do nothing
-	return someUnList
-
-def makeList(someDict):
-	tmpList = list()
-	for key, value in someDict.iteritems():
-		tmpList.append(key)
-	return tmpList
-
+		numEdgesFound	= len(self.in_edges) + len(self.out_edges)+ len(self.foundNeighborPIDs)
+		return numNodesFound, numEdgesFound, self.f_w_count 
 
 #searches out the 
 def objectManager(pidName, pid_Dict):
 	if pidName == '':
-		print "O-manager ERROR: ", pidName
+		print "Omanager ERROR: ", pidName
 	if pidName in pid_Dict:
 		pidObj = pid_Dict[pidName]
 		#print "return: "+pidName
@@ -557,8 +435,7 @@ for srcVP, subDict in tracerouteData.iteritems():
 				else:
 					thePID = nodeToPID[dst]
 				
-				#retrieve the right PID object
-				pid = objectManager(thePID, pidDict)
+				
 				
 				#Gernate TR edge Stats:
 				
@@ -566,14 +443,12 @@ for srcVP, subDict in tracerouteData.iteritems():
 				if type(rawDst) is not str:
 					
 					tr_edges[(goodTR_source,rawDst)]=0
-					pid.traceR_edges[(goodTR_source,rawDst)]=0
 					goodTR_source = rawDst#assign it to be the next src
-					
+				
 				#2nd case, destination is a unresolved interface
 				if type(rawDst) is str and rawDst.find('-') != -1:
 					
 					tr_edges[(goodTR_source,rawDst)]=0
-					pid.traceR_edges[(goodTR_source,rawDst)]=0
 					goodTR_source = rawDst#assign it to be the next src
 					
 				
@@ -582,7 +457,7 @@ for srcVP, subDict in tracerouteData.iteritems():
 				
 				
 				
-				
+				pid = objectManager(thePID, pidDict)	#retrieve the right PID object
 
 				#sorting the node into corresponding lists
 				if rawDst in nodeToPID:
@@ -652,6 +527,8 @@ for srcVP, subDict in tracerouteData.iteritems():
 				
 					
 #itterate the network map to add them to the object
+
+
 #adding network map of each PID to the onject representing that PID
 missedPID = "PIDs not in trace but in Cost Map:\n"
 pidCount = 0
@@ -676,11 +553,6 @@ totalNumEdges = 0
 totalNotFound = 0
 totalWeightsFound = 0
 
-totalStarrCount = 0
-totalStarrEdgeCount = 0
-totalAliasCount = 0
-totalAliasEdgeCount = 0
-
 fhandle = open("Output/RESULTS/" + graphName +"_MergeResults.txt", "w")
 
 #print the content of the objects, doing merging work, generating stats.
@@ -692,31 +564,23 @@ for key,obj in pidDict.iteritems():
 	#apply ALTO magic:
 	obj.doMagic(altoData)
 	#obj.printME(fhandle)
-	tmpNumNodes, tmpNumEdges, tmpWeightsFound, tmpStarrCount, tmpStarrEdgeCount, tmpAliasCount, tmpAliasEdgeCount= obj.genStats()
+	tmpNumNodes, tmpNumEdges, tmpWeightsFound = obj.genStats()
 	
 	totalNumNodes = totalNumNodes + tmpNumNodes
 	totalNumEdges = totalNumEdges + tmpNumEdges
 	totalWeightsFound = totalWeightsFound + tmpWeightsFound
 	totalNotFound = totalNotFound + (len(obj.netWMap)- tmpNumNodes)
-	totalStarrCount = totalStarrCount + tmpStarrCount
-	totalAliasCount = totalAliasCount + tmpAliasCount
-	totalStarrEdgeCount = totalStarrEdgeCount + tmpStarrEdgeCount
-	totalAliasEdgeCount = totalAliasEdgeCount + tmpAliasEdgeCount
 	
-	
+	#print >>fhandle, "\nPID: " + obj.pid 
+	#print >>fhandle, "Nodes Traced: %d, Nodes in NWM: %d, Diff = %d"%(tmpNumNodes, len(obj.netWMap),len(obj.netWMap)-tmpNumNodes)
+	#print >>fhandle, "Edges Traced: %d,"%(tmpNumEdges)
 
 print >>fhandle, "\nALTO: Total items revealed: " + str(totalNumNodes+totalNumEdges+totalWeightsFound+pidCount)
 print >>fhandle, "ALTO: Total Number of Nodes Found: " + str(totalNumNodes) 
 print >>fhandle, "ALTO: Total Number of Edges Found: "+str(totalNumEdges)
 print >>fhandle, "ALTO: Total Number Edge Weights discovered: ", totalWeightsFound
-print >>fhandle, "ALTO: Total Starred Nodes resolved: ", totalStarrCount
-print >>fhandle, "ALTO: Total Starred Edges resolved/added: ", totalStarrEdgeCount
-print >>fhandle, "ALTO: Total Aliased Nodes resolved: ", totalAliasCount
-print >>fhandle, "ALTO: Total Aliased Edges resolved/added: ", totalAliasEdgeCount
-
 print >>fhandle, "\nALTO: Total Number of Nodes in Network Map but not in Trace: ", totalNotFound
 print >>fhandle, missedPID
-print >>fhandle, "TRACEROUTE STATS:"
 print >>fhandle, "TR: TOTAL items revealed: ", str(tot_TR_nodes + len(tr_edges))
 print >>fhandle, "TR: Total Number of Nodes Found: " + str(tot_TR_nodes)
 print >>fhandle, "TR: Total Number of Edges Found: ", len(tr_edges)
